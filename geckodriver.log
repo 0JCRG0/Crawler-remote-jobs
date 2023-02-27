@@ -1,0 +1,431 @@
+1677190913862	geckodriver	INFO	Listening on 127.0.0.1:63383
+1677190914239	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "63384" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileFpgdLD"
+1677190915741	Marionette	INFO	Marionette enabled
+1677190916154	Marionette	INFO	Listening on port 63395
+Read port: 63395
+WebDriver BiDi listening on ws://127.0.0.1:63384
+1677190916464	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileFpgdLD/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:63384/devtools/browser/524374cc-9b6e-4913-828f-5720adc00cff
+1677190922905	Marionette	INFO	Stopped listening on port 63395
+1677357069537	geckodriver	INFO	Listening on 127.0.0.1:64937
+1677357070045	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "64938" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilePd0dUH"
+1677357071833	Marionette	INFO	Marionette enabled
+1677357072106	Marionette	INFO	Listening on port 64964
+Read port: 64964
+WebDriver BiDi listening on ws://127.0.0.1:64938
+1677357072409	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilePd0dUH/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:64938/devtools/browser/15f4b6ae-ac14-4022-a945-5051d6ee4c1a
+JavaScript warning: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 3: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 15: TypeError: i is undefined
+JavaScript warning: https://www.rottentomatoes.com/rt-common.js?seed=AEClRIqGAQAATUYqLWFaVg5HCtSGK2MSwOQjSdfLglSEFiA7e2ArpE4l-nej&HgdtNmCjYr--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://z.moatads.com/nbcuyieldheader7581548001/moatheader.js, line 221: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1677357087694	Marionette	INFO	Stopped listening on port 64964
+1677357116454	geckodriver	INFO	Listening on 127.0.0.1:65208
+1677357116960	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "65209" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofile4CeYFe"
+1677357117904	Marionette	INFO	Marionette enabled
+1677357118536	Marionette	INFO	Listening on port 65228
+Read port: 65228
+WebDriver BiDi listening on ws://127.0.0.1:65209
+1677357118888	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofile4CeYFe/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:65209/devtools/browser/8f221ca1-96f2-4e69-a9dc-1e35d6a609c7
+JavaScript warning: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 3: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 15: TypeError: i is undefined
+JavaScript warning: https://z.moatads.com/nbcuyieldheader7581548001/moatheader.js, line 221: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://www.rottentomatoes.com/rt-common.js?seed=AEClRIqGAQAATUYqLWFaVg5HCtSGK2MSwOQjSdfLglSEFiA7e2ArpE4l-nej&HgdtNmCjYr--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1677357128919	Marionette	INFO	Stopped listening on port 65228
+1677357190922	geckodriver	INFO	Listening on 127.0.0.1:49211
+1677357191428	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "49212" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileEMotCv"
+1677357192457	Marionette	INFO	Marionette enabled
+1677357192816	Marionette	INFO	Listening on port 49232
+Read port: 49232
+WebDriver BiDi listening on ws://127.0.0.1:49212
+1677357193097	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileEMotCv/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:49212/devtools/browser/4d87bd66-8155-4a89-8a73-5fb3406eeb66
+console.error: Region.sys.mjs: "Error fetching region" (new Error("TIMEOUT", "resource://gre/modules/Region.sys.mjs", 764))
+console.error: Region.sys.mjs: "Failed to fetch region" (new Error("TIMEOUT", "resource://gre/modules/Region.sys.mjs", 416))
+JavaScript warning: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 3: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 15: TypeError: i is undefined
+JavaScript warning: https://www.rottentomatoes.com/rt-common.js?seed=AEClRIqGAQAATUYqLWFaVg5HCtSGK2MSwOQjSdfLglSEFiA7e2ArpE4l-nej&HgdtNmCjYr--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://z.moatads.com/nbcuyieldheader7581548001/moatheader.js, line 221: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://www.rottentomatoes.com/assets/pizza-pie/javascripts/bundles/roma/search-algolia.d511d2aab0a.js, line 1: TypeError: window.aa is not a function
+1677357218329	Marionette	INFO	Stopped listening on port 49232
+WARNING: A blocker encountered an error while we were waiting.
+          Blocker:  Waiting for ping task
+          Phase: TelemetryController: Waiting for pending ping activity
+          State: (none)
+WARNING: Error: Phase "profile-before-change" is finished, it is too late to register completion condition "OS.File: flush I/O queued before profileBeforeChange"
+WARNING: addBlocker@resource://gre/modules/AsyncShutdown.jsm:718:15
+addBlocker@resource://gre/modules/AsyncShutdown.jsm:523:26
+addBlocker@resource://gre/modules/AsyncShutdown.jsm:462:15
+setupShutdown@resource://gre/modules/osfile/osfile_async_front.jsm:1548:28
+@resource://gre/modules/osfile/osfile_async_front.jsm:1568:16
+@resource://gre/modules/osfile.jsm:12:30
+@resource://gre/modules/TelemetryStorage.jsm:19:28
+promiseArchivePing@resource://gre/modules/TelemetryArchive.jsm:103:5
+promiseArchivePing@resource://gre/modules/TelemetryArchive.jsm:63:33
+_submitPingLogic@resource://gre/modules/TelemetryControllerParent.jsm:540:48
+send@resource://gre/modules/TelemetryControllerParent.jsm:628:24
+submitExternalPing@resource://gre/modules/TelemetryControllerParent.jsm:182:17
+sendPing@resource://gre/modules/EventPing.jsm:51:30
+_submitPing@resource://gre/modules/EventPing.jsm:229:12
+shutdown@resource://gre/modules/EventPing.jsm:112:10
+_cleanupOnShutdown@resource://gre/modules/TelemetryControllerParent.jsm:940:31
+shutdown/<@resource://gre/modules/TelemetryControllerParent.jsm:1010:24
+observe@resource://gre/modules/AsyncShutdown.jsm:572:16
+
+WARNING: A blocker encountered an error while we were waiting.
+          Blocker:  Waiting for ping task
+          Phase: TelemetryController: Waiting for pending ping activity
+          State: (none)
+WARNING: Error: Phase "profile-before-change" is finished, it is too late to register completion condition "OS.File: flush I/O queued before profileBeforeChange"
+WARNING: addBlocker@resource://gre/modules/AsyncShutdown.jsm:718:15
+addBlocker@resource://gre/modules/AsyncShutdown.jsm:523:26
+addBlocker@resource://gre/modules/AsyncShutdown.jsm:462:15
+setupShutdown@resource://gre/modules/osfile/osfile_async_front.jsm:1548:28
+@resource://gre/modules/osfile/osfile_async_front.jsm:1568:16
+@resource://gre/modules/osfile.jsm:12:30
+@resource://gre/modules/TelemetryStorage.jsm:19:28
+promiseArchivePing@resource://gre/modules/TelemetryArchive.jsm:103:5
+promiseArchivePing@resource://gre/modules/TelemetryArchive.jsm:63:33
+_submitPingLogic@resource://gre/modules/TelemetryControllerParent.jsm:540:48
+send@resource://gre/modules/TelemetryControllerParent.jsm:628:24
+submitExternalPing@resource://gre/modules/TelemetryControllerParent.jsm:182:17
+saveShutdownPings@resource://gre/modules/TelemetrySession.jsm:982:34
+shutdownChromeProcess/cleanup/<@resource://gre/modules/TelemetrySession.jsm:1232:20
+cleanup@resource://gre/modules/TelemetrySession.jsm:1239:9
+shutdownChromeProcess@resource://gre/modules/TelemetrySession.jsm:1256:14
+shutdown@resource://gre/modules/TelemetrySession.jsm:247:17
+_cleanupOnShutdown@resource://gre/modules/TelemetryControllerParent.jsm:959:35
+observe@resource://gre/modules/AsyncShutdown.jsm:572:16
+
+WARNING: A blocker encountered an error while we were waiting.
+          Blocker:  Waiting for ping task
+          Phase: TelemetryController: Waiting for pending ping activity
+          State: (none)
+WARNING: Error: Phase "profile-before-change" is finished, it is too late to register completion condition "OS.File: flush I/O queued before profileBeforeChange"
+WARNING: addBlocker@resource://gre/modules/AsyncShutdown.jsm:718:15
+addBlocker@resource://gre/modules/AsyncShutdown.jsm:523:26
+addBlocker@resource://gre/modules/AsyncShutdown.jsm:462:15
+setupShutdown@resource://gre/modules/osfile/osfile_async_front.jsm:1548:28
+@resource://gre/modules/osfile/osfile_async_front.jsm:1568:16
+@resource://gre/modules/osfile.jsm:12:30
+@resource://gre/modules/TelemetryStorage.jsm:19:28
+promiseArchivePing@resource://gre/modules/TelemetryArchive.jsm:103:5
+promiseArchivePing@resource://gre/modules/TelemetryArchive.jsm:63:33
+_submitPingLogic@resource://gre/modules/TelemetryControllerParent.jsm:540:48
+send@resource://gre/modules/TelemetryControllerParent.jsm:628:24
+submitExternalPing@resource://gre/modules/TelemetryControllerParent.jsm:182:17
+saveShutdownPings@resource://gre/modules/TelemetrySession.jsm:1014:36
+shutdownChromeProcess/cleanup/<@resource://gre/modules/TelemetrySession.jsm:1232:20
+cleanup@resource://gre/modules/TelemetrySession.jsm:1239:9
+shutdownChromeProcess@resource://gre/modules/TelemetrySession.jsm:1256:14
+shutdown@resource://gre/modules/TelemetrySession.jsm:247:17
+_cleanupOnShutdown@resource://gre/modules/TelemetryControllerParent.jsm:959:35
+observe@resource://gre/modules/AsyncShutdown.jsm:572:16
+
+WARNING: A blocker encountered an error while we were waiting.
+          Blocker:  TelemetryController: shutting down
+          Phase: profile-before-change-telemetry
+          State: Error getting state: Error: Phase "profile-before-change" is finished, it is too late to register completion condition "OS.File: flush I/O queued before profileBeforeChange" at addBlocker@resource://gre/modules/AsyncShutdown.jsm:718:15
+addBlocker@resource://gre/modules/AsyncShutdown.jsm:523:26
+addBlocker@resource://gre/modules/AsyncShutdown.jsm:462:15
+setupShutdown@resource://gre/modules/osfile/osfile_async_front.jsm:1548:28
+@resource://gre/modules/osfile/osfile_async_front.jsm:1568:16
+@resource://gre/modules/osfile.jsm:12:30
+@resource://gre/modules/TelemetryStorage.jsm:19:28
+getShutdownState@resource://gre/modules/TelemetrySend.jsm:1692:7
+getShutdownState@resource://gre/modules/TelemetrySend.jsm:374:30
+_getState@resource://gre/modules/TelemetryControllerParent.jsm:1058:38
+setupTelemetry/<@resource://gre/modules/TelemetryControllerParent.jsm:917:18
+safeGetState@resource://gre/modules/AsyncShutdown.jsm:254:17
+Barrier/_internalAddBlocker/promise<@resource://gre/modules/AsyncShutdown.jsm:773:20
+observe@resource://gre/modules/AsyncShutdown.jsm:572:16
+
+WARNING: Error: Phase "profile-before-change" is finished, it is too late to register completion condition "OS.File: flush I/O queued before profileBeforeChange"
+WARNING: addBlocker@resource://gre/modules/AsyncShutdown.jsm:718:15
+addBlocker@resource://gre/modules/AsyncShutdown.jsm:523:26
+addBlocker@resource://gre/modules/AsyncShutdown.jsm:462:15
+setupShutdown@resource://gre/modules/osfile/osfile_async_front.jsm:1548:28
+@resource://gre/modules/osfile/osfile_async_front.jsm:1568:16
+@resource://gre/modules/osfile.jsm:12:30
+@resource://gre/modules/TelemetryStorage.jsm:19:28
+removeAbortedSessionPing@resource://gre/modules/TelemetryControllerParent.jsm:721:5
+removeAbortedSessionPing@resource://gre/modules/TelemetryControllerParent.jsm:249:17
+shutdownChromeProcess/cleanup/<@resource://gre/modules/TelemetrySession.jsm:1235:42
+observe@resource://gre/modules/AsyncShutdown.jsm:572:16
+
+JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 718: Error: Phase "profile-before-change" is finished, it is too late to register completion condition "OS.File: flush I/O queued before profileBeforeChange"
+JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 718: Error: Phase "profile-before-change" is finished, it is too late to register completion condition "OS.File: flush I/O queued before profileBeforeChange"
+JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 718: Error: Phase "profile-before-change" is finished, it is too late to register completion condition "OS.File: flush I/O queued before profileBeforeChange"
+JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 718: Error: Phase "profile-before-change" is finished, it is too late to register completion condition "OS.File: flush I/O queued before profileBeforeChange"
+JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 718: Error: Phase "profile-before-change" is finished, it is too late to register completion condition "OS.File: flush I/O queued before profileBeforeChange"
+JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 718: Error: Phase "profile-before-change" is finished, it is too late to register completion condition "OS.File: flush I/O queued before profileBeforeChange"
+1677358095048	geckodriver	INFO	Listening on 127.0.0.1:53137
+1677358095559	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "53138" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilen53lD7"
+1677358096776	Marionette	INFO	Marionette enabled
+1677358097149	Marionette	INFO	Listening on port 53162
+Read port: 53162
+WebDriver BiDi listening on ws://127.0.0.1:53138
+1677358097435	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilen53lD7/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:53138/devtools/browser/b0a8160a-4590-461d-a7eb-77a8b24398f8
+JavaScript warning: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 3: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 15: TypeError: i is undefined
+JavaScript warning: https://www.rottentomatoes.com/rt-common.js?seed=AEClRIqGAQAATUYqLWFaVg5HCtSGK2MSwOQjSdfLglSEFiA7e2ArpE4l-nej&HgdtNmCjYr--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://z.moatads.com/nbcuyieldheader7581548001/moatheader.js, line 221: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://www.rottentomatoes.com/assets/pizza-pie/javascripts/bundles/roma/search-algolia.d511d2aab0a.js, line 1: TypeError: window.aa is not a function
+1677358140026	geckodriver	INFO	Listening on 127.0.0.1:53402
+1677358140537	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "53403" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileTQvWY6"
+1677358141951	Marionette	INFO	Marionette enabled
+1677358142432	Marionette	INFO	Listening on port 53428
+Read port: 53428
+WebDriver BiDi listening on ws://127.0.0.1:53403
+1677358142967	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileTQvWY6/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:53403/devtools/browser/551d30c6-c3a6-4157-a238-4f1fde6c4578
+JavaScript warning: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 3: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 15: TypeError: i is undefined
+JavaScript warning: https://z.moatads.com/nbcuyieldheader7581548001/moatheader.js, line 221: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://www.rottentomatoes.com/rt-common.js?seed=AEClRIqGAQAATUYqLWFaVg5HCtSGK2MSwOQjSdfLglSEFiA7e2ArpE4l-nej&HgdtNmCjYr--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1677358153957	Marionette	INFO	Stopped listening on port 53428
+JavaScript warning: https://pagead2.googlesyndication.com/bg/tZsXipaSZXHHcL3TzAhvrOIdSpwDyJfWMGTb_6xT6xM.js line 2 > eval line 5364 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1677376111024	geckodriver	INFO	Listening on 127.0.0.1:54572
+1677376111533	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "54573" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileIRTJnS"
+1677376113487	Marionette	INFO	Marionette enabled
+1677376114304	Marionette	INFO	Listening on port 54597
+Read port: 54597
+WebDriver BiDi listening on ws://127.0.0.1:54573
+1677376114641	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileIRTJnS/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:54573/devtools/browser/812f7b15-b5ad-4646-8552-40f547281e9e
+JavaScript warning: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 3: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 15: TypeError: i is undefined
+JavaScript warning: https://www.rottentomatoes.com/rt-common.js?seed=AMBNV4uGAQAAZHZ916-RvwIzJc45ou79NlRl-4xDr03a31hh71NVCXF5uTRX&HgdtNmCjYr--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://z.moatads.com/nbcuyieldheader7581548001/moatheader.js, line 221: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://www.rottentomatoes.com/assets/pizza-pie/javascripts/bundles/roma/search-algolia.d511d2aab0a.js, line 1: TypeError: window.aa is not a function
+1677376397304	geckodriver	INFO	Listening on 127.0.0.1:55852
+1677376397813	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "55853" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileyn2Kmo"
+1677376399198	Marionette	INFO	Marionette enabled
+1677376399637	Marionette	INFO	Listening on port 55875
+Read port: 55875
+WebDriver BiDi listening on ws://127.0.0.1:55853
+1677376399973	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileyn2Kmo/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:55853/devtools/browser/d3e8112e-e5ed-4903-b469-1ce12c3cf663
+JavaScript warning: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 3: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 15: TypeError: i is undefined
+JavaScript warning: https://www.rottentomatoes.com/rt-common.js?seed=AMBNV4uGAQAAZHZ916-RvwIzJc45ou79NlRl-4xDr03a31hh71NVCXF5uTRX&HgdtNmCjYr--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://z.moatads.com/nbcuyieldheader7581548001/moatheader.js, line 221: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1677376412355	Marionette	INFO	Stopped listening on port 55875
+1677376446055	geckodriver	INFO	Listening on 127.0.0.1:56133
+1677376446562	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "56134" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilef50cWj"
+1677376447638	Marionette	INFO	Marionette enabled
+1677376448039	Marionette	INFO	Listening on port 56151
+Read port: 56151
+WebDriver BiDi listening on ws://127.0.0.1:56134
+1677376448346	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilef50cWj/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:56134/devtools/browser/2788b8fe-4bb8-403d-83bf-5dc06d7691ab
+JavaScript warning: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 3: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 15: TypeError: i is undefined
+JavaScript warning: https://www.rottentomatoes.com/rt-common.js?seed=AMBNV4uGAQAAZHZ916-RvwIzJc45ou79NlRl-4xDr03a31hh71NVCXF5uTRX&HgdtNmCjYr--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://z.moatads.com/nbcuyieldheader7581548001/moatheader.js, line 221: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1677376461954	Marionette	INFO	Stopped listening on port 56151
+1677377127326	geckodriver	INFO	Listening on 127.0.0.1:59179
+1677377127834	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "59180" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilebykYTV"
+1677377129088	Marionette	INFO	Marionette enabled
+1677377129515	Marionette	INFO	Listening on port 59207
+Read port: 59207
+WebDriver BiDi listening on ws://127.0.0.1:59180
+1677377129891	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilebykYTV/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:59180/devtools/browser/23f3234b-3eae-4f1c-b464-8cbcb110ae1f
+JavaScript warning: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 3: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 15: TypeError: i is undefined
+JavaScript warning: https://www.rottentomatoes.com/rt-common.js?seed=AADFcouGAQAA0UVoRoxE1YzFMlGh6glVRNBWpS5kWZZO5RY5xa1G9fec51zj&HgdtNmCjYr--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://z.moatads.com/nbcuyieldheader7581548001/moatheader.js, line 221: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1677377142412	Marionette	INFO	Stopped listening on port 59207
+1677378873689	geckodriver	INFO	Listening on 127.0.0.1:50296
+1677378874202	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "50297" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilert1NaK"
+1677378875433	Marionette	INFO	Marionette enabled
+1677378875827	Marionette	INFO	Listening on port 50317
+Read port: 50317
+WebDriver BiDi listening on ws://127.0.0.1:50297
+1677378876153	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilert1NaK/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:50297/devtools/browser/0e1dd6e3-17d3-4bdc-80ff-d135136b5b3e
+JavaScript warning: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 3: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 15: TypeError: i is undefined
+JavaScript warning: https://www.rottentomatoes.com/rt-common.js?seed=AEA8jouGAQAAWekTaBuska5jUXc-MBNft2NeGTjEwQf4CND3OpiitTRGIWGQ&HgdtNmCjYr--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://z.moatads.com/nbcuyieldheader7581548001/moatheader.js, line 221: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://www.rottentomatoes.com/assets/pizza-pie/javascripts/bundles/roma/search-algolia.d511d2aab0a.js, line 1: TypeError: window.aa is not a function
+1677379093061	geckodriver	INFO	Listening on 127.0.0.1:51304
+1677379093576	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "51305" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileIXtGV8"
+1677379095010	Marionette	INFO	Marionette enabled
+1677379095330	Marionette	INFO	Listening on port 51329
+Read port: 51329
+WebDriver BiDi listening on ws://127.0.0.1:51305
+1677379095595	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileIXtGV8/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:51305/devtools/browser/d6c0b383-a166-48db-ab8e-23d5ad6b605f
+JavaScript warning: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 3: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 15: TypeError: i is undefined
+JavaScript warning: https://www.rottentomatoes.com/rt-common.js?seed=AEA8jouGAQAAWekTaBuska5jUXc-MBNft2NeGTjEwQf4CND3OpiitTRGIWGQ&HgdtNmCjYr--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://z.moatads.com/nbcuyieldheader7581548001/moatheader.js, line 221: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://www.rottentomatoes.com/assets/pizza-pie/javascripts/bundles/roma/search-algolia.d511d2aab0a.js, line 1: TypeError: window.aa is not a function
+1677379285947	geckodriver	INFO	Listening on 127.0.0.1:52217
+1677379286463	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "52218" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileUkGAW4"
+1677379287514	Marionette	INFO	Marionette enabled
+1677379287869	Marionette	INFO	Listening on port 52238
+Read port: 52238
+WebDriver BiDi listening on ws://127.0.0.1:52218
+1677379288162	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileUkGAW4/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:52218/devtools/browser/a37bf670-e2e8-497e-886d-caff661fee02
+JavaScript warning: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 3: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 15: TypeError: i is undefined
+JavaScript warning: https://www.rottentomatoes.com/rt-common.js?seed=AEA8jouGAQAAWekTaBuska5jUXc-MBNft2NeGTjEwQf4CND3OpiitTRGIWGQ&HgdtNmCjYr--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://z.moatads.com/nbcuyieldheader7581548001/moatheader.js, line 221: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://www.rottentomatoes.com/assets/pizza-pie/javascripts/bundles/roma/search-algolia.d511d2aab0a.js, line 1: TypeError: window.aa is not a function
+1677379523121	geckodriver	INFO	Listening on 127.0.0.1:53311
+1677379523628	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "53312" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileH4F7gq"
+1677379525030	Marionette	INFO	Marionette enabled
+1677379525866	Marionette	INFO	Listening on port 53336
+Read port: 53336
+WebDriver BiDi listening on ws://127.0.0.1:53312
+1677379526192	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileH4F7gq/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:53312/devtools/browser/c78afa2c-60a6-4fee-9243-946a50eba39e
+JavaScript warning: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 3: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 15: TypeError: i is undefined
+JavaScript warning: https://www.rottentomatoes.com/rt-common.js?seed=AEA8jouGAQAAWekTaBuska5jUXc-MBNft2NeGTjEwQf4CND3OpiitTRGIWGQ&HgdtNmCjYr--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://z.moatads.com/nbcuyieldheader7581548001/moatheader.js, line 221: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://www.rottentomatoes.com/assets/pizza-pie/javascripts/bundles/roma/search-algolia.d511d2aab0a.js, line 1: TypeError: window.aa is not a function
+1677379720794	geckodriver	INFO	Listening on 127.0.0.1:54226
+1677379721302	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "54227" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilefC6pAl"
+1677379722482	Marionette	INFO	Marionette enabled
+1677379723275	Marionette	INFO	Listening on port 54248
+Read port: 54248
+WebDriver BiDi listening on ws://127.0.0.1:54227
+1677379723593	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilefC6pAl/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:54227/devtools/browser/c52abe9a-e387-467e-82e2-3ca6c8245918
+JavaScript warning: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 3: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 15: TypeError: i is undefined
+JavaScript warning: https://www.rottentomatoes.com/rt-common.js?seed=AEA8jouGAQAAWekTaBuska5jUXc-MBNft2NeGTjEwQf4CND3OpiitTRGIWGQ&HgdtNmCjYr--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://z.moatads.com/nbcuyieldheader7581548001/moatheader.js, line 221: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://www.rottentomatoes.com/assets/pizza-pie/javascripts/bundles/roma/search-algolia.d511d2aab0a.js, line 1: TypeError: window.aa is not a function
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1677379928033	geckodriver	INFO	Listening on 127.0.0.1:55172
+1677379928542	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "55173" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilemMWRho"
+1677379929511	Marionette	INFO	Marionette enabled
+1677379929790	Marionette	INFO	Listening on port 55193
+Read port: 55193
+WebDriver BiDi listening on ws://127.0.0.1:55173
+1677379930502	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilemMWRho/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:55173/devtools/browser/a74df7e1-46ba-4a6e-948f-9d9502966d76
+JavaScript warning: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 3: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 15: TypeError: i is undefined
+JavaScript warning: https://www.rottentomatoes.com/rt-common.js?seed=AEA8jouGAQAAWekTaBuska5jUXc-MBNft2NeGTjEwQf4CND3OpiitTRGIWGQ&HgdtNmCjYr--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://z.moatads.com/nbcuyieldheader7581548001/moatheader.js, line 221: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://www.rottentomatoes.com/assets/pizza-pie/javascripts/bundles/roma/search-algolia.d511d2aab0a.js, line 1: TypeError: window.aa is not a function
+JavaScript warning: https://pagead2.googlesyndication.com/bg/tZsXipaSZXHHcL3TzAhvrOIdSpwDyJfWMGTb_6xT6xM.js line 2 > eval line 5877 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1677380131469	geckodriver	INFO	Listening on 127.0.0.1:56152
+1677380131982	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "56153" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilePBNGaJ"
+1677380132926	Marionette	INFO	Marionette enabled
+1677380133232	Marionette	INFO	Listening on port 56171
+Read port: 56171
+WebDriver BiDi listening on ws://127.0.0.1:56153
+1677380133424	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilePBNGaJ/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:56153/devtools/browser/63febcae-71f7-4689-9cdc-b9d13d168e05
+JavaScript warning: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 3: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 15: TypeError: i is undefined
+JavaScript warning: https://www.rottentomatoes.com/rt-common.js?seed=AEA8jouGAQAAWekTaBuska5jUXc-MBNft2NeGTjEwQf4CND3OpiitTRGIWGQ&HgdtNmCjYr--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://z.moatads.com/nbcuyieldheader7581548001/moatheader.js, line 221: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://www.rottentomatoes.com/assets/pizza-pie/javascripts/bundles/roma/search-algolia.d511d2aab0a.js, line 1: TypeError: window.aa is not a function
+1677380170572	Marionette	INFO	Stopped listening on port 56171
+1677380211584	geckodriver	INFO	Listening on 127.0.0.1:56558
+1677380212092	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "56559" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilehFy4vu"
+1677380212887	Marionette	INFO	Marionette enabled
+1677380213152	Marionette	INFO	Listening on port 56577
+Read port: 56577
+WebDriver BiDi listening on ws://127.0.0.1:56559
+1677380213834	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilehFy4vu/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:56559/devtools/browser/d1502f21-ec8f-422a-a954-bcd09fc33e84
+JavaScript warning: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 3: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://assets.adobedtm.com/launch-EN549327edc13e414a9beb5d61bfd9aac6.min.js, line 15: TypeError: i is undefined
+JavaScript warning: https://www.rottentomatoes.com/rt-common.js?seed=AEA8jouGAQAAWekTaBuska5jUXc-MBNft2NeGTjEwQf4CND3OpiitTRGIWGQ&HgdtNmCjYr--z=q, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://z.moatads.com/nbcuyieldheader7581548001/moatheader.js, line 221: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1677380220379	Marionette	INFO	Stopped listening on port 56577
+1677445693764	geckodriver	INFO	Listening on 127.0.0.1:59416
+1677445694252	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "59417" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofile7gumh4"
+1677445695698	Marionette	INFO	Marionette enabled
+1677445696116	Marionette	INFO	Listening on port 59429
+Read port: 59429
+WebDriver BiDi listening on ws://127.0.0.1:59417
+1677445696435	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofile7gumh4/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:59417/devtools/browser/75bfa6c9-969b-4cbe-810d-abe71179b28c
+1677445703259	Marionette	INFO	Stopped listening on port 59429
