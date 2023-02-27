@@ -8,7 +8,7 @@ import re
 
          
                 
-file = '/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/DRAFTS/remote-working-resources.csv'
+file = '/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/RSS_CRAWLERS/remote-working-resources.csv'
 output = []
 
 def COOK_SOUP():
@@ -100,6 +100,7 @@ def CLEAN_OTHER(s):
 
 
 def CLEAN():
+    df = pd.DataFrame()
     curated_rows = []
     for dic in dirty_soup:
         row = {}
@@ -115,5 +116,5 @@ def CLEAN():
         df.to_csv('yummy_soup_rss.csv', index=False)
     return df
 
-yummy_soup = print(CLEAN())
+yummy_soup = CLEAN()
     

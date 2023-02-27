@@ -27,27 +27,27 @@ def make_soup():
     return soup
 
 # Get those tags
-def CLOJURE():
+def AUTHETIC_JOBS():
     items_new = []
     for item in make_soup().find_all('item'):
         # extract the values of the 5 different tags
         title = item.title.get_text(strip=True)
         #tags = item.tags.get_text(strip=True)
-        description = item.description.get_text(strip=True)
+        #location = item.location.get_text(strip=True)
         #pubDate = item.pubDate.get_text(strip=True)
-        link = item.link.get_text(strip=True)
+        #link = item.link.get_text(strip=True)
         #add them to a list of dic
-        items_new.append({'title': title, 'description': description, 'link': link})
+        #items_new.append({'title': title, 'tags': tags, 'location': location, 'pubDate': pubDate, 'link': link})
         # df...
-        df = pd.DataFrame(items_new, index=range(1, len(items_new)+1))
+        #df = pd.DataFrame(items_new, index=range(1, len(items_new)+1))
         # Set the maximum column width to 1000 -> to avoid pd to truncate the URL
-        pd.set_option('display.max_colwidth', 1000)
+        #pd.set_option('display.max_colwidth', 1000)
         # add the values to the list
         #Worldwide_jobs_NOTSAVED = df[df['location'].str.contains('Worldwide', case=False)]
         #Worldwide_LATAM_jobs_NOTSAVED = df[(df['location'].str.contains('Worldwide', case=False)) | (df['location'].str.contains('LATAM', case=False))]
-        DF_SAVED = df.to_csv('CLOJURE.csv', index=False)
+        #DF_SAVED = df.to_csv('REMOTE_OK.csv', index=False)
         #Worldwide_jobs = Worldwide_jobs_NOTSAVED.to_csv('REMOTE_OK_worldwide.csv', index=False)
         #Worldwide_LATAM = Worldwide_LATAM_jobs_NOTSAVED.to_csv('REMOTE_OK_Worldwide_LATAM.csv', index=False)
-    return DF_SAVED, #Worldwide_jobs, #Worldwide_LATAM
+    return #title #DF_SAVED, #Worldwide_jobs, #Worldwide_LATAM
 
-print(CLOJURE())
+print(AUTHETIC_JOBS())
