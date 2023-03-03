@@ -5,6 +5,7 @@ import bs4
 from urllib.error import HTTPError
 import lxml
 import re
+import mysql.connector
 
          
                 
@@ -113,8 +114,9 @@ def CLEAN():
                 row[key] = CLEAN_OTHER(val)
         curated_rows.append(row)
         df = pd.concat([pd.DataFrame(curated_rows)])
-        df.to_csv('yummy_soup_rss.csv', index=False)
+        df.to_csv('1yummy_soup_rss.csv', index=False)
     return df
 
-yummy_soup = CLEAN()
-    
+df = CLEAN()
+
+#Start the conection with mysql
