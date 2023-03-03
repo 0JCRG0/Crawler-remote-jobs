@@ -114,7 +114,7 @@ def CLEAN():
                 row[key] = CLEAN_OTHER(val)
         curated_rows.append(row)
         df = pd.concat([pd.DataFrame(curated_rows)])
-        df.to_csv('1yummy_soup_rss.csv', index=False)
+        df.to_csv('yummy_soup_rss.csv', index=False)
     return df
 
 df = CLEAN()
