@@ -5,8 +5,6 @@ import bs4
 from urllib.error import HTTPError
 import lxml
 import re
-import mysql.connector
-
          
                 
 file = '/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/RSS_CRAWLERS/remote-working-resources.csv'
