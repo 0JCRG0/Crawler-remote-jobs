@@ -1,19 +1,19 @@
 Title,URL,Feed URL,Notes
 Adafruit Job Boards,https://jobs.adafruit.com/?query=&amp;location=&amp;type%5B%5D=7,,US ONLY
 AngelList,https://angel.co/jobs,,WORTH IT TO SIGN UP - SCRAPPING IT MUGHT BE A BIT HARD - WELL FOUND IT IS THE NAME NOW
-Authentic Jobs,https://authenticjobs.com/,,RSS FEED DOES NOT WORK & NOT MANY JOBS TBH
-Behance,https://www.behance.net/joblist,,No RSS feed but you can subscribe to email
-Career Vault,https://careervault.io/,,
-CareerBuilder,https://www.careerbuilder.com/jobs-remote-web-developer,,
+Authentic Jobs,https://authenticjobs.com/,https://authenticjobs.com/?feed=job_feed,RSS FEED DOES NOT WORK & NOT MANY JOBS TBH
+Behance,https://www.behance.net/joblist,,NOT WORTHY - NOT MANY JOBS
+Career Vault,https://careervault.io/,,USE NEWSLETTER
+CareerBuilder,https://www.careerbuilder.com/jobs-remote-web-developer,,US ONLY
 ClojureJobboard.com,https://ClojureJobboard.com/,https://clojurejobboard.com/rss.xml,Clojure jobs only with a remote section
 Coroflot,https://www.coroflot.com/design-jobs/remote,http://feeds.feedburner.com/coroflot/AllJobs,Presented as Design Jobs but there are development/technical positions within this category
-Craigs List,https://craigslist.org,,Exact URL will depend on city/location you want to search within and should be formatted like: https://[city].craigslist.org/search/web?format=rss
+Craigs List,https://craigslist.org,,NOT WORTHY - NOT MANY JOBS
 Crunchboard Job Board,https://www.crunchboard.com/,https://www.crunchboard.com/jobs.rss,
 Crypto Jobs List,https://cryptojobslist.com/remote,https://cryptojobslist.com/jobs.rss?jobLocation=Remote,
-Cryptocurrency Jobs,https://cryptocurrencyjobs.co,,Also on Twitter (@jobsincrypto)
-CyberCoders,https://www.cybercoders.com/browse-jobs/,,No RSS feed but can sign up for emails
-DailyRemote,https://dailyremote.com,,No RSS feed but can sign up for job alerts and also on Twitter(@daily_remote)
-DesignRemotely,https://designremotely.co/,,
+Cryptocurrency Jobs,https://cryptocurrencyjobs.co,, A BIT LIMITED
+CyberCoders,https://www.cybercoders.com/browse-jobs/,,US ONLY
+DailyRemote,https://dailyremote.com,,A BIT LIMITED
+DesignRemotely,https://designremotely.co/,,JUST DESIGNED JOBS
 Dice,https://www.dice.com/jobs,,
 Diversify Tech,https://www.diversifytech.co/job-board/,,
 Dribbble,https://dribbble.com/jobs?anywhere=true&amp;location=Anywhere,https://dribbble.com/jobs.rss?anywhere=true&amp;location=Anywhere,Mostly design and UI/UX jobs but also some development

@@ -1,5 +1,5 @@
 {
     "sqltools.connections": [],
-    "workbench.colorTheme": "Dracula",
+    "workbench.colorTheme": "Monokai Dimmed",
     "python.analysis.typeCheckingMode": "basic"
 }

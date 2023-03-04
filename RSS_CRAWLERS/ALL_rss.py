@@ -117,4 +117,3 @@ def CLEAN():
 
 df = CLEAN()
 
-#Start the conection with mysql
