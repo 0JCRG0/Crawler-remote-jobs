@@ -4,8 +4,8 @@ import pandas as pd
 import re
 
 def WORKING_NOMADS():
-    #0. URL
     
+    # 0. URL
     url = python_all = "https://himalayas.app/jobs/python"
     
     # 1. Start the session
@@ -14,38 +14,54 @@ def WORKING_NOMADS():
     # 2. Take action on browser 
     driver.get(url)
 
-    #4. Establish Waiting Strategy - 
+    # 4. Establish Waiting Strategy - 
     driver.implicitly_wait(0.5)
 
-    #5 to use later... (to clean the text [blank soaces & n/])
+    #TODO: ADD PAGE BROWSING
+
+    '.w-full'
+
+    # 5. to use later... (to clean the text from regex)
     def TEXT_WASH(s):
         s = " ".join(s.split())
         s = re.sub(r'n/', '', s)
         return s
     
-    def Get_those():
-        all_jobs = []
-        jobs_cards = []
+    #6. 
+    def CRAWLING():
         total_urls = []
         total_titles = []
-        #jobs_card = driver.find_element(By.ID, "card-group")
-        #jobs = jobs_card.find_elements(By.CSS_SELECTOR, '[name = "card"]')
+        total_pubDates = []
+        total_locations = []
+        total_categories = []
+        #GETTING THE PARENT...
         jobs = driver.find_elements(By.CSS_SELECTOR, '#card-group [name = "card"]')
-        #all_jobs.append(jobs)
         for job in jobs:
+            #GETTING THE ELEMENTS FROM THE CHILDREN... remember to use css_selectors instead of tags
             all_urls = job.find_elements(By.CSS_SELECTOR, '.mt-4.md\:mt-0.ml-0.md\:ml-5.w-full .flex.flex-row.items-start.justify-between.mb-2.w-full .flex.flex-row.items-center a')
-            all_titles = job.find_elements(By.CSS_SELECTOR, '.mt-4.md\:mt-0.ml-0.md\:ml-5.w-full .flex.flex-row.items-start.justify-between.mb-2.w-full .flex.flex-row.items-center a h2')
+            all_titles = job.find_elements(By.CSS_SELECTOR, '.mt-4.md\:mt-0.ml-0.md\:ml-5.w-full .flex.flex-row.items-start.justify-between.mb-2.w-full .flex.flex-row.items-center a .text-xl.font-medium.text-gray-900')
+            all_pubDates = job.find_elements(By.CSS_SELECTOR, '.mt-4.md\:mt-0.ml-0.md\:ml-5.w-full .flex.flex-row.items-start.justify-between.mb-2.w-full .hidden.md\:block.md\:whitespace-nowrap.md\:ml-2.relative div .text-base.text-gray-600')
+            all_location = job.find_elements(By.CSS_SELECTOR, '.mt-4.md\:mt-0.ml-0.md\:ml-5.w-full .flex.flex-row.items-center.justify-between .flex.flex-row.items-center.flex-wrap.overflow-hidden .hidden.md\:flex.md\:flex-row.md\:items-center .badge.badge-gray.no-hover.mr-2 .flex.flex-row.items-center .badge-text.whitespace-nowrap.no-hover.text-center')
+            all_category = job.find_elements(By.CSS_SELECTOR, '.mt-4.md\:mt-0.ml-0.md\:ml-5.w-full .flex.flex-row.items-center.justify-between .flex.flex-row.items-center.flex-wrap.overflow-hidden .flex .badge.badge-blue.w-full .flex.flex-row.items-center .badge-text.text-center.whitespace-nowrap')
             for url in all_urls:
                 href = url.get_attribute("href")
                 total_urls.append(href)
             for x in all_titles:
-                title = x.get_attribute("text")
+                title = x.get_attribute("innerHTML")
                 total_titles.append(title)
-        
-            #TODO: SOLVE THE TEXT. IT RETURNS NOTHING. TRY TO USE CLASS INSTEAD OF H2
+            for dates in all_pubDates:
+                pubDate = dates.get_attribute("innerHTML") 
+                total_pubDates.append(pubDate)
+            for loc in all_location:
+                location = loc.get_attribute("innerHTML") 
+                total_locations.append(location)
+            for y in all_category:
+                category = y.get_attribute("innerHTML") 
+                total_categories.append(category)
 
-        return total_titles, total_urls 
-    elements = Get_those()
+            
+        return total_titles, total_urls, total_pubDates, total_locations, total_categories
+    elements = CRAWLING()
 
 
     print(elements, len(elements))
