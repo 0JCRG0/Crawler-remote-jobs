@@ -1,13 +1,20 @@
 #! python3
 # searchpypi.py  - Opens several search results.
 
-import requests, bs4, sys, pandas as pd, re
+import requests
+import bs4
+import sys
+import pandas as pd
+import re
+import pretty_errors
 
 # CRITICAL!!! -> UNCOMMENT URL DEPENDING ON YOUR NEEDS...
 
-url = sales_url = 'https://weworkremotely.com/remote-jobs/search?term=&categories%5B%5D=9&region%5B%5D=0&region%5B%5D=4&job_listing_type%5B%5D=Contract&job_listing_type%5B%5D=Full-Time'
+#url = sales_url = 'https://weworkremotely.com/remote-jobs/search?term=&categories%5B%5D=9&region%5B%5D=0&region%5B%5D=4&job_listing_type%5B%5D=Contract&job_listing_type%5B%5D=Full-Time'
 #url = software_eng_url = 'https://weworkremotely.com/remote-jobs/search?term=&categories%5B%5D=17&categories%5B%5D=18&categories%5B%5D=4&region%5B%5D=0&region%5B%5D=4&job_listing_type%5B%5D=Full-Time'
 #url = python_url = 'https://weworkremotely.com/remote-jobs/search?term=Python&button=&categories%5B%5D=17&categories%5B%5D=18&categories%5B%5D=4&region%5B%5D=0&region%5B%5D=4&job_listing_type%5B%5D=Full-Time'
+url = all_jobs = 'https://weworkremotely.com/remote-full-time-jobs'
+
 
 print('Searching...')
 def make_soup(url):
@@ -24,31 +31,46 @@ soup = bs4.BeautifulSoup(make_soup(url).text, 'html.parser')
 
 #Getting every URL
 
-def wwr_url():
+def URL():
+    urls_list = []
+    curated_url = []
     all_url = soup.find_all(href=re.compile("/remote-jobs/|/listings/")) #We use | to include both href
     rubish = ['https://weworkremotely.com/remote-jobs/search', 'https://weworkremotely.com/remote-jobs/new', 'https://weworkremotely.comhttps://weworkremotely.com/remote-jobs/search']
-    urls_list = []
     for link in all_url:
         href = link.get('href')
         urls_list.append("https://weworkremotely.com" + href)
-        curated_url = [url for url in urls_list if url not in rubish]
+    curated_url = [url for url in urls_list if url not in rubish]
     return curated_url
 
-#TITLES + URL = {TITLE:URL}
-    
-titles = soup.select('.title')
-def Get_Title_Url():
-    All_titles = []
-    for title in titles:
-        title_class = title.get_text()
-        All_titles.append(title_class)
-    #TITLE_URL = dict(zip(All_titles, wwr_url()))
-    df = pd.DataFrame({"JOB TITLES": All_titles, "URLs": wwr_url()})
-    # Set the maximum column width to 1000 -> to avoid pd to truncate the URL
-    pd.set_option('display.max_colwidth', 1000)
-    return print(df)
 
-Get_Title_Url()
+def READY_JOBS():
+    links_all = URL()
+    titles_parsed = soup.select('.title') #getting the class
+    locations_parsed = soup.select('.region.company') #getting the class
+    pubdates_parsed = soup.find_all('time') #getting the tag
+    titles_all = []
+    locations_all = []
+    pubdates_all = []
+    jobs = []
+    for t in titles_parsed:
+        title = t.get_text()
+        titles_all.append(title)
+    for l in locations_parsed:
+        location = l.get_text()
+        locations_all.append(location)
+    for p in pubdates_parsed:
+        pubdate = p.get('datetime')
+        pubdates_all.append(pubdate)
+    jobs = {"title": titles_all, "link": links_all, "pubdate": pubdates_all, "location": locations_all, "description": " "}
+    return jobs
+
+data = READY_JOBS()
+data_dic = dict(data)
+df = pd.DataFrame.from_dict(data_dic, orient='index')
+df = df.transpose()
+
+print(df)
+df.to_csv("WWR.csv", index=False)
 
 #Download Dictionary in CSV or send it to Notion?
 
