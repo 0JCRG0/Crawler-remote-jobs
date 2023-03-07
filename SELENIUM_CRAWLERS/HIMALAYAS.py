@@ -12,7 +12,7 @@ def WORKING_NOMADS():
     driver = webdriver.Firefox()
 
     # set the number of pages you want to scrape
-    num_pages = 101
+    num_pages = 3
 
     #For later (CLEAN TITLES)
     def TEXT_WASH(s):
@@ -58,7 +58,7 @@ def WORKING_NOMADS():
                 for categ in all_category:
                     category = categ.get_attribute("innerHTML") 
                     total_categories.append(category)
-                rows = {"title": total_titles, "link": total_urls, "pubDate": total_pubDates, "location": total_locations, "description": total_categories}
+                rows = {"title": total_titles, "link": total_urls, "pubdate": total_pubDates, "location": total_locations, "description": total_categories}
         return rows
 
     #Quit the driver & save the data
