@@ -51,7 +51,7 @@ def GET_ELEMENTS():
             description = item.find('description')
             if description is not None:
                 description = str(item.description.get_text(strip=True))
-            row = {'title':title, 'link':link, 'pubDate': pubDate, 'location': location, 'description': description}
+            row = {'title':title, 'link':link, 'pubdate': pubDate, 'location': location, 'description': description}
             rows.append(row)
     return rows
 
