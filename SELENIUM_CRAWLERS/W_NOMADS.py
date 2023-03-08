@@ -8,7 +8,9 @@ def WORKING_NOMADS():
     
     url = python_latam_anywhere = "https://www.workingnomads.com/jobs?location=anywhere,latin-america&tag=python"
     #url = sales = "https://www.workingnomads.com/jobs?category=sales" 
-    
+    #url = anywhere = "https://www.workingnomads.com/jobs?location=anywhere"
+
+
     # 1. Start the session
     driver = webdriver.Firefox()
 
