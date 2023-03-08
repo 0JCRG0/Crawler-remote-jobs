@@ -39,7 +39,7 @@ def REMOTE_OK():
         pubDate = item.pubDate.get_text(strip=True)
         link = item.link.get_text(strip=True)
         #add them to a list of dic
-        items_new.append({'title': title, 'description': tags, 'location': location, 'pubdate': pubDate, 'link': link})
+        items_new.append({'title': title, 'link': link, 'pubdate': pubDate, 'location': location, 'description': tags})
         # df...
         df = pd.DataFrame(items_new, index=range(1, len(items_new)+1))
         # Set the maximum column width to 1000 -> to avoid pd to truncate the URL
