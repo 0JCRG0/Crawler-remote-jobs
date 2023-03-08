@@ -12,7 +12,7 @@ def WORKING_NOMADS():
     driver = webdriver.Firefox()
 
     # set the number of pages you want to scrape
-    num_pages = 3
+    num_pages = 1
 
     #For later (CLEAN TITLES)
     def TEXT_WASH(s):
@@ -69,6 +69,7 @@ def WORKING_NOMADS():
     data_dic = dict(data)
     df = pd.DataFrame.from_dict(data_dic, orient='index')
     df = df.transpose()
-
-    df.to_csv("himalaya.csv", index=False)
+    
+    directory = "./OUTPUTS/"
+    df.to_csv(f"{directory}himalaya.csv", index=False)
 WORKING_NOMADS()

@@ -112,7 +112,8 @@ def CLEAN():
                 row[key] = CLEAN_OTHER(val)
         curated_rows.append(row)
         df = pd.concat([pd.DataFrame(curated_rows)])
-        df.to_csv('yummy_soup_rss.csv', index=False)
+        directory = "./OUTPUTS/"
+        df.to_csv(f'{directory}yummy_soup_rss.csv', index=False)
     return df
 
 CLEAN()
