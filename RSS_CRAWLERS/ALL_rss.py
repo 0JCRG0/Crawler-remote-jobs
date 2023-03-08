@@ -115,5 +115,5 @@ def CLEAN():
         df.to_csv('yummy_soup_rss.csv', index=False)
     return df
 
-df = CLEAN()
+CLEAN()
 
