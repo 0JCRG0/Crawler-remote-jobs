@@ -9,7 +9,9 @@ import psycopg2
 import numpy as np   
                 
 file = '/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/RSS_CRAWLERS/remote-working-resources.csv'
-output = []
+
+print("\n", f"Crawler deployed... ", "\n")
+
 
 def COOK_SOUP():
     soup_list = []
@@ -18,7 +20,6 @@ def COOK_SOUP():
         for row in reader:
             if 'Feed URL' in row and row['Feed URL']:
                 rss = row['Feed URL']
-                print(f"Crawling... {rss}")
                 try:
                     res = requests.get(rss)
                     if res.status_code != 200:
@@ -35,11 +36,10 @@ def COOK_SOUP():
                         raise
     return soup_list
 
-#soup_list = COOK_SOUP()
-#print(f"Number of soup objects: {len(soup_list)}")
+
+print("\n", f"Established connection with {len(COOK_SOUP())} websites. Finding elements now...", "\n")
 
 def GET_ELEMENTS():
-    print("Getting elements...")
     rows = []
     for soup in COOK_SOUP():
         for item in soup.find_all('item'):
@@ -59,11 +59,7 @@ def GET_ELEMENTS():
     return rows
 
 
-#dirty_soup = GET_ELEMENTS()
-
-#num_rows = len(dirty_soup)
-#print(dirty_soup[30:51])
-#print(f"Number of rows: {num_rows}")
+print("\n", f"Crawler successfully found {len(GET_ELEMENTS())} jobs...", "\n")
 
 
 def CLEAN_LINK(s):
@@ -100,9 +96,9 @@ def CLEAN_OTHER(s):
         
     return s
 
+print("\n", "Preprocessing the obtained jobs...", "\n")
 
 def CLEAN():
-    print("Cleaning regex...")
     df = pd.DataFrame()
     curated_rows = []
     for dic in GET_ELEMENTS():
@@ -120,10 +116,10 @@ def CLEAN():
         df.to_csv(f'{directory}yummy_soup_rss.csv', index=False)
     return df
 
-CLEAN()
+print("\n", "Jobs have been saved into local machine as a CSV & converted into a df for further cleansing...", "\n")
+print("\n", "Data cleansing with pandas has started...", "\n")
 
 def PIPELINE():
-    print("Pipeline starting...")
     #df = pd.read_csv('/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/OUTPUTS/yummy_soup_rss.csv')
     df = CLEAN()
     # Play with the settings...
@@ -160,6 +156,8 @@ def PIPELINE():
     df = df.replace({np.nan: None, pd.NaT: None})
 
     ## PostgreSQL
+
+    print("\n", f"Fetching {len(df)} cleaned jobs to PostgreSQL...", "\n")
 
     # This code creates a new table per iteration
 
@@ -215,4 +213,4 @@ def PIPELINE():
     cnx.close()
 PIPELINE()
 
-print("Baked & ready")
+print("\n", "Enjoy your jobs! :)", "\n")
