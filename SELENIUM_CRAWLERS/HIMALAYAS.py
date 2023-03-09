@@ -12,7 +12,7 @@ def WORKING_NOMADS():
     driver = webdriver.Firefox()
 
     # set the number of pages you want to scrape
-    num_pages = 1
+    num_pages = 2
 
     #For later (CLEAN TITLES)
     def TEXT_WASH(s):
