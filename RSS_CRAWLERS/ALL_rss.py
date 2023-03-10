@@ -213,4 +213,4 @@ def PIPELINE():
     cnx.close()
 PIPELINE()
 
-print("\n", "Enjoy your jobs! :)", "\n")
+print("\n", "JOBS ADDED INTO POSTGRESQL! :)", "\n")
