@@ -182,4 +182,23 @@ def HIMALAYAS():
         cnx.close()
         print("\n", "ALL DONE! GO TO POSTGRESQL FOR FURTHER PROCESSING :)", "\n")
     PIPELINE()
-HIMALAYAS()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if __name__ == "__main__":
+    HIMALAYAS()
