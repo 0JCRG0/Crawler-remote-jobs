@@ -4,15 +4,18 @@ import pandas as pd
 import re
 import csv
 import pretty_errors
+import psycopg2
 import numpy as np
+from dateutil.relativedelta import relativedelta
+from dateutil.parser import parse
 
-def WORKING_NOMADS():
+def HIMALAYAS():
     
     # Start the session
     driver = webdriver.Firefox()
 
     # set the number of pages you want to scrape
-    num_pages = 2
+    num_pages = 5
 
     #For later (CLEAN TITLES)
     def TEXT_WASH(s):
@@ -22,6 +25,7 @@ def WORKING_NOMADS():
     
     # START CRAWLING
     def CRAWLING():
+        print("\n", f"Crawler deployed... ", "\n")
         total_urls = []
         total_titles = []
         total_pubDates = []
@@ -31,6 +35,7 @@ def WORKING_NOMADS():
         for i in range(1, num_pages + 1):
             url = f"https://himalayas.app/jobs?page={i}"
             driver.get(url)
+            print(f"Crawling... {url}")
             # Establish Waiting Strategy
             driver.implicitly_wait(1)
             #GETTING THE PARENT...
@@ -58,18 +63,120 @@ def WORKING_NOMADS():
                 for categ in all_category:
                     category = categ.get_attribute("innerHTML") 
                     total_categories.append(category)
+                #Save it all in a single list of dictionaries
                 rows = {"title": total_titles, "link": total_urls, "pubdate": total_pubDates, "location": total_locations, "description": total_categories}
         return rows
-
-    #Quit the driver & save the data
+    #Quit the driver
     data = CRAWLING()
     driver.quit()
     
-    #It is easier to deal with missing data like this tbh
+    #The data had missing values so we have to do this to convert it into a pandas df
+    print("\n", "Converting data to a pandas df...", "\n")
     data_dic = dict(data)
     df = pd.DataFrame.from_dict(data_dic, orient='index')
     df = df.transpose()
-    
+    print("\n", f"Crawler successfully found {len(df)} jobs...", "\n")
+
+    #Save it in local machine
+    print("\n", "Saving jobs in local machine as a CSV file...", "\n")
     directory = "./OUTPUTS/"
-    df.to_csv(f"{directory}himalaya.csv", index=False)
-WORKING_NOMADS()
+    df.to_csv(f"{directory}himalaya.csv", index=False) 
+
+    print("\n", "Processing of the df has started...", "\n")
+    #Read the csv so df is not unbound
+    #directory = "./OUTPUTS/"
+    #df = pd.read_csv(f'{directory}himalaya.csv')
+
+    # Fill missing values with "NaN"
+    df.fillna("NaN", inplace=True)
+
+    # Mask to convert minutes|hour% to 1 day ago so it can be parse to date time (cba to say it was posted today, maybe later should be fixed)
+    mask = df['pubdate'].str.contains('minutes|hour%')
+    df.loc[mask, 'pubdate'] = "1 day ago"
+
+    # From relative date strings to date time...
+    ## create a mask to identify rows with relative date strings
+    mask = df['pubdate'].str.contains('ago')
+    ## apply the relative date calculation to the date_string column
+    df.loc[mask, 'datetime'] = pd.Timestamp.today() - df.loc[mask, 'pubdate'].apply(lambda x: relativedelta(days=int(x.split()[0])))
+    #df.loc[mask, df.columns.get_loc('datetime')] = pd.Timestamp.today() - df.loc[mask, 'pubdate'].apply(lambda x: relativedelta(days=int(x.split()[0])))
+    ## convert the datetime column to datetime format
+    df['datetime'] = pd.to_datetime(df['datetime'], infer_datetime_format=True)
+
+    # Drop pubDate, change name of datetime & reindex...
+    ## Drop it
+    df = df.drop('pubdate', axis=1)
+    ## Change name of datetime to pubDate 
+    df = df.rename(columns={'datetime': 'pubdate'})
+    ##reindex
+    df = df.reindex(columns=['title', 'link', 'description', 'pubdate', 'location'])
+
+    # Filter rows by a date range (this reduces the number of rows... duh)
+    ## set the date range
+    start_date = pd.to_datetime('2016-01-01')
+    end_date = pd.to_datetime('2023-02-15')
+    ## apply it
+    date_range_filter = (df['pubdate'] >= start_date) & (df['pubdate'] <= end_date)
+    df = df.loc[~date_range_filter]
+
+    # SEND IT TO TO PostgreSQL
+    print("\n", f"Fetching {len(df)} jobs to PostgreSQL...", "\n")
+
+    ## This code creates a new table per iteration
+    ## Create a connection to the PostgreSQL database
+    cnx = psycopg2.connect(user='postgres', password='3312', host='localhost', port='5432', database='postgres')
+
+    ## create a cursor object
+    cursor = cnx.cursor()
+
+    ## Get the name of the next table to create
+    get_table_name_query = '''
+        SELECT COUNT(*) FROM information_schema.tables
+        WHERE table_name LIKE 'HIMALAYAS_%'
+    '''
+    cursor.execute(get_table_name_query)
+    ## execute the query to get the count of existing tables
+
+    ## fetch the first row of the query results
+    result = cursor.fetchone()
+
+    ## get the number of existing tables if there are any, otherwise set it to 0
+    next_table_number = result[0] + 1 if result is not None else 0
+    next_table_name = 'HIMALAYAS_{}'.format(next_table_number)
+
+    ## prepare the SQL query to create a new table
+    create_table_query = '''
+        CREATE TABLE {} (
+            title VARCHAR(255),
+            link VARCHAR(255),
+            description VARCHAR(1000),
+            pubdate TIMESTAMP,
+            location VARCHAR(255)
+        )
+    '''.format(next_table_name)
+
+    ## execute the create table query
+    cursor.execute(create_table_query)
+
+    ## insert the DataFrame into the PostgreSQL database as a new table
+    for index, row in df.iterrows():
+        insert_query = '''
+            INSERT INTO {} (title, link, description, pubdate, location)
+            VALUES (%s, %s, %s, %s, %s)
+        '''.format(next_table_name)
+        values = (row['title'], row['link'], row['description'], row['pubdate'], row['location'])
+        cursor.execute(insert_query, values)
+
+    ## commit the changes to the database
+    cnx.commit()
+
+    ## close the cursor and connection
+    cursor.close()
+    cnx.close()
+    print("\n", "ALL DONE! GO TO POSTGRESQL FOR FURTHER PROCESSING :)", "\n")
+
+    #TODO: FIX POSTGRESQL SO IT CREATES HIMALAYAS_2 
+    #TODO: FIX TRIGGER WARNING
+    #TODO: WHETHER A FUNCTION PIPELINE SHOULD BE ADDED 
+
+HIMALAYAS()
