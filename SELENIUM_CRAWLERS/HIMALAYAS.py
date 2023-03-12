@@ -9,7 +9,7 @@ import numpy as np
 from dateutil.relativedelta import relativedelta
 from dateutil.parser import parse
 
-#TODO: FIX POSTGRESQL SO IT CREATES HIMALAYAS_2 - THE CODE WORKS FOR OTHER 
+#TODO: FIX POSTGRESQL SO IT CREATES HIMALAYAS_2 - THE CODE WORKS FOR OTHER CRAWLERS
 #TODO: FIX TRIGGER WARNING
 
 def HIMALAYAS():

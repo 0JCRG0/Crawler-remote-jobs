@@ -6,12 +6,15 @@ from urllib.error import HTTPError
 import lxml
 import re
 import psycopg2
-import numpy as np   
+import numpy as np
+import pretty_errors
                 
 file = '/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/RSS_CRAWLERS/remote-working-resources.csv'
 
 print("\n", f"Crawler deployed... ", "\n")
 
+#TODO: RUN THIS CODE TOMORROW AND TRY THE NEW TRIGGER // ADD THE DROP STATEMENT?
+#TODO: MAKE THE SCRIPT MORE COHESIVE - ONE SINGLE FUNCTION.
 
 def COOK_SOUP():
     soup_list = []
