@@ -1,5 +1,4 @@
 #! python3
-# searchpypi.py  - Opens several search results.
 
 import requests
 import sys
