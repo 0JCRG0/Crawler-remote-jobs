@@ -59,7 +59,7 @@ def indeed():
             driver.get(url)
             print(f"Crawling... {url}")
             #Set waiting strategy
-            driver.implicitly_wait(.5)
+            driver.implicitly_wait(1.5)
             #Get the elements for all the jobs
             titles = driver.find_elements(By.CSS_SELECTOR, '[id^="jobTitle"]')
             links = driver.find_elements(By.CSS_SELECTOR, '[id^="job_"]') #THIS FINDS THE PATTERN
@@ -87,7 +87,7 @@ def indeed():
             rows = {'titles': total_titles, 'links': total_urls, 'pubdate': total_pubdates, 'location': total_locations, 'description': ""}
         return rows
     
-    data = crawling("DATA+ANALYST") #THIS IS YOUR SEARCH TERM - use "+" if more than 1 word
+    data = crawling("DATA+ANALYST") #THIS IS YOUR SEARCH BOX - use "+" if more than 1 word
 
     
     driver.close()
