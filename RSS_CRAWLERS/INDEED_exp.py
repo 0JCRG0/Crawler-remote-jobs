@@ -1,8 +1,11 @@
 #! python3
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.actions.wheel_input import ScrollOrigin
+
 import pandas as pd
 import re
 import csv
@@ -60,18 +63,23 @@ def indeed():
             #Set waiting strategy
             driver.implicitly_wait(1.5)
             
-            #Get the jobs boxe to click on them & then get the text from the right box
-            jobs = driver.find_elements(By.CSS_SELECTOR, '#mosaic-jobResults .jobsearch-ResultsList.css-0 li')
-            for job in jobs:
-                #clickable = driver.find_element(By.ID, "click")
-                #TODO: Add Scroll wheel actions
-                ## https://www.selenium.dev/documentation/webdriver/actions_api/wheel/
-                ActionChains(driver).move_to_element(job).click(job).pause(1).perform()
-                descriptions = driver.find_elements(By.CSS_SELECTOR, '#jobDescriptionText')
-                for d in descriptions:
-                    dirty_description = d.get_attribute("innerHTML")
-                    description = bye_regex(dirty_description)
-                    total_descriptions.append(description)
+            #Get the job boxes to click on them & then get the text from the right box
+            #jobs = driver.find_elements(By.CSS_SELECTOR, '#mosaic-jobResults .jobsearch-ResultsList.css-0 [class^="cardOutline_"]')
+            job = driver.find_element(By.CSS_SELECTOR, '#mosaic-jobResults .jobsearch-ResultsList.css-0')    
+            #Scroll down
+            scroll_origin = ScrollOrigin.from_element(job)
+            #driver.execute_script("arguments[0].scrollIntoView();", job)
+            #Do some actions
+            ActionChains(driver).scroll_from_origin(scroll_origin, 0, 50).click().pause(1).perform()
+            #job.click()("window.scrollBy(0, -100);")
+            #wait for the descriptions
+            description_element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '#jobsearch-ViewjobPaneWrapper #jobDescriptionText')))
+            #descriptions = driver.find_elements(By.CSS_SELECTOR, '#jobDescriptionText')
+            #for d in descriptions:
+            dirty_description = description_element.get_attribute("innerHTML")
+            description = bye_regex(dirty_description)
+            total_descriptions.append(description)
+            # Go back to job list
 
 
             titles = driver.find_elements(By.CSS_SELECTOR, '[id^="jobTitle"]')
@@ -140,3 +148,21 @@ yesterday = today - timedelta(days=num_days)
 # example if statement
 if str_date == "Publicado hace 1 días":
     print(f"Yesterday was {yesterday}")"""
+
+"""
+            for job in jobs:
+                #clickable = driver.find_element(By.ID, "click")
+                Add Scroll wheel actions
+                ## https://www.selenium.dev/documentation/webdriver/actions_api/wheel/
+                #Wait untit job is clickable
+                job = WebDriverWait(driver, timeout=3).until(EC.element_to_be_clickable((By.CSS_SELECTOR, '#mosaic-jobResults .jobsearch-ResultsList.css-0 li')))
+                #Scroll down
+                driver.execute_script("arguments[0].scrollIntoView();", job)
+                #Do some actions
+                ActionChains(driver).click(job).pause(1).perform()
+                descriptions = driver.find_elements(By.CSS_SELECTOR, '#jobDescriptionText')
+                for d in descriptions:
+                    dirty_description = d.get_attribute("innerHTML")
+                    description = bye_regex(dirty_description)
+                    total_descriptions.append(description)
+                    """
