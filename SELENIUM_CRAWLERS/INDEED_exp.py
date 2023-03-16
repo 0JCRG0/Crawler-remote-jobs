@@ -5,32 +5,33 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.actions.wheel_input import ScrollOrigin
-
+import random
+import time
 import pandas as pd
 import re
 import pretty_errors
-"""
 import csv
 import psycopg2
 import numpy as np
 from dateutil.relativedelta import relativedelta
 from dateutil.parser import parse
 from datetime import datetime, timedelta
-"""
+
 
 
 "https://mx.indeed.com/jobs?q=PYTHON&sc=0kf%3Aattr%28DSQF7%29%3B&sort=date&fromage=7&filter=0&start=80&pp=gQB4AAABhth9DdoAAAAB-_3ALQAJAQA_oyaWY9L6AAA&vjk=a7a2ee2d2741c607"
 "https://mx.indeed.com/jobs?q=PYTHON&sc=0kf%3Aattr%28DSQF7%29%3B&sort=date&fromage=7&filter=0&start=70&pp=gQBpAAABhth9DdoAAAAB-_3ALQAYAQACCYx8rKQbcGPqdw-3E24IbS_nb3zaAAA&vjk=3954cde2ef9483b9"
 'https://indeed.com/jobs?q=DATA+ANALYST&sc=0kf%3Aattr%28DSQF7%29%3B&sort=date&fromage=7&filter=0&start=0'
 "https://mx.indeed.com/jobs?q=PYTHON&sc=0kf%3Aattr%28DSQF7%29%3B&sort=date&fromage=7&filter=0&start=0"
+
 def indeed():
     # Start the session
     driver = webdriver.Firefox()
 
     # set the number of pages you want to scrape
-    num_pages = 1
+    num_pages = 2
 
-    # cleansing function
+    # Handy cleansing function
     def bye_regex(s):
         # Remove leading/trailing white space
         s = s.strip()
@@ -42,9 +43,11 @@ def indeed():
         s = re.sub(r'√≠', 'í', s)
         # Replace word
         s = re.sub(r'Posted', '', s)
+        # Remove HTML tags
+        s = re.sub(r'<.*?>', '', s)
 
         return s
-        
+    
     # START CRAWLING
     def crawling(keyword):
         print("\n", f"Crawler deployed... ", "\n")
@@ -62,42 +65,47 @@ def indeed():
             #Set waiting strategy
             driver.implicitly_wait(1.5)
             
-            #Get the job boxes to click on them & then get the text from the right box
-            #jobs = driver.find_elements(By.CSS_SELECTOR, '#mosaic-jobResults .jobsearch-ResultsList.css-0 [class^="cardOutline_"]')
-            #jobs = driver.find_elements(By.CSS_SELECTOR, '#mosaic-jobResults .jobsearch-ResultsList.css-0 [class^=".cardOutline.tapItem.fs-unmask.result_"]')    
+            #Find all the job boxes to click on
             jobs = driver.find_elements(By.CSS_SELECTOR, '#mosaic-jobResults .jobsearch-ResultsList.css-0 [class*="cardOutline"][class*="tapItem"][class*="fs-unmask"][class*="result"][class*="job_"][class*="resultWithShelf"][class*="sponTapItem"][class*="desktop"][class*="css-kyg8or"][class*="eu4oa1w0"]')
-            #Scroll down
-            #scroll_origin = ScrollOrigin.from_element(job)
-            #delta_y = job.rect['y']
-            #Do some actions
-            #count = 0
-            #while count <= 10:
-                #count =+ 1
-            #TODO: Try Scroll from origin inside the loop, use li instead of class to identify jobs
+            #Lil loop through the elements
             for job in jobs:
+                """
+                Indeed's layout is quite tricky. The complete descriptions of a given job is
+                found on a right panel that is displayed when the respective job box is clicked
+                
+                So...
+                
+                1. This loop clicks on each job box and then performs the scraping on its respective panel
+                2. Given that the job needs to be in the viewport to be scraped we scroll down *from* 
+                the previous job so it pivots to the next job.
+                3. We use the random module to avoid CAPTCHA
+
+                For obvious reasons it is a bit slow tho
+
+                """
                 scroll_origin = ScrollOrigin.from_element(job)
-                ActionChains(driver).scroll_from_origin(scroll_origin, 0, 730).pause(2).click(job).perform()
-                #ActionChains(driver).scroll_by_amount(0, 900).click(job).pause(1.5).perform()
-                #job.click()("window.scrollBy(0, -100);")
-                #driver.implicitly_wait(1.5)
-                #wait for the descriptions
+                # NOTE: You could even randomise the scroll origin -> random.uniform(770, 780) to avoid CAPTCHA
+                # NOTE: it seems that as long as the job is within the viewport then it is fine, so 770 could be incremented
+                # NOTE: Would displaying full screen on the driver solve delta_Y(hoe much it scrolls)? Overkill?
+                ActionChains(driver).scroll_from_origin(scroll_origin, 0, 770).pause(.5).click(job).perform()
+                #Wait for the element
                 description_element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '#jobsearch-ViewjobPaneWrapper #jobDescriptionText')))
-                #descriptions = driver.find_elements(By.CSS_SELECTOR, '#jobDescriptionText')
-                #for d in descriptions:
+                #Get the text
                 dirty_description = description_element.get_attribute("innerHTML")
-                #dirty_description = job.get_attribute("innerHTML")
                 description = bye_regex(dirty_description)
                 total_descriptions.append(description)
-                # Go back to job list
+                # Pause for a random amount of time between 1 and 3 seconds to avoid CAPTCHA :P
+                delay = random.uniform(1, 3)
+                time.sleep(delay)
 
+            #NOW THAT THE DIFFICULT PART IS OVER WE CAN EASILY GET THE REST OF THE ELEMENTS...
 
-
+            #These two lines find a pattern of a given id
             titles = driver.find_elements(By.CSS_SELECTOR, '[id^="jobTitle"]')
             links = driver.find_elements(By.CSS_SELECTOR, '[id^="job_"]') #THIS FINDS THE PATTERN
-            #pubdates = driver.find_elements(By.CSS_SELECTOR, '.date .visually-hidden')
+            #I had to find this pattern bcos if not it would only yield the word "Posted"
             pubdates = driver.find_elements(By.XPATH, "//*[contains(text(), 'Publicado hace')]")
             locations = driver.find_elements(By.CSS_SELECTOR, '.companyLocation')
-            #descriptions = driver.find_elements(By.CSS_SELECTOR, '.job-snippet ul li')
             #Get the attributes
             for t in titles:
                 title = t.get_attribute("innerHTML")
@@ -112,9 +120,7 @@ def indeed():
             for l in locations:
                 location = l.text
                 total_locations.append(location)
-            #for d in descriptions:
-                #description = d.text
-                #total_descriptions.append(description)
+            #Put it all together...
             rows = {'titles': total_titles, 'links': total_urls, 'pubdate': total_pubdates, 'location': total_locations, 'description': total_descriptions}
         return rows
     
@@ -123,6 +129,7 @@ def indeed():
     
     driver.close()
 
+    #Convert data to a pandas df for further analysis
     print("\n", "Converting data to a pandas df...", "\n")
     data_dic = dict(data)
     df = pd.DataFrame.from_dict(data_dic, orient='index')
@@ -137,7 +144,6 @@ def indeed():
 
 if __name__ == "__main__":
     indeed()
-    #print(f"Found {len(urls)} job listings.")
 
 
 #TODO: (FIX DATETIME see below)
@@ -158,21 +164,3 @@ yesterday = today - timedelta(days=num_days)
 # example if statement
 if str_date == "Publicado hace 1 días":
     print(f"Yesterday was {yesterday}")"""
-
-"""
-            for job in jobs:
-                #clickable = driver.find_element(By.ID, "click")
-                Add Scroll wheel actions
-                ## https://www.selenium.dev/documentation/webdriver/actions_api/wheel/
-                #Wait untit job is clickable
-                job = WebDriverWait(driver, timeout=3).until(EC.element_to_be_clickable((By.CSS_SELECTOR, '#mosaic-jobResults .jobsearch-ResultsList.css-0 li')))
-                #Scroll down
-                driver.execute_script("arguments[0].scrollIntoView();", job)
-                #Do some actions
-                ActionChains(driver).click(job).pause(1).perform()
-                descriptions = driver.find_elements(By.CSS_SELECTOR, '#jobDescriptionText')
-                for d in descriptions:
-                    dirty_description = d.get_attribute("innerHTML")
-                    description = bye_regex(dirty_description)
-                    total_descriptions.append(description)
-                    """
