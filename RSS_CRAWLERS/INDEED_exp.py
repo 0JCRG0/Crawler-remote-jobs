@@ -8,22 +8,21 @@ from selenium.webdriver.common.actions.wheel_input import ScrollOrigin
 
 import pandas as pd
 import re
-import csv
 import pretty_errors
+"""
+import csv
 import psycopg2
 import numpy as np
 from dateutil.relativedelta import relativedelta
 from dateutil.parser import parse
 from datetime import datetime, timedelta
-
-
+"""
 
 
 "https://mx.indeed.com/jobs?q=PYTHON&sc=0kf%3Aattr%28DSQF7%29%3B&sort=date&fromage=7&filter=0&start=80&pp=gQB4AAABhth9DdoAAAAB-_3ALQAJAQA_oyaWY9L6AAA&vjk=a7a2ee2d2741c607"
 "https://mx.indeed.com/jobs?q=PYTHON&sc=0kf%3Aattr%28DSQF7%29%3B&sort=date&fromage=7&filter=0&start=70&pp=gQBpAAABhth9DdoAAAAB-_3ALQAYAQACCYx8rKQbcGPqdw-3E24IbS_nb3zaAAA&vjk=3954cde2ef9483b9"
 'https://indeed.com/jobs?q=DATA+ANALYST&sc=0kf%3Aattr%28DSQF7%29%3B&sort=date&fromage=7&filter=0&start=0'
-
-
+"https://mx.indeed.com/jobs?q=PYTHON&sc=0kf%3Aattr%28DSQF7%29%3B&sort=date&fromage=7&filter=0&start=0"
 def indeed():
     # Start the session
     driver = webdriver.Firefox()
@@ -65,21 +64,32 @@ def indeed():
             
             #Get the job boxes to click on them & then get the text from the right box
             #jobs = driver.find_elements(By.CSS_SELECTOR, '#mosaic-jobResults .jobsearch-ResultsList.css-0 [class^="cardOutline_"]')
-            job = driver.find_element(By.CSS_SELECTOR, '#mosaic-jobResults .jobsearch-ResultsList.css-0')    
+            #jobs = driver.find_elements(By.CSS_SELECTOR, '#mosaic-jobResults .jobsearch-ResultsList.css-0 [class^=".cardOutline.tapItem.fs-unmask.result_"]')    
+            jobs = driver.find_elements(By.CSS_SELECTOR, '#mosaic-jobResults .jobsearch-ResultsList.css-0 [class*="cardOutline"][class*="tapItem"][class*="fs-unmask"][class*="result"][class*="job_"][class*="resultWithShelf"][class*="sponTapItem"][class*="desktop"][class*="css-kyg8or"][class*="eu4oa1w0"]')
             #Scroll down
-            scroll_origin = ScrollOrigin.from_element(job)
-            #driver.execute_script("arguments[0].scrollIntoView();", job)
+            #scroll_origin = ScrollOrigin.from_element(job)
+            #delta_y = job.rect['y']
             #Do some actions
-            ActionChains(driver).scroll_from_origin(scroll_origin, 0, 50).click().pause(1).perform()
-            #job.click()("window.scrollBy(0, -100);")
-            #wait for the descriptions
-            description_element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '#jobsearch-ViewjobPaneWrapper #jobDescriptionText')))
-            #descriptions = driver.find_elements(By.CSS_SELECTOR, '#jobDescriptionText')
-            #for d in descriptions:
-            dirty_description = description_element.get_attribute("innerHTML")
-            description = bye_regex(dirty_description)
-            total_descriptions.append(description)
-            # Go back to job list
+            #count = 0
+            #while count <= 10:
+                #count =+ 1
+            #TODO: Try Scroll from origin inside the loop, use li instead of class to identify jobs
+            for job in jobs:
+                scroll_origin = ScrollOrigin.from_element(job)
+                ActionChains(driver).scroll_from_origin(scroll_origin, 0, 730).pause(2).click(job).perform()
+                #ActionChains(driver).scroll_by_amount(0, 900).click(job).pause(1.5).perform()
+                #job.click()("window.scrollBy(0, -100);")
+                #driver.implicitly_wait(1.5)
+                #wait for the descriptions
+                description_element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '#jobsearch-ViewjobPaneWrapper #jobDescriptionText')))
+                #descriptions = driver.find_elements(By.CSS_SELECTOR, '#jobDescriptionText')
+                #for d in descriptions:
+                dirty_description = description_element.get_attribute("innerHTML")
+                #dirty_description = job.get_attribute("innerHTML")
+                description = bye_regex(dirty_description)
+                total_descriptions.append(description)
+                # Go back to job list
+
 
 
             titles = driver.find_elements(By.CSS_SELECTOR, '[id^="jobTitle"]')
