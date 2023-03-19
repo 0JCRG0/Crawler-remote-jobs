@@ -20,19 +20,15 @@ import json
 
 
 
-"https://mx.indeed.com/jobs?q=PYTHON&sc=0kf%3Aattr%28DSQF7%29%3B&sort=date&fromage=7&filter=0&start=80&pp=gQB4AAABhth9DdoAAAAB-_3ALQAJAQA_oyaWY9L6AAA&vjk=a7a2ee2d2741c607"
-'https://indeed.com/jobs?q=DATA+ANALYST&sc=0kf%3Aattr%28DSQF7%29%3B&sort=date&fromage=7&filter=0&start=0'
-"https://indeed.com/jobs?q=PYTHON&sc=0kf%3Aattr%28DSQF7%29%3B&sort=date&fromage=7&filter=0&start=0"
-"https://indeed.com/jobs?q=DATA+ANALYST&l=Remote&sc=0kf%3Aattr%28DSQF7%29%3B&&rbl=Remote&jlid=aaa2b906602aa8f5&sort=date&fromage=7&start=10"
-"https://mx.indeed.com/jobs?q=PYTHON&sc=0kf%3Aattr%28DSQF7%29%3B&sort=date&fromage=7&filter=0&start=70&pp=gQBpAAABhth9DdoAAAAB-_3ALQAYAQACCYx8rKQbcGPqdw-3E24IbS_nb3zaAAA&vjk=3954cde2ef9483b9"
+"https://www.indeed.com/jobs?q=DATA+ANALYST&sc=0kf%3Aattr%28DSQF7%29%3B&rbl=Remote&jlid=aaa2b906602aa8f5&sort=date&fromage=7&filter=0&start=0"
 
-"https://www.indeed.com/jobs?q=DATA+ANALYST&sc=0kf%3Aattr%28DSQF7%29%3B&rbl=Remote&jlid=aaa2b906602aa8f5&fromage=7&start=10"
+"&pp=gQAeAAAAAAAAAAAAAAAB_NbGvQArAQAKyJOe19wz3klnhRIlR8J40ZHxD7KVCBFCasve1RNn_78-NQGCnSVOFAAA&vjk=83542039cbae892a"
 def indeed():
     # Start the session
     driver = webdriver.Firefox()
 
     # set the number of pages you want to scrape
-    num_pages = 2
+    num_pages = 1
 
     # Handy cleansing function
     def bye_regex(s):
@@ -67,6 +63,7 @@ def indeed():
             To solve the issue of the url. You should divide the url in two chunks.
             One before the keyword and the other after the keyword.
         """
+        #fuction for the url
         def country_url():
             url = ""
             with open('./SELENIUM_CRAWLERS/INDEED_country.json') as f:
@@ -107,23 +104,20 @@ def indeed():
                 """
                 #get the height of every job to scroll depending on its size...
                 height_ = job.size['height']
-                height = int(height_)
-                height1 = int(height * 2.38)
-                #height = height_ * 1.5
-                print(height1)
+                height = int(height_ * 2.20)
+                print(height)
+                #Scroll to 1st job
                 scroll_origin = ScrollOrigin.from_element(job)
-                # NOTE: You could even randomise the scroll origin -> random.uniform(770, 780) to avoid CAPTCHA
-                # NOTE: it seems that as long as the job is within the viewport then it is fine, so 770 could be incremented
-                # NOTE: Would displaying full screen on the driver solve delta_Y(hoe much it scrolls)? Overkill?
-                ActionChains(driver).scroll_from_origin(scroll_origin, 0, height1).pause(.5).click(job).perform()
-                #Wait for the element
+                #Scroll from 1st job to next one... and to next one... (pause is extremely important)
+                ActionChains(driver).scroll_from_origin(scroll_origin, 0, height).pause(.5).click(job).perform()
+                #Wait for the description on the right panel
                 description_element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '#jobsearch-ViewjobPaneWrapper #jobDescriptionText')))
                 #Get the text
                 dirty_description = description_element.get_attribute("innerHTML")
                 description = bye_regex(dirty_description)
                 total_descriptions.append(description)
                 # Pause for a random amount of time between 1 and 3 seconds to avoid CAPTCHA :P
-                delay = random.uniform(1, 3)
+                delay = random.uniform(0, 3)
                 time.sleep(delay)
 
             #NOW THAT THE DIFFICULT PART IS OVER WE CAN EASILY GET THE REST OF THE ELEMENTS...
@@ -152,7 +146,7 @@ def indeed():
             rows = {'titles': total_titles, 'links': total_urls, 'pubdate': total_pubdates, 'location': total_locations, 'description': total_descriptions}
         return rows
     
-    data = crawling("USA", "PYTHON") #THIS IS YOUR SEARCH BOX - use "+" if more than 1 word
+    data = crawling("USA", "DATA ANALYST") #THIS IS YOUR SEARCH BOX - use "+" if more than 1 word
 
     
     driver.close()
@@ -177,18 +171,19 @@ if __name__ == "__main__":
 #TODO: (FIX DATETIME see below)
 
 """
-# get today's datetime
-today = datetime.now()
+        def fix_datetime(x):
+                # get today's datetime
+                today = datetime.now()
 
-# example string
-str_date = "Publicado hace 1 días"
+                # example string
+                str_date = pubdate
 
-# extract the number of days from the string
-num_days = int(str_date.split()[2])
+                # extract the number of days from the string
+                num_days = int(str_date.split()[2])
 
-# calculate yesterday's datetime
-yesterday = today - timedelta(days=num_days)
+                # calculate yesterday's datetime
+                pubdate_good = today - timedelta(days=num_days)
 
-# example if statement
-if str_date == "Publicado hace 1 días":
-    print(f"Yesterday was {yesterday}")"""
+                # example if statement
+                return pubdate_good
+"""
