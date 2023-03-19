@@ -67,16 +67,20 @@ def indeed():
             To solve the issue of the url. You should divide the url in two chunks.
             One before the keyword and the other after the keyword.
         """
-        with open('/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/SELENIUM_CRAWLERS/INDEED_country.json') as f:
-            data = json.load(f)
+        def country_url():
+            url = ""
+            with open('./SELENIUM_CRAWLERS/INDEED_country.json') as f:
+                    data = json.load(f)
+                    # Search for a specific code in the JSON document
+                    for item in data:
+                        if item['code'] == country:  
+                            url= item['url_1'] + keyword + item["url_2"] + str(i)
+                            print(url)
+            return url
 
-        # Search for a specific code in the JSON document
-        for item in data:
-            if item['code'] == country:  
-                url = item['url']
-                print(url)
         for i in range(0, num_pages * 10, 10):
-            url = f"https://mx.indeed.com/jobs?q={keyword}&sc=0kf%3Aattr%28DSQF7%29%3B&sort=date&fromage=7&filter=0&start={i}"
+            #url = f"https://mx.indeed.com/jobs?q={keyword}&sc=0kf%3Aattr%28DSQF7%29%3B&sort=date&fromage=7&filter=0&start={i}"
+            url = country_url()
             #Make the request
             driver.get(url)
             print(f"Crawling... {url}")
@@ -101,11 +105,17 @@ def indeed():
                 For obvious reasons it is a bit slow tho
 
                 """
+                #get the height of every job to scroll depending on its size...
+                height_ = job.size['height']
+                height = int(height_)
+                height1 = int(height * 2.38)
+                #height = height_ * 1.5
+                print(height1)
                 scroll_origin = ScrollOrigin.from_element(job)
                 # NOTE: You could even randomise the scroll origin -> random.uniform(770, 780) to avoid CAPTCHA
                 # NOTE: it seems that as long as the job is within the viewport then it is fine, so 770 could be incremented
                 # NOTE: Would displaying full screen on the driver solve delta_Y(hoe much it scrolls)? Overkill?
-                ActionChains(driver).scroll_from_origin(scroll_origin, 0, 770).pause(.5).click(job).perform()
+                ActionChains(driver).scroll_from_origin(scroll_origin, 0, height1).pause(.5).click(job).perform()
                 #Wait for the element
                 description_element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '#jobsearch-ViewjobPaneWrapper #jobDescriptionText')))
                 #Get the text
@@ -142,7 +152,7 @@ def indeed():
             rows = {'titles': total_titles, 'links': total_urls, 'pubdate': total_pubdates, 'location': total_locations, 'description': total_descriptions}
         return rows
     
-    data = crawling("MX", "PYTHON") #THIS IS YOUR SEARCH BOX - use "+" if more than 1 word
+    data = crawling("USA", "PYTHON") #THIS IS YOUR SEARCH BOX - use "+" if more than 1 word
 
     
     driver.close()

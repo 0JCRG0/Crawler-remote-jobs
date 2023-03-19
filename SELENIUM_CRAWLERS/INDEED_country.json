@@ -1,42 +1,12 @@
 [
     {
-      "code": "CA",
-      "url": "https://www.countrycode.org/1-204"
-    },
-    {
-      "code": "FR",
-      "url": "https://www.countrycode.org/33"
-    },
-    {
-      "code": "DE",
-      "url": "https://www.countrycode.org/49"
-    },
-    {
-      "code": "IT",
-      "url": "https://www.countrycode.org/39"
-    },
-    {
-      "code": "JP",
-      "url": "https://www.countrycode.org/81"
-    },
-    {
       "code": "MX",
-      "url": "https://www.countrycode.org/52"
+      "url_1": "https://mx.indeed.com/jobs?q=",
+      "url_2": "&sc=0kf%3Aattr%28DSQF7%29%3B&sort=date&fromage=7&filter=0&start="
     },
     {
-      "code": "GB",
-      "url": "https://www.countrycode.org/44"
-    },
-    {
-      "code": "US",
-      "url": "https://www.countrycode.org/1"
-    },
-    {
-      "code": "CN",
-      "url": "https://www.countrycode.org/86"
-    },
-    {
-      "code": "RU",
-      "url": "https://www.countrycode.org/7"
+      "code": "USA",
+      "url_1": "https://indeed.com/jobs?q=",
+      "url_2": "&sc=0kf%3Aattr%28DSQF7%29%3B&rbl=Remote&jlid=aaa2b906602aa8f5&fromage=7&start="
     }
 ]
