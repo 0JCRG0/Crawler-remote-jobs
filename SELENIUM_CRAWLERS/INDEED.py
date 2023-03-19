@@ -93,7 +93,7 @@ def indeed():
                 """
                 #get the height of every job to scroll depending on its size...
                 height_ = job.size['height']
-                height = int(height_ * 2.20)
+                height = int(height_ * 2.15)
                 print(height)
                 #Scroll to 1st job
                 scroll_origin = ScrollOrigin.from_element(job)
