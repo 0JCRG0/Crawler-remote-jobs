@@ -19,10 +19,6 @@ from datetime import datetime, timedelta
 import json
 
 
-
-"https://www.indeed.com/jobs?q=DATA+ANALYST&sc=0kf%3Aattr%28DSQF7%29%3B&rbl=Remote&jlid=aaa2b906602aa8f5&sort=date&fromage=7&filter=0&start=0"
-
-"&pp=gQAeAAAAAAAAAAAAAAAB_NbGvQArAQAKyJOe19wz3klnhRIlR8J40ZHxD7KVCBFCasve1RNn_78-NQGCnSVOFAAA&vjk=83542039cbae892a"
 def indeed():
     # Start the session
     driver = webdriver.Firefox()
@@ -57,13 +53,6 @@ def indeed():
         total_descriptions = []
         rows = []
 
-        # Load the JSON document from a file
-        #TODO: 
-        """
-            To solve the issue of the url. You should divide the url in two chunks.
-            One before the keyword and the other after the keyword.
-        """
-        #fuction for the url
         def country_url():
             url = ""
             with open('./SELENIUM_CRAWLERS/INDEED_country.json') as f:
