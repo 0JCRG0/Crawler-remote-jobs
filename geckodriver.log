@@ -4202,3 +4202,164 @@ WebDriver BiDi listening on ws://127.0.0.1:54481
 console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileoOxhax/search.json.mozlz4", (void 0)))
 DevTools listening on ws://127.0.0.1:54481/devtools/browser/0f5952bb-37ab-423c-bfac-8ff925eb6992
 1679195276960	Marionette	INFO	Stopped listening on port 54498
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1045181937, line 1: unreachable code after return statement
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1045181937, line 1: unreachable code after return statement
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1045181937, line 1: unreachable code after return statement
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1045181937 line 1 > eval, line 1: unreachable code after return statement
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1045181937 line 1 > eval, line 1: unreachable code after return statement
+1679273350737	Marionette	INFO	Stopped listening on port 54106
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1679281205455	geckodriver	INFO	Listening on 127.0.0.1:50195
+1679281205929	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "50196" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileR5C6eM"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1679281207416	Marionette	INFO	Marionette enabled
+1679281208433	Marionette	INFO	Listening on port 50248
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 50248
+WebDriver BiDi listening on ws://127.0.0.1:50196
+1679281208765	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileR5C6eM/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:50196/devtools/browser/5a719b3d-61c4-4253-8bdc-b76b912a47c8
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1433470850, line 1: unreachable code after return statement
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1433470850, line 1: unreachable code after return statement
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1433470850, line 1: unreachable code after return statement
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1433470850 line 1 > eval, line 1: unreachable code after return statement
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1433470850 line 1 > eval, line 1: unreachable code after return statement
+1679281246839	geckodriver	INFO	Listening on 127.0.0.1:50621
+1679281247350	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "50622" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilev6cz0O"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1679281248716	Marionette	INFO	Marionette enabled
+1679281249156	Marionette	INFO	Listening on port 50660
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 50660
+WebDriver BiDi listening on ws://127.0.0.1:50622
+1679281249440	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilev6cz0O/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:50622/devtools/browser/372ee3dd-0c13-47f4-a065-e8bd4f8d079a
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=174680688, line 1: unreachable code after return statement
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=174680688, line 1: unreachable code after return statement
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=174680688, line 1: unreachable code after return statement
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=174680688 line 1 > eval, line 1: unreachable code after return statement
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=174680688 line 1 > eval, line 1: unreachable code after return statement
+1679281583443	geckodriver	INFO	Listening on 127.0.0.1:53408
+1679281583948	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "53409" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilemAqQhX"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1679281585259	Marionette	INFO	Marionette enabled
+1679281585703	Marionette	INFO	Listening on port 53441
+Read port: 53441
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:53409
+1679281585975	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilemAqQhX/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:53409/devtools/browser/d8a40da9-2244-439c-85da-c8bc767a4652
+1679281633715	Marionette	INFO	Stopped listening on port 53441
+1679281934594	geckodriver	INFO	Listening on 127.0.0.1:56345
+1679281935100	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "56346" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileA0UoeE"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1679281936537	Marionette	INFO	Marionette enabled
+1679281937033	Marionette	INFO	Listening on port 56386
+Read port: 56386
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:56346
+1679281937360	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileA0UoeE/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:56346/devtools/browser/4553eb1a-6812-4f4b-9817-bfb7a4990a63
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=654872, line 1: unreachable code after return statement
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=654872, line 1: unreachable code after return statement
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=654872, line 1: unreachable code after return statement
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=654872 line 1 > eval, line 1: unreachable code after return statement
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=654872 line 1 > eval, line 1: unreachable code after return statement
+1679282443097	geckodriver	INFO	Listening on 127.0.0.1:60514
+1679282443606	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "60515" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileyoLPVi"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1679282444917	Marionette	INFO	Marionette enabled
+1679282445266	Marionette	INFO	Listening on port 60551
+Read port: 60551
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:60515
+1679282445596	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileyoLPVi/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:60515/devtools/browser/8c850195-368c-408d-b20e-4c7379f90d38
+1679282448008	Marionette	INFO	Stopped listening on port 60551
+console.error: (new Error("IndexedDB: main/query-stripping list() IndexedDB:  execute() The application is shutting down", "resource://services-settings/IDBHelpers.jsm", 18))
+1679282513741	geckodriver	INFO	Listening on 127.0.0.1:61121
+1679282514249	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "61122" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofile3YP8EN"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1679282515541	Marionette	INFO	Marionette enabled
+1679282515970	Marionette	INFO	Listening on port 61154
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 61154
+WebDriver BiDi listening on ws://127.0.0.1:61122
+1679282516284	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofile3YP8EN/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:61122/devtools/browser/823addc9-0dd2-4577-94e9-327ef1490b72
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1436169113, line 1: unreachable code after return statement
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1436169113, line 1: unreachable code after return statement
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1436169113, line 1: unreachable code after return statement
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1436169113 line 1 > eval, line 1: unreachable code after return statement
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1436169113 line 1 > eval, line 1: unreachable code after return statement
+1679282525504	Marionette	INFO	Stopped listening on port 61154
+1679284212757	geckodriver	INFO	Listening on 127.0.0.1:58546
+1679284213263	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "58547" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilezXYgP3"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1679284214624	Marionette	INFO	Marionette enabled
+1679284215259	Marionette	INFO	Listening on port 58587
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 58587
+WebDriver BiDi listening on ws://127.0.0.1:58547
+1679284215594	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilezXYgP3/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:58547/devtools/browser/2d933a54-ec59-47f1-abc0-ca2abdbc4a0e
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1117139689, line 1: unreachable code after return statement
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1117139689, line 1: unreachable code after return statement
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1117139689, line 1: unreachable code after return statement
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1117139689 line 1 > eval, line 1: unreachable code after return statement
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1117139689 line 1 > eval, line 1: unreachable code after return statement
+1679284222632	Marionette	INFO	Stopped listening on port 58587
+1679284340546	geckodriver	INFO	Listening on 127.0.0.1:59625
+1679284341052	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "59626" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileqYl5xP"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1679284342609	Marionette	INFO	Marionette enabled
+1679284343205	Marionette	INFO	Listening on port 59666
+Read port: 59666
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:59626
+1679284343484	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileqYl5xP/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:59626/devtools/browser/4b7216fb-fb28-4c08-93c4-b0935cdb774d
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1939642803, line 1: unreachable code after return statement
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1939642803, line 1: unreachable code after return statement
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1939642803, line 1: unreachable code after return statement
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1939642803 line 1 > eval, line 1: unreachable code after return statement
+JavaScript warning: https://bj.scjn.gob.mx/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1939642803 line 1 > eval, line 1: unreachable code after return statement
+1679284350622	Marionette	INFO	Stopped listening on port 59666
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
