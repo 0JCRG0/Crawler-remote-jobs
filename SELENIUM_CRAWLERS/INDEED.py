@@ -17,9 +17,13 @@ from dateutil.relativedelta import relativedelta
 from dateutil.parser import parse
 from datetime import datetime, timedelta
 import json
+import timeit
 
 
 def indeed():
+    #start timer
+    start_time = timeit.default_timer()
+
     # Start the session
     driver = webdriver.Firefox()
 
@@ -94,7 +98,6 @@ def indeed():
                 #get the height of every job to scroll depending on its size...
                 height_ = job.size['height']
                 height = int(height_ * 2.15)
-                print(height)
                 #Scroll to 1st job
                 scroll_origin = ScrollOrigin.from_element(job)
                 #Scroll from 1st job to next one... and to next one... (pause is extremely important)
@@ -148,10 +151,15 @@ def indeed():
     pd.set_option('display.max_colwidth', 150)
     pd.set_option("display.max_rows", None)
     print(df)
-    print("\n", f"Crawler successfully found {len(df)} jobs...", "\n")
 
+    print("\n", "Saving jobs in local machine...", "\n")
     directory = "./OUTPUTS/"
     df.to_csv(f'{directory}INDEED_MX.csv', index=False)
+
+#stop the timer
+    elapsed_time = timeit.default_timer() - start_time
+    print("\n", f"Crawler successfully found {len(df)} jobs in {elapsed_time:.5f} seconds", "\n")
+
 
 if __name__ == "__main__":
     indeed()
