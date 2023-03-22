@@ -9,7 +9,7 @@ import csv
 import timeit
 from clean_regex import bye_regex, pandas_regex
 
-#TODO: Whether to use bs4 or go with selenium
+#TODO: join this with SCJN
 
 
 def scjn():
@@ -39,10 +39,9 @@ def scjn():
         #todo = []
         for i in urls():
             driver.get(i)
-            print("\n", f"Crawling... {i}", "\n")
+            print("\n", f"Tejiendo telaraña en... {i}", "\n")
 
             #Identifica los elementos
-            #all_text = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '#cont-principal .int-doc-tesis.ng-star-inserted')))
             id = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '#cont-principal .int-doc-tesis.ng-star-inserted .int-doc-tesis__metadata.row.p-2.m-0')))
             titulo = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '#cont-principal .int-doc-tesis.ng-star-inserted .int-doc-tesis__information')))
             contenido = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '#cont-principal .int-doc-tesis.ng-star-inserted .int-doc-tesis__content')))
@@ -76,7 +75,7 @@ def scjn():
             #agregalo
             total_notas.append(notas_limpio)
 
-            print("\n", f"Done with {i}. Moving on.", "\n")
+            print("\n", f"Telaraña completa en {i}...", "\n")
             data = {'ID:': total_ids, 'TITULO': total_titulos, 'CONTENIDO': total_contenidos, 'NOTAS':total_notas}
         return data
 
@@ -85,25 +84,20 @@ def scjn():
     driver.close()
 
     #Convert data to a pandas df for further analysis
-    print("\n", "Converting data to a pandas df...", "\n")
+    print("\n", "Convirtiendo en pandas df...", "\n")
     data_dic = dict(data)
     df = pd.DataFrame.from_dict(data_dic, orient='index')
     df = df.transpose()
-    #apply regex to every letter of the df
-    #modify the settings for fun 
-    pd.set_option('display.max_colwidth', 150)
-    pd.set_option("display.max_rows", None)
-    #inspect the df
-    print("\n", df.info, "\n", df.describe(), "\n")
 
-    print("\n", "Saving jobs in local machine...", "\n")
+    print("\n", "Guardando tesis en archivos locales...", "\n")
     directory = "./OUTPUTS/"
     df.to_csv(f'{directory}scjn_laboral.csv', index=False)
 
+    #apply regex to every letter of the df
     df = df.apply(pandas_regex, axis=0)
 
     elapsed_time = timeit.default_timer() - start_time
-    print("\n", f"Crawler successfully found {len(df)} thesis in {elapsed_time:.5f} seconds", "\n")
+    print("\n", f"La araña encontró {len(df)} tesis en {elapsed_time:.5f} segundos", "\n")
 
 if __name__ == "__main__":
     scjn()
