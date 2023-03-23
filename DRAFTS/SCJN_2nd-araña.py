@@ -7,7 +7,7 @@ import re
 import pretty_errors
 import csv
 import timeit
-from clean_regex import bye_regex, pandas_regex
+from utils.clean_regex import bye_regex, pandas_regex
 
 #TODO: join this with SCJN
 

@@ -10,7 +10,7 @@ import bs4
 import json
 import requests
 import timeit
-from clean_regex import bye_regex, pandas_regex
+from utils.clean_regex import bye_regex, pandas_regex
 
 
 def scjn():
