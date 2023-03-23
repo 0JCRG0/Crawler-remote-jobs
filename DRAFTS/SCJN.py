@@ -15,6 +15,7 @@ from clean_regex import bye_regex, pandas_regex
 
 def scjn():
 
+    
     #Start the timer
     start_time = timeit.default_timer()
 
@@ -22,7 +23,7 @@ def scjn():
     driver = webdriver.Firefox()
 
     # set the number of pages you want to scrape
-    num_pages = 1
+    num_pages = 372
 
     def url_araña():
         print("\n", f"ARAÑA 1 activa...", "\n")
@@ -59,16 +60,20 @@ def scjn():
     print("\n", "Guardando urls en archivos locales...", "\n")
     directory = "./OUTPUTS/"
     df.to_csv(f'{directory}urls_scjn_laboral_jurisprudencia.csv', index=False)
+    
 
 #print the time
     elapsed_time = timeit.default_timer() - start_time
     print("\n", f"ARAÑA 1 encontró {len(df)} urls en: {elapsed_time:.1f} segundos", "\n")
 
+    #START 2nd CRAWLER 
     print("\n", "ARAÑA 2 activa.", "\n")
+    #Start the session
     driver1 = webdriver.Firefox()
+    #Start the timer
+    start_time = timeit.default_timer()
+    #Get the text from the links
     def iterate_df():
-        #Start the timer
-        start_time = timeit.default_timer()
         #columns...
         total_ids = []
         total_titulos = []
@@ -79,7 +84,7 @@ def scjn():
         for index, row in df.iterrows():
             link = row['link']
             driver1.get(link)
-            print("\n", f"Obteniendo todo el texto de ---> {link}", "\n")
+            print("\n", f"Obteniendo todo el texto de ---> {link}. Iteration number: {index}", "\n")
 
             #Identifica los elementos
             id = WebDriverWait(driver1, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '#cont-principal .int-doc-tesis.ng-star-inserted .int-doc-tesis__metadata.row.p-2.m-0')))
@@ -128,7 +133,7 @@ def scjn():
     df1 = df1.transpose()
 
     #apply regex to every letter of the df
-    df1 = df.apply(pandas_regex, axis=0)
+    df1 = df1.apply(pandas_regex, axis=0)
 
     print("\n", "Guardando tesis en archivos locales...", "\n")
     directory = "./OUTPUTS/"
