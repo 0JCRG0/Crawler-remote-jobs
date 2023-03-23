@@ -1,14 +1,23 @@
+#! python3
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.actions.wheel_input import ScrollOrigin
+import random
+import time
 import pandas as pd
 import re
-import csv
 import pretty_errors
+import csv
 import psycopg2
+import numpy as np
 from dateutil.relativedelta import relativedelta
-from handy import clean_rows, initial_clean
-
-#TODO: FIX POSTGRESQL SO THE TRIGGER RUNS THE FUNCTIONS WHEN A TABLE STARTING WITH ® IS ADDED
+from dateutil.parser import parse
+from datetime import datetime, timedelta
+import json
+import timeit
 
 def HIMALAYAS():
     def CRAWLER_HIMALAYAS():
@@ -19,6 +28,12 @@ def HIMALAYAS():
         # set the number of pages you want to scrape
         num_pages = 1
 
+        #For later (CLEAN TITLES)
+        def TEXT_WASH(s):
+            s = " ".join(s.split())
+            s = re.sub(r'n/', '', s)
+            return s
+        
         # START CRAWLING
         def CRAWLING():
             print("\n", f"Crawler deployed... ", "\n")
@@ -38,7 +53,7 @@ def HIMALAYAS():
                 jobs = driver.find_elements(By.CSS_SELECTOR, '#card-group [name = "card"]')
                 for job in jobs:
                     #GETTING THE ELEMENTS FROM THE CHILDREN... remember to use css_selectors instead of tags
-                    all_urls = job.find_elements(By.CSS_SELECTOR, ' .mt-4.md\:mt-0.ml-0.md\:ml-5.w-full .flex.flex-row.items-start.justify-between.mb-2.w-full .flex.flex-row.items-center a')
+                    all_urls = job.find_elements(By.CSS_SELECTOR, '.mt-4.md\:mt-0.ml-0.md\:ml-5.w-full .flex.flex-row.items-start.justify-between.mb-2.w-full .flex.flex-row.items-center a')
                     all_titles = job.find_elements(By.CSS_SELECTOR, '.mt-4.md\:mt-0.ml-0.md\:ml-5.w-full .flex.flex-row.items-start.justify-between.mb-2.w-full .flex.flex-row.items-center a .text-xl.font-medium.text-gray-900')
                     all_pubDates = job.find_elements(By.CSS_SELECTOR, '.mt-4.md\:mt-0.ml-0.md\:ml-5.w-full .flex.flex-row.items-start.justify-between.mb-2.w-full .hidden.md\:block.md\:whitespace-nowrap.md\:ml-2.relative div .text-base.text-gray-600')
                     all_location = job.find_elements(By.CSS_SELECTOR, '.mt-4.md\:mt-0.ml-0.md\:ml-5.w-full .flex.flex-row.items-center.justify-between .flex.flex-row.items-center.flex-wrap.overflow-hidden .hidden.md\:flex.md\:flex-row.md\:items-center .badge.badge-gray.no-hover.mr-2 .flex.flex-row.items-center .badge-text.whitespace-nowrap.no-hover.text-center')
@@ -48,7 +63,7 @@ def HIMALAYAS():
                         total_urls.append(href)
                     for titl in all_titles:
                         title = titl.get_attribute("innerHTML")
-                        curated_title = [initial_clean(title)] #We clean the title with the function in handy
+                        curated_title = [TEXT_WASH(title)]
                         total_titles.append(curated_title)
                     for dates in all_pubDates:
                         pubDate = dates.get_attribute("innerHTML") 
@@ -73,7 +88,6 @@ def HIMALAYAS():
         df = df.transpose()
         print("\n", f"Crawler successfully found {len(df)} jobs...", "\n")
 
-
         #Save it in local machine
         print("\n", "Saving jobs in local machine as a CSV file...", "\n")
         directory = "./OUTPUTS/"
@@ -83,6 +97,9 @@ def HIMALAYAS():
     def PIPELINE():
         df = CRAWLER_HIMALAYAS()
         print("\n", "Processing of the df has started...", "\n")
+        #Read the csv so df is not unbound
+        #directory = "./OUTPUTS/"
+        #df = pd.read_csv(f'{directory}himalaya.csv')
 
         # Fill missing values with "NaN"
         df.fillna("NaN", inplace=True)
@@ -92,19 +109,19 @@ def HIMALAYAS():
         df.loc[mask, 'pubdate'] = "1 day ago"
 
         # From relative date strings to date time...
-        def convert_date(x):
-            if isinstance(x, str) and 'ago' in x:
-                return pd.Timestamp.today() - relativedelta(days=int(x.split()[0]))
-            return x
+        ## create a mask to identify rows with relative date strings
+        mask = df['pubdate'].str.contains('ago')
+        ## apply the relative date calculation to the date_string column
+        df.loc[mask, 'datetime'] = pd.Timestamp.today() - df.loc[mask, 'pubdate'].apply(lambda x: relativedelta(days=int(x.split()[0])))
+        #df.loc[mask, df.columns.get_loc('datetime')] = pd.Timestamp.today() - df.loc[mask, 'pubdate'].apply(lambda x: relativedelta(days=int(x.split()[0])))
+        ## convert the datetime column to datetime format
+        df['datetime'] = pd.to_datetime(df['datetime'], infer_datetime_format=True)
 
-        # Convert str to datetime & clean titles
-        for col in df.columns:
-            if col == 'pubdate':
-                df[col] = df[col].apply(convert_date).astype('datetime64[ns]')
-            if col == 'title':
-                df[col] = df[col].astype(str)
-                df[col] = df[col].apply(clean_rows)
-
+        # Drop pubDate, change name of datetime & reindex...
+        ## Drop it
+        df = df.drop('pubdate', axis=1)
+        ## Change name of datetime to pubDate 
+        df = df.rename(columns={'datetime': 'pubdate'})
         ##reindex
         df = df.reindex(columns=['title', 'link', 'description', 'pubdate', 'location'])
 
@@ -183,12 +200,3 @@ def HIMALAYAS():
 
 
 
-
-
-
-
-
-
-
-if __name__ == "__main__":
-    HIMALAYAS()
