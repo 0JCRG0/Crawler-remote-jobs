@@ -6,7 +6,7 @@ import csv
 import pretty_errors
 import psycopg2
 from dateutil.relativedelta import relativedelta
-from handy import clean_rows, initial_clean
+from utils.handy import clean_rows, initial_clean
 
 #TODO: FIX POSTGRESQL SO THE TRIGGER RUNS THE FUNCTIONS WHEN A TABLE STARTING WITH ® IS ADDED
 
