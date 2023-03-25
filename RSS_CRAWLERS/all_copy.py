@@ -8,17 +8,16 @@ import re
 import psycopg2
 import numpy as np
 import pretty_errors
+import timeit
 from utils.handy import clean_link_rss, clean_other_rss
 
-
-#TODO: RUN THIS CODE TOMORROW AND TRY THE NEW TRIGGER //
-#TODO: MAKE THE SCRIPT MORE COHESIVE - ONE SINGLE FUNCTION.
-#TODO: CHANGE FETCHING DF TO POSTGRE - SO IT ONLY CREATES A TABLE WITH A CERTAIN REGEX BEFORE THE NAME -> TO SET THE TRIGGER OFF & GET RID OF SO MUCH UNNECESSARY CODE
-
 def all_rss():
+    #start timer
+    start_time = timeit.default_timer()
+
     file = './RSS_CRAWLERS/remote-working-resources.csv'
     
-    print("\n", f"Crawler iterating through {file}... ", "\n")
+    print("\n", f"Reading {file}... ", "\n")
 
     def soups():
         soup_list = []
@@ -44,8 +43,12 @@ def all_rss():
         return soup_list
     all_soups = soups()
 
+    print("\n", f"Making soup from {len(all_soups)} established connections.", "\n")
 
-    print("\n", f"Established connection with {len(all_soups)} websites. Finding elements now...", "\n")
+    print("\n", f"Soup is ready.", "\n")
+
+    print("\n", "CRAWLER IS LOOKING FOR DESIRED ELEMENTS IN THE SOUP", "\n")
+
 
     def all_elements():
         rows = []
@@ -93,7 +96,7 @@ def all_rss():
     print("\n", "Jobs have been saved into local machine as a CSV.", "\n")
 
     def pipeline():
-        print("\n", "Pipeline starting...", "\n")
+        print("\n", "Jobs going through last pipeline...", "\n")
 
         df = pd.read_csv('./OUTPUTS/yummy_soup_rss.csv')
         # Fill missing values with "NaN"
@@ -103,7 +106,7 @@ def all_rss():
             if df.columns[i] == 'pubdate':
                 df[df.columns[i]] = pd.to_datetime(df[df.columns[i]], errors="coerce", format="%a %d %b %Y", exact=False)
         
-        print("\n", "Jobs'pubdate converted into a datetime object", "\n")
+        print("\n", "Jobs' pubdate converted into a datetime object", "\n")
 
         #Filter rows by a date range (this reduces the number of rows... duh)
         start_date = pd.to_datetime('2016-01-01')
@@ -123,7 +126,7 @@ def all_rss():
 
             ## PostgreSQL
 
-        print("\n", f"Fetching {len(df)} filtered & preprocessed jobs to PostgreSQL...", "\n")
+        print("\n", f"Parsing {len(df)} filtered & preprocessed jobs to PostgreSQL...", "\n")
 
         # create a connection to the PostgreSQL database
         cnx = psycopg2.connect(user='postgres', password='3312', host='localhost', port='5432', database='postgres')
@@ -145,6 +148,8 @@ def all_rss():
         # execute the create table query
         cursor.execute(create_table_query)
 
+        print("\n", "Inserting jobs into PostgreSQL using an upsert strategy...", "\n")
+
         # insert the DataFrame into the PostgreSQL database using an upsert strategy
         for index, row in df.iterrows():
             insert_query = '''
@@ -159,15 +164,28 @@ def all_rss():
             values = (row['title'], row['link'], row['description'], row['pubdate'], row['location'])
             cursor.execute(insert_query, values)
 
+        count_query = '''
+            SELECT COUNT(*) FROM all_rss
+        '''
+        # execute the count query and retrieve the result
+        cursor.execute(count_query)
+        result = cursor.fetchone()
+
+        # check if the result set is not empty
+        if result is not None:
+            count = result[0]
+            print("\n", "DONE.", "\n", "\n", f"Current total count of jobs in PostgreSQL: {count}", "\n")
+        
         # commit the changes to the database
         cnx.commit()
 
         # close the cursor and connection
         cursor.close()
         cnx.close()
-        
-        print("\n", "Pipeline finished.", "\n")
-        print("\n", "JOBS ADDED INTO POSTGRESQL! :)", "\n")
+                
+        #print the time
+        elapsed_time = timeit.default_timer() - start_time
+        print("\n", f"Jobs were found, preprocessed, cleaned and sent to PostgreSQL in: {elapsed_time:.2f} seconds", "\n")
     pipeline()
 
 if __name__ == "__main__":
