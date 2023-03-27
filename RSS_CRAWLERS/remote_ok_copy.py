@@ -10,7 +10,7 @@ import psycopg2
 from utils.handy import send_postgre
 # CRITICAL!!! -> THIS IS ONLY FOR XML!!! NOT HTTP PARSERS...
 
-def remote_ok():
+def remote():
     rss = rss_remote_ok = 'https://remoteok.com/rss'
     print("\n", f'Crawling...{rss}', "\n")
 
@@ -44,8 +44,6 @@ def remote_ok():
             items_new.append({'title': title, 'link': link, 'pubdate': pubDate, 'location': location, 'description': tags})
             # df...
             df = pd.DataFrame(items_new, index=range(1, len(items_new)+1))
-            # Set the maximum column width to 1000 -> to avoid pd to truncate the URL
-            pd.set_option('display.max_colwidth', 1000)
         return df
 
     df = REMOTE_OK()
@@ -55,14 +53,8 @@ def remote_ok():
 
     print("\n", f"Fetching {len(df)} cleaned jobs to PostgreSQL...", "\n")
 
-    def PIPELINE():
-        directory = "./OUTPUTS/"
-        df = pd.read_csv(f'{directory}REMOTE_OK.csv')
+    send_postgre(df)
 
-        ##PostgreSQL -- Send the df to postgresql
+    print("\n", "JOBS ADDED INTO POSTGRESQL! :)", "\n")
 
-        send_postgre(df)
-
-        print("\n", "JOBS ADDED INTO POSTGRESQL! :)", "\n")
-
-    PIPELINE()
+remote()
