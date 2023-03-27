@@ -1,7 +1,7 @@
 Title,URL,Feed URL,Notes
 Adafruit Job Boards,https://jobs.adafruit.com/?query=&amp;location=&amp;type%5B%5D=7,,US ONLY
 AngelList,https://angel.co/jobs,,WORTH IT TO SIGN UP - SCRAPPING IT MUGHT BE A BIT HARD - WELL FOUND IT IS THE NAME NOW
-Authentic Jobs,https://authenticjobs.com/,https://authenticjobs.com/?feed=job_feed,RSS FEED DOES NOT WORK & NOT MANY JOBS TBH
+Authentic Jobs,https://authenticjobs.com/,,RSS FEED DOES NOT WORK & NOT MANY JOBS TBH
 Behance,https://www.behance.net/joblist,,NOT WORTHY - NOT MANY JOBS
 Career Vault,https://careervault.io/,,USE NEWSLETTER
 CareerBuilder,https://www.careerbuilder.com/jobs-remote-web-developer,,US ONLY
@@ -37,7 +37,7 @@ Himalayas,https://himalayas.app/jobs,,Dedicated remote job board
 Hubstaff,https://talent.hubstaff.com/search/jobs,,
 I ❤ remote.io,https://iloveremote.io/,https://iloveremote.io/rss/jobs/city/remote.rss,
 Idealist,https://www.idealist.org/en/?radius=160000&amp;sort=relevance&amp;type=ALL,,No RSS feed but there is an email subscription available
-Indeed,http://www.indeed.com/jobs?q=web+development&amp;l=remote,http://rss.indeed.com/rss,You can filter more specifically by passing the q parameter like this: http://rss.indeed.com/rss?q=web+development
+Indeed,http://www.indeed.com/jobs?q=web+development&amp;l=remote,,RSS DOES NOT WORK
 Java Remote Jobs,https://javajobs.pro/remote/jobs,,
 Jobhunt.ai,https://jobhunt.ai/,https://jobhunt.ai/rss.xml,Machine learning and data science jobs with a remote section
 Jobspresso,https://jobspresso.co,https://jobspresso.co/feed/?post_type=job_listing,
@@ -58,10 +58,10 @@ Product Hunt Jobs,https://www.producthunt.com/jobs?remote_ok=true,,No RSS feed b
 Public Interest Tech,https://jobs.codeforamerica.org/search,https://jobs.codeforamerica.org/job-postings.rss,
 Python Jobs,https://www.python.org/jobs/location/telecommute/,https://www.python.org/jobs/feed/rss/,Unclear if the RSS feed is filterable to only show remote work
 React Jobs,https://www.react-jobs.com/,,No RSS feed but there is a Twitter account (@react_jobs)
-Reddit (/r/remotejobs),https://www.reddit.com/r/RemoteJobs/,https://www.reddit.com/r/RemoteJobs/.rss,
-Reddit (/r/remotejs),https://www.reddit.com/r/remotejs/,https://www.reddit.com/r/remotejs/.rss,
-Reddit (/r/remotephp),https://www.reddit.com/r/remotephp/,https://www.reddit.com/r/remotephp/.rss,
-Reddit (/r/remotepython),https://www.reddit.com/r/remotepython/,https://www.reddit.com/r/remotepython/.rss,
+Reddit (/r/remotejobs),https://www.reddit.com/r/RemoteJobs/,,RSS DOES NOT WORK
+Reddit (/r/remotejs),https://www.reddit.com/r/remotejs/,,RSS DOES NOT WORK
+Reddit (/r/remotephp),https://www.reddit.com/r/remotephp/,,RSS DOES NOT WORK
+Reddit (/r/remotepython),https://www.reddit.com/r/remotepython/,,RSS DOES NOT WORK
 Remote Backend Jobs,https://remotebackendjobs.com,,https://twitter.com/remotebackends
 Remote Frontend Jobs,https://remotefrontendjobs.com,,https://twitter.com/remotefrontends
 Remote OK,https://remoteok.io/remote-companies,https://remoteok.com/rss,

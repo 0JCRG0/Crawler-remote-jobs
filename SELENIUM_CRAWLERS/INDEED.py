@@ -18,6 +18,7 @@ from dateutil.parser import parse
 from datetime import datetime, timedelta
 import json
 import timeit
+from utils.handy import bye_regex
 
 
 def indeed():
@@ -29,23 +30,6 @@ def indeed():
 
     # set the number of pages you want to scrape
     num_pages = 1
-
-    # Handy cleansing function
-    def bye_regex(s):
-        # Remove leading/trailing white space
-        s = s.strip()
-        # Replace multiple spaces with a single space
-        s = re.sub(r'\s+', ' ', s)
-        # Remove newline characters
-        s = re.sub(r'\n', '', s)
-        # Replace regex for í
-        s = re.sub(r'√≠', 'í', s)
-        # Replace word
-        s = re.sub(r'Posted', '', s)
-        # Remove HTML tags
-        s = re.sub(r'<.*?>', '', s)
-
-        return s
     
     # START CRAWLING
     def crawling(country, keyword):
