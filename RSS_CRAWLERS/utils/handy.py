@@ -14,8 +14,10 @@ def clean_link_rss(s):
     return s
 
 def clean_other_rss(s):
+    if not isinstance(s, str):
+        return s
     # Remove leading/trailing white space
-    #s = s.strip()
+    s = s.strip()
         
     # Replace multiple spaces with a single space
     s = re.sub(r'\s+', ' ', s)

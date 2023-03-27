@@ -8,8 +8,11 @@ import re
 import psycopg2
 import numpy as np
 import pretty_errors
+import datetime
 import timeit
-from utils.handy import clean_link_rss, clean_other_rss
+from utils.handy import clean_link_rss, clean_other_rss, send_postgre, test_postgre
+
+#TODO: Modify datetime 
 
 def all_rss():
     #start timer
@@ -49,63 +52,89 @@ def all_rss():
 
     print("\n", "CRAWLER IS LOOKING FOR DESIRED ELEMENTS IN THE SOUP", "\n")
 
-
     def all_elements():
+        date_format = "%Y-%m-%d"
         rows = []
+        total_pubdates = []
+        total_titles = []
+        total_links = []
+        total_locations = []
+        total_descriptions = []
         for soup in all_soups:
             for item in soup.find_all('item'):
+                #Get titles & append it to the list
                 title = str(item.title.get_text(strip=True))
+                total_titles.append(title)
+                #Get links & append it to the list
                 link = str(item.link.get_text(strip=True))
-                pubDate = item.find('pubDate')
-                if pubDate is not None:
-                    pubDate = str(item.pubDate.get_text(strip=True))
+                total_links.append(link)
+                #Get the pubdate of different tags
+                pubDate_tag = item.find('pubDate') or item.find('dc:date')
+                if pubDate_tag is not None:
+                    pubDate_text = pubDate_tag.get_text(strip=True)
+                    if pubDate_text.startswith('20'):
+                        #Slice the string if it starts with 20 so that it fits the same format
+                        pubDate_sliced = pubDate_text[0:10]
+                        #Convert the date string to date time object
+                        pubDate = datetime.datetime.strptime(pubDate_sliced, date_format)
+                        #Format the datetime to make it consistent
+                        pubDate_formatted = pubDate.strftime("%a %d %b %Y")
+                        total_pubdates.append(pubDate_formatted)
+                    else:
+                        pubDate = pubDate_text
+                        total_pubdates.append(pubDate)
+                #Get the locations & append it to its list
                 location = item.find('location')
                 if location is not None:
                     location = str(item.location.get_text(strip=True))
+                    total_locations.append(location)
+                #Get the descriptions & append it to its list
                 description = item.find('description')
                 if description is not None:
                     description = str(item.description.get_text(strip=True))
-                row = {'title':title, 'link':link, 'pubdate': pubDate, 'location': location, 'description': description}
-                rows.append(row)
+                    total_descriptions.append(description)
+                rows = {'title':total_titles, 'link':total_links, 'pubdate': total_pubdates, 'location': total_locations, 'description': total_descriptions}
         return rows
-    jobs = all_elements()
+    data = all_elements()
 
-    print("\n", f"Crawler successfully found {len(jobs)} jobs...", "\n")
+    #Convert data to a pandas df for further analysis
+    print("\n", "Converting data to a pandas df...", "\n")
+    data_dic = dict(data)
+    df = pd.DataFrame.from_dict(data_dic, orient='index')
+    df = df.transpose()
 
-    print("\n", "Preprocessing the obtained jobs...", "\n")
+    print("\n", f"Crawler successfully found {len(df)} jobs...", "\n")
 
-    def clean_df():
-        df = pd.DataFrame()
-        curated_rows = []
-        for dic in jobs:
-            row = {}
-            for key,val in dic.items():
-                if key == 'link':
-                    row[key] = clean_link_rss(val)
-                elif val is None:
-                    continue
-                else:
-                    row[key] = clean_other_rss(val)
-            curated_rows.append(row)
-            df = pd.concat([pd.DataFrame(curated_rows)])
-            directory = "./OUTPUTS/"
-            df.to_csv(f'{directory}yummy_soup_rss.csv', index=False)
-        #return df
-    clean_df()
+    print("\n", "Cleaning the obtained jobs...", "\n")
+
+    #Cleaning columns
+    for col in df.columns:
+        if col == 'link':
+            df[col] = df[col].apply(clean_link_rss)
+        else:
+            df[col] = df[col].apply(clean_other_rss)
+
+    print("\n", "Saving jobs in local machine...", "\n")
+
+
+    directory = "./OUTPUTS/"
+    df.to_csv(f'{directory}yummy_soup_rss.csv', index=False)
 
     print("\n", "Jobs have been saved into local machine as a CSV.", "\n")
 
-    def pipeline():
+
+    def pipeline(df):
         print("\n", "Jobs going through last pipeline...", "\n")
 
-        df = pd.read_csv('./OUTPUTS/yummy_soup_rss.csv')
+        #df = pd.read_csv('./OUTPUTS/yummy_soup_rss.csv')
         # Fill missing values with "NaN"
         df.fillna("NaN", inplace=True)
         # convert the pubdate column to a datetime object
         for i in range(len(df.columns)):
             if df.columns[i] == 'pubdate':
-                df[df.columns[i]] = pd.to_datetime(df[df.columns[i]], errors="coerce", format="%a %d %b %Y", exact=False)
+                df[df.columns[i]] = pd.to_datetime(df[df.columns[i]], errors="coerce", format="%a %d %b %Y", exact=False, infer_datetime_format=True)
         
+        #%a %d %b %Y
         print("\n", "Jobs' pubdate converted into a datetime object", "\n")
 
         #Filter rows by a date range (this reduces the number of rows... duh)
@@ -116,78 +145,25 @@ def all_rss():
 
         print("\n", f"Jobs filtered from {str(start_date)} to {str(end_date)}", "\n")
 
-            #sort the values
+        #sort the values
         df = df.sort_values(by='pubdate')
-            # Reduce the lenght of description... 
+        # Reduce the lenght of description... 
         df['description'] = df['description'].str.slice(0, 1000)
 
-            # replace NaT values in the DataFrame with None
+        # replace NaT values in the DataFrame with None
         df = df.replace({np.nan: None, pd.NaT: None})
 
         ## PostgreSQL
 
         print("\n", f"Parsing {len(df)} filtered & preprocessed jobs to PostgreSQL...", "\n")
 
-        # create a connection to the PostgreSQL database
-        cnx = psycopg2.connect(user='postgres', password='3312', host='localhost', port='5432', database='postgres')
-
-        # create a cursor object
-        cursor = cnx.cursor()
-
-        # prepare the SQL query to create a new table
-        create_table_query = '''
-            CREATE TABLE IF NOT EXISTS all_rss (
-                title VARCHAR(255),
-                link VARCHAR(255) PRIMARY KEY,
-                description VARCHAR(1000),
-                pubdate TIMESTAMP,
-                location VARCHAR(255)
-            )
-        '''
-
-        # execute the create table query
-        cursor.execute(create_table_query)
-
-        print("\n", "Inserting jobs into PostgreSQL using an upsert strategy...", "\n")
-
-        # insert the DataFrame into the PostgreSQL database using an upsert strategy
-        for index, row in df.iterrows():
-            insert_query = '''
-                INSERT INTO all_rss (title, link, description, pubdate, location)
-                VALUES (%s, %s, %s, %s, %s)
-                ON CONFLICT (link) DO UPDATE SET
-                    title = excluded.title,
-                    description = excluded.description,
-                    pubdate = excluded.pubdate,
-                    location = excluded.location
-            '''
-            values = (row['title'], row['link'], row['description'], row['pubdate'], row['location'])
-            cursor.execute(insert_query, values)
-
-        count_query = '''
-            SELECT COUNT(*) FROM all_rss
-        '''
-        # execute the count query and retrieve the result
-        cursor.execute(count_query)
-        result = cursor.fetchone()
-
-        # check if the result set is not empty
-        if result is not None:
-            count = result[0]
-            print("\n", "DONE.", "\n", "\n", f"Current total count of jobs in PostgreSQL: {count}", "\n")
+        send_postgre(df)
         
-        # commit the changes to the database
-        cnx.commit()
-
-        # close the cursor and connection
-        cursor.close()
-        cnx.close()
-                
         #print the time
         elapsed_time = timeit.default_timer() - start_time
-        print("\n", f"Jobs were found, preprocessed, cleaned and sent to PostgreSQL in: {elapsed_time:.2f} seconds", "\n")
-    pipeline()
-
+        print("\n", f"Congratulations! {len(df)} jobs were found, cleaned, reformatted, filtered and sent to PostgreSQL in: {elapsed_time:.2f} seconds", "\n")
+    pipeline(df)
+    
 if __name__ == "__main__":
     all_rss()
 
