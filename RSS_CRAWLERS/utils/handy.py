@@ -1,5 +1,6 @@
 import re
 import psycopg2
+from datetime import datetime
 
 def clean_link_rss(s):
     # Remove leading/trailing white space
@@ -45,7 +46,7 @@ def send_postgre(df):
 
         # prepare the SQL query to create a new table
         create_table_query = '''
-            CREATE TABLE IF NOT EXISTS all_rss (
+            CREATE TABLE IF NOT EXISTS master_jobs (
                 title VARCHAR(255),
                 link VARCHAR(255) PRIMARY KEY,
                 description VARCHAR(1000),
@@ -62,7 +63,7 @@ def send_postgre(df):
         # insert the DataFrame into the PostgreSQL database using an upsert strategy
         for index, row in df.iterrows():
             insert_query = '''
-                INSERT INTO all_rss (title, link, description, pubdate, location)
+                INSERT INTO master_jobs (title, link, description, pubdate, location)
                 VALUES (%s, %s, %s, %s, %s)
                 ON CONFLICT (link) DO UPDATE SET
                     title = excluded.title,
@@ -74,7 +75,7 @@ def send_postgre(df):
             cursor.execute(insert_query, values)
 
         count_query = '''
-            SELECT COUNT(*) FROM all_rss
+            SELECT COUNT(*) FROM master_jobs
         '''
         # execute the count query and retrieve the result
         cursor.execute(count_query)
@@ -147,3 +148,15 @@ def test_postgre(df):
         # close the cursor and connection
         cursor.close()
         cnx.close()
+
+# define a function to convert date strings to date objects
+
+def convert_to_date(date_string, date_format="%Y%m%d"):
+    try:
+        date_obj = datetime.strptime(date_string, date_format)
+    except ValueError:
+        date_obj = datetime.strptime(date_string, '%a %d %b %Y')
+        
+    return date_obj.date()
+
+

@@ -72,17 +72,8 @@ def all_rss():
                 pubDate_tag = item.find('pubDate') or item.find('dc:date')
                 if pubDate_tag is not None:
                     pubDate_text = pubDate_tag.get_text(strip=True)
-                    if pubDate_text.startswith('20'):
-                        #Slice the string if it starts with 20 so that it fits the same format
-                        pubDate_sliced = pubDate_text[0:10]
-                        #Convert the date string to date time object
-                        pubDate = datetime.datetime.strptime(pubDate_sliced, date_format)
-                        #Format the datetime to make it consistent
-                        pubDate_formatted = pubDate.strftime("%a %d %b %Y")
-                        total_pubdates.append(pubDate_formatted)
-                    else:
-                        pubDate = pubDate_text
-                        total_pubdates.append(pubDate)
+                    pubDate_clean = re.sub(r',', '', pubDate_text)
+                    total_pubdates.append(pubDate_clean)
                 #Get the locations & append it to its list
                 location = item.find('location')
                 if location is not None:
@@ -157,13 +148,14 @@ def all_rss():
 
         print("\n", f"Parsing {len(df)} filtered & preprocessed jobs to PostgreSQL...", "\n")
 
-        send_postgre(df)
+        test_postgre(df)
         
         #print the time
         elapsed_time = timeit.default_timer() - start_time
-        print("\n", f"Congratulations! {len(df)} jobs were found, cleaned, reformatted, filtered and sent to PostgreSQL in: {elapsed_time:.2f} seconds", "\n")
+        print("\n", f"All done! {len(df)} jobs were found, cleaned, reformatted, filtered and sent to PostgreSQL in: {elapsed_time:.2f} seconds", "\n")
     pipeline(df)
     
 if __name__ == "__main__":
     all_rss()
 
+"Tue 21 Feb 2023 083639 0000"

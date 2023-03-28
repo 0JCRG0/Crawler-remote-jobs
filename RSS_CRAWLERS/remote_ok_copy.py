@@ -7,7 +7,7 @@ import bs4
 import lxml
 import pretty_errors
 import psycopg2
-from utils.handy import send_postgre
+from utils.handy import send_postgre, test_postgre
 # CRITICAL!!! -> THIS IS ONLY FOR XML!!! NOT HTTP PARSERS...
 
 def remote():
@@ -53,7 +53,7 @@ def remote():
 
     print("\n", f"Fetching {len(df)} cleaned jobs to PostgreSQL...", "\n")
 
-    send_postgre(df)
+    test_postgre(df)
 
     print("\n", "JOBS ADDED INTO POSTGRESQL! :)", "\n")
 
