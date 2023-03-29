@@ -159,9 +159,15 @@ def convert_to_date(date_string, date_format="%Y%m%d"):
         
     return date_obj.date()
 
-def clean_pubdate(s):
+def adby_pubdate(s):
+    #slice the jobs that are formatted as %a %d %b %Y
     if s is not None:
         if not s.startswith("20"):
             s_sliced = s[0:15]
             return s_sliced
 
+def YMD_pubdate(s):
+    #slice the jobs that are formatted as %a %d %b %Y
+    if s is not None:
+        YMD_pub = s[0:8]
+        return YMD_pub
