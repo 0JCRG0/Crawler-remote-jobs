@@ -157,7 +157,7 @@ def all_rss_YMD():
         #sort the values
         df = df.sort_values(by='pubdate')
         # Reduce the lenght of description... 
-        df['description'] = df['description'].str.slice(0, 1000)
+        df['description'] = df['description'].str.slice(0, 2000)
 
         # replace NaT values in the DataFrame with None -> if not postgre raises an error
         df = df.replace({np.nan: None, pd.NaT: None})
@@ -166,7 +166,7 @@ def all_rss_YMD():
 
         print("\n", f"Parsing {len(df)} filtered & preprocessed jobs to PostgreSQL...", "\n")
 
-        test_postgre(df)
+        send_postgre(df)
         
         #print the time
         elapsed_time = timeit.default_timer() - start_time

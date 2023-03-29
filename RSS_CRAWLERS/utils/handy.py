@@ -49,7 +49,7 @@ def send_postgre(df):
             CREATE TABLE IF NOT EXISTS master_jobs (
                 title VARCHAR(255),
                 link VARCHAR(255) PRIMARY KEY,
-                description VARCHAR(1000),
+                description VARCHAR(2000),
                 pubdate TIMESTAMP,
                 location VARCHAR(255)
             )
@@ -105,7 +105,7 @@ def test_postgre(df):
             CREATE TABLE IF NOT EXISTS test (
                 title VARCHAR(255),
                 link VARCHAR(255) PRIMARY KEY,
-                description VARCHAR(1000),
+                description VARCHAR(2000),
                 pubdate TIMESTAMP,
                 location VARCHAR(255)
             )
