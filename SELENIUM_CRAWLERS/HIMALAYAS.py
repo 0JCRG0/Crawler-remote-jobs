@@ -5,19 +5,23 @@ import re
 import csv
 import pretty_errors
 import psycopg2
+import timeit
 from dateutil.relativedelta import relativedelta
-from utils.handy import clean_rows, initial_clean
+from utils.handy import clean_rows, initial_clean, test_postgre, send_postgre
 
 #TODO: FIX POSTGRESQL SO THE TRIGGER RUNS THE FUNCTIONS WHEN A TABLE STARTING WITH ® IS ADDED
 
 def HIMALAYAS():
+    #start timer
+    start_time = timeit.default_timer()
+
     def CRAWLER_HIMALAYAS():
         
         # Start the session
         driver = webdriver.Firefox()
 
         # set the number of pages you want to scrape
-        num_pages = 1
+        num_pages = 6
 
         # START CRAWLING
         def CRAWLING():
@@ -119,75 +123,13 @@ def HIMALAYAS():
         # SEND IT TO TO PostgreSQL
         print("\n", f"Fetching {len(df)} jobs to PostgreSQL...", "\n")
 
-        ## This code creates a new table per iteration
-        ## Create a connection to the PostgreSQL database
-        cnx = psycopg2.connect(user='postgres', password='3312', host='localhost', port='5432', database='postgres')
+        send_postgre(df)
+        
+        #print the time
+        elapsed_time = timeit.default_timer() - start_time
+        print("\n", f"All done! {len(df)} jobs were found, cleaned, reformatted, filtered and sent to PostgreSQL in: {elapsed_time:.2f} seconds", "\n")
 
-        ## create a cursor object
-        cursor = cnx.cursor()
-
-        ## Get the name of the next table to create
-        get_table_name_query = '''
-            SELECT COUNT(*) FROM information_schema.tables
-            WHERE table_name LIKE 'HIMALAYAS_%'
-        '''
-        cursor.execute(get_table_name_query)
-        ## execute the query to get the count of existing tables
-
-        ## fetch the first row of the query results
-        result = cursor.fetchone()
-
-        ## get the number of existing tables if there are any, otherwise set it to 0
-        next_table_number = result[0] + 1 if result is not None else 0
-        next_table_name = 'HIMALAYAS_{}'.format(next_table_number)
-
-        ## prepare the SQL query to create a new table
-        create_table_query = '''
-            CREATE TABLE {} (
-                title VARCHAR(255),
-                link VARCHAR(255),
-                description VARCHAR(1000),
-                pubdate TIMESTAMP,
-                location VARCHAR(255)
-            )
-        '''.format(next_table_name)
-
-        ## execute the create table query
-        cursor.execute(create_table_query)
-
-        ## insert the DataFrame into the PostgreSQL database as a new table
-        for index, row in df.iterrows():
-            insert_query = '''
-                INSERT INTO {} (title, link, description, pubdate, location)
-                VALUES (%s, %s, %s, %s, %s)
-            '''.format(next_table_name)
-            values = (row['title'], row['link'], row['description'], row['pubdate'], row['location'])
-            cursor.execute(insert_query, values)
-
-        ## commit the changes to the database
-        cnx.commit()
-
-        ## close the cursor and connection
-        cursor.close()
-        cnx.close()
-        print("\n", "ALL DONE! GO TO POSTGRESQL FOR FURTHER PROCESSING :)", "\n")
     PIPELINE()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 if __name__ == "__main__":
