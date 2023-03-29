@@ -3,99 +3,59 @@ import json
 import pretty_errors
 import pandas as pd
 import psycopg2
+import timeit
+from utils.handy_f import test1_postgre
 
-def W_NOMADS_API():
-    api = "https://www.workingnomads.com/api/exposed_jobs/"
-    print("\n", f"Fetching...{api}", "\n")
-    response = requests.get(api)
-    if response.status_code == 200:
-        data = json.loads(response.text)
-        #pretty_json = json.dumps(data, indent=4)
-        #print(pretty_json, type(data))
-        
-        #Loop through the list of dict            
-        all_jobs = []
-        titles = []
-        links = []
-        pubdates = []
-        locations = []
-        descriptions = []
-        for job in data:
-            titles.append(job["title"])
-            links.append(job["url"])
-            pubdates.append(job["pub_date"])
-            locations.append(job["location"])
-            descriptions.append(job["tags"])
-            #Put it all together...
-            all_jobs = {'title': titles, 'link':links, 'pubdate': pubdates, 'location': locations, 'description': descriptions}
-        return all_jobs
-    else:
-        print("Error connecting to API:", response.status_code)
+def W_NOMADS():
+    #Start the timer
+    start_time = timeit.default_timer()
 
-#to df
-df = pd.DataFrame(W_NOMADS_API())
-print("\n", f"Successfully fetched {len(df)} jobs", "\n")
+    def API_FETCHER():
 
-print("\n", "Saving jobs into local machine as a CSV...", "\n")
+        api = "https://www.workingnomads.com/api/exposed_jobs/"
+        print("\n", f"Fetching...{api}", "\n")
+        response = requests.get(api)
+        if response.status_code == 200:
+            data = json.loads(response.text)
+            #pretty_json = json.dumps(data, indent=4)
+            #print(pretty_json, type(data))
+            
+            #Loop through the list of dict            
+            all_jobs = []
+            titles = []
+            links = []
+            pubdates = []
+            locations = []
+            descriptions = []
+            for job in data:
+                titles.append(job["title"])
+                links.append(job["url"])
+                pubdates.append(job["pub_date"])
+                locations.append(job["location"])
+                descriptions.append(job["tags"])
+                #Put it all together...
+                all_jobs = {'title': titles, 'link':links, 'pubdate': pubdates, 'location': locations, 'description': descriptions}
+            return all_jobs
+        else:
+            print("Error connecting to API:", response.status_code)
 
-directory = "./OUTPUTS/"
-df.to_csv(f"{directory}W_NOMADS.csv", index=False)
+    data = API_FETCHER()
 
-print("\n", f"Fetching {len(df)} cleaned jobs to PostgreSQL...", "\n")
+    #to df
+    df = pd.DataFrame(data)
+    print("\n", f"Successfully fetched {len(df)} jobs", "\n")
 
-## PostgreSQL
+    print("\n", "Saving jobs into local machine as a CSV...", "\n")
 
-# This code creates a new table per iteration
+    directory = "./OUTPUTS/"
+    df.to_csv(f"{directory}W_NOMADS.csv", index=False)
 
-# create a connection to the PostgreSQL database
-cnx = psycopg2.connect(user='postgres', password='3312', host='localhost', port='5432', database='postgres')
+    print("\n", f"Fetching {len(df)} cleaned jobs to PostgreSQL...", "\n")
 
-# create a cursor object
-cursor = cnx.cursor()
+    ## PostgreSQL
 
-# get the name of the next table to create
-get_table_name_query = '''
-    SELECT COUNT(*) FROM information_schema.tables
-    WHERE table_name LIKE 'W_NOMADS_%'
-'''
-cursor.execute(get_table_name_query)
-# execute the query to get the count of existing tables
+    test1_postgre(df)
 
-# fetch the first row of the query results
-result = cursor.fetchone()
-
-# get the number of existing tables if there are any, otherwise set it to 0
-next_table_number = result[0] + 1 if result is not None else 0
-next_table_name = 'W_NOMADS_{}'.format(next_table_number)
-
-# prepare the SQL query to create a new table
-create_table_query = '''
-    CREATE TABLE {} (
-        title VARCHAR(255),
-        link VARCHAR(255),
-        description VARCHAR(1000),
-        pubdate TIMESTAMP,
-        location VARCHAR(255)
-    )
-'''.format(next_table_name)
-
-# execute the create table query
-cursor.execute(create_table_query)
-
-# insert the DataFrame into the PostgreSQL database as a new table
-for index, row in df.iterrows():
-    insert_query = '''
-        INSERT INTO {} (title, link, description, pubdate, location)
-        VALUES (%s, %s, %s, %s, %s)
-    '''.format(next_table_name)
-    values = (row['title'], row['link'], row['description'], row['pubdate'], row['location'])
-    cursor.execute(insert_query, values)
-
-# commit the changes to the database
-cnx.commit()
-
-# close the cursor and connection
-cursor.close()
-cnx.close()
-
-print("\n", "JOBS ADDED INTO POSTGRESQL! :)", "\n")
+    elapsed_time = timeit.default_timer() - start_time
+    print("\n", f"W_NOMADS is done! {len(df)} jobs were found, cleaned, reformatted, filtered and sent to PostgreSQL in: {elapsed_time:.2f} seconds", "\n")
+W_NOMADS()
