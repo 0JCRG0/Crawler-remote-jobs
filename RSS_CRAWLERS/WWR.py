@@ -83,7 +83,7 @@ def WWR():
     """ 
     
     #Send it to postgre
-    send_postgre(df)
+    test_postgre(df)
 
     #print the time
     elapsed_time = timeit.default_timer() - start_time
