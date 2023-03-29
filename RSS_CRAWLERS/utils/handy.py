@@ -159,4 +159,9 @@ def convert_to_date(date_string, date_format="%Y%m%d"):
         
     return date_obj.date()
 
+def clean_pubdate(s):
+    if s is not None:
+        if not s.startswith("20"):
+            s_sliced = s[0:15]
+            return s_sliced
 

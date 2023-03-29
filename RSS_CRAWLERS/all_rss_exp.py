@@ -10,7 +10,7 @@ import numpy as np
 import pretty_errors
 import datetime
 import timeit
-from utils.handy import clean_link_rss, clean_other_rss, send_postgre, test_postgre
+from utils.handy import clean_link_rss, clean_other_rss, send_postgre, test_postgre, clean_pubdate
 
 #TODO: Modify datetime 
 
@@ -53,7 +53,6 @@ def all_rss():
     print("\n", "CRAWLER IS LOOKING FOR DESIRED ELEMENTS IN THE SOUP", "\n")
 
     def all_elements():
-        date_format = "%Y-%m-%d"
         rows = []
         total_pubdates = []
         total_titles = []
@@ -62,28 +61,41 @@ def all_rss():
         total_descriptions = []
         for soup in all_soups:
             for item in soup.find_all('item'):
-                #Get titles & append it to the list
-                title = str(item.title.get_text(strip=True))
-                total_titles.append(title)
-                #Get links & append it to the list
-                link = str(item.link.get_text(strip=True))
-                total_links.append(link)
-                #Get the pubdate of different tags
-                pubDate_tag = item.find('pubDate') or item.find('dc:date')
+                # Get titles & append it to the list
+                title_tag = item.find('title')
+                if title_tag is not None:
+                    title = title_tag.get_text(strip=True)
+                    total_titles.append(title)
+                else:
+                    total_titles.append('NaN')
+                # Get links & append it to the list
+                link_tag = item.find('link')
+                if link_tag is not None:
+                    link = link_tag.get_text(strip=True)
+                    total_links.append(link)
+                else:
+                    total_links.append('NaN')
+                # Get the pubdate of different tags
+                pubDate_tag = item.find('pubDate')
                 if pubDate_tag is not None:
                     pubDate_text = pubDate_tag.get_text(strip=True)
-                    pubDate_clean = re.sub(r',', '', pubDate_text)
-                    total_pubdates.append(pubDate_clean)
-                #Get the locations & append it to its list
-                location = item.find('location')
-                if location is not None:
-                    location = str(item.location.get_text(strip=True))
+                    total_pubdates.append(pubDate_text)
+                else:
+                    total_pubdates.append('NaN')
+                # Get the locations & append it to its list
+                location_tag = item.find('location')
+                if location_tag is not None:
+                    location = location_tag.get_text(strip=True)
                     total_locations.append(location)
-                #Get the descriptions & append it to its list
-                description = item.find('description')
-                if description is not None:
+                else:
+                    total_locations.append('NaN')
+                # Get the descriptions & append it to its list
+                description_tag = item.find('description')
+                if description_tag is not None:
                     description = str(item.description.get_text(strip=True))
                     total_descriptions.append(description)
+                else:
+                    total_descriptions.append('NaN')
                 rows = {'title':total_titles, 'link':total_links, 'pubdate': total_pubdates, 'location': total_locations, 'description': total_descriptions}
         return rows
     data = all_elements()
@@ -113,6 +125,12 @@ def all_rss():
 
     print("\n", "Jobs have been saved into local machine as a CSV.", "\n")
 
+    for col in df.columns:
+        if col == 'pubdate':
+            df[col] = df[col].apply(clean_pubdate)
+
+    directory = "./OUTPUTS/"
+    df.to_csv(f'{directory}test.csv', index=False)
 
     def pipeline(df):
         print("\n", "Jobs going through last pipeline...", "\n")
@@ -123,7 +141,8 @@ def all_rss():
         # convert the pubdate column to a datetime object
         for i in range(len(df.columns)):
             if df.columns[i] == 'pubdate':
-                df[df.columns[i]] = pd.to_datetime(df[df.columns[i]], errors="coerce", format="%a %d %b %Y", exact=False, infer_datetime_format=True)
+                df[df.columns[i]] = pd.to_datetime(df[df.columns[i]], errors="coerce", infer_datetime_format=True, exact=False)
+                #format="%a %d %b %Y"
         
         #%a %d %b %Y
         print("\n", "Jobs' pubdate converted into a datetime object", "\n")
@@ -157,5 +176,3 @@ def all_rss():
     
 if __name__ == "__main__":
     all_rss()
-
-"Tue 21 Feb 2023 083639 0000"
