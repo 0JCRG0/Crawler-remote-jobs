@@ -10,7 +10,7 @@ import numpy as np
 import pretty_errors
 import datetime
 import timeit
-from utils.handy import clean_link_rss, clean_other_rss, send_postgre, test_postgre, YMD_pubdate
+from utils.handy import clean_link_rss, clean_other_rss, send_postgre, test_postgre, YMD_pubdate, to_postgre
 
 
 def all_rss_YMD():
@@ -166,7 +166,7 @@ def all_rss_YMD():
 
         print("\n", f"Parsing {len(df)} filtered & preprocessed jobs to PostgreSQL...", "\n")
 
-        send_postgre(df)
+        to_postgre(df)
         
         #print the time
         elapsed_time = timeit.default_timer() - start_time

@@ -7,7 +7,7 @@ import pretty_errors
 import psycopg2
 import timeit
 from dateutil.relativedelta import relativedelta
-from utils.handy import clean_rows, initial_clean, test_postgre, send_postgre
+from utils.handy import clean_rows, initial_clean, test_postgre, send_postgre, to_postgre
 
 #TODO: FIX POSTGRESQL SO THE TRIGGER RUNS THE FUNCTIONS WHEN A TABLE STARTING WITH ® IS ADDED
 
@@ -21,7 +21,7 @@ def HIMALAYAS():
         driver = webdriver.Firefox()
 
         # set the number of pages you want to scrape
-        num_pages = 6
+        num_pages = 3
 
         # START CRAWLING
         def CRAWLING():
@@ -123,11 +123,13 @@ def HIMALAYAS():
         # SEND IT TO TO PostgreSQL
         print("\n", f"Fetching {len(df)} jobs to PostgreSQL...", "\n")
 
-        send_postgre(df)
+        to_postgre(df)
         
         #print the time
         elapsed_time = timeit.default_timer() - start_time
-        print("\n", f"All done! {len(df)} jobs were found, cleaned, reformatted, filtered and sent to PostgreSQL in: {elapsed_time:.2f} seconds", "\n")
+        print("\n")
+        print(f"All done! HIMALAYAS finished in: {elapsed_time:.2f} seconds.", "\n")
+
 
     PIPELINE()
 

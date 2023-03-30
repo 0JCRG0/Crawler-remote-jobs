@@ -10,9 +10,8 @@ import numpy as np
 import pretty_errors
 import datetime
 import timeit
-from utils.handy import clean_link_rss, clean_other_rss, send_postgre, test_postgre, adby_pubdate
+from utils.handy import clean_link_rss, clean_other_rss, send_postgre, test_postgre, adby_pubdate, to_postgre 
 
-#TODO: Modify datetime 
 
 def all_rss():
     #start timer
@@ -158,7 +157,7 @@ def all_rss():
         #sort the values
         df = df.sort_values(by='pubdate')
         # Reduce the lenght of description... 
-        df['description'] = df['description'].str.slice(0, 1000)
+        df['description'] = df['description'].str.slice(0, 2000)
 
         # replace NaT values in the DataFrame with None -> if not postgre raises an error
         df = df.replace({np.nan: None, pd.NaT: None})
@@ -167,11 +166,11 @@ def all_rss():
 
         print("\n", f"Parsing {len(df)} filtered & preprocessed jobs to PostgreSQL...", "\n")
 
-        send_postgre(df)
+        to_postgre(df)
         
         #print the time
         elapsed_time = timeit.default_timer() - start_time
-        print("\n", f"RSS-ABDY is done! {len(df)} jobs were found, cleaned, reformatted, filtered and sent to PostgreSQL in: {elapsed_time:.2f} seconds", "\n")
+        print("\n", f"RSS-ABDY is done! all in: {elapsed_time:.2f} seconds", "\n")
     pipeline(df)
     
 if __name__ == "__main__":
