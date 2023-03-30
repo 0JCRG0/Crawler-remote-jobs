@@ -10,7 +10,7 @@ import numpy as np
 import pretty_errors
 import datetime
 import timeit
-from utils.handy import clean_link_rss, clean_other_rss, send_postgre, test_postgre, YMD_pubdate, to_postgre
+from utils.handy import clean_link_rss, clean_other_rss, YMD_pubdate, to_postgre
 
 
 def all_rss_YMD():

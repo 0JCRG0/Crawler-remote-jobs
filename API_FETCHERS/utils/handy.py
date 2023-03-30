@@ -200,8 +200,6 @@ def to_postgre(df):
     cursor.execute(initial_count_query)
     initial_count_result = cursor.fetchone()
 
-    print("\n", "Inserting jobs into PostgreSQL using an upsert strategy...", "\n")
-
     # insert the DataFrame into the PostgreSQL database using an upsert strategy
     jobs_added = []
     for index, row in df.iterrows():
