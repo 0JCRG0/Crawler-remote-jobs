@@ -4,7 +4,7 @@ import pretty_errors
 import pandas as pd
 import psycopg2
 import timeit
-from utils.handy_f import test1_postgre, send_postgre
+from utils.handy import test1_postgre, send_postgre, to_postgre
 
 def W_NOMADS():
     #Start the timer
@@ -54,8 +54,8 @@ def W_NOMADS():
 
     ## PostgreSQL
 
-    send_postgre(df)
+    to_postgre(df)
 
     elapsed_time = timeit.default_timer() - start_time
-    print("\n", f"W_NOMADS is done! {len(df)} jobs were found, cleaned, reformatted, filtered and sent to PostgreSQL in: {elapsed_time:.2f} seconds", "\n")
+    print("\n", f"W_NOMADS is done! all in: {elapsed_time:.2f} seconds", "\n")
 W_NOMADS()
