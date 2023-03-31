@@ -1,5 +1,5 @@
 from APIs import w_nomads
-from RSS import rss_abdy, rss_ymd
+from rss import rss_abdy, rss_ymd
 from SELENIUM import himalayas
 import timeit
 

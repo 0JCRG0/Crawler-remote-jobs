@@ -275,5 +275,5 @@ def indeed():
 """
 
 if __name__ == "__main__":
-    #himalayas(1) #the 1st argument is the number of pages to scrap (needs to be int64)
+    himalayas(1) #the 1st argument is the number of pages to scrap (needs to be int64)
     indeed()
