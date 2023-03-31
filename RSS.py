@@ -10,15 +10,20 @@ import numpy as np
 import pretty_errors
 import datetime
 import timeit
-from utils.handy import clean_link_rss, clean_other_rss, YMD_pubdate, to_postgre, adby_pubdate
+from utils.handy import clean_link_rss, clean_other_rss, YMD_pubdate, to_postgre, adby_pubdate, test_postgre
 
 """
 rss_abdy crawls 31 sites whereas rss_ymd only crawls 3 sites. The difference is the
 pubdate format, which I cannot find a way to unify :(
+
+cut_off = one day prior the oldest job 
+
+E.g., If cut_off = '2023-03-20' then the oldest job will be from 2023-03-21
 """
 
-def rss_ymd():
+def rss_ymd(cut_off):
     #start timer
+
     start_time = timeit.default_timer()
 
     file = './RSS_RESOURCES/working-resources-YMD.csv'
@@ -131,7 +136,7 @@ def rss_ymd():
 
         #Filter rows by a date range (this reduces the number of rows... duh)
         start_date = pd.to_datetime('2016-01-01')
-        end_date = pd.to_datetime('2023-02-15')
+        end_date = pd.to_datetime(cut_off)
         date_range_filter = (df['pubdate'] >= start_date) & (df['pubdate'] <= end_date)
         df = df.loc[~date_range_filter]
 
@@ -153,7 +158,13 @@ def rss_ymd():
         print("\n", f"RSS_YMD is done! all in: {elapsed_time:.2f} seconds", "\n")
     pipeline(df)
 
-def rss_abdy():
+
+"""
+RSS_ABDY below
+"""
+
+
+def rss_abdy(cut_off):
     #start timer
     start_time = timeit.default_timer()
 
@@ -269,8 +280,9 @@ def rss_abdy():
                 #format="%a %d %b %Y"
 
         #Filter rows by a date range (this reduces the number of rows... duh)
+
         start_date = pd.to_datetime('2016-01-01')
-        end_date = pd.to_datetime('2023-02-15')
+        end_date = pd.to_datetime(cut_off)
         date_range_filter = (df['pubdate'] >= start_date) & (df['pubdate'] <= end_date)
         df = df.loc[~date_range_filter]
 
@@ -293,5 +305,5 @@ def rss_abdy():
     pipeline(df)
 
 if __name__ == "__main__":
-    rss_ymd()
-    rss_abdy()
+    rss_ymd('2023-03-20') #cut_off -> this means that the oldest job will be from 2023-03-21
+    rss_abdy('2023-03-20') #same as above
