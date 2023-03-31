@@ -21,7 +21,7 @@ def rss_ymd():
     #start timer
     start_time = timeit.default_timer()
 
-    file = './RSS_CRAWLERS/working-resources-YMD.csv'
+    file = './RSS_RESOURCES/working-resources-YMD.csv'
     
     #print("\n", f"Reading {file}... ", "\n")
     print("\n", "RSS_YMD starting now.")
@@ -157,7 +157,7 @@ def rss_abdy():
     #start timer
     start_time = timeit.default_timer()
 
-    file = './RSS_CRAWLERS/remote-working-resources.csv'
+    file = './RSS_RESOURCES/remote-working-resources.csv'
     
     print("\n", "RSS_ABDY starting now.")
 

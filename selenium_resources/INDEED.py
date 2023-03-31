@@ -43,7 +43,7 @@ def indeed():
 
         def country_url():
             url = ""
-            with open('./SELENIUM_CRAWLERS/INDEED_country.json') as f:
+            with open('./selenium_resources/indeed_country.json') as f:
                     data = json.load(f)
                     # Search for a specific code in the JSON document
                     for item in data:
@@ -122,7 +122,7 @@ def indeed():
             rows = {'titles': total_titles, 'links': total_urls, 'pubdate': total_pubdates, 'location': total_locations, 'description': total_descriptions}
         return rows
     
-    data = crawling("USA", "DATA ANALYST") #THIS IS YOUR SEARCH BOX - use "+" if more than 1 word
+    data = crawling("MX", "DATA") #THIS IS YOUR SEARCH BOX - use "+" if more than 1 word
 
     
     driver.close()
