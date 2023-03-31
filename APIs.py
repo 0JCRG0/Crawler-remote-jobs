@@ -2,11 +2,10 @@ import requests
 import json
 import pretty_errors
 import pandas as pd
-import psycopg2
 import timeit
-from utils.handy import to_postgre
+from utils.handy import to_postgre, YMD_pubdate, test_postgre, API_pubdate
 
-def w_nomads():
+def w_nomads(cut_off):
     print("\n", "W_NOMADS starting now.")
     #Start the timer
     start_time = timeit.default_timer()
@@ -45,8 +44,20 @@ def w_nomads():
     #to df
     df = pd.DataFrame(data)
 
+    #Converting pubdate into datetime object
+    for col in df.columns:
+        if col == 'pubdate':
+            df[col] = df[col].apply(API_pubdate)
+            df[col] = pd.to_datetime(df[col], errors="coerce", infer_datetime_format=True, exact=False)
+
     directory = "./OUTPUTS/"
-    df.to_csv(f"{directory}W_NOMADS.csv", index=False)
+    df.to_csv(f"{directory}test_w_nomads.csv", index=False)
+            
+    #Filter rows by a date range (this reduces the number of rows... duh)
+    start_date = pd.to_datetime('2016-01-01')
+    end_date = pd.to_datetime(cut_off)
+    date_range_filter = (df['pubdate'] >= start_date) & (df['pubdate'] <= end_date)
+    df = df.loc[~date_range_filter]
 
     ## PostgreSQL
     to_postgre(df)
@@ -55,4 +66,4 @@ def w_nomads():
     print("\n", f"W_NOMADS is done! all in: {elapsed_time:.2f} seconds", "\n")
 
 if __name__ == "__main__":
-    w_nomads()
+    w_nomads('2023-03-20') #1st argument is cut-off date

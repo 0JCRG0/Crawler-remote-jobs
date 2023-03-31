@@ -9,7 +9,7 @@ def MASTER():
     master_start_time = timeit.default_timer()
 
     #Start calling each crawler
-    w_nomads()
+    w_nomads(CUT_OFF) #1st argument is the date cut-off
     
     #Move onto the next one
     print("\n", "MOVING ON...","\n")

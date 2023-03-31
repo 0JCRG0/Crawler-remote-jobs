@@ -275,3 +275,8 @@ def YMD_pubdate(s):
     if s is not None:
         YMD_pub = s[0:8]
         return YMD_pub
+
+def API_pubdate(s):
+    if s is not None:
+        pubdate = s[0:10]
+        return pubdate
