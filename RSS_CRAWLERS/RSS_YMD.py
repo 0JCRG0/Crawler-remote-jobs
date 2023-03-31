@@ -13,7 +13,7 @@ import timeit
 from utils.handy import clean_link_rss, clean_other_rss, YMD_pubdate, to_postgre
 
 
-def all_rss_YMD():
+def rss_ymd():
     #start timer
     start_time = timeit.default_timer()
 
@@ -174,4 +174,4 @@ def all_rss_YMD():
     pipeline(df)
     
 if __name__ == "__main__":
-    all_rss_YMD()
+    rss_ymd()

@@ -4,16 +4,17 @@ import pretty_errors
 import pandas as pd
 import psycopg2
 import timeit
-from utils.handy import test1_postgre, send_postgre, to_postgre
+from utils.handy import to_postgre
 
-def W_NOMADS():
+def w_nomads():
+    print("\n", "W_NOMADS starting now.")
     #Start the timer
     start_time = timeit.default_timer()
 
-    def API_FETCHER():
+    def api_fetcher():
 
         api = "https://www.workingnomads.com/api/exposed_jobs/"
-        print("\n", f"Fetching...{api}", "\n")
+        #print("\n", f"Fetching...{api}", "\n")
         response = requests.get(api)
         if response.status_code == 200:
             data = json.loads(response.text)
@@ -39,23 +40,19 @@ def W_NOMADS():
         else:
             print("Error connecting to API:", response.status_code)
 
-    data = API_FETCHER()
+    data = api_fetcher()
 
     #to df
     df = pd.DataFrame(data)
-    print("\n", f"Successfully fetched {len(df)} jobs", "\n")
-
-    print("\n", "Saving jobs into local machine as a CSV...", "\n")
 
     directory = "./OUTPUTS/"
     df.to_csv(f"{directory}W_NOMADS.csv", index=False)
 
-    print("\n", f"Fetching {len(df)} cleaned jobs to PostgreSQL...", "\n")
-
     ## PostgreSQL
-
     to_postgre(df)
 
     elapsed_time = timeit.default_timer() - start_time
     print("\n", f"W_NOMADS is done! all in: {elapsed_time:.2f} seconds", "\n")
-W_NOMADS()
+
+if __name__ == "__main__":
+    w_nomads()

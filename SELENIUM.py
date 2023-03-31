@@ -7,11 +7,12 @@ import pretty_errors
 import psycopg2
 import timeit
 from dateutil.relativedelta import relativedelta
-from utils.handy import clean_rows, initial_clean, test_postgre, send_postgre, to_postgre
+from utils.handy import clean_rows, initial_clean, to_postgre
 
-#TODO: FIX POSTGRESQL SO THE TRIGGER RUNS THE FUNCTIONS WHEN A TABLE STARTING WITH ® IS ADDED
 
-def himalayas():
+def himalayas(pages):
+    print("\n", "HIMALAYAS starting now.", "\n")
+
     #start timer
     start_time = timeit.default_timer()
 
@@ -20,19 +21,15 @@ def himalayas():
         # Start the session
         driver = webdriver.Firefox()
 
-        # set the number of pages you want to scrape
-        num_pages = 3
-
         # START CRAWLING
         def elements():
-            print("\n", f"Crawler deployed... ", "\n")
             total_urls = []
             total_titles = []
             total_pubDates = []
             total_locations = [] 
             total_categories = []
             rows = []
-            for i in range(1, num_pages + 1):
+            for i in range(1, pages + 1):
                 url = f"https://himalayas.app/jobs?page={i}"
                 driver.get(url)
                 print(f"Crawling... {url}")
@@ -71,22 +68,17 @@ def himalayas():
         driver.quit()
         
         #The data had missing values so we have to do this to convert it into a pandas df
-        print("\n", "Converting data to a pandas df...", "\n")
         data_dic = dict(data)
         df = pd.DataFrame.from_dict(data_dic, orient='index')
         df = df.transpose()
-        print("\n", f"Crawler successfully found {len(df)} jobs...", "\n")
-
 
         #Save it in local machine
-        print("\n", "Saving jobs in local machine as a CSV file...", "\n")
         directory = "./OUTPUTS/"
         df.to_csv(f"{directory}himalaya.csv", index=False)
         return df
 
     def pipeline():
         df = crawler()
-        print("\n", "Processing of the df has started...", "\n")
 
         # Fill missing values with "NaN"
         df.fillna("NaN", inplace=True)
@@ -121,16 +113,13 @@ def himalayas():
         df = df.loc[~date_range_filter]
 
         # SEND IT TO TO PostgreSQL
-        print("\n", f"Fetching {len(df)} jobs to PostgreSQL...", "\n")
-
         to_postgre(df)
         
         #print the time
         elapsed_time = timeit.default_timer() - start_time
         print("\n")
-        print(f"All done! HIMALAYAS finished in: {elapsed_time:.2f} seconds.", "\n")
+        print(f"HIMALAYAS is done! all in: {elapsed_time:.2f} seconds.", "\n")
     pipeline()
 
-
 if __name__ == "__main__":
-    himalayas()
+    himalayas(1) #the 1st argument is the number of pages to scrap (needs to be int64)
