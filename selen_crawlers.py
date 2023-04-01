@@ -8,7 +8,7 @@ from dateutil.parser import parse
 from datetime import datetime, timedelta, date
 import json
 from dateutil.relativedelta import relativedelta
-from utils.handy import clean_rows, initial_clean, to_postgre, bye_regex, test_postgre, indeed_regex
+from utils.handy import clean_rows, initial_clean, to_postgre, bye_regex, test_postgre, indeed_regex, mx_postgre
 
 
 def himalayas(pages, cut_off):
@@ -129,6 +129,9 @@ INDEED IS BELOW...
 """
 
 def indeed(pages, country, keyword):
+    #welcome message
+    print("\n", f"Crawler deployed on Indeed {country}. Looking for \"{keyword}\" jobs in {pages} pages")
+
     #start timer
     start_time = timeit.default_timer()
 
@@ -137,7 +140,6 @@ def indeed(pages, country, keyword):
     
     # START CRAWLING
     def crawling():
-        print("\n", f"Crawler deployed... ", "\n")
         total_urls = []
         total_titles = []
         total_pubdates = []
@@ -145,7 +147,7 @@ def indeed(pages, country, keyword):
         total_descriptions = []
         rows = []
 
-        def country_url():
+        def country_url(i):
             url = ""
             with open('./selenium_resources/indeed_country.json') as f:
                     data = json.load(f)
@@ -153,15 +155,12 @@ def indeed(pages, country, keyword):
                     for item in data:
                         if item['code'] == country:  
                             url= item['url_1'] + keyword + item["url_2"] + str(i)
-                            print(url)
             return url
 
         for i in range(0, pages * 10, 10):
-            #url = f"https://mx.indeed.com/jobs?q={keyword}&sc=0kf%3Aattr%28DSQF7%29%3B&sort=date&fromage=7&filter=0&start={i}"
-            url = country_url()
+            url = country_url(i)
             #Make the request
             driver.get(url)
-            print(f"Crawling... {url}")
             #Set waiting strategy
             driver.implicitly_wait(1.5)
 
@@ -199,7 +198,6 @@ def indeed(pages, country, keyword):
     driver.close()
 
     #Convert data to a pandas df for further analysis
-    print("\n", "Converting data to a pandas df...", "\n")
     data_dic = dict(data)
     df = pd.DataFrame.from_dict(data_dic, orient='index')
     df = df.transpose()
@@ -210,18 +208,15 @@ def indeed(pages, country, keyword):
         if col == 'description':
             df[col] = df[col].apply(indeed_regex)
 
-    print(df)
-
-    print("\n", "Saving jobs in local machine...", "\n")
     directory = "./OUTPUTS/"
     df.to_csv(f'{directory}INDEED_MX.csv', index=False)
 
+    # SEND IT TO TO PostgreSQL
+    mx_postgre(df)
+
     #stop the timer
     elapsed_time = timeit.default_timer() - start_time
-    print("\n", f"Crawler successfully found {len(df)} jobs in {elapsed_time:.5f} seconds", "\n")
-
-    # SEND IT TO TO PostgreSQL
-    test_postgre(df)
+    print("\n", f"Crawler FINISHED finding \"{keyword}\" jobs. All in {elapsed_time:.5f} seconds!!!", "\n")
 
 if __name__ == "__main__":
     #himalayas(1, '2023-03-20') 
@@ -231,7 +226,7 @@ if __name__ == "__main__":
     2nd = cut-off date
     """
     
-    indeed(5, "MX", "PYTHON") 
+    indeed(1, "MX", "MACHINE+LEARNING") 
     
     """
     1st = number of pages
