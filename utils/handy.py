@@ -280,3 +280,14 @@ def API_pubdate(s):
     if s is not None:
         pubdate = s[0:10]
         return pubdate
+
+#Cleaning function indeed
+def indeed_regex(s):
+        pattern = r'<li>(.*?)<\/li>'
+        matches = re.findall(pattern, s, re.DOTALL)
+        if len(matches) > 0:
+            text = matches[0]
+            text = re.sub(r'<b>|<\/b>', '', text)
+            return text
+        else:
+            return ''

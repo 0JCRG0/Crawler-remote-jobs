@@ -5924,3 +5924,448 @@ WebDriver BiDi listening on ws://127.0.0.1:53682
 console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilelI6D0x/search.json.mozlz4", (void 0)))
 DevTools listening on ws://127.0.0.1:53682/devtools/browser/b4c01475-f04e-485c-8be6-dae98b96893d
 1680282380524	Marionette	INFO	Stopped listening on port 53691
+1680282883289	geckodriver	INFO	Listening on 127.0.0.1:53831
+1680282883796	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "53832" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileEl8xwu"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680282885411	Marionette	INFO	Marionette enabled
+1680282885742	Marionette	INFO	Listening on port 53842
+Read port: 53842
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:53832
+1680282886055	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileEl8xwu/search.json.mozlz4", (void 0)))
+Exiting due to channel error.
+Exiting due to channel error.
+1680282986503	geckodriver	INFO	Listening on 127.0.0.1:53862
+1680282987006	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "53863" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileGCTHq1"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680282987769	Marionette	INFO	Marionette enabled
+1680282988007	Marionette	INFO	Listening on port 53872
+Read port: 53872
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:53863
+1680282988509	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileGCTHq1/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:53863/devtools/browser/c2c89443-5ba8-4edf-9961-5a38dd8d1578
+1680282995802	Marionette	INFO	Stopped listening on port 53872
+1680282996863	geckodriver	INFO	Listening on 127.0.0.1:53912
+1680282997374	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "53913" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileNNcdqw"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680282998005	Marionette	INFO	Marionette enabled
+1680282998373	Marionette	INFO	Listening on port 53920
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 53920
+WebDriver BiDi listening on ws://127.0.0.1:53913
+1680282998552	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileNNcdqw/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:53913/devtools/browser/2a0bf85a-9c5c-4f7c-b3b9-d6d6101a0046
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1680283168237	geckodriver	INFO	Listening on 127.0.0.1:54082
+1680283168742	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "54083" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilegesdWH"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680283169890	Marionette	INFO	Marionette enabled
+1680283170322	Marionette	INFO	Listening on port 54092
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 54092
+WebDriver BiDi listening on ws://127.0.0.1:54083
+1680283170572	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilegesdWH/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:54083/devtools/browser/9e8380b9-8333-4d8d-b61e-e50e17c1ffa4
+1680283205466	Marionette	INFO	Stopped listening on port 54092
+1680283275557	geckodriver	INFO	Listening on 127.0.0.1:54198
+1680283276065	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "54199" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilekxVvQb"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680283277541	Marionette	INFO	Marionette enabled
+1680283278078	Marionette	INFO	Listening on port 54208
+Read port: 54208
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:54199
+1680283278388	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilekxVvQb/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:54199/devtools/browser/1af12d28-6a28-463d-8127-6e8f15db1edf
+1680283319995	Marionette	INFO	Stopped listening on port 54208
+1680305047620	geckodriver	INFO	Listening on 127.0.0.1:55063
+1680305048087	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "55064" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofile0vSH7s"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680305049963	Marionette	INFO	Marionette enabled
+1680305050494	Marionette	INFO	Listening on port 55073
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 55073
+WebDriver BiDi listening on ws://127.0.0.1:55064
+1680305050813	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofile0vSH7s/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:55064/devtools/browser/c6e549aa-ea31-4d29-9de1-709c27d5a187
+1680305092680	Marionette	INFO	Stopped listening on port 55073
+1680305415087	geckodriver	INFO	Listening on 127.0.0.1:55160
+1680305415601	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "55161" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofile8e2z4D"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680305416763	Marionette	INFO	Marionette enabled
+1680305417128	Marionette	INFO	Listening on port 55170
+Read port: 55170
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:55161
+1680305417386	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofile8e2z4D/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:55161/devtools/browser/4968bd1f-5712-42ad-880c-6a5a337064b2
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+console.error: (new TypeError("lazy.AsyncShutdown.profileBeforeChange is undefined", "resource://services-settings/Database.jsm", 603))
+1680305549104	geckodriver	INFO	Listening on 127.0.0.1:55524
+1680305549620	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "55525" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilej1J017"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680305551076	Marionette	INFO	Marionette enabled
+1680305551400	Marionette	INFO	Listening on port 55546
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 55546
+WebDriver BiDi listening on ws://127.0.0.1:55525
+1680305551677	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilej1J017/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:55525/devtools/browser/87007b5e-fc17-416b-9252-0f84e77d450d
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'DevToolsFrame'
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'DevToolsFrame'
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'DevToolsFrame'
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'DevToolsFrame'
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'DevToolsFrame'
+1680305589996	geckodriver	INFO	Listening on 127.0.0.1:55780
+1680305590505	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "55781" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileGf8cXA"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680305591492	Marionette	INFO	Marionette enabled
+1680305591784	Marionette	INFO	Listening on port 55798
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 55798
+WebDriver BiDi listening on ws://127.0.0.1:55781
+1680305592058	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileGf8cXA/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:55781/devtools/browser/1dfd2215-9518-4abf-b4e1-829cb44e4001
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+console.error: (new TypeError("lazy.AsyncShutdown.profileBeforeChange is undefined", "resource://services-settings/Database.jsm", 603))
+1680305639078	Marionette	INFO	Stopped listening on port 55798
+1680305786104	geckodriver	INFO	Listening on 127.0.0.1:56665
+1680305786619	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "56666" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileUHRX1I"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680305787774	Marionette	INFO	Marionette enabled
+1680305788213	Marionette	INFO	Listening on port 56687
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 56687
+WebDriver BiDi listening on ws://127.0.0.1:56666
+1680305788497	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileUHRX1I/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:56666/devtools/browser/c6b1c454-6e0b-4874-a106-0e45bdcc887a
+1680305808264	geckodriver	INFO	Listening on 127.0.0.1:56835
+1680305808774	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "56836" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileJA8Fcr"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680305810196	Marionette	INFO	Marionette enabled
+1680305810490	Marionette	INFO	Listening on port 56854
+Read port: 56854
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:56836
+1680305810769	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileJA8Fcr/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:56836/devtools/browser/d714f82c-8e8e-4644-b124-ecdb2e22413b
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+console.error: (new TypeError("lazy.AsyncShutdown.profileBeforeChange is undefined", "resource://services-settings/Database.jsm", 603))
+1680305857046	Marionette	INFO	Stopped listening on port 56854
+1680305985738	geckodriver	INFO	Listening on 127.0.0.1:57666
+1680305986247	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "57667" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileO4PwxS"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680305987784	Marionette	INFO	Marionette enabled
+1680305988272	Marionette	INFO	Listening on port 57692
+Read port: 57692
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:57667
+1680305988564	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileO4PwxS/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:57667/devtools/browser/1ff6ecf5-a573-4125-9c93-775c9eb162b7
+1680306029872	geckodriver	INFO	Listening on 127.0.0.1:57919
+1680306030383	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "57920" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilejTXtdS"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680306031631	Marionette	INFO	Marionette enabled
+1680306031888	Marionette	INFO	Listening on port 57941
+Read port: 57941
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:57920
+1680306032155	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilejTXtdS/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:57920/devtools/browser/7f63766e-2d73-4071-8f4a-c09303fe30f0
+1680306081434	Marionette	INFO	Stopped listening on port 57941
+1680306249547	geckodriver	INFO	Listening on 127.0.0.1:58908
+1680306250060	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "58909" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofile4INkcz"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680306251904	Marionette	INFO	Marionette enabled
+1680306252154	Marionette	INFO	Listening on port 58933
+Read port: 58933
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:58909
+1680306252577	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofile4INkcz/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:58909/devtools/browser/19e762d2-e430-4bd9-9b10-89f7404235f3
+1680306287512	geckodriver	INFO	Listening on 127.0.0.1:59136
+1680306288026	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "59137" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofile2QRADs"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680306288924	Marionette	INFO	Marionette enabled
+1680306289321	Marionette	INFO	Listening on port 59165
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 59165
+WebDriver BiDi listening on ws://127.0.0.1:59137
+1680306289577	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofile2QRADs/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:59137/devtools/browser/b1f5f555-6b39-4f3a-91fa-3aa419404160
+1680306336634	Marionette	INFO	Stopped listening on port 59165
+1680306473233	geckodriver	INFO	Listening on 127.0.0.1:60007
+1680306473746	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "60008" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofile2xW1dg"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680306475199	Marionette	INFO	Marionette enabled
+1680306476190	Marionette	INFO	Listening on port 60033
+Read port: 60033
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:60008
+1680306476528	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofile2xW1dg/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:60008/devtools/browser/b8b4c970-79bd-4e11-b139-daa2f6a8d9be
+1680306524900	Marionette	INFO	Stopped listening on port 60033
+1680306630922	geckodriver	INFO	Listening on 127.0.0.1:60735
+1680306631429	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "60736" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileSjHtxF"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680306633960	Marionette	INFO	Marionette enabled
+1680306634798	Marionette	INFO	Listening on port 60768
+Read port: 60768
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:60736
+1680306635084	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileSjHtxF/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:60736/devtools/browser/78d72fd2-a5a3-4bef-8ebd-9966a59dcf5c
+1680306682746	Marionette	INFO	Stopped listening on port 60768
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1680307680051	geckodriver	INFO	Listening on 127.0.0.1:64900
+1680307680562	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "64901" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileFkb6gj"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680307681898	Marionette	INFO	Marionette enabled
+1680307682523	Marionette	INFO	Listening on port 64927
+Read port: 64927
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:64901
+1680307682885	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileFkb6gj/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:64901/devtools/browser/9d796150-4cef-4a54-be73-532e7c3a35ca
+1680307703358	Marionette	INFO	Stopped listening on port 64927
+1680308345771	geckodriver	INFO	Listening on 127.0.0.1:51356
+1680308346277	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "51357" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilerUxS8g"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680308347517	Marionette	INFO	Marionette enabled
+1680308347926	Marionette	INFO	Listening on port 51379
+Read port: 51379
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:51357
+1680308348919	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilerUxS8g/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:51357/devtools/browser/37b32f72-5c0c-46a9-910e-35b974d6f2cc
+1680308363183	Marionette	INFO	Stopped listening on port 51379
+1680308443706	geckodriver	INFO	Listening on 127.0.0.1:51859
+1680308444218	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "51860" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilerJA2kA"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680308445760	Marionette	INFO	Marionette enabled
+1680308446262	Marionette	INFO	Listening on port 51881
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 51881
+WebDriver BiDi listening on ws://127.0.0.1:51860
+1680308446565	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilerJA2kA/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:51860/devtools/browser/794d7dbc-ce65-4390-ab4b-79357f8620d8
+1680308466664	Marionette	INFO	Stopped listening on port 51881
+1680308525202	geckodriver	INFO	Listening on 127.0.0.1:52271
+1680308525710	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "52272" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileMV9PqL"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680308527155	Marionette	INFO	Marionette enabled
+1680308527630	Marionette	INFO	Listening on port 52293
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 52293
+WebDriver BiDi listening on ws://127.0.0.1:52272
+1680308528004	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileMV9PqL/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:52272/devtools/browser/57937249-fe2a-41bf-b1d8-208ad9bcbeb6
+1680308548840	Marionette	INFO	Stopped listening on port 52293
+1680308648663	geckodriver	INFO	Listening on 127.0.0.1:52859
+1680308649170	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "52860" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileAFlK4c"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680308650429	Marionette	INFO	Marionette enabled
+1680308650892	Marionette	INFO	Listening on port 52881
+Read port: 52881
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:52860
+1680308651362	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileAFlK4c/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:52860/devtools/browser/25faf16e-6b6d-4542-9905-fd9b36ca7501
+1680308674177	Marionette	INFO	Stopped listening on port 52881
+1680308694377	geckodriver	INFO	Listening on 127.0.0.1:53135
+1680308694885	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "53136" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileAkqyNe"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680308696543	Marionette	INFO	Marionette enabled
+1680308696908	Marionette	INFO	Listening on port 53158
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 53158
+WebDriver BiDi listening on ws://127.0.0.1:53136
+1680308697205	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileAkqyNe/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:53136/devtools/browser/7da59506-3326-44b0-bc3d-31812d3f6a89
+1680308711816	Marionette	INFO	Stopped listening on port 53158
+1680313653856	geckodriver	INFO	Listening on 127.0.0.1:57046
+1680313654362	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "57047" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilePOQsTj"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680313656047	Marionette	INFO	Marionette enabled
+1680313656702	Marionette	INFO	Listening on port 57075
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 57075
+WebDriver BiDi listening on ws://127.0.0.1:57047
+1680313657055	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilePOQsTj/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:57047/devtools/browser/e38a8017-31ca-4a71-8665-4a7d2f5a2a77
+1680313678123	Marionette	INFO	Stopped listening on port 57075
+1680313770858	geckodriver	INFO	Listening on 127.0.0.1:57611
+1680313771375	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "57612" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileIIiPwG"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680313772578	Marionette	INFO	Marionette enabled
+1680313772871	Marionette	INFO	Listening on port 57633
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 57633
+WebDriver BiDi listening on ws://127.0.0.1:57612
+1680313773139	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileIIiPwG/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:57612/devtools/browser/0c2d1076-a0d6-467c-bdbe-71121c48dc57
+1680313791000	Marionette	INFO	Stopped listening on port 57633
+1680314104041	geckodriver	INFO	Listening on 127.0.0.1:59060
+1680314104552	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "59061" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileUieaic"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680314105511	Marionette	INFO	Marionette enabled
+1680314105810	Marionette	INFO	Listening on port 59082
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 59082
+WebDriver BiDi listening on ws://127.0.0.1:59061
+1680314106772	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileUieaic/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:59061/devtools/browser/affec4b4-e2db-4d3c-9026-ac690a930b5d
+1680314128943	Marionette	INFO	Stopped listening on port 59082
+1680314223366	geckodriver	INFO	Listening on 127.0.0.1:59632
+1680314223875	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "59633" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileh80Sn4"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680314225508	Marionette	INFO	Marionette enabled
+1680314226145	Marionette	INFO	Listening on port 59654
+Read port: 59654
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:59633
+1680314226481	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileh80Sn4/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:59633/devtools/browser/219545a0-cc08-48d2-b319-a6d7ffe1f047
+1680314248922	Marionette	INFO	Stopped listening on port 59654
+1680314326592	geckodriver	INFO	Listening on 127.0.0.1:60145
+1680314327101	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "60146" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilexyo3lH"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680314328283	Marionette	INFO	Marionette enabled
+1680314328597	Marionette	INFO	Listening on port 60163
+Read port: 60163
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:60146
+1680314328884	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofilexyo3lH/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:60146/devtools/browser/11862899-25e1-4d0b-a117-92a08d18cb10
+1680314360800	Marionette	INFO	Stopped listening on port 60163
+1680315491018	geckodriver	INFO	Listening on 127.0.0.1:65210
+1680315491523	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "65211" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileNImWEr"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680315493220	Marionette	INFO	Marionette enabled
+1680315493817	Marionette	INFO	Listening on port 65237
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 65237
+WebDriver BiDi listening on ws://127.0.0.1:65211
+1680315494177	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileNImWEr/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:65211/devtools/browser/728dafe3-2767-402a-96f8-f4dc8b8552e2
+1680315512326	Marionette	INFO	Stopped listening on port 65237
+1680315538338	geckodriver	INFO	Listening on 127.0.0.1:65489
+1680315538845	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "65490" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileJEcoOj"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680315540230	Marionette	INFO	Marionette enabled
+1680315540780	Marionette	INFO	Listening on port 65511
+Read port: 65511
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:65490
+1680315541096	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileJEcoOj/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:65490/devtools/browser/1dccd91a-1646-4496-ae1f-173d0b59745f
+1680315558116	Marionette	INFO	Stopped listening on port 65511
+1680315637419	geckodriver	INFO	Listening on 127.0.0.1:49595
+1680315637927	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "49596" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileU66Zwr"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1680315639140	Marionette	INFO	Marionette enabled
+1680315639575	Marionette	INFO	Listening on port 49618
+Read port: 49618
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:49596
+1680315639862	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/3x/_059946j4lvcjpvshx_dj5f40000gn/T/rust_mozprofileU66Zwr/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:49596/devtools/browser/e96475b8-b967-4639-91bf-d262b41f13d7
+1680315657045	Marionette	INFO	Stopped listening on port 49618

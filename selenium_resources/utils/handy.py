@@ -18,6 +18,8 @@ def initial_clean(s):
 
     # Handy cleansing function
 def bye_regex(s):
+    if not isinstance(s, str):
+        return s
     # Remove leading/trailing white space
     s = s.strip()
         # Replace multiple spaces with a single space
@@ -27,9 +29,9 @@ def bye_regex(s):
         # Replace regex for í
     s = re.sub(r'√≠', 'í', s)
         # Replace word
-    s = re.sub(r'Posted', '', s)
+    #s = re.sub(r'Posted', '', s)
         # Remove HTML tags
-    s = re.sub(r'<.*?>', '', s)
+    #s = re.sub(r'<.*?>', '', s)
 
 def send_postgre(df):
         # create a connection to the PostgreSQL database
@@ -224,3 +226,13 @@ def to_postgre(df):
     # close the cursor and connection
     cursor.close()
     cnx.close()
+
+def this(s):
+    pattern = r'<li>(.*?)<\/li>'
+    matches = re.findall(pattern, s, re.DOTALL)
+    if len(matches) > 0:
+        text = matches[0]
+        text = re.sub(r'<b>|<\/b>', '', text)
+        return text
+    else:
+        return ''
