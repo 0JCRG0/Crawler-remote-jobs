@@ -19,7 +19,7 @@ def MASTER():
     COUNTRY = "MX"
     
     # start master timer
-    master_start_time = timeit.default_timer()
+    start_time = timeit.default_timer()
 
     #loop to get the jobs 
     for KEYWORD in KEYWORDS_LIST:
@@ -28,8 +28,9 @@ def MASTER():
     
 
     #print the time
-    elapsed_time = timeit.default_timer() - master_start_time / 60
-    print("\n", f"DONE! mx.indeed's crawler finished in: {elapsed_time:.1f} minutes, not bad", "\n")
+    end_time = timeit.default_timer()
+    elapsed_time_minutes = (end_time - start_time) / 60
+    print("\n", f"DONE! mx.indeed's crawler finished in: {elapsed_time_minutes:.1f} minutes, not bad", "\n")
 
 if __name__ == "__main__":
     MASTER()
