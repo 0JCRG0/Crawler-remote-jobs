@@ -15,10 +15,10 @@ import psycopg2
 import numpy as np
 from dateutil.relativedelta import relativedelta
 from dateutil.parser import parse
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 import json
 import timeit
-from utils.handy import bye_regex
+from utils.handy import bye_regex, indeed_regex
 
 
 def indeed():
@@ -93,7 +93,7 @@ def indeed():
                 description_element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '#jobsearch-ViewjobPaneWrapper #jobDescriptionText')))
                 #Get the text
                 dirty_description = description_element.get_attribute("innerHTML")
-                description = bye_regex(dirty_description)
+                description = indeed_regex(dirty_description)
                 total_descriptions.append(description)
                 # Pause for a random amount of time between 1 and 3 seconds to avoid CAPTCHA :P
                 delay = random.uniform(0, 3)
@@ -105,21 +105,20 @@ def indeed():
             titles = driver.find_elements(By.CSS_SELECTOR, '[id^="jobTitle"]')
             links = driver.find_elements(By.CSS_SELECTOR, '[id^="job_"]') #THIS FINDS THE PATTERN
             #I had to find this pattern bcos if not it would only yield the word "Posted"
-            pubdates = driver.find_elements(By.XPATH, "//*[contains(text(), 'Publicado hace')]")
+            #pubdates = driver.find_elements(By.XPATH, "//*[contains(text(), 'Publicado hace')]")
             locations = driver.find_elements(By.CSS_SELECTOR, '.companyLocation')
             #Get the attributes
-            for t in titles:
-                title = t.get_attribute("innerHTML")
+            for i in titles:
+                title = i.get_attribute("innerHTML")
                 total_titles.append(title)
-            for li in links:
-                href = li.get_attribute("href")
+            for i in links:
+                href = i.get_attribute("href")
                 total_urls.append(href)
-            for p in pubdates:
-                dirty_pubdate = p.text
-                pubdate = bye_regex(dirty_pubdate)
-                total_pubdates.append(pubdate)
-            for l in locations:
-                location = l.text
+            for i in range(len(titles)):
+                today = date.today()
+                total_pubdates.append(today)
+            for i in locations:
+                location = i.text
                 total_locations.append(location)
             #Put it all together...
             rows = {'titles': total_titles, 'links': total_urls, 'pubdate': total_pubdates, 'location': total_locations, 'description': total_descriptions}
@@ -141,7 +140,7 @@ def indeed():
 
     print("\n", "Saving jobs in local machine...", "\n")
     directory = "./OUTPUTS/"
-    df.to_csv(f'{directory}INDEED_MX.csv', index=False)
+    df.to_csv(f'{directory}indeed_scroll.csv', index=False)
 
 #stop the timer
     elapsed_time = timeit.default_timer() - start_time
@@ -151,23 +150,4 @@ def indeed():
 if __name__ == "__main__":
     indeed()
 
-
-#TODO: (FIX DATETIME see below)
-
-"""
-        def fix_datetime(x):
-                # get today's datetime
-                today = datetime.now()
-
-                # example string
-                str_date = pubdate
-
-                # extract the number of days from the string
-                num_days = int(str_date.split()[2])
-
-                # calculate yesterday's datetime
-                pubdate_good = today - timedelta(days=num_days)
-
-                # example if statement
-                return pubdate_good
-"""
+    

@@ -227,12 +227,12 @@ def to_postgre(df):
     cursor.close()
     cnx.close()
 
-def this(s):
-    pattern = r'<li>(.*?)<\/li>'
-    matches = re.findall(pattern, s, re.DOTALL)
-    if len(matches) > 0:
-        text = matches[0]
-        text = re.sub(r'<b>|<\/b>', '', text)
-        return text
-    else:
-        return ''
+def indeed_regex(s):
+        pattern = r'<li>(.*?)<\/li>'
+        matches = re.findall(pattern, s, re.DOTALL)
+        if len(matches) > 0:
+            text = matches[0]
+            text = re.sub(r'<b>|<\/b>', '', text)
+            return text
+        else:
+            return ''
