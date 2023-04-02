@@ -26,7 +26,7 @@ def rss_ymd(cut_off):
 
     start_time = timeit.default_timer()
 
-    file = './RSS_RESOURCES/working-resources-YMD.csv'
+    file = './rss_resources/working-resources-YMD.csv'
     
     #print("\n", f"Reading {file}... ", "\n")
     print("\n", "RSS_YMD starting now.")
@@ -168,7 +168,7 @@ def rss_abdy(cut_off):
     #start timer
     start_time = timeit.default_timer()
 
-    file = './RSS_RESOURCES/remote-working-resources.csv'
+    file = './rss_resources/remote-working-resources.csv'
     
     print("\n", "RSS_ABDY starting now.")
 
@@ -315,7 +315,7 @@ def rss_freelance(cut_off):
 
     start_time = timeit.default_timer()
 
-    file = './RSS_RESOURCES/freelance.csv'
+    file = './rss_resources/freelance.csv'
     
     #print("\n", f"Reading {file}... ", "\n")
     print("\n", "RSS_YMD starting now.")
