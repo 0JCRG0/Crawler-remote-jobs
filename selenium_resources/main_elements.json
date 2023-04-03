@@ -1,10 +1,30 @@
-{
-    "url": "John",
-    "age": 30,
-    "address": {
-        "street": "123 Main St",
-        "city": "Anytown",
-        "state": "CA",
-        "zip": "12345"
+[
+    {
+        "urls": [
+            {
+                "url": "https://himalayas.app/jobs?page=",
+                "elements_path": [
+                        {
+                        "jobs_path": "#card-group [name='card']",
+                        "title_path": ".flex.flex-row.items-start.justify-between.mb-2.w-full .flex.flex-row.items-center a .text-xl.font-medium.text-gray-900",
+                        "link_path": ".flex.flex-row.items-start.justify-between.mb-2.w-full .flex.flex-row.items-center a",
+                        "description_path": " .flex.flex-row.items-center.justify-between .flex.flex-row.items-center.flex-wrap.overflow-hidden .flex div .flex.flex-row.items-center .badge-text.text-center.whitespace-nowrap",
+                        "location_path": ".flex.flex-row.items-center.justify-between .flex.flex-row.items-center.flex-wrap.overflow-hidden .badge.badge-gray.no-hover.mr-2 .flex.flex-row.items-center .badge-text.whitespace-nowrap.no-hover.text-center"
+                    }
+                ]
+            },
+            {
+                "url": "https://jooble.org/SearchResult?date=8&loc=2&rgns=Remote&p=",
+                "elements_path": [
+                    {
+                        "jobs_path": ".FxQpvm.yKsady",
+                        "title_path": ".jkit__ojhiH.jkit__a66IR.hyperlink_appearance_undefined.jkit__osRmE._2dWEc6",
+                        "link_path": ".jkit__ojhiH.jkit__a66IR.hyperlink_appearance_undefined.jkit__osRmE._2dWEc6",
+                        "description_path": "._9jGwm1",
+                        "location_path": "._3WwyPu [data-name='worldwide']"
+                    }
+                ]
+            }
+        ]
     }
-}
+]
