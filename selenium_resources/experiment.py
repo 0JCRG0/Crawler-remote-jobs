@@ -8,7 +8,8 @@ from dateutil.parser import parse
 from datetime import datetime, timedelta, date
 import json
 from dateutil.relativedelta import relativedelta
-from utils.handy import clean_rows, initial_clean, to_postgre, bye_regex, test_postgre, indeed_regex, mx_postgre
+from utils.handy import clean_rows, initial_clean, to_postgre
+
 
 
 def himalayas(pages, cut_off):
@@ -18,7 +19,6 @@ def himalayas(pages, cut_off):
     start_time = timeit.default_timer()
 
     def crawler():
-
         #Modify the options so it is headless - to disable just comment the next 2 lines and use the commented driver
         options = webdriver.FirefoxOptions()
         options.add_argument('-headless')
@@ -127,120 +127,5 @@ def himalayas(pages, cut_off):
         print(f"HIMALAYAS is done! all in: {elapsed_time:.2f} seconds.", "\n")
     pipeline()
 
-"""
-
-INDEED IS BELOW...
-
-"""
-
-def indeed(pages, country, keyword):
-    #welcome message
-    print("\n", f"Crawler deployed on Indeed {country}. Looking for \"{keyword}\" jobs in {pages} pages")
-
-    #start timer
-    start_time = timeit.default_timer()
-
-    #Modify the options so it is headless - to disable just comment the next 2 lines and use the commented driver
-    options = webdriver.FirefoxOptions()
-    options.add_argument('-headless')
-        
-    # Start the session
-    #driver = webdriver.Firefox()
-    driver = webdriver.Firefox(options=options)
-    
-    # START CRAWLING
-    def crawling():
-        total_urls = []
-        total_titles = []
-        total_pubdates = []
-        total_locations = [] 
-        total_descriptions = []
-        rows = []
-
-        def country_url(i):
-            url = ""
-            with open('./selenium_resources/indeed_country.json') as f:
-                    data = json.load(f)
-                    # Search for a specific code in the JSON document
-                    for item in data:
-                        if item['code'] == country:  
-                            url= item['url_1'] + keyword + item["url_2"] + str(i)
-            return url
-
-        for i in range(0, pages * 10, 10):
-            url = country_url(i)
-            #Make the request
-            driver.get(url)
-            #Set waiting strategy
-            driver.implicitly_wait(1.5)
-
-            #These two lines find a pattern of a given id
-            titles = driver.find_elements(By.CSS_SELECTOR, '[id^="jobTitle"]')
-            links = driver.find_elements(By.CSS_SELECTOR, '[id^="job_"]') #THIS FINDS THE PATTERN
-            locations = driver.find_elements(By.CSS_SELECTOR, '.companyLocation')
-            descriptions = driver.find_elements(By.CSS_SELECTOR, '#mosaic-provider-jobcards .jobCardShelfContainer.big6_visualChanges .heading6.tapItem-gutter.result-footer')
-            #Get the attributes
-            for i in titles:
-                title = i.get_attribute("innerHTML")
-                total_titles.append(title)
-            for i in links:
-                href = i.get_attribute("href")
-                total_urls.append(href)
-            for i in range(len(titles)):
-                today = date.today()
-                #dirty_pubdate = i.text
-                #pubdate = bye_regex(dirty_pubdate)
-                total_pubdates.append(today)
-            for i in locations:
-                location = i.text
-                total_locations.append(location)
-            for i in descriptions:
-                description = i.get_attribute("innerHTML")
-                #description = bye_regex(dirty_description)
-                total_descriptions.append(description)
-            #Put it all together...
-            rows = {'title': total_titles, 'link': total_urls, 'pubdate': total_pubdates, 'location': total_locations, 'description': total_descriptions}
-        return rows
-    
-    data = crawling()
-
-    
-    driver.close()
-
-    #Convert data to a pandas df for further analysis
-    data_dic = dict(data)
-    df = pd.DataFrame.from_dict(data_dic, orient='index')
-    df = df.transpose()
-    pd.set_option('display.max_colwidth', 150)
-    pd.set_option("display.max_rows", None)
-
-    for col in df.columns:
-        if col == 'description':
-            df[col] = df[col].apply(indeed_regex)
-
-    directory = "./OUTPUTS/"
-    df.to_csv(f'{directory}INDEED_MX.csv', index=False)
-
-    # SEND IT TO TO PostgreSQL
-    mx_postgre(df)
-
-    #stop the timer
-    elapsed_time = timeit.default_timer() - start_time
-    print("\n", f"Crawler FINISHED finding \"{keyword}\" jobs. All in {elapsed_time:.5f} seconds!!!", "\n")
-
 if __name__ == "__main__":
-    #himalayas(1, '2023-03-20') 
-    
-    """
-    1st = number of pages to scrap (needs to be int64)
-    2nd = cut-off date
-    """
-    
-    indeed(1, "MX", "MACHINE+LEARNING") 
-    
-    """
-    1st = number of pages
-    2nd = country code from json
-    3rd = keyword(s) -if more than 1 use +
-    
-    """
+    himalayas(1, '2023-03-20') 
