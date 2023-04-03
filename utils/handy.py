@@ -5,6 +5,7 @@ import psycopg2
 def clean_rows(s):
     if not isinstance(s, str):
         return s
+    s = re.sub(r'n/', '', s)
     s = re.sub(r'"', '', s)
     s = re.sub(r'{', '', s)
     s = re.sub(r'}', '', s)
