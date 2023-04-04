@@ -13,6 +13,22 @@ def clean_rows(s):
     s = re.sub(r"'", '', s)
     return s
 
+
+def cleansing_selenium_crawlers(s):
+    if not isinstance(s, str):
+        print(f"{s} is not a string! Returning unmodified")
+        return s
+    s = " ".join(s.split())
+    s = re.sub(r'<[^>]+>', '', s)
+    s = re.sub(r'n/', '', s)
+    s = re.sub(r'"', '', s)
+    s = re.sub(r'{', '', s)
+    s = re.sub(r'}', '', s)
+    s = re.sub(r'[\[\]]', '', s)
+    s = re.sub(r"'", '', s)
+    return s
+
+
 def initial_clean(s):
     s = " ".join(s.split())
     s = re.sub(r'n/', '', s)
@@ -312,6 +328,87 @@ def to_postgre(df):
     # close the cursor and connection
     cursor.close()
     cnx.close()
+
+def freelance_postgre(df):
+    # create a connection to the PostgreSQL database
+    cnx = psycopg2.connect(user='postgres', password='3312', host='localhost', port='5432', database='postgres')
+
+    # create a cursor object
+    cursor = cnx.cursor()
+
+    # prepare the SQL query to create a new table
+    create_table_query = '''
+        CREATE TABLE IF NOT EXISTS freelance (
+            title VARCHAR(255) PRIMARY KEY,
+            link VARCHAR(255),
+            description VARCHAR(2000),
+            pubdate TIMESTAMP,
+            location VARCHAR(255)
+        )
+    '''
+
+    # execute the create table query
+    cursor.execute(create_table_query)
+
+    # execute the initial count query and retrieve the result
+    initial_count_query = '''
+        SELECT COUNT(*) FROM freelance
+    '''
+    cursor.execute(initial_count_query)
+    initial_count_result = cursor.fetchone()
+
+    # insert the DataFrame into the PostgreSQL database using an upsert strategy
+    jobs_added = []
+    for index, row in df.iterrows():
+        insert_query = '''
+            INSERT INTO freelance (title, link, description, pubdate, location)
+            VALUES (%s, %s, %s, %s, %s)
+            ON CONFLICT (title) DO UPDATE SET
+                link = excluded.link,
+                description = excluded.description,
+                pubdate = excluded.pubdate,
+                location = excluded.location
+            RETURNING *
+        '''
+        values = (row['title'], row['link'], row['description'], row['pubdate'], row['location'])
+        cursor.execute(insert_query, values)
+        if cursor.rowcount > 0:
+            jobs_added.append(cursor.fetchone())
+
+    final_count_query = '''
+        SELECT COUNT(*) FROM freelance
+    '''
+    # execute the count query and retrieve the result
+    cursor.execute(final_count_query)
+    final_count_result = cursor.fetchone()
+
+    # calculate the number of unique jobs that were added
+    if initial_count_result is not None:
+        initial_count = initial_count_result[0]
+    else:
+        initial_count = 0
+    jobs_added_count = len(jobs_added)
+    if final_count_result is not None:
+        final_count = final_count_result[0]
+    else:
+        final_count = 0
+    unique_jobs = final_count - initial_count
+
+    # check if the result set is not empty
+    print("\n")
+    print("FREELANCE TABLE REPORT:", "\n")
+    print(f"Total count of jobs before crawling: {initial_count}")
+    print(f"Total number of jobs obtained by crawling: {jobs_added_count}")
+    print(f"Total number of unique jobs added: {unique_jobs}")
+    print(f"Current total count of jobs in PostgreSQL: {final_count}")
+
+    # commit the changes to the database
+    cnx.commit()
+
+    # close the cursor and connection
+    cursor.close()
+    cnx.close()
+
 
 #FUNCTIONS FOR FORMATTING PUBDATES IN RSS
 def adby_pubdate(s):

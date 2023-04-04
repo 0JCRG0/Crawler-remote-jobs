@@ -5,15 +5,13 @@ import re
 import pretty_errors
 import timeit
 from dateutil.parser import parse
-from datetime import datetime, timedelta, date
+from datetime import date
 import json
-from dateutil.relativedelta import relativedelta
-from utils.handy import clean_rows, initial_clean, to_postgre, test_postgre
+from utils.handy import cleansing_selenium_crawlers, to_postgre, test_postgre, freelance_postgre
 
 
 
-def selenium_crawlers():
-    print("\n", "All selenium crawlers have been deployed", "\n")
+def selenium_crawlers(TYPE):
 
     #start timer
     start_time = timeit.default_timer()
@@ -26,6 +24,22 @@ def selenium_crawlers():
     #driver = webdriver.Firefox()
     driver = webdriver.Firefox(options=options)
 
+    """
+    The following is specifying which JSON to load & to which table it will be sent
+    """
+
+    if TYPE == 'MAIN':
+        JSON = './selenium_resources/main_sel_crawlers.json'
+        POSTGRESQL = to_postgre
+        print("\n", f"Reading {JSON}. Jobs will be sent to PostgreSQL's master_jobs table", "\n")
+    elif TYPE == 'FREELANCE':
+        JSON = './selenium_resources/freelance.json'
+        POSTGRESQL = freelance_postgre
+        print("\n", f"Reading {JSON}. Jobs will be sent to PostgreSQL's freelance table", "\n")
+    else:
+        print("\n", "Incorrect argument! Use either 'MAIN' or 'FREELANCE' to run this script.", "\n")
+
+
     def elements():
         total_links = []
         total_titles = []
@@ -33,7 +47,8 @@ def selenium_crawlers():
         total_locations = [] 
         total_descriptions = []
         rows = []
-        with open('./selenium_resources/main_elements.json') as f:
+
+        with open(JSON) as f:
             #load the json
             data = json.load(f)
             # Access the 'urls' list in the first dictionary of the 'data' list and assign it to the variable 'urls'
@@ -131,28 +146,28 @@ def selenium_crawlers():
         df = df.drop_duplicates()
 
         # Convert str to datetime & clean titles
-        #TODO: Instead of != go thru every column
+        #TODO: Solve SettingWithCopyWarning
+        
         for col in df.columns:
             if col != 'pubdate':
-                #df[col] = df[col].astype(str)
-                #df[col] = df[col].apply(clean_rows)
-                df.loc[:, (col)] = df[col].astype(str).apply(clean_rows)
-
+                df.loc[:, col] = df.loc[:, col].astype(str).apply(cleansing_selenium_crawlers)
+        
+        #df.loc[:, df.columns != 'pubdate'] = df.loc[:, df.columns != 'pubdate'].astype(str).apply(cleansing_selenium_crawlers)
 
         #Save it in local machine
         directory = "./OUTPUTS/"
         df.to_csv(f"{directory}post-pipeline-Sel_All.csv", index=False)
 
 
-        # SEND IT TO TO PostgreSQL
-        ## Remember this function is different
-        test_postgre(df)
+        # SEND IT TO TO PostgreSQL 
         
+        POSTGRESQL(df)
+
         #print the time
         elapsed_time = timeit.default_timer() - start_time
         print("\n")
-        print(f"All selenium crawlers finished! all in: {elapsed_time:.2f} seconds.", "\n")
+        print(f"The selected selenium crawlers have finished! all in: {elapsed_time:.2f} seconds.", "\n")
     pipeline(df)
 
 if __name__ == "__main__":
-    selenium_crawlers() 
+    selenium_crawlers('FREELANCE') 

@@ -1,6 +1,6 @@
 from api_fetchers import w_nomads
 from rss import rss_abdy, rss_ymd
-from selen_crawlers import himalayas
+from selenium_template import selenium_crawlers
 import timeit
 
 def MASTER():
@@ -24,7 +24,7 @@ def MASTER():
     #Move onto the next one
     print("\n", "MOVING ON...","\n")
 
-    himalayas(2, CUT_OFF) #1st argument is pages to scrap. 2nd is the cut_off date
+    selenium_crawlers('MAIN') #Either 'MAIN' or FREELANCE
 
     #print the time
     elapsed_time = timeit.default_timer() - master_start_time

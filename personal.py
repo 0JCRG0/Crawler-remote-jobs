@@ -1,4 +1,4 @@
-from selen_crawlers import indeed
+from other_selenium import indeed
 import timeit
 
 def MASTER():
