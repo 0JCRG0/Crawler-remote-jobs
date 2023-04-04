@@ -449,5 +449,5 @@ def rss_freelance(cut_off):
 
 if __name__ == "__main__":
     #rss_ymd('2023-03-20') #cut_off -> this means that the oldest job will be from 2023-03-21
-    #rss_abdy('2023-03-20') #same as above
-    rss_freelance('2023-03-20')
+    rss_abdy('2023-03-29') #same as above
+    #rss_freelance('2023-03-20')

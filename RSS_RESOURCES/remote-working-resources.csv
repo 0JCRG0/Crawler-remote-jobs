@@ -66,9 +66,9 @@ Remote Backend Jobs,https://remotebackendjobs.com,,https://twitter.com/remotebac
 Remote Frontend Jobs,https://remotefrontendjobs.com,,https://twitter.com/remotefrontends
 Remote OK,https://remoteok.io/remote-companies,,USING OTHER CRAWLER 
 Remote.co,https://remote.co/remote-jobs/,https://remote.co/feed/?post_type=job_listing,
-Remotesome,https://remotesome.com,,Look for rss
-Remotetify Jobs,https://remotetify.com/jobs,,The best curated remote jobs for those looking to start a telecommuting career
-Remotive,https://remotive.io/find-a-job,,
+Remotesome,https://remotesome.com,,CRAWLED USING SELENIUM
+Remotetify Jobs,https://remotetify.com/jobs,,LIMITED - LESS THAN 10 JOBS
+Remotive,https://remotive.io/find-a-job,https://remotive.com/remote-jobs/feed,
 Ruby Now,https://jobs.rubynow.com,,No RSS feed
 Rust Remote Jobs,https://rustjob.xyz/remote/jobs,,
 SkipeTheDrive,https://www.skipthedrive.com/,,No RSS feed but there is an email subscription available
@@ -92,3 +92,4 @@ Working Nomads,https://www.workingnomads.co/jobs,,The feed is a JSON feed
 Working Not Working,https://workingnotworking.com/unjobboard,,
 ZipRecruiter,https://www.ziprecruiter.com/candidate/search?search=Remote+Work&location=,,No RSS feed but you can create an account and receive notifications
 freelancermap,https://www.freelancermap.com/it-projects.html,,RSS DOES NOT WORK
+Remotely,,https://tryremotely.com/feeds/remote-jobs.rss,

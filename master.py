@@ -4,7 +4,7 @@ from selen_crawlers import himalayas
 import timeit
 
 def MASTER():
-    CUT_OFF = '2023-03-19'
+    CUT_OFF = '2023-03-29'
     # start master timer
     master_start_time = timeit.default_timer()
 
@@ -24,7 +24,7 @@ def MASTER():
     #Move onto the next one
     print("\n", "MOVING ON...","\n")
 
-    himalayas(7, CUT_OFF) #1st argument is pages to scrap. 2nd is the cut_off date
+    himalayas(2, CUT_OFF) #1st argument is pages to scrap. 2nd is the cut_off date
 
     #print the time
     elapsed_time = timeit.default_timer() - master_start_time

@@ -30,6 +30,21 @@
                         "location_path": "._2ySRhD ._3WwyPu"
                     }
                 ]
+            },
+            {
+                "name": "REMOTESOME",
+                "url": "https://app.remotesome.com/jobs/?page=",
+                "pages_to_crawl": 1,
+                "start_point": 1,
+                "elements_path": [
+                    {
+                        "jobs_path": ".col-8\\:md article",
+                        "title_path": ".u-pl16 h4",
+                        "link_path": "a",
+                        "description_path": ".u-flex.u-pt8.u-flex--middle",
+                        "location_path": ".u-flex.u-relative"
+                    }
+                ]
             }
         ]
     }
