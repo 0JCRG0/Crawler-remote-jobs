@@ -10,7 +10,7 @@ import numpy as np
 import pretty_errors
 import datetime
 import timeit
-from utils.handy import clean_link_rss, clean_other_rss, YMD_pubdate, to_postgre, adby_pubdate, test_postgre
+from utils.handy import clean_link_rss, clean_other_rss, YMD_pubdate, to_postgre, adby_pubdate, test_postgre, freelance_postgre
 
 """
 rss_abdy crawls 31 sites whereas rss_ymd only crawls 3 sites. The difference is the
@@ -318,7 +318,7 @@ def rss_freelance(cut_off):
     file = './rss_resources/freelance.csv'
     
     #print("\n", f"Reading {file}... ", "\n")
-    print("\n", "RSS_YMD starting now.")
+    print("\n", "RSS_FREELANCE starting now.")
 
     def soups():
         soup_list = []
@@ -440,11 +440,11 @@ def rss_freelance(cut_off):
         df = df.replace({np.nan: None, pd.NaT: None})
 
         ## PostgreSQL
-        test_postgre(df)
+        freelance_postgre(df)
         
         #print the time
         elapsed_time = timeit.default_timer() - start_time
-        print("\n", f"RSS_YMD is done! all in: {elapsed_time:.2f} seconds", "\n")
+        print("\n", f"RSS_FREELANCE is done! all in: {elapsed_time:.2f} seconds", "\n")
     pipeline(df)
 
 if __name__ == "__main__":
