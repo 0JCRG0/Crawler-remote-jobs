@@ -1,2 +1,4 @@
 __pycache__/
-*.log
+geckodriver.log
+crawler.log
+selenium_crawler.log
