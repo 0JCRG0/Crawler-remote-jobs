@@ -1,7 +1,7 @@
 import re
 import psycopg2
 
-#CLEANING FUNCTIONS FOR HIMALAYAS
+#CLEANING FUNCTIONS FOR SELENIUM
 def clean_rows(s):
     if not isinstance(s, str):
         return s
@@ -12,7 +12,6 @@ def clean_rows(s):
     s = re.sub(r'[\[\]]', '', s)
     s = re.sub(r"'", '', s)
     return s
-
 
 def cleansing_selenium_crawlers(s):
     if not isinstance(s, str):
@@ -27,7 +26,6 @@ def cleansing_selenium_crawlers(s):
     s = re.sub(r'[\[\]]', '', s)
     s = re.sub(r"'", '', s)
     return s
-
 
 def initial_clean(s):
     s = " ".join(s.split())
@@ -97,11 +95,11 @@ def mx_postgre(df):
     # prepare the SQL query to create a new table
     create_table_query = '''
         CREATE TABLE IF NOT EXISTS mx_jobs (
-            title VARCHAR(255),
-            link VARCHAR(255),
+            title VARCHAR(1000),
+            link VARCHAR(1000),
             description VARCHAR(2000),
             pubdate TIMESTAMP,
-            location VARCHAR(255),
+            location VARCHAR(1000),
             PRIMARY KEY (link),
             UNIQUE (title, link)
         )
@@ -179,11 +177,11 @@ def test_postgre(df):
     # prepare the SQL query to create a new table
     create_table_query = '''
         CREATE TABLE IF NOT EXISTS test (
-            title VARCHAR(255),
-            link VARCHAR(255) PRIMARY KEY,
+            title VARCHAR(1000),
+            link VARCHAR(1000) PRIMARY KEY,
             description VARCHAR(2000),
             pubdate TIMESTAMP,
-            location VARCHAR(255)
+            location VARCHAR(1000)
         )
     '''
 
@@ -259,11 +257,11 @@ def to_postgre(df):
     # prepare the SQL query to create a new table
     create_table_query = '''
         CREATE TABLE IF NOT EXISTS master_jobs (
-            title VARCHAR(255),
-            link VARCHAR(255) PRIMARY KEY,
+            title VARCHAR(1000),
+            link VARCHAR(1000) PRIMARY KEY,
             description VARCHAR(2000),
             pubdate TIMESTAMP,
-            location VARCHAR(255)
+            location VARCHAR(1000)
         )
     '''
 
@@ -339,11 +337,11 @@ def freelance_postgre(df):
     # prepare the SQL query to create a new table
     create_table_query = '''
         CREATE TABLE IF NOT EXISTS freelance (
-            title VARCHAR(255) PRIMARY KEY,
-            link VARCHAR(255),
+            title VARCHAR(1000) PRIMARY KEY,
+            link VARCHAR(1000),
             description VARCHAR(2000),
             pubdate TIMESTAMP,
-            location VARCHAR(255)
+            location VARCHAR(1000)
         )
     '''
 
@@ -409,6 +407,30 @@ def freelance_postgre(df):
     cursor.close()
     cnx.close()
 
+#FUNCTION FOR APIs
+
+## Function to choose class_json_strategy
+def class_json_strategy(data, elements_path, class_json):
+    """
+    
+    Given that some JSON requests are either
+    dict or list we need to access the 1st dict if 
+    needed
+    
+    """
+    if class_json == "dict":                    
+        # Access the key of the dictionary, which is a list of job postings
+        jobs = data[elements_path["dict_tag"]]
+        return jobs
+    elif class_json == "list":
+        jobs = data
+        return jobs
+
+## Function to clean api_pubdates
+def api_pubdate(s):
+    if s is not None:
+        pubdate = s[0:10]
+        return pubdate
 
 #FUNCTIONS FOR FORMATTING PUBDATES IN RSS
 def adby_pubdate(s):
@@ -424,10 +446,6 @@ def YMD_pubdate(s):
         YMD_pub = s[0:8]
         return YMD_pub
 
-def API_pubdate(s):
-    if s is not None:
-        pubdate = s[0:10]
-        return pubdate
 
 #Cleaning function indeed
 def indeed_regex(s):

@@ -1,4 +1,4 @@
-from api_fetchers import w_nomads
+from api_crawlers import api_crawlers
 from rss import rss_abdy, rss_ymd
 from selenium_template import selenium_crawlers
 import timeit
@@ -9,7 +9,7 @@ def MASTER():
     master_start_time = timeit.default_timer()
 
     #Start calling each crawler
-    w_nomads(CUT_OFF) #1st argument is the cut-off date
+    api_crawlers(CUT_OFF) #1st argument is the cut-off date
     
     #Move onto the next one
     print("\n", "MOVING ON...","\n")
