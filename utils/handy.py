@@ -4,13 +4,13 @@ import psycopg2
 #CLEANING FUNCTIONS FOR SELENIUM
 def clean_rows(s):
     if not isinstance(s, str):
+        print(f"{s} is not a string! Returning unmodified")
         return s
-    s = re.sub(r'n/', '', s)
-    s = re.sub(r'"', '', s)
     s = re.sub(r'{', '', s)
     s = re.sub(r'}', '', s)
     s = re.sub(r'[\[\]]', '', s)
     s = re.sub(r"'", '', s)
+    s = re.sub(r",", ' ', s)
     return s
 
 def cleansing_selenium_crawlers(s):

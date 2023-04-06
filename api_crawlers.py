@@ -3,7 +3,7 @@ import json
 import pretty_errors
 import pandas as pd
 import timeit
-from utils.handy import test_postgre, api_pubdate, class_json_strategy, to_postgre
+from utils.handy import test_postgre, api_pubdate, class_json_strategy, to_postgre, clean_rows
 
 def api_crawlers(cut_off):
     #Start the timer
@@ -88,6 +88,10 @@ def api_crawlers(cut_off):
         if col == 'pubdate':
             df[col] = df[col].apply(api_pubdate)
             df[col] = pd.to_datetime(df[col], errors="coerce", infer_datetime_format=True, exact=False)
+        if col == 'description' or col == 'location':
+            #df[col] = df[col].astype(str).str.replace(r'{}', '', regex=True)
+            df[col] = df[col].astype(str).apply(clean_rows)
+
 
     directory = "./OUTPUTS/"
     df.to_csv(f"{directory}test_api_crawlers.csv", index=False)
