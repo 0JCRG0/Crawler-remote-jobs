@@ -1,4 +1,8 @@
 title,link,description,pubdate,location
+Staff Software Engineer - Applied Machine Learning,https://echojobs.io/job/discord-staff-software-engineer-applied-machine-learning-svq7d,Machine Learning  Python,2023-04-07,San Francisco  CA  Remote
+Principal Solutions Engineer,https://echojobs.io/job/twilio-principal-solutions-engineer-hz7wz,C#  Python  PHP  CSS  GCP  Node.js  JavaScript  HTML  React  Vue.js  Azure  API  Java  Angular,2023-04-07,Remote  US
+Principal Data Engineer,https://echojobs.io/job/drivewealth-principal-data-engineer-nsd9l,API  Python  SQL  Spark  AWS,2023-04-07,Remote
+"Senior Full Stack Engineer, Python",https://echojobs.io/job/calendly-senior-full-stack-engineer-python-od089,TypeScript  Python  Flask  Docker  PostgreSQL  React,2023-04-07,Remote
 Senior Software Engineer,https://echojobs.io/job/safebase-senior-software-engineer-8owbe,React  Node.js  Next.js  GCP  PostgreSQL  R  TypeScript,2023-04-07,Remote  US
 Software Development Engineer in Test,https://echojobs.io/job/covr-financial-technologies-software-development-engineer-in-test-negzh,AWS  .NET  TypeScript  JavaScript  API  Docker  Git  Azure,2023-04-07,Remote
 Senior Data Engineer,https://echojobs.io/job/wizeline-senior-data-engineer-e74tc,Cassandra  Python  SQL  Hadoop  AWS  GCP  Azure  MongoDB  Kafka  Spark  Streaming,2023-04-07,Remote
@@ -68,17 +72,17 @@ Senior Software Engineer,https://echojobs.io/job/shield-ai-senior-software-engin
 Senior Backend Engineer,https://echojobs.io/job/pipe-senior-backend-engineer-7p4ib,TypeScript  React  Next.js  Go  PostgreSQL  Kubernetes  GCP,2023-04-06,Remote
 Senior Software Engineer,https://echojobs.io/job/circleci-senior-software-engineer-q8dia,Docker  AWS  GCP  Microservices  Go  React  Node.js  PostgreSQL  TypeScript  Azure,2023-04-06,Remote
 "💻 Software Engineer, Trust & Safety",https://echojobs.io/job/clubhouse-software-engineer-trust-safety-l6k4c,Python  PostgreSQL  Redis  API  AWS,2023-04-06,Remote  US  San Francisco  CA
-Senior Professional Services Engineer (West),https://echojobs.io/job/gitlab-senior-professional-services-engineer-west-mnyd2,Terraform  GCP  Ruby  Python  Go  Kubernetes  Ansible  Puppet  Chef  AWS  Azure,2023-04-06,Remote  North America
-"Senior Software Engineer in Test, Analytics::Product Analytics",https://echojobs.io/job/gitlab-senior-software-engineer-in-test-analytics-product-analytics-9t76j,Redis  Terraform  Ansible  Ruby  Git,2023-04-06,Remote
+Senior Professional Services Engineer (West),https://echojobs.io/job/gitlab-senior-professional-services-engineer-west-mnyd2,Kubernetes  Terraform  Ansible  Chef  GCP  Azure  Ruby  Go  Puppet  AWS  Python,2023-04-06,Remote  North America
+"Senior Software Engineer in Test, Analytics::Product Analytics",https://echojobs.io/job/gitlab-senior-software-engineer-in-test-analytics-product-analytics-9t76j,Git  Redis  Terraform  Ansible  Ruby,2023-04-06,Remote
 Staff SRE Engineer,https://echojobs.io/job/harness-staff-sre-engineer-46plu,R  Microservices,2023-04-06,London  UK  Remote
 Senior Customer Success Engineer,https://echojobs.io/job/netlify-senior-customer-success-engineer-alb6d,Vue.js  Nuxt.js  JavaScript  React  Next.js  Gatsby,2023-04-06,Remote  US
 Senior Software Engineer,https://echojobs.io/job/olive-senior-software-engineer-iwynt,Node.js  SQL  AWS  Azure  TypeScript,2023-04-06,Remote  US
-Senior Full Stack Engineer,https://echojobs.io/job/honor-senior-full-stack-engineer-6adqf,AWS  GCP  JavaScript  React  MySQL  Python  Node.js,2023-04-06,Remote
-Senior Customer Engineer,https://echojobs.io/job/narvar-senior-customer-engineer-y0qk4,HTML  JavaScript  API  CSS,2023-04-06,US  Remote
-"Senior Software Engineer, Engagement product",https://echojobs.io/job/lattice-senior-software-engineer-engagement-product-indeb,PostgreSQL  AWS  JavaScript  Ruby  Python  React  TypeScript  GraphQL,2023-04-06,New York  NY  Remote
-"Sr. Software Engineer, Machine Learning",https://echojobs.io/job/lucid-sr-software-engineer-machine-learning-7d5jl,TypeScript  AWS  GCP  Azure  MySQL  Machine Learning  Scala  Python,2023-04-06,Remote  US
-Junior Technical Support Engineer,https://echojobs.io/job/parcellab-inc-junior-technical-support-engineer-zip9e,JavaScript  HTML  Python  Bash,2023-04-06,Boston  MA  Remote
-Sr. Quality Engineer,https://echojobs.io/job/goodleap-sr-quality-engineer-sl1qa,Git,2023-04-06,Remote  US
+Senior Full Stack Engineer,https://echojobs.io/job/honor-senior-full-stack-engineer-6adqf,JavaScript  React  MySQL  Python  Node.js  AWS  GCP,2023-04-06,Remote
+Senior Customer Engineer,https://echojobs.io/job/narvar-senior-customer-engineer-y0qk4,HTML  JavaScript  API  CSS,2023-04-06,Remote  US
+"Senior Software Engineer, Engagement product",https://echojobs.io/job/lattice-senior-software-engineer-engagement-product-indeb,GraphQL  PostgreSQL  AWS  JavaScript  Ruby  Python  React  TypeScript,2023-04-06,New York  NY  Remote
+"Sr. Software Engineer, Machine Learning",https://echojobs.io/job/lucid-sr-software-engineer-machine-learning-7d5jl,AWS  GCP  Azure  MySQL  Machine Learning  Scala  Python  TypeScript,2023-04-06,Remote  US
+Junior Technical Support Engineer,https://echojobs.io/job/parcellab-inc-junior-technical-support-engineer-zip9e,HTML  Python  Bash  JavaScript,2023-04-06,Remote  Boston  MA
+Senior Quality Engineer,https://echojobs.io/job/goodleap-sr-quality-engineer-sl1qa,Git,2023-04-06,Remote  US
 "Staff Software Engineer, AI",https://echojobs.io/job/airbase-staff-software-engineer-ai-3c1bx,None,2023-04-06,Remote  EMEA
 "Staff Software Engineer, AI",https://echojobs.io/job/airbase-staff-software-engineer-ai-tsaz8,None,2023-04-06,Remote  Europe
 "Staff Software Engineer, AI",https://echojobs.io/job/airbase-staff-software-engineer-ai-s7iba,None,2023-04-06,Remote  Canada
@@ -173,8 +177,8 @@ Senior Software Engineer (Forensics Product),https://echojobs.io/job/sysdig-seni
 Senior Software Engineer (Forensics Product),https://echojobs.io/job/sysdig-senior-software-engineer-forensics-product-thgej,Docker  Kubernetes  PostgreSQL  Redis  Azure  Go  Microservices  GCP  API  AWS,2023-04-05,Remote
 Senior Software Engineer (Forensics Product),https://echojobs.io/job/sysdig-senior-software-engineer-forensics-product-1zg1e,AWS  API  Kubernetes  Docker  GCP  PostgreSQL  Redis  Azure  Go  Microservices,2023-04-05,Italy  Remote
 Senior Software Engineer | Growth (Martech),https://echojobs.io/job/ramp-senior-software-engineer-growth-martech-q95zr,Python  SQL  React,2023-04-05,New York  NY  Miami  FL  Remote
-Senior Software Engineer | Growth (Acquisition),https://echojobs.io/job/ramp-senior-software-engineer-growth-acquisition-jdrfv,SQL,2023-04-05,Remote  New York  NY  Miami  FL
-"Principal Software Engineer, Enterprise",https://echojobs.io/job/mural-principal-software-engineer-enterprise-lg5rq,API  React  Node.js,2023-04-05,US  Remote
+Senior Software Engineer | Growth (Acquisition),https://echojobs.io/job/ramp-senior-software-engineer-growth-acquisition-jdrfv,SQL,2023-04-05,Miami  FL  Remote  New York  NY
+"Principal Software Engineer, Enterprise",https://echojobs.io/job/mural-principal-software-engineer-enterprise-lg5rq,Node.js  API  React,2023-04-05,US  Remote
 Staff Software Engineer,https://echojobs.io/job/unqork-staff-software-engineer-ddx5k,MongoDB  GraphQL,2023-04-05,US  Remote
 Senior Software Engineer I (React/TypeScript),https://echojobs.io/job/shutterfly-senior-software-engineer-i-react-typescript-3dqpw,Redis  TypeScript  AWS  Node.js  Kafka  MySQL  PostgreSQL  DynamoDB  React  Docker  Kubernetes  GraphQL,2023-04-05,Remote  US
 Senior Principal Software Engineer,https://echojobs.io/job/shutterfly-senior-principal-software-engineer-w0qyb,GraphQL  Node.js  Elasticsearch  AWS  TypeScript  React  Kafka,2023-04-05,Plano  TX  Durham  NC  Remote  US
@@ -246,10 +250,6 @@ Senior Infrastructure Engineer,https://echojobs.io/job/workato-senior-infrastruc
 Senior Infrastructure Engineer,https://echojobs.io/job/workato-senior-infrastructure-engineer-5yqku,AWS  Kubernetes  Docker  Python  PostgreSQL  Azure  GCP  Terraform  Go  Java  Ruby,2023-04-04,Italy  Remote
 Senior Infrastructure Engineer,https://echojobs.io/job/workato-senior-infrastructure-engineer-vzymg,Azure  GCP  Python  PostgreSQL  AWS  Kubernetes  Terraform  Docker  Go  Java  Ruby,2023-04-04,Germany  Remote
 "Backend Engineer, Enterprise Tax Product",https://echojobs.io/job/stripe-backend-engineer-enterprise-tax-product-mk7lt,Spark  Ruby  AWS  SQL  API  Kafka,2023-04-04,Remote  Canada
-Senior Data Engineer ( Remote US),https://echojobs.io/job/swordhealth-senior-data-engineer-remote-us-n2iov,Java  AWS  Terraform  Docker  MySQL  Streaming  GCP  Kafka  Kubernetes  Python  SQL,2023-04-04,Remote  US
-Senior Cyber Security Engineer,https://echojobs.io/job/corvus-insurance-senior-cyber-security-engineer-k13uy,SQL  Machine Learning  API  Python,2023-04-04,Remote  US
-"Software Engineer, Offensive Security",https://echojobs.io/job/rebelliondefense-software-engineer-offensive-security-vk0q9,R  Python  Git,2023-04-04,Remote
-Senior Software Engineer - Full Stack (Eastern US),https://echojobs.io/job/starburst-senior-software-engineer-full-stack-eastern-us-nud0w,React  TypeScript  Java  AWS  Angular  Ember.js  SQL,2023-04-04,US  Remote
 Appointment Setter and Sales,https://www.workingnomads.com/job/go/42482/,creative english customer service,2023-04-07,Latin America ONLY
 Call Center Representative,https://www.workingnomads.com/job/go/44394/,call center recruiting customer service staffing interviewing,2023-04-07,USA
 Construction Tax Partner,https://www.workingnomads.com/job/go/44392/,accounting client service,2023-04-07,USA

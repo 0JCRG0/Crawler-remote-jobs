@@ -1,3 +1,4 @@
+#!/usr/local/bin/python3
 from rss import rss_freelance
 from selenium_template import selenium_crawlers
 import timeit
