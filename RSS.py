@@ -1,3 +1,5 @@
+#!/usr/local/bin/python3
+
 import csv
 import requests
 import pandas as pd
@@ -23,7 +25,7 @@ E.g., If cut_off = '2023-03-20' then the oldest job will be from 2023-03-21
 """
 
 #EXPORT THE PATH - YOU NEED TO EXPORT YOUR OWN PATH & SAVE IT AS 'CRAWLER_ALL'
-PATH = os.environ['CRAWLER_ALL']
+PATH = '/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/'
 
 def rss_ymd(cut_off):
     #start timer

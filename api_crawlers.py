@@ -1,3 +1,5 @@
+#!/usr/local/bin/python3
+
 import requests
 import json
 import pretty_errors
@@ -7,7 +9,7 @@ import os
 from utils.handy import test_postgre, api_pubdate, class_json_strategy, to_postgre, clean_rows
 
 #EXPORT THE PATH - YOU NEED TO EXPORT YOUR OWN PATH & SAVE IT AS 'CRAWLER_ALL'
-PATH = os.environ['CRAWLER_ALL']
+PATH = '/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/'
 
 def api_crawlers(cut_off):
 

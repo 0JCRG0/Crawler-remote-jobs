@@ -1,3 +1,5 @@
+#!/usr/local/bin/python3
+
 import logging
 import timeit
 from api_crawlers import api_crawlers
