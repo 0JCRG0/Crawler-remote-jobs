@@ -10,6 +10,7 @@ import numpy as np
 import pretty_errors
 import datetime
 import timeit
+import os
 from utils.handy import clean_link_rss, clean_other_rss, YMD_pubdate, to_postgre, adby_pubdate, test_postgre, freelance_postgre
 
 """
@@ -21,12 +22,15 @@ cut_off = one day prior the oldest job
 E.g., If cut_off = '2023-03-20' then the oldest job will be from 2023-03-21
 """
 
+#EXPORT THE PATH - YOU NEED TO EXPORT YOUR OWN PATH & SAVE IT AS 'CRAWLER_ALL'
+PATH = os.environ['CRAWLER_ALL']
+
 def rss_ymd(cut_off):
     #start timer
 
     start_time = timeit.default_timer()
 
-    file = './rss_resources/working-resources-YMD.csv'
+    file = PATH + '/rss_resources/working-resources-YMD.csv'
     
     #print("\n", f"Reading {file}... ", "\n")
     print("\n", "RSS_YMD starting now.")
@@ -117,15 +121,13 @@ def rss_ymd(cut_off):
         else:
             df[col] = df[col].apply(clean_other_rss)
 
-    directory = "./OUTPUTS/"
-    df.to_csv(f'{directory}RSS-YMD.csv', index=False)
+    df.to_csv(PATH + '/OUTPUTS/RSS-YMD.csv', index=False)
 
     for col in df.columns:
         if col == 'pubdate':
             df[col] = df[col].apply(YMD_pubdate)
 
-    directory = "./OUTPUTS/"
-    df.to_csv(f'{directory}test-RSS-YMD.csv', index=False)
+    df.to_csv(PATH + '/OUTPUTS/test-RSS-YMD.csv', index=False)
 
     def pipeline(df):
         df.fillna("NaN", inplace=True)
@@ -168,7 +170,7 @@ def rss_abdy(cut_off):
     #start timer
     start_time = timeit.default_timer()
 
-    file = './rss_resources/remote-working-resources.csv'
+    file = PATH + '/rss_resources/remote-working-resources.csv'
     
     print("\n", "RSS_ABDY starting now.")
 
@@ -258,15 +260,13 @@ def rss_abdy(cut_off):
         else:
             df[col] = df[col].apply(clean_other_rss)
 
-    directory = "./OUTPUTS/"
-    df.to_csv(f'{directory}yummy_soup_rss.csv', index=False)
+    df.to_csv(PATH + '/OUTPUTS/yummy_soup_rss.csv', index=False)
 
     for col in df.columns:
         if col == 'pubdate':
             df[col] = df[col].apply(adby_pubdate)
 
-    directory = "./OUTPUTS/"
-    df.to_csv(f'{directory}test.csv', index=False)
+    df.to_csv(PATH + '/OUTPUTS/test.csv', index=False)
 
     def pipeline(df):
 
@@ -315,7 +315,7 @@ def rss_freelance(cut_off):
 
     start_time = timeit.default_timer()
 
-    file = './rss_resources/freelance.csv'
+    file = PATH + '/rss_resources/freelance.csv'
     
     #print("\n", f"Reading {file}... ", "\n")
     print("\n", "RSS_FREELANCE starting now.")
@@ -406,15 +406,13 @@ def rss_freelance(cut_off):
         else:
             df[col] = df[col].apply(clean_other_rss)
 
-    directory = "./OUTPUTS/"
-    df.to_csv(f'{directory}RSS-YMD.csv', index=False)
+    df.to_csv(PATH + '/OUTPUTS/RSS-YMD.csv', index=False)
 
     for col in df.columns:
         if col == 'pubdate':
             df[col] = df[col].apply(YMD_pubdate)
 
-    directory = "./OUTPUTS/"
-    df.to_csv(f'{directory}test-RSS-YMD.csv', index=False)
+    df.to_csv(PATH + '/OUTPUTS/test-RSS-YMD.csv', index=False)
 
     def pipeline(df):
         df.fillna("NaN", inplace=True)

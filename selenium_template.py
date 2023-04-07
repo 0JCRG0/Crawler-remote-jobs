@@ -8,9 +8,12 @@ from dateutil.parser import parse
 from datetime import date
 import json
 import logging
+import os
 from utils.handy import cleansing_selenium_crawlers, to_postgre, test_postgre, freelance_postgre
 
 
+#EXPORT THE PATH - YOU NEED TO EXPORT YOUR OWN PATH & SAVE IT AS 'CRAWLER_ALL'
+PATH = os.environ['CRAWLER_ALL']
 
 def selenium_crawlers(TYPE):
     # configure the logger
@@ -46,11 +49,11 @@ def selenium_crawlers(TYPE):
         """
 
         if TYPE == 'MAIN':
-            JSON = './selenium_resources/main_sel_crawlers.json'
+            JSON = PATH + '/selenium_resources/main_sel_crawlers.json'
             POSTGRESQL = to_postgre
             print("\n", f"Reading {JSON}. Jobs will be sent to PostgreSQL's master_jobs table", "\n")
         elif TYPE == 'FREELANCE':
-            JSON = './selenium_resources/freelance.json'
+            JSON = PATH + '/selenium_resources/freelance.json'
             POSTGRESQL = freelance_postgre
             print("\n", f"Reading {JSON}. Jobs will be sent to PostgreSQL's freelance table", "\n")
         else:
@@ -148,8 +151,7 @@ def selenium_crawlers(TYPE):
         df = df.transpose()
 
         #Save it in local machine
-        directory = "./OUTPUTS/"
-        df.to_csv(f"{directory}pre-pipeline-Sel_All.csv", index=False)
+        df.to_csv(PATH + "/OUTPUTS/pre-pipeline-Sel_All.csv", index=False)
 
         # count the number of duplicate rows
         num_duplicates = df.duplicated().sum()
@@ -173,7 +175,7 @@ def selenium_crawlers(TYPE):
 
             #Save it in local machine
             directory = "./OUTPUTS/"
-            df.to_csv(f"{directory}post-pipeline-Sel_All.csv", index=False)
+            df.to_csv(PATH + "/OUTPUTS/post-pipeline-Sel_All.csv", index=False)
 
 
             # SEND IT TO TO PostgreSQL 

@@ -4,7 +4,8 @@ from api_crawlers import api_crawlers
 from rss import rss_abdy, rss_ymd
 from selenium_template import selenium_crawlers
 
-logging.basicConfig(filename='./logs/master_crawler.log', level=logging.INFO, format='%(asctime)s %(levelname)s: %(message)s')
+#You need to use YOUR full path
+logging.basicConfig(filename='/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/logs/master_crawler.log', level=logging.INFO, format='%(asctime)s %(levelname)s: %(message)s')
 
 def MASTER():
     CUT_OFF = '2023-03-29'

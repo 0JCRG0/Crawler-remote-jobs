@@ -3,9 +3,14 @@ import json
 import pretty_errors
 import pandas as pd
 import timeit
+import os
 from utils.handy import test_postgre, api_pubdate, class_json_strategy, to_postgre, clean_rows
 
+#EXPORT THE PATH - YOU NEED TO EXPORT YOUR OWN PATH & SAVE IT AS 'CRAWLER_ALL'
+PATH = os.environ['CRAWLER_ALL']
+
 def api_crawlers(cut_off):
+
     #Start the timer
     start_time = timeit.default_timer()
 
@@ -17,7 +22,7 @@ def api_crawlers(cut_off):
         total_locations = []
         rows = []
 
-        with open('./api_resources/api_main.json') as f:
+        with open(PATH + '/api_resources/api_main.json') as f:
             #load the json
             data = json.load(f)
             # Access the 'apis' list in the first dictionary of the 'data' list and assign it to the variable 'apis'
@@ -93,8 +98,7 @@ def api_crawlers(cut_off):
             df[col] = df[col].astype(str).apply(clean_rows)
 
 
-    directory = "./OUTPUTS/"
-    df.to_csv(f"{directory}test_api_crawlers.csv", index=False)
+    df.to_csv(PATH + "/OUTPUTS/test_api_crawlers.csv", index=False)
             
     #Filter rows by a date range (this reduces the number of rows... duh)
     start_date = pd.to_datetime('2016-01-01')
