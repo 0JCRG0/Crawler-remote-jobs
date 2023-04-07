@@ -1,4 +1,11 @@
 title,link,description,pubdate,location
+Senior Product Integrations Engineer,https://echojobs.io/job/unanet-senior-product-integrations-engineer-p7cmk,API  Ruby,2023-04-06,Remote  US
+"Staff Software Engineer, Backend - International",https://echojobs.io/job/coinbase-staff-software-engineer-backend-international-dy7zk,Docker  PostgreSQL  Microservices  Go  Ruby,2023-04-06,India  Remote
+Senior Infrastructure Security Engineer,https://echojobs.io/job/coinbase-senior-infrastructure-security-engineer-9d4iw,API,2023-04-06,Remote  US
+Senior Infrastructure Security Engineer,https://echojobs.io/job/coinbase-senior-infrastructure-security-engineer-dmlol,API,2023-04-06,Remote  Canada
+Web Quality Assurance Engineer,https://echojobs.io/job/therabody-web-quality-assurance-engineer-twrh9,HTML  CSS  JavaScript  Python,2023-04-06,Remote
+Software Engineer - Data Loss Prevention (DLP),https://echojobs.io/job/cloudflare-software-engineer-data-loss-prevention-dlp-t5gnd,Go  Kubernetes  React  Elasticsearch  API  Microservices  TypeScript  Rust  PostgreSQL,2023-04-06,London  UK  Remote  UK
+Software Engineer - Data Loss Prevention (DLP),https://echojobs.io/job/cloudflare-software-engineer-data-loss-prevention-dlp-hjgta,API  Microservices  TypeScript  Rust  Go  Kubernetes  PostgreSQL  React  Elasticsearch,2023-04-06,Austin  TX  Remote  US
 Senior+ Platform Engineer,https://echojobs.io/job/one-senior-platform-engineer-d88s0,TypeScript  Kubernetes  AWS  Terraform,2023-04-06,Remote  Boston  MA  New York  NY  San Jose  CA  Austin  TX  Boise  ID  Seattle  WA  New Orleans  LA  Portland  OR  US  Baltimore  MD  Los Angeles  CA  Chicago  IL  Miami  FL
 Backend Software Engineer (Fullstack a plus),https://echojobs.io/job/salt-backend-software-engineer-fullstack-a-plus-9dvgs,PostgreSQL  Redis  API  JavaScript  Rust  AWS  Node.js  MySQL  TypeScript,2023-04-06,Remote  US
 "Senior Software Engineer, Query",https://echojobs.io/job/mongodb-senior-software-engineer-query-swl1o,MongoDB,2023-04-06,New York  NY  Remote  North America
@@ -54,8 +61,8 @@ Data Engineer Associate,https://echojobs.io/job/carrot-fertility-data-engineer-a
 Senior Elixir Developer,https://echojobs.io/job/recruitee-senior-elixir-developer-4rqc0,Elixir,2023-04-06,Remote  Poland
 Web Developer,https://echojobs.io/job/sigfig-web-developer-d9crf,Node.js  React  Angular  HTML  CSS  JavaScript,2023-04-06,Remote
 Senior Frontend Software Engineer | DOTS,https://echojobs.io/job/gympass-senior-frontend-software-engineer-dots-s948s,TypeScript  Node.js  API  React,2023-04-06,Remote  Brazil
-Senior Software Engineer II - Billing & Payments,https://echojobs.io/job/survey-monkey-senior-software-engineer-ii-billing-payments-k9kp0,Python  React  Docker  API  JavaScript  CSS  HTML,2023-04-06,Canada  Remote
-Senior Software Engineer II - Billing & Payments,https://echojobs.io/job/survey-monkey-senior-software-engineer-ii-billing-payments-xfvcx,React  Docker  API  JavaScript  CSS  HTML  Python,2023-04-06,US  Remote  San Mateo  CA  Portland  OR
+Senior Software Engineer II - Billing & Payments,https://echojobs.io/job/survey-monkey-senior-software-engineer-ii-billing-payments-k9kp0,React  Docker  API  JavaScript  CSS  HTML  Python,2023-04-06,Canada  Remote
+Senior Software Engineer II - Billing & Payments,https://echojobs.io/job/survey-monkey-senior-software-engineer-ii-billing-payments-xfvcx,API  JavaScript  CSS  HTML  Python  React  Docker,2023-04-06,US  Remote  San Mateo  CA  Portland  OR
 "Senior Software Engineer, Frontend",https://echojobs.io/job/atlassian-senior-software-engineer-frontend-hcnl3,Vue.js  TypeScript  Node.js  Shell  JavaScript  CSS  React  AngularJS  GraphQL  Bash,2023-04-06,Bengaluru  India  India  Remote
 Senior Software Engineer- Frontend,https://echojobs.io/job/atlassian-senior-software-engineer-frontend-0dt6b,React  TypeScript  JQuery,2023-04-06,Bengaluru  India  India  Remote
 Remote Mobile Engineer - React Native (ES),https://echojobs.io/job/bitfinex-remote-mobile-engineer-react-native-es-mptvl,API  React  JavaScript,2023-04-06,Remote
@@ -104,16 +111,15 @@ Frontend Software Engineer - Page Content and Delivery (Open remote across ANZ),
 Senior Application Engineer - Digital Workplace,https://echojobs.io/job/spotify-senior-application-engineer-digital-workplace-dq2iz,Python  Java  JavaScript  API  Streaming,2023-04-05,Remote  New York  NY
 Full Stack Engineer (Analytics),https://echojobs.io/job/bitmovin-full-stack-engineer-analytics-384sp,JavaScript  Go  Android  React  Microservices  Java  Kotlin  Streaming  API  HTML,2023-04-05,Remote  Europe  Vienna  Austria
 Lead QA Engineer,https://echojobs.io/job/cere-network-lead-qa-engineer-8otcq,API,2023-04-05,Remote
-Lead Full-Stack Engineer (Kotlin),https://echojobs.io/job/cere-network-lead-full-stack-engineer-kotlin-2tdll,Java  Kafka  Elasticsearch  API  React  Kotlin  Streaming  Microservices,2023-04-05,Remote
-Senior Software Engineer - Backend,https://echojobs.io/job/scratchpad-senior-software-engineer-backend-ntsdl,PostgreSQL  Go  Vue.js,2023-04-05,Remote  US
-"Senior Java Engineer, Remote",https://echojobs.io/job/tide-senior-java-engineer-remote-8wkuy,Microservices  Spring  API  Java,2023-04-05,Belgrade  Serbia  Remote
-"Senior Web Engineer, Remote",https://echojobs.io/job/tide-senior-web-engineer-remote-lqbov,Flutter  Angular  HTML  JavaScript,2023-04-05,Ukraine  Remote
-"Senior Web Engineer, Remote",https://echojobs.io/job/tide-senior-web-engineer-remote-bljux,JavaScript  Flutter  Angular  HTML,2023-04-05,Remote  Belgrade  Serbia
-Senior Developer Experience Engineer,https://echojobs.io/job/tide-senior-developer-experience-engineer-rjls8,AWS  Microservices  Terraform  Python  Bash  API  Kubernetes,2023-04-05,Belgrade  Serbia  Remote
-Developer Experience Engineer,https://echojobs.io/job/tide-developer-experience-engineer-revty,Microservices  Terraform  Python  Bash  API  Kubernetes  AWS,2023-04-05,Belgrade  Serbia  Remote
-Senior iOS Engineer,https://echojobs.io/job/monzo-senior-ios-engineer-iaqfl,API  Android  Swift,2023-04-05,London  UK  Remote  UK
-Backend Payments Engineer,https://echojobs.io/job/monzo-backend-payments-engineer-x9lkh,Cassandra  Kafka  Docker  Java  Scala  Go  AWS  React  Kubernetes,2023-04-05,London  UK  Remote  UK
-Data Engineer,https://echojobs.io/job/vidiq-data-engineer-da8h0,Streaming  AWS  Python  NumPy  Pandas  DynamoDB  Spark,2023-04-05,Remote  Los Angeles  CA  US
+Lead Full-Stack Engineer (Kotlin),https://echojobs.io/job/cere-network-lead-full-stack-engineer-kotlin-2tdll,API  React  Kotlin  Streaming  Microservices  Java  Kafka  Elasticsearch,2023-04-05,Remote
+Senior Software Engineer - Backend,https://echojobs.io/job/scratchpad-senior-software-engineer-backend-ntsdl,Vue.js  PostgreSQL  Go,2023-04-05,Remote  US
+"Senior Java Engineer, Remote",https://echojobs.io/job/tide-senior-java-engineer-remote-8wkuy,Java  Microservices  Spring  API,2023-04-05,Remote
+"Senior Web Engineer, Remote",https://echojobs.io/job/tide-senior-web-engineer-remote-lqbov,Flutter  Angular  HTML  JavaScript,2023-04-05,Remote  Ukraine
+"Senior Web Engineer, Remote",https://echojobs.io/job/tide-senior-web-engineer-remote-bljux,Angular  HTML  JavaScript  Flutter,2023-04-05,Remote
+Senior Developer Experience Engineer,https://echojobs.io/job/tide-senior-developer-experience-engineer-rjls8,Python  Bash  API  Kubernetes  AWS  Microservices  Terraform,2023-04-05,Remote
+Senior iOS Engineer,https://echojobs.io/job/monzo-senior-ios-engineer-iaqfl,Android  Swift  API,2023-04-05,London  UK  Remote  UK
+Backend Payments Engineer,https://echojobs.io/job/monzo-backend-payments-engineer-x9lkh,Go  Scala  React  Java  Cassandra  Kafka  Kubernetes  Docker  AWS,2023-04-05,Remote  UK  London  UK
+Data Engineer,https://echojobs.io/job/vidiq-data-engineer-da8h0,AWS  Python  NumPy  Pandas  DynamoDB  Spark  Streaming,2023-04-05,Remote  Los Angeles  CA  US
 "Senior Staff Software Engineer, Money",https://echojobs.io/job/sofi-senior-staff-software-engineer-money-uncod,Machine Learning,2023-04-05,San Francisco  CA  Seattle  WA  US  Remote
 Senior Software Engineer,https://echojobs.io/job/shields-health-solutions-senior-software-engineer-de1ce,AWS  CSS  JavaScript  JQuery  Git  Java  SQL  Spring  HTML  Haskell  Chef  React  AngularJS  Lisp,2023-04-05,Remote
 "Staff Software Engineer, Network Growth",https://echojobs.io/job/affirm-staff-software-engineer-network-growth-tquoo,API,2023-04-05,Remote  Canada
@@ -188,11 +194,11 @@ Data Engineer,https://echojobs.io/job/datacamp-data-engineer-h3lt6,Docker  API  
 "Summer Internship, Web Engineer | Freemium Mission (US)",https://echojobs.io/job/spotify-summer-internship-web-engineer-freemium-mission-us-ua1bv,TypeScript  Node.js  React  HTML  Streaming  R  GraphQL  Next.js  JavaScript  CSS,2023-04-04,US  New York  NY  Remote
 Senior Systems Engineer,https://echojobs.io/job/accruent-senior-systems-engineer-jde20,Ansible  Kubernetes  AWS  GCP  Azure  Terraform  PowerShell  Bash  Python,2023-04-04,Remote  US
 Senior Systems Engineer,https://echojobs.io/job/accruent-senior-systems-engineer-75en3,Bash  GCP  Terraform  Kubernetes  PowerShell  Python  AWS  Azure  Ansible,2023-04-04,Remote  US
-Senior Test Automation Engineer,https://echojobs.io/job/billtrust-senior-test-automation-engineer-cq3x5,SQL  API  TypeScript  Docker  Git  Azure  JavaScript  Terraform  AWS,2023-04-04,Remote  US
+Senior Test Automation Engineer,https://echojobs.io/job/billtrust-senior-test-automation-engineer-cq3x5,AWS  SQL  Git  API  JavaScript  TypeScript  Docker  Terraform  Azure,2023-04-04,US  Remote
 Software Engineer - Growth,https://echojobs.io/job/momentive-software-engineer-growth-ppxgz,PHP  JavaScript  React  Angular  Vue.js  API  GraphQL  Python,2023-04-04,Dublin  Ireland  Ireland  Remote
-"%BUTTON_APPLY% Tech Lead - Data Services Toronto, ON %LABEL_POSITION_TYPE_REMOTE% %LABEL_POSITION_TYPE_FULL_TIME% Engineering %BUTTON_APPLY%",https://echojobs.io/job/voiceflow-button-apply-tech-lead-data-services-toronto-on-label-position-type-remote-label-position-type-full-time-engineering-button-apply-at0pt,Kafka  Python  Terraform  AWS  GCP,2023-04-04,Toronto  Ontario  Remote
+"%BUTTON_APPLY% Tech Lead - Data Services Toronto, ON %LABEL_POSITION_TYPE_REMOTE% %LABEL_POSITION_TYPE_FULL_TIME% Engineering %BUTTON_APPLY%",https://echojobs.io/job/voiceflow-button-apply-tech-lead-data-services-toronto-on-label-position-type-remote-label-position-type-full-time-engineering-button-apply-at0pt,Python  Terraform  AWS  GCP  Kafka,2023-04-04,Toronto  Ontario  Remote
 Senior Data Engineer - Data Services,https://echojobs.io/job/voiceflow-senior-data-engineer-data-services-8m0xe,Kafka  Python,2023-04-04,Toronto  Ontario  Remote
-Senior Backend Developer - Data Services,https://echojobs.io/job/voiceflow-senior-backend-developer-data-services-r0uzf,FastAPI  Flask  Django  Terraform  AWS  GCP  Python  API,2023-04-04,Toronto  Ontario  Remote
+Senior Backend Developer - Data Services,https://echojobs.io/job/voiceflow-senior-backend-developer-data-services-r0uzf,Terraform  AWS  GCP  Python  API  FastAPI  Flask  Django,2023-04-04,Toronto  Ontario  Remote
 "Senior Software Engineer, AvaCloud",https://echojobs.io/job/ava-labs-senior-software-engineer-avacloud-dbvqy,Go  TypeScript  Node.js  AWS  DynamoDB,2023-04-04,New York  NY  Remote  US
 "Engineer, iOS",https://echojobs.io/job/citizen-engineer-ios-6c2z3,Kubernetes  Streaming  TypeScript  Go  Python  Objective-C  Kotlin  Swift  Redis  GCP  Machine Learning  Android  Cassandra  MySQL  React,2023-04-04,Remote  US
 Staff Software Engineer (Capital Engineering),https://echojobs.io/job/affirm-staff-software-engineer-capital-engineering-kupgt,React  AWS  Kubernetes  Python  Spark,2023-04-04,Remote  Poland
@@ -243,12 +249,6 @@ Data Engineer,https://echojobs.io/job/ltk-data-engineer-b3ima,Spark  Kafka  Stre
 Software Engineer - Platform,https://echojobs.io/job/snyk-software-engineer-platform-ty990,Node.js  JQuery  Docker  Elasticsearch  Go  Vue.js  TypeScript  PostgreSQL  SQL  JavaScript  gRPC  CSS  GCP  Kubernetes,2023-04-03,London  UK  UK  Remote
 "Senior Fullstack Engineer - Conversational Intelligence (Remote, Colombia)",https://echojobs.io/job/apollo-io-senior-fullstack-engineer-conversational-intelligence-remote-colombia-dlz9j,CSS  Spark  MongoDB  Docker  Ansible  GCP  Ruby  Python  Elasticsearch  Kubernetes  Terraform  JavaScript  HTML  React  Redis,2023-04-03,Remote  Colombia
 "Senior Fullstack Engineer - Conversational Intelligence (Remote, Argentina)",https://echojobs.io/job/apollo-io-senior-fullstack-engineer-conversational-intelligence-remote-argentina-djmn7,Kubernetes  Ansible  JavaScript  Docker  HTML  Ruby  Redis  Terraform  CSS  Spark  React  MongoDB  Elasticsearch  Python  GCP,2023-04-03,Remote  Argentina
-"Senior Fullstack Engineer - Conversational Engineer (Remote, Mexico)",https://echojobs.io/job/apollo-io-senior-fullstack-engineer-conversational-engineer-remote-mexico-kiwft,Elasticsearch  Terraform  Ruby  MongoDB  Docker  Spark  GCP  React  Kubernetes  JavaScript  HTML  CSS  Python  Redis  Ansible,2023-04-03,Remote  Mexico
-"Frontend Engineer - Conversational Intelligence (Remote, Mexico)",https://echojobs.io/job/apollo-io-frontend-engineer-conversational-intelligence-remote-mexico-15x3z,Node.js  Elasticsearch  Kubernetes  Terraform  CSS  API  HTML  React  Ruby  MongoDB  Docker  Ansible  JavaScript,2023-04-03,Remote  Mexico
-"Frontend Engineer - Conversational Intelligence (Remote, Colombia)",https://echojobs.io/job/apollo-io-frontend-engineer-conversational-intelligence-remote-colombia-w8e4q,API  Node.js  Ruby  Docker  Kubernetes  Ansible  Terraform  JavaScript  HTML  React  MongoDB  Elasticsearch  CSS,2023-04-03,Remote  Colombia
-"Frontend Engineer - Conversational Intelligence (Remote, Argentina)",https://echojobs.io/job/apollo-io-frontend-engineer-conversational-intelligence-remote-argentina-ydf3l,Ruby  MongoDB  Docker  JavaScript  HTML  CSS  React  Node.js  Elasticsearch  Kubernetes  Ansible  Terraform  API,2023-04-03,Remote  Argentina
-Senior Identity and Access Management Engineer,https://echojobs.io/job/bluevoyant-senior-identity-and-access-management-engineer-qllp8,Azure  AWS  GCP,2023-04-03,Remote
-Node.js Developer,https://echojobs.io/job/twitterhq-node-js-developer-vscqh,None,2023-04-03,Remote
 Product Marketing Manager,https://www.workingnomads.com/job/go/44365/,product marketing nosql salesforce computer science,2023-04-06,USA
 Strategic Account Executive,https://www.workingnomads.com/job/go/44364/,account manager devops aws accounting salesforce,2023-04-06,USA
 Account Executive,https://www.workingnomads.com/job/go/44363/,account manager salesforce,2023-04-06,USA
