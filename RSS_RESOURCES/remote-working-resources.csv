@@ -1,9 +1,9 @@
 Title,URL,Feed URL,Notes
 Adafruit Job Boards,https://jobs.adafruit.com/?query=&amp;location=&amp;type%5B%5D=7,,US ONLY
-AngelList,https://angel.co/jobs,,WORTH IT TO SIGN UP - SCRAPPING IT MUGHT BE A BIT HARD - WELL FOUND IT IS THE NAME NOW
+AngelList,https://angel.co/jobs,,WORTH IT - USE SELENIUM TO LOG IN
 Authentic Jobs,https://authenticjobs.com/,,RSS FEED DOES NOT WORK & NOT MANY JOBS TBH
 Behance,https://www.behance.net/joblist,,NOT WORTHY - NOT MANY JOBS
-Career Vault,https://careervault.io/,,USE NEWSLETTER
+Career Vault,https://careervault.io/,,DONE - API
 CareerBuilder,https://www.careerbuilder.com/jobs-remote-web-developer,,US ONLY
 ClojureJobboard.com,https://ClojureJobboard.com/,https://clojurejobboard.com/rss.xml,Clojure jobs only with a remote section | NO PUBDATE
 Coroflot,https://www.coroflot.com/design-jobs/remote,http://feeds.feedburner.com/coroflot/AllJobs,Presented as Design Jobs but there are development/technical positions within this category
@@ -23,7 +23,7 @@ F6s,https://www.f6s.com/jobs/,,No RSS feed but you can create an account and rec
 FOSS Jobs,https://www.fossjobs.net/,,USING OTHER CRAWLER | Jobs for FOSS and Open Hardware. A list of category-specific feeds can be found here: https://www.fossjobs.net/rss/
 Find Bacon,https://findbacon.com/jobs/remote,,USING OTHER CRAWLER 
 Flex Jobs,https://www.flexjobs.com/jobs,,No RSS feed for job postings
-Freelancer,https://www.freelancer.com/jobs/1/,https://www.freelancer.com/rss.xml,
+Freelancer,https://www.freelancer.com/jobs/1/,,
 FreshRemote.work,https://freshremote.work/,https://freshremote.work/feed/,Fresh remote jobs anywhere (tech + non-tech)
 Functional Jobs,https://functionaljobs.com/,https://functionaljobs.com/jobs/?format=rss,Functional programming jobs
 GIIN,https://jobs.thegiin.org/,,Global Impact Investing Network
@@ -82,7 +82,7 @@ The Muse,https://www.themuse.com/jobs?filter=true,,
 USAJOBS,https://www.usajobs.gov/,,
 UpWork,https://www.upwork.com/o/jobs/browse/,,
 VentureLoop,http://ventureloop.com/ventureloop/home.php,,
-Virtual Vocations,https://www.virtualvocations.com/jobs,https://www.virtualvocations.com/jobs/rss,ONLY US
+Virtual Vocations,https://www.virtualvocations.com/jobs,,ONLY US
 Vue Jobs,https://vuejobs.com/remote-vuejs-jobs,https://vuejobs.com/feed,
 WP Hired,http://www.wphired.com/,http://www.wphired.com/jobs/feed/,
 We Work Remotely,https://weworkremotely.com/,https://weworkremotely.com/remote-jobs.rss,You can filter by more specific categories using the RSS URLs listed on this page: https://weworkremotely.com/remote-job-rss-feed
@@ -93,3 +93,4 @@ Working Not Working,https://workingnotworking.com/unjobboard,,
 ZipRecruiter,https://www.ziprecruiter.com/candidate/search?search=Remote+Work&location=,,No RSS feed but you can create an account and receive notifications
 freelancermap,https://www.freelancermap.com/it-projects.html,,RSS DOES NOT WORK
 Remotely,,https://tryremotely.com/feeds/remote-jobs.rss,
+YCOMBINATOR,https://www.workatastartup.com/,,WORTH IT - USE SELENIUM TO LOG IN

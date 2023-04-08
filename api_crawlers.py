@@ -6,7 +6,7 @@ import pretty_errors
 import pandas as pd
 import timeit
 import os
-from utils.handy import test_postgre, api_pubdate, class_json_strategy, to_postgre, clean_rows
+from utils.handy import test_postgre, api_pubdate, class_json_strategy, to_postgre, clean_rows, cleansing_selenium_crawlers
 
 #EXPORT THE PATH - YOU NEED TO EXPORT YOUR OWN PATH & SAVE IT AS 'CRAWLER_ALL'
 PATH = '/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/'
@@ -51,6 +51,7 @@ def api_crawlers(cut_off):
                     print("\n", f"Fetching...{api}", "\n")
                     
                     #Call the function depending on the JSON's class
+                    ##If the data is inside another dict then we access it 
                     jobs = class_json_strategy(data, elements_path, class_json)
 
                     #Start loop if not None
@@ -95,9 +96,11 @@ def api_crawlers(cut_off):
         if col == 'pubdate':
             df[col] = df[col].apply(api_pubdate)
             df[col] = pd.to_datetime(df[col], errors="coerce", infer_datetime_format=True, exact=False)
-        if col == 'description' or col == 'location':
+        if col == 'location':
             #df[col] = df[col].astype(str).str.replace(r'{}', '', regex=True)
             df[col] = df[col].astype(str).apply(clean_rows)
+        if col == 'description':
+            df[col] = df[col].astype(str).apply(clean_rows).apply(cleansing_selenium_crawlers)
 
 
     df.to_csv(PATH + "/OUTPUTS/test_api_crawlers.csv", index=False)
@@ -108,8 +111,11 @@ def api_crawlers(cut_off):
     date_range_filter = (df['pubdate'] >= start_date) & (df['pubdate'] <= end_date)
     df = df.loc[~date_range_filter]
 
+    #Slice desdriptions
+    df['description'] = df['description'].str.slice(0, 2000)
+
     ## PostgreSQL
-    to_postgre(df)
+    test_postgre(df)
 
     elapsed_time = timeit.default_timer() - start_time
     print("\n", f"Api crawlers have finished! all in: {elapsed_time:.2f} seconds", "\n") 
