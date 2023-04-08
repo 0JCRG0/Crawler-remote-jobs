@@ -1,5 +1,17 @@
 import re
 import psycopg2
+import logging
+
+#PATH
+
+def LoggingMasterCrawler():
+    # Define a custom format with bold text
+    log_format = '%(asctime)s %(levelname)s: \n%(message)s\n'
+
+    # Configure the logger with the custom format
+    logging.basicConfig(filename="/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/logs/master_crawler.log",
+                        level=logging.INFO,
+                        format=log_format)
 
 #CLEANING FUNCTIONS FOR SELENIUM
 def clean_rows(s):
@@ -248,6 +260,9 @@ def test_postgre(df):
     cnx.close()
 
 def to_postgre(df):
+    #call loggging
+    LoggingMasterCrawler()
+    
     # create a connection to the PostgreSQL database
     cnx = psycopg2.connect(user='postgres', password='3312', host='localhost', port='5432', database='postgres')
 
@@ -313,6 +328,17 @@ def to_postgre(df):
     unique_jobs = final_count - initial_count
 
     # check if the result set is not empty
+    postgre_report = "FINAL REPORT:"\
+                    "\n"\
+                    f"Total count of jobs before crawling: {initial_count}" \
+                    "\n"\
+                    f"Total count of jobs found by crawling: {jobs_added_count}" \
+                    "\n"\
+                    f"Total count of unique jobs added: {unique_jobs}" \
+                    "\n"\
+                    f"Current total count of jobs in PostgreSQL: {final_count}"
+
+    logging.info(postgre_report)
     print("\n")
     print("FINAL REPORT:", "\n")
     print(f"Total count of jobs before crawling: {initial_count}")

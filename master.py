@@ -6,11 +6,10 @@ from api_crawlers import api_crawlers
 from RSS import rss_abdy, rss_ymd
 from selenium_template import selenium_crawlers
 from datetime import date, timedelta
+from utils.handy import LoggingMasterCrawler
 
-#You need to use YOUR full path
-
-
-logging.basicConfig(filename='/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/logs/master_crawler.log', level=logging.INFO, format='%(asctime)s %(levelname)s: %(message)s')
+#SET UP LOGGING
+LoggingMasterCrawler()
 
 def MASTER():
 
@@ -19,25 +18,21 @@ def MASTER():
     master_start_time = timeit.default_timer()
 
     #Start calling each crawler
-    logging.info('CRAWLER MASTER IS STARTING')
-    logging.info('Starting API crawlers...')
+    logging.info('CRAWLER MASTER IS STARTING!')
     api_crawlers(CUT_OFF_YDAY) #1st argument is the cut-off date
     
     #Move onto the next one
-    logging.info('API crawlers finished. Moving on to RSS crawlers...')
     rss_abdy(CUT_OFF_YDAY) #1st argument is the cut-off date
     
     #Move onto the next one
-    logging.info('RSS crawlers finished. Moving on to YMD crawler...')
     rss_ymd(CUT_OFF_YDAY) #1st argument is the cut-off date
     
     #Move onto the next one
-    logging.info('YMD crawler finished. Moving on to selenium crawler...')
     selenium_crawlers('MAIN') #Either 'MAIN' or FREELANCE
 
     #print the time
     elapsed_time = timeit.default_timer() - master_start_time
-    logging.info(f'All crawlers finished in {elapsed_time:.2f} seconds')
+    logging.info(f'CRAWLER MASTER FINISHED. ALL IN {elapsed_time:.2f} SECONDS!')
 
 if __name__ == "__main__":
     MASTER()

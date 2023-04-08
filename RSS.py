@@ -13,7 +13,8 @@ import pretty_errors
 import datetime
 import timeit
 import os
-from utils.handy import clean_link_rss, clean_other_rss, YMD_pubdate, to_postgre, adby_pubdate, test_postgre, freelance_postgre
+import logging
+from utils.handy import clean_link_rss, clean_other_rss, YMD_pubdate, to_postgre, adby_pubdate, test_postgre, freelance_postgre, LoggingMasterCrawler
 
 """
 rss_abdy crawls 31 sites whereas rss_ymd only crawls 3 sites. The difference is the
@@ -26,6 +27,9 @@ E.g., If cut_off = '2023-03-20' then the oldest job will be from 2023-03-21
 
 #EXPORT THE PATH - YOU NEED TO EXPORT YOUR OWN PATH & SAVE IT AS 'CRAWLER_ALL'
 PATH = '/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/'
+
+#Import Logging
+LoggingMasterCrawler()
 
 def rss_ymd(cut_off):
     #start timer
@@ -153,7 +157,10 @@ def rss_ymd(cut_off):
 
         # replace NaT values in the DataFrame with None -> if not postgre raises an error
         df = df.replace({np.nan: None, pd.NaT: None})
-
+        
+        #Logging
+        logging.info('Finished RSS_YMD. Results below ⬇︎')
+        
         ## PostgreSQL
         to_postgre(df)
         
@@ -298,6 +305,9 @@ def rss_abdy(cut_off):
         # replace NaT values in the DataFrame with None -> if not postgre raises an error
         df = df.replace({np.nan: None, pd.NaT: None})
 
+        #Log it
+        logging.info('Finished RSS_ABDY. Results below ⬇︎')
+
         ## PostgreSQL
         to_postgre(df)
         
@@ -439,6 +449,9 @@ def rss_freelance(cut_off):
         # replace NaT values in the DataFrame with None -> if not postgre raises an error
         df = df.replace({np.nan: None, pd.NaT: None})
 
+        #Log it
+        logging.info('Finished RSS_FREELANCE. Results below ⬇︎')
+        
         ## PostgreSQL
         freelance_postgre(df)
         

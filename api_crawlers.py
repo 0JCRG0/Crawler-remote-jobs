@@ -7,10 +7,13 @@ import pandas as pd
 import timeit
 import os
 import logging
-from utils.handy import test_postgre, api_pubdate, class_json_strategy, to_postgre, clean_rows, cleansing_selenium_crawlers
+from utils.handy import test_postgre, api_pubdate, class_json_strategy, to_postgre, clean_rows, cleansing_selenium_crawlers, LoggingMasterCrawler
 
 #EXPORT THE PATH - YOU NEED TO EXPORT YOUR OWN PATH & SAVE IT AS 'CRAWLER_ALL'
 PATH = '/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/'
+
+#Import logging
+LoggingMasterCrawler()
 
 def api_crawlers(cut_off):
 
@@ -114,6 +117,9 @@ def api_crawlers(cut_off):
 
     #Slice desdriptions
     df['description'] = df['description'].str.slice(0, 2000)
+
+    #Log
+    logging.info('Finished API crawlers. Results below ⬇︎')
 
     ## PostgreSQL
     to_postgre(df)

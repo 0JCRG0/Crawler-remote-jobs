@@ -11,7 +11,7 @@ from datetime import date
 import json
 import logging
 import os
-from utils.handy import cleansing_selenium_crawlers, to_postgre, test_postgre, freelance_postgre
+from utils.handy import cleansing_selenium_crawlers, to_postgre, test_postgre, freelance_postgre, LoggingMasterCrawler
 
 
 #IMPORT THE PATH - YOU NEED TO EXPORT YOUR OWN PATH TO zsh/bash & SAVE IT AS 'CRAWLER_ALL'
@@ -19,19 +19,7 @@ PATH = '/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversida
 
 def selenium_crawlers(TYPE):
     # configure the logger
-    logger = logging.getLogger(__name__)
-    logger.setLevel(logging.DEBUG)
-
-    # create a file handler
-    handler = logging.FileHandler('selenium_crawlers.log')
-    handler.setLevel(logging.DEBUG)
-
-    # create a logging format
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    handler.setFormatter(formatter)
-
-    # add the handlers to the logger
-    logger.addHandler(handler)
+    LoggingMasterCrawler()
 
     try:
 
@@ -176,10 +164,10 @@ def selenium_crawlers(TYPE):
             #df.loc[:, df.columns != 'pubdate'] = df.loc[:, df.columns != 'pubdate'].astype(str).apply(cleansing_selenium_crawlers)
 
             #Save it in local machine
-            directory = "./OUTPUTS/"
             df.to_csv(PATH + "/OUTPUTS/post-pipeline-Sel_All.csv", index=False)
 
-
+            #Log it 
+            logging.info('Finished Selenium_Crawlers. Results below ⬇︎')
             # SEND IT TO TO PostgreSQL 
             
             POSTGRESQL(df)
@@ -192,8 +180,8 @@ def selenium_crawlers(TYPE):
     
     except Exception as e:
         # log the error
-        logger.error(f'Error occurred: {str(e)}')
+        print(f'Error occurred: {str(e)}')
         # handle the error
 
 if __name__ == "__main__":
-    selenium_crawlers('FREELANCE') 
+    selenium_crawlers('MAIN') 
