@@ -6,6 +6,7 @@ import pretty_errors
 import pandas as pd
 import timeit
 import os
+import logging
 from utils.handy import test_postgre, api_pubdate, class_json_strategy, to_postgre, clean_rows, cleansing_selenium_crawlers
 
 #EXPORT THE PATH - YOU NEED TO EXPORT YOUR OWN PATH & SAVE IT AS 'CRAWLER_ALL'
@@ -115,7 +116,7 @@ def api_crawlers(cut_off):
     df['description'] = df['description'].str.slice(0, 2000)
 
     ## PostgreSQL
-    test_postgre(df)
+    to_postgre(df)
 
     elapsed_time = timeit.default_timer() - start_time
     print("\n", f"Api crawlers have finished! all in: {elapsed_time:.2f} seconds", "\n") 
