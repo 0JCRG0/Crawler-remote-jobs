@@ -14,7 +14,7 @@ import datetime
 import timeit
 import os
 import logging
-from utils.handy import clean_link_rss, clean_other_rss, YMD_pubdate, to_postgre, adby_pubdate, test_postgre, freelance_postgre, LoggingMasterCrawler
+from utils.handy import clean_link_rss, clean_other_rss, YMD_pubdate, to_postgre, adby_pubdate, test_postgre, freelance_postgre, LoggingMasterCrawler, LoggingFreelanceCrawler
 
 """
 rss_abdy crawls 31 sites whereas rss_ymd only crawls 3 sites. The difference is the
@@ -28,10 +28,10 @@ E.g., If cut_off = '2023-03-20' then the oldest job will be from 2023-03-21
 #EXPORT THE PATH - YOU NEED TO EXPORT YOUR OWN PATH & SAVE IT AS 'CRAWLER_ALL'
 PATH = '/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/'
 
-#Import Logging
-LoggingMasterCrawler()
 
 def rss_ymd(cut_off):
+    #Import Logging
+    LoggingMasterCrawler()
     #start timer
 
     start_time = timeit.default_timer()
@@ -176,6 +176,8 @@ RSS_ABDY below
 
 
 def rss_abdy(cut_off):
+    #Import Logging
+    LoggingMasterCrawler()
     #start timer
     start_time = timeit.default_timer()
 
@@ -323,8 +325,10 @@ FREELANCER CRAWLER
 """
 
 def rss_freelance(cut_off):
+    #SET UP LOGGING
+    LoggingFreelanceCrawler()
+    
     #start timer
-
     start_time = timeit.default_timer()
 
     file = PATH + '/rss_resources/freelance.csv'
@@ -382,7 +386,7 @@ def rss_freelance(cut_off):
                 else:
                     total_links.append('NaN')
                 # Get the pubdate of different tags
-                pubDate_tag = item.find('pubDate') or item.find('dc:date')
+                pubDate_tag = item.find('pubDate')
                 if pubDate_tag is not None:
                     pubDate_text = pubDate_tag.get_text(strip=True)
                     total_pubdates.append(pubDate_text)
@@ -418,11 +422,11 @@ def rss_freelance(cut_off):
         else:
             df[col] = df[col].apply(clean_other_rss)
 
-    df.to_csv(PATH + '/OUTPUTS/RSS-YMD.csv', index=False)
+    df.to_csv(PATH + '/OUTPUTS/FreelanceRSS.csv', index=False)
 
     for col in df.columns:
         if col == 'pubdate':
-            df[col] = df[col].apply(YMD_pubdate)
+            df[col] = df[col].apply(adby_pubdate)
 
     df.to_csv(PATH + '/OUTPUTS/test-RSS-YMD.csv', index=False)
 

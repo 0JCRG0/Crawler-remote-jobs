@@ -1,0 +1,82 @@
+2023-04-09 00:26:38,753 INFO: 
+Finished RSS_FREELANCE. Results below ⬇︎
+
+2023-04-09 00:26:38,805 INFO: 
+FREELANCE TABLE REPORT:
+Total count of jobs before crawling: 240
+Total count of jobs found by crawling: 20
+Total count of unique jobs added: 16
+Current total count of jobs in PostgreSQL: 256
+
+2023-04-09 00:28:52,785 INFO: 
+Finished RSS_FREELANCE. Results below ⬇︎
+
+2023-04-09 00:28:52,854 INFO: 
+FREELANCE TABLE REPORT:
+Total count of jobs before crawling: 256
+Total count of jobs found by crawling: 20
+Total count of unique jobs added: 0
+Current total count of jobs in PostgreSQL: 256
+
+2023-04-09 01:05:25,627 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-04-09 01:05:25,687 INFO: 
+FREELANCE TABLE REPORT:
+Total count of jobs before crawling: 362
+Total count of jobs found by crawling: 115
+Total count of unique jobs added: 0
+Current total count of jobs in PostgreSQL: 362
+
+2023-04-09 01:06:47,004 INFO: 
+FREELANCE CRAWLER IS STARTING!
+
+2023-04-09 01:06:47,244 INFO: 
+Finished RSS_FREELANCE. Results below ⬇︎
+
+2023-04-09 01:06:47,274 INFO: 
+FREELANCE TABLE REPORT:
+Total count of jobs before crawling: 362
+Total count of jobs found by crawling: 20
+Total count of unique jobs added: 19
+Current total count of jobs in PostgreSQL: 381
+
+2023-04-09 01:07:02,820 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-04-09 01:07:02,875 INFO: 
+FREELANCE TABLE REPORT:
+Total count of jobs before crawling: 381
+Total count of jobs found by crawling: 115
+Total count of unique jobs added: 2
+Current total count of jobs in PostgreSQL: 383
+
+2023-04-09 01:07:02,876 INFO: 
+FREELANCE CRAWLER FINISHED. ALL IN 15.87 SECONDS!
+
+2023-04-09 01:17:20,182 INFO: 
+FREELANCE CRAWLER IS STARTING!
+
+2023-04-09 01:17:20,436 INFO: 
+Finished RSS_FREELANCE. Results below ⬇︎
+
+2023-04-09 01:17:20,486 INFO: 
+FREELANCE TABLE REPORT:
+Total count of jobs before crawling: 0
+Total count of jobs found by crawling: 20
+Total count of unique jobs added: 20
+Current total count of jobs in PostgreSQL: 20
+
+2023-04-09 01:17:39,388 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-04-09 01:17:39,443 INFO: 
+FREELANCE TABLE REPORT:
+Total count of jobs before crawling: 20
+Total count of jobs found by crawling: 116
+Total count of unique jobs added: 115
+Current total count of jobs in PostgreSQL: 135
+
+2023-04-09 01:17:39,444 INFO: 
+FREELANCE CRAWLER FINISHED. ALL IN 19.26 SECONDS!
+

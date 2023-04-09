@@ -11,15 +11,14 @@ from datetime import date
 import json
 import logging
 import os
-from utils.handy import cleansing_selenium_crawlers, to_postgre, test_postgre, freelance_postgre, LoggingMasterCrawler
+from utils.handy import cleansing_selenium_crawlers, to_postgre, test_postgre, freelance_postgre, LoggingMasterCrawler, LoggingFreelanceCrawler
 
+#TODO: Why am I getting too may none values?
 
 #IMPORT THE PATH - YOU NEED TO EXPORT YOUR OWN PATH TO zsh/bash & SAVE IT AS 'CRAWLER_ALL'
 PATH = '/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/'
 
 def selenium_crawlers(TYPE):
-    # configure the logger
-    LoggingMasterCrawler()
 
     try:
 
@@ -42,10 +41,14 @@ def selenium_crawlers(TYPE):
             JSON = PATH + '/selenium_resources/main_sel_crawlers.json'
             POSTGRESQL = to_postgre
             print("\n", f"Reading {JSON}. Jobs will be sent to PostgreSQL's master_jobs table", "\n")
+            # configure the logger
+            LoggingMasterCrawler()
         elif TYPE == 'FREELANCE':
             JSON = PATH + '/selenium_resources/freelance.json'
             POSTGRESQL = freelance_postgre
-            print("\n", f"Reading {JSON}. Jobs will be sent to PostgreSQL's freelance table", "\n")
+            # configure the logger
+            LoggingFreelanceCrawler()
+            #print("\n", f"Reading {JSON}. Jobs will be sent to PostgreSQL's freelance table", "\n")
         else:
             print("\n", "Incorrect argument! Use either 'MAIN' or 'FREELANCE' to run this script.", "\n")
 
@@ -184,4 +187,4 @@ def selenium_crawlers(TYPE):
         # handle the error
 
 if __name__ == "__main__":
-    selenium_crawlers('MAIN') 
+    selenium_crawlers('FREELANCE') 

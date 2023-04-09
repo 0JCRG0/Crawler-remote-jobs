@@ -2,14 +2,22 @@ import re
 import psycopg2
 import logging
 
-#PATH
-
+#Loggers
 def LoggingMasterCrawler():
     # Define a custom format with bold text
     log_format = '%(asctime)s %(levelname)s: \n%(message)s\n'
 
     # Configure the logger with the custom format
     logging.basicConfig(filename="/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/logs/master_crawler.log",
+                        level=logging.INFO,
+                        format=log_format)
+
+def LoggingFreelanceCrawler():
+    # Define a custom format with bold text
+    log_format = '%(asctime)s %(levelname)s: \n%(message)s\n'
+
+    # Configure the logger with the custom format
+    logging.basicConfig(filename="/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/logs/FreelanceCrawler.log",
                         level=logging.INFO,
                         format=log_format)
 
@@ -354,6 +362,9 @@ def to_postgre(df):
     cnx.close()
 
 def freelance_postgre(df):
+    #call loggging
+    LoggingFreelanceCrawler()
+
     # create a connection to the PostgreSQL database
     cnx = psycopg2.connect(user='postgres', password='3312', host='localhost', port='5432', database='postgres')
 
@@ -419,6 +430,19 @@ def freelance_postgre(df):
     unique_jobs = final_count - initial_count
 
     # check if the result set is not empty
+    # check if the result set is not empty
+    postgre_report = "FREELANCE TABLE REPORT:"\
+                    "\n"\
+                    f"Total count of jobs before crawling: {initial_count}" \
+                    "\n"\
+                    f"Total count of jobs found by crawling: {jobs_added_count}" \
+                    "\n"\
+                    f"Total count of unique jobs added: {unique_jobs}" \
+                    "\n"\
+                    f"Current total count of jobs in PostgreSQL: {final_count}"
+
+    logging.info(postgre_report)
+    
     print("\n")
     print("FREELANCE TABLE REPORT:", "\n")
     print(f"Total count of jobs before crawling: {initial_count}")
