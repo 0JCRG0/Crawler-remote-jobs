@@ -80,3 +80,23 @@ Current total count of jobs in PostgreSQL: 135
 2023-04-09 01:17:39,444 INFO: 
 FREELANCE CRAWLER FINISHED. ALL IN 19.26 SECONDS!
 
+2023-04-09 14:56:31,732 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-04-09 14:56:31,786 INFO: 
+FREELANCE TABLE REPORT:
+Total count of jobs before crawling: 135
+Total count of jobs found by crawling: 58
+Total count of unique jobs added: 41
+Current total count of jobs in PostgreSQL: 176
+
+2023-04-09 14:58:58,239 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-04-09 14:58:58,289 INFO: 
+FREELANCE TABLE REPORT:
+Total count of jobs before crawling: 176
+Total count of jobs found by crawling: 60
+Total count of unique jobs added: 1
+Current total count of jobs in PostgreSQL: 177
+
