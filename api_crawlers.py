@@ -121,6 +121,9 @@ def api_crawlers(cut_off):
     #Log
     logging.info('Finished API crawlers. Results below ⬇︎')
 
+    #Get rid of USA jobs
+    #new_df = bye_usa(df)
+
     ## PostgreSQL
     to_postgre(df)
 

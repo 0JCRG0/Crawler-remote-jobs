@@ -1,7 +1,7 @@
 import re
 import psycopg2
 import logging
-
+import pandas as pd
 #Loggers
 def LoggingMasterCrawler():
     # Define a custom format with bold text
@@ -482,7 +482,7 @@ def api_pubdate(s):
         pubdate = s[0:10]
         return pubdate
 
-#FUNCTIONS FOR FORMATTING PUBDATES IN RSS
+# FUNCTIONS FOR FORMATTING PUBDATES IN RSS
 def adby_pubdate(s):
     #slice the jobs that are formatted as %a %d %b %Y
     if s is not None:
@@ -496,7 +496,6 @@ def YMD_pubdate(s):
         YMD_pub = s[0:8]
         return YMD_pub
 
-
 #Cleaning function indeed
 def indeed_regex(s):
         pattern = r'<li>(.*?)<\/li>'
@@ -507,3 +506,42 @@ def indeed_regex(s):
             return text
         else:
             return ''
+
+#Cleaning df from US jobs
+"""
+
+def bye_usa(df):
+    # create a list of words to search for
+    words_to_search = ['US', 'USA', 'United States']
+
+    # create a new dataframe to store the filtered results
+    filtered_df = pd.DataFrame(columns=df.columns)
+
+    # iterate over each row in the original dataframe
+    for i, row in df.iterrows():
+        # iterate over each column in the row
+        for col in row.index:
+            # check if the column contains string values
+            if isinstance(row[col], str):
+                # check if the column contains any of the words to search for
+                if any(re.search(rf"\b{word}\b", row[col]) for word in words_to_search):
+                    # add the row to the filtered dataframe
+                    filtered_df = filtered_df.append(df)
+                    break  # stop iterating over columns when a match is found
+
+    return filtered_df
+"""
+
+#df.loc[:, col] = df.loc[:, col]
+"""
+    # select the rows that contain any of the words in any column
+    for col in df.columns:
+        # check if the column contains string values
+        if df[col].dtype == 'object' and col not in ['link', 'pubdate']:
+            # convert the column to a string type
+            df.loc[:, col] = df.loc[:, col].astype(str)
+            
+            # apply the str.contains() method to select rows containing the words to search for
+            df.loc[:, col] = df.loc[:, col].str.contains('|'.join(words_to_search)).any()
+    return df.T
+"""
