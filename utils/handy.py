@@ -508,40 +508,36 @@ def indeed_regex(s):
             return ''
 
 #Cleaning df from US jobs
-"""
+def filter_jobs():
+        #call loggging
+    #LoggingMasterCrawler()
+    
+    # create a connection to the PostgreSQL database
+    cnx = psycopg2.connect(user='postgres', password='3312', host='localhost', port='5432', database='postgres')
 
-def bye_usa(df):
-    # create a list of words to search for
-    words_to_search = ['US', 'USA', 'United States']
+    # create a cursor object
+    cursor = cnx.cursor()
 
-    # create a new dataframe to store the filtered results
-    filtered_df = pd.DataFrame(columns=df.columns)
+    # prepare the SQL query to create a new table
+    create_table_query = '''
+        CREATE TABLE IF NOT EXISTS master_jobs (
+            title VARCHAR(1000),
+            link VARCHAR(1000) PRIMARY KEY,
+            description VARCHAR(2000),
+            pubdate TIMESTAMP,
+            location VARCHAR(1000)
+        )
+    '''
 
-    # iterate over each row in the original dataframe
-    for i, row in df.iterrows():
-        # iterate over each column in the row
-        for col in row.index:
-            # check if the column contains string values
-            if isinstance(row[col], str):
-                # check if the column contains any of the words to search for
-                if any(re.search(rf"\b{word}\b", row[col]) for word in words_to_search):
-                    # add the row to the filtered dataframe
-                    filtered_df = filtered_df.append(df)
-                    break  # stop iterating over columns when a match is found
+    # execute the create table query
+    cursor.execute(create_table_query)
 
-    return filtered_df
-"""
+    # execute the initial count query and retrieve the result
+    initial_count_query = '''
+        SELECT COUNT(*) FROM master_jobs
+    '''
+    cursor.execute(initial_count_query)
 
-#df.loc[:, col] = df.loc[:, col]
-"""
-    # select the rows that contain any of the words in any column
-    for col in df.columns:
-        # check if the column contains string values
-        if df[col].dtype == 'object' and col not in ['link', 'pubdate']:
-            # convert the column to a string type
-            df.loc[:, col] = df.loc[:, col].astype(str)
-            
-            # apply the str.contains() method to select rows containing the words to search for
-            df.loc[:, col] = df.loc[:, col].str.contains('|'.join(words_to_search)).any()
-    return df.T
-"""
+    # close the cursor and connection
+    cursor.close()
+    cnx.close()
