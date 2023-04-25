@@ -1,0 +1,21 @@
+[
+    {
+        "apis": [
+            {
+                "name": "4dayweek.io",
+                "api": "https://4dayweek.io/api",
+                "class_json": "dict",
+                "elements_path": [
+                    {
+                        "dict_tag": "jobs",
+                        "title_tag": "title",
+                        "link_tag": "url",
+                        "description_tag": "description",
+                        "pubdate_tag": "posted",
+                        "location_tag": "location_original"
+                    }
+                ]
+            }
+        ]
+    }
+]
