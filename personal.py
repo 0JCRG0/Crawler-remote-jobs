@@ -13,7 +13,9 @@ def MASTER():
         "DATA+ENGINEER",
         "SQL",
         "BUSINESS+INTELLIGENCE",
-        "DATABASE+ADMINISTRATOR"
+        "DATABASE+ADMINISTRATOR",
+        "ABOGADO",
+        "Big+Data"
         ]
     PAGES = 5
     COUNTRY = "MX"

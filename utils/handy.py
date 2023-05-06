@@ -2,6 +2,8 @@ import re
 import psycopg2
 import logging
 import pandas as pd
+import secrets
+import string
 #Loggers
 def LoggingMasterCrawler():
     # Define a custom format with bold text
@@ -105,7 +107,7 @@ def clean_other_rss(s):
     return s
 
 #FUNCTIONS TO SEND A DF TO POSTGRESQL
-def mx_postgre(df):
+def _mx_postgre(df):
     # create a connection to the PostgreSQL database
     cnx = psycopg2.connect(user='postgres', password='3312', host='localhost', port='5432', database='postgres')
 
@@ -175,6 +177,89 @@ def mx_postgre(df):
     # check if the result set is not empty
     print("\n")
     print("FINAL REPORT:", "\n")
+    print(f"Total count of jobs before crawling: {initial_count}")
+    print(f"Total number of jobs obtained by crawling: {jobs_added_count}")
+    print(f"Total number of unique jobs added: {unique_jobs}")
+    print(f"Current total count of jobs in PostgreSQL: {final_count}")
+
+    # commit the changes to the database
+    cnx.commit()
+
+    # close the cursor and connection
+    cursor.close()
+    cnx.close()
+
+def personal_postgre(df):
+    # create a connection to the PostgreSQL database
+    cnx = psycopg2.connect(user='postgres', password='3312', host='localhost', port='5432', database='postgres')
+
+    # create a cursor object
+    cursor = cnx.cursor()
+
+    # prepare the SQL query to create a new table
+    create_table_query = '''
+        CREATE TABLE IF NOT EXISTS personal (
+            id VARCHAR(10),
+            title VARCHAR(1000),
+            link VARCHAR(1000) PRIMARY KEY,
+            description VARCHAR(2000),
+            pubdate TIMESTAMP,
+            location VARCHAR(1000),
+            UNIQUE (title, link)
+        )
+    '''
+
+    # execute the create table query
+    cursor.execute(create_table_query)
+
+    # execute the initial count query and retrieve the result
+    initial_count_query = '''
+        SELECT COUNT(*) FROM personal
+    '''
+    cursor.execute(initial_count_query)
+    initial_count_result = cursor.fetchone()
+
+    # insert the DataFrame into the PostgreSQL database using an upsert strategy
+    jobs_added = []
+    for index, row in df.iterrows():
+        insert_query = '''
+            INSERT INTO personal (id, title, link, description, pubdate, location)
+            VALUES (%s, %s, %s, %s, %s, %s)
+            ON CONFLICT (title, link) DO UPDATE SET
+                id = excluded.id,
+                title = excluded.title,
+                description = excluded.description,
+                pubdate = excluded.pubdate,
+                location = excluded.location
+            RETURNING *
+        '''
+        values = (row['id'], row['title'], row['link'], row['description'], row['pubdate'], row['location'])
+        cursor.execute(insert_query, values)
+        if cursor.rowcount > 0:
+            jobs_added.append(cursor.fetchone())
+
+    final_count_query = '''
+        SELECT COUNT(*) FROM personal
+    '''
+    # execute the count query and retrieve the result
+    cursor.execute(final_count_query)
+    final_count_result = cursor.fetchone()
+
+    # calculate the number of unique jobs that were added
+    if initial_count_result is not None:
+        initial_count = initial_count_result[0]
+    else:
+        initial_count = 0
+    jobs_added_count = len(jobs_added)
+    if final_count_result is not None:
+        final_count = final_count_result[0]
+    else:
+        final_count = 0
+    unique_jobs = final_count - initial_count
+
+    # check if the result set is not empty
+    print("\n")
+    print("PERSONAL DB RESULTS:", "\n")
     print(f"Total count of jobs before crawling: {initial_count}")
     print(f"Total number of jobs obtained by crawling: {jobs_added_count}")
     print(f"Total number of unique jobs added: {unique_jobs}")
@@ -541,3 +626,9 @@ def filter_jobs():
     # close the cursor and connection
     cursor.close()
     cnx.close()
+
+#ID GENERATOR 
+
+def id_generator(length=8):
+    alphabet = string.ascii_letters + string.digits
+    return ''.join(secrets.choice(alphabet) for i in range(length))

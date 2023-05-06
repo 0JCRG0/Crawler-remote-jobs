@@ -115,7 +115,7 @@ def indeed(pages, country, keyword):
 
 
 if __name__ == "__main__":
-    indeed(2, "MX", "data") 
+    indeed(2, "MX", "data+analyst") 
     """
     1st = number of pages
     2nd = country code from json
