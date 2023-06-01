@@ -4,7 +4,10 @@ import logging
 import pandas as pd
 import secrets
 import string
-#Loggers
+
+
+
+""" Loggers """
 def LoggingMasterCrawler():
     # Define a custom format with bold text
     log_format = '%(asctime)s %(levelname)s: \n%(message)s\n'
@@ -23,7 +26,7 @@ def LoggingFreelanceCrawler():
                         level=logging.INFO,
                         format=log_format)
 
-#CLEANING FUNCTIONS FOR SELENIUM
+""" CLEANING FUNCTIONS"""
 def clean_rows(s):
     if not isinstance(s, str):
         print(f"{s} is not a string! Returning unmodified")
@@ -106,7 +109,7 @@ def clean_other_rss(s):
             
     return s
 
-#FUNCTIONS TO SEND A DF TO POSTGRESQL
+""" DF TO POSTGRE """
 def _mx_postgre(df):
     # create a connection to the PostgreSQL database
     cnx = psycopg2.connect(user='postgres', password='3312', host='localhost', port='5432', database='postgres')
@@ -286,7 +289,8 @@ def test_postgre(df):
             link VARCHAR(1000) PRIMARY KEY,
             description VARCHAR(2000),
             pubdate TIMESTAMP,
-            location VARCHAR(1000)
+            location VARCHAR(1000),
+            id VARCHAR(8) UNIQUE
         )
     '''
 
@@ -300,23 +304,39 @@ def test_postgre(df):
     cursor.execute(initial_count_query)
     initial_count_result = cursor.fetchone()
 
-    # insert the DataFrame into the PostgreSQL database using an upsert strategy
+    """ UPSERT STRATEGY FOR DUPLICATE LINKS & IDs"""
     jobs_added = []
     for index, row in df.iterrows():
-        insert_query = '''
-            INSERT INTO test (title, link, description, pubdate, location)
-            VALUES (%s, %s, %s, %s, %s)
+        insert_query_link = '''
+            INSERT INTO test (title, link, description, pubdate, location, id)
+            VALUES (%s, %s, %s, %s, %s, %s)
             ON CONFLICT (link) DO UPDATE SET
                 title = excluded.title,
                 description = excluded.description,
-                pubdate = excluded.pubdate,
                 location = excluded.location
             RETURNING *
         '''
-        values = (row['title'], row['link'], row['description'], row['pubdate'], row['location'])
-        cursor.execute(insert_query, values)
-        if cursor.rowcount > 0:
+        insert_query_id = '''
+            INSERT INTO test (title, link, description, pubdate, location, id)
+            VALUES (%s, %s, %s, %s, %s, %s)
+            ON CONFLICT (id) DO UPDATE SET
+                title = excluded.title,
+                description = excluded.description,
+                location = excluded.location
+            RETURNING *
+        '''
+        values = (row['title'], row['link'], row['description'], row['pubdate'], row['location'], row['id'])
+        cursor.execute(insert_query_link, values)
+        # Check if any row was affected by the first query
+        affected_rows = cursor.rowcount
+
+        # If no rows were affected, execute the second query to handle conflict with 'id'
+        if affected_rows == 0:
+            cursor.execute(insert_query_id, values)
+        elif affected_rows > 0:
             jobs_added.append(cursor.fetchone())
+
+    """ LOGGING/PRINTING RESULTS"""
 
     final_count_query = '''
         SELECT COUNT(*) FROM test
@@ -542,7 +562,7 @@ def freelance_postgre(df):
     cursor.close()
     cnx.close()
 
-#FUNCTION FOR APIs
+""" OTHER UTILS """
 
 ## Function to choose class_json_strategy
 def class_json_strategy(data, elements_path, class_json):

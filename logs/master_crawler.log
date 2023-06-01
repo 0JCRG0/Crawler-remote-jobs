@@ -6047,3 +6047,40 @@ Current total count of jobs in PostgreSQL: 7328
 2023-06-01 10:54:27,204 INFO: 
 CRAWLER MASTER FINISHED. ALL IN 76.23 SECONDS!
 
+2023-06-01 11:32:33,993 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-01 11:33:32,667 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-01 11:34:32,102 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-01 11:34:32,234 INFO: 
+FINAL REPORT:
+Total count of jobs before crawling: 7328
+Total count of jobs found by crawling: 306
+Total count of unique jobs added: 168
+Current total count of jobs in PostgreSQL: 7496
+
+2023-06-01 11:48:54,287 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-01 12:52:05,179 INFO: 
+CRAWLER MASTER IS STARTING!
+
+2023-06-01 13:23:14,783 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-01 14:14:49,839 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-01 14:20:28,989 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-01 14:33:43,241 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-01 14:38:32,726 INFO: 
+Finished API crawlers. Results below ⬇︎
+
