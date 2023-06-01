@@ -465,6 +465,6 @@ def rss_freelance(cut_off):
     pipeline(df)
 
 if __name__ == "__main__":
-    rss_ymd('2023-04-02') #cut_off -> this means that the oldest job will be the day after
-    #rss_abdy('2023-03-29') #same as above
+    #rss_ymd('2023-04-02') #cut_off -> this means that the oldest job will be the day after
+    rss_abdy('2023-03-29') #same as above
     #rss_freelance('2023-03-20')
