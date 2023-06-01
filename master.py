@@ -7,6 +7,15 @@ from RSS import rss_abdy, rss_ymd
 from selenium_template import selenium_crawlers
 from datetime import date, timedelta
 from utils.handy import LoggingMasterCrawler
+import os
+from dotenv import load_dotenv
+
+""" LOAD ALL THE ENV VARIABLES"""
+
+# API
+load_dotenv('.env')
+PROD_API = os.getenv('PATH_PROD_API', 'DEFAULT')
+TEST_API = os.getenv('PATH_TEST_API', 'DEFAULT')
 
 #SET UP LOGGING
 LoggingMasterCrawler()
@@ -19,7 +28,7 @@ def MASTER():
 
     #Start calling each crawler
     logging.info('CRAWLER MASTER IS STARTING!')
-    api_crawlers(CUT_OFF_YDAY) #1st argument is the cut-off date
+    api_crawlers(PROD_API) #No argument bcos it does not need it
     
     #Move onto the next one
     rss_abdy(CUT_OFF_YDAY) #1st argument is the cut-off date

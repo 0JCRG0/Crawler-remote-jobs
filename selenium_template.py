@@ -13,7 +13,7 @@ import logging
 import os
 from utils.handy import cleansing_selenium_crawlers, to_postgre, test_postgre, freelance_postgre, LoggingMasterCrawler, LoggingFreelanceCrawler
 
-#TODO: Why am I getting too may none values?
+#TODO: replace path with .env
 
 #IMPORT THE PATH - YOU NEED TO EXPORT YOUR OWN PATH TO zsh/bash & SAVE IT AS 'CRAWLER_ALL'
 PATH = '/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/'
