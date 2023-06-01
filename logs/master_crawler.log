@@ -5923,3 +5923,127 @@ CRAWLER MASTER FINISHED. ALL IN 67.89 SECONDS!
 2023-05-06 12:52:01,473 INFO: 
 CRAWLER MASTER IS STARTING!
 
+2023-05-08 17:18:25,773 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-05-08 17:18:26,049 INFO: 
+FINAL REPORT:
+Total count of jobs before crawling: 6302
+Total count of jobs found by crawling: 340
+Total count of unique jobs added: 62
+Current total count of jobs in PostgreSQL: 6364
+
+2023-05-16 12:52:05,137 INFO: 
+CRAWLER MASTER IS STARTING!
+
+2023-05-17 12:52:06,556 INFO: 
+CRAWLER MASTER IS STARTING!
+
+2023-05-18 12:52:06,026 INFO: 
+CRAWLER MASTER IS STARTING!
+
+2023-05-19 12:52:05,970 INFO: 
+CRAWLER MASTER IS STARTING!
+
+2023-05-20 12:52:07,123 INFO: 
+CRAWLER MASTER IS STARTING!
+
+2023-05-21 12:52:07,319 INFO: 
+CRAWLER MASTER IS STARTING!
+
+2023-05-22 12:52:04,537 INFO: 
+CRAWLER MASTER IS STARTING!
+
+2023-05-23 12:52:04,975 INFO: 
+CRAWLER MASTER IS STARTING!
+
+2023-05-24 12:52:07,406 INFO: 
+CRAWLER MASTER IS STARTING!
+
+2023-05-24 19:16:24,403 INFO: 
+CRAWLER MASTER IS STARTING!
+
+2023-05-24 19:16:29,023 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-05-24 19:16:29,205 INFO: 
+FINAL REPORT:
+Total count of jobs before crawling: 6364
+Total count of jobs found by crawling: 124
+Total count of unique jobs added: 113
+Current total count of jobs in PostgreSQL: 6477
+
+2023-05-24 19:24:31,335 INFO: 
+Finished RSS_ABDY. Results below ⬇︎
+
+2023-05-24 19:24:31,578 INFO: 
+FINAL REPORT:
+Total count of jobs before crawling: 6477
+Total count of jobs found by crawling: 778
+Total count of unique jobs added: 470
+Current total count of jobs in PostgreSQL: 6947
+
+2023-05-25 12:52:06,840 INFO: 
+CRAWLER MASTER IS STARTING!
+
+2023-05-27 12:52:07,161 INFO: 
+CRAWLER MASTER IS STARTING!
+
+2023-05-28 12:52:03,779 INFO: 
+CRAWLER MASTER IS STARTING!
+
+2023-05-29 12:52:06,536 INFO: 
+CRAWLER MASTER IS STARTING!
+
+2023-05-30 12:52:06,288 INFO: 
+CRAWLER MASTER IS STARTING!
+
+2023-05-31 12:52:02,589 INFO: 
+CRAWLER MASTER IS STARTING!
+
+2023-06-01 10:53:10,978 INFO: 
+CRAWLER MASTER IS STARTING!
+
+2023-06-01 10:53:37,703 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-01 10:53:37,842 INFO: 
+FINAL REPORT:
+Total count of jobs before crawling: 6947
+Total count of jobs found by crawling: 133
+Total count of unique jobs added: 123
+Current total count of jobs in PostgreSQL: 7070
+
+2023-06-01 10:54:03,441 INFO: 
+Finished RSS_ABDY. Results below ⬇︎
+
+2023-06-01 10:54:03,523 INFO: 
+FINAL REPORT:
+Total count of jobs before crawling: 7070
+Total count of jobs found by crawling: 177
+Total count of unique jobs added: 122
+Current total count of jobs in PostgreSQL: 7192
+
+2023-06-01 10:54:07,112 INFO: 
+Finished RSS_YMD. Results below ⬇︎
+
+2023-06-01 10:54:07,140 INFO: 
+FINAL REPORT:
+Total count of jobs before crawling: 7192
+Total count of jobs found by crawling: 37
+Total count of unique jobs added: 35
+Current total count of jobs in PostgreSQL: 7227
+
+2023-06-01 10:54:27,076 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-01 10:54:27,203 INFO: 
+FINAL REPORT:
+Total count of jobs before crawling: 7227
+Total count of jobs found by crawling: 123
+Total count of unique jobs added: 101
+Current total count of jobs in PostgreSQL: 7328
+
+2023-06-01 10:54:27,204 INFO: 
+CRAWLER MASTER FINISHED. ALL IN 76.23 SECONDS!
+

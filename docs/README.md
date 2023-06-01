@@ -19,13 +19,3 @@
 2. If the website/job board does not have an exposed API then we can look at the Source Code and try to find its RSS feed. If this is found, we just include that url to remote-working-resources.csv and the script in ALL_RSS will do its magic with bs4. 
 
 3. Finally, for the difficult but yet not impossible websites we use Selenium. Although these scripts are inherently slower, they are just incredibly powerful and versatile. (Note that this approach is only used for big websites which deserve a custom code, although if you know how I can unify these scripts I would be extremely helpful for the help/guidance)
-
-## PENDING TASKS:
-
-- Given that this project is far from being finished, any help would be great. So, these are some (if not all) the tasks for this repo.
-
-1. TODO: Either make custom crawlers or change the approach of an existent one to include all the websites which do not have rss feed in remote-working-resources.csv
-
-2. TODO: Unify existent crawlers by category (rss, selenium, APIs)
-
-3. TODO: Make a function per every crawler.

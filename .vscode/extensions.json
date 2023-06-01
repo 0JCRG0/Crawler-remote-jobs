@@ -1,5 +1,6 @@
 {
     "recommendations": [
-        "zhuangtongfa.material-theme"
+        "zhuangtongfa.material-theme",
+        "gruntfuggly.todo-tree"
     ]
 }
