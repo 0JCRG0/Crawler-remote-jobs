@@ -7,20 +7,22 @@ import pandas as pd
 import timeit
 import os
 import logging
+from dotenv import load_dotenv
 from utils.handy import test_postgre, api_pubdate, class_json_strategy, to_postgre, clean_rows, cleansing_selenium_crawlers, LoggingMasterCrawler
 
 #TODO: SORT OUT THE DATES. IF THIS SCRIPT RUNS DAILY THERE IS NO NEED TO GET ALL THE JOBS
 
-#EXPORT THE PATH - YOU NEED TO EXPORT YOUR OWN PATH & SAVE IT AS 'CRAWLER_ALL'
-PATH = '/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/'
-#DEFINE TEST OR PROD -- from api_resources
-TEST = '/api_resources/test.json'
-PROD = '/api_resources/main.json'
+# Load the .env file & access variables
+load_dotenv('.env')
+PROD = os.getenv('PATH_PROD_API', 'DEFAULT')
+TEST = os.getenv('PATH_TEST_API', 'DEFAULT')
+OUTPUT = os.getenv('OUTPUT_API', 'DEFAULT')
 
 #Import logging
 LoggingMasterCrawler()
 
 def api_crawlers(cut_off):
+    print(type(cut_off))
 
     #Start the timer
     start_time = timeit.default_timer()
@@ -33,7 +35,7 @@ def api_crawlers(cut_off):
         total_locations = []
         rows = []
 
-        with open(PATH + PROD) as f:
+        with open(PROD) as f:
             #load the json
             data = json.load(f)
             # Access the 'apis' list in the first dictionary of the 'data' list and assign it to the variable 'apis'
@@ -112,7 +114,7 @@ def api_crawlers(cut_off):
             df[col] = df[col].astype(str).apply(clean_rows).apply(cleansing_selenium_crawlers)
 
 
-    df.to_csv(PATH + "/OUTPUTS/test_api_crawlers.csv", index=False)
+    df.to_csv(OUTPUT, index=False)
             
     #Filter rows by a date range (this reduces the number of rows... duh)
     start_date = pd.to_datetime('2016-01-01')
