@@ -5,7 +5,7 @@ import pandas as pd
 import secrets
 import string
 
-
+#TODO: ADD .env
 
 """ Loggers """
 def LoggingMasterCrawler():
@@ -109,7 +109,8 @@ def clean_other_rss(s):
             
     return s
 
-""" DF TO POSTGRE """
+""" POSTGRE FUNCTIONS """
+
 def _mx_postgre(df):
     # create a connection to the PostgreSQL database
     cnx = psycopg2.connect(user='postgres', password='3312', host='localhost', port='5432', database='postgres')
@@ -192,6 +193,7 @@ def _mx_postgre(df):
     cursor.close()
     cnx.close()
 
+#TODO: Fix personal postgre
 def personal_postgre(df):
     # create a connection to the PostgreSQL database
     cnx = psycopg2.connect(user='postgres', password='3312', host='localhost', port='5432', database='postgres')
@@ -282,21 +284,6 @@ def test_postgre(df):
     # create a cursor object
     cursor = cnx.cursor()
 
-    # prepare the SQL query to create a new table
-    create_table_query = '''
-        CREATE TABLE IF NOT EXISTS test (
-            title VARCHAR(1000),
-            link VARCHAR(1000) PRIMARY KEY,
-            description VARCHAR(2000),
-            pubdate TIMESTAMP,
-            location VARCHAR(1000),
-            id VARCHAR(8) UNIQUE
-        )
-    '''
-
-    # execute the create table query
-    cursor.execute(create_table_query)
-
     # execute the initial count query and retrieve the result
     initial_count_query = '''
         SELECT COUNT(*) FROM test
@@ -308,8 +295,8 @@ def test_postgre(df):
     jobs_added = []
     for index, row in df.iterrows():
         insert_query_link = '''
-            INSERT INTO test (id, title, link, description, pubdate, location)
-            VALUES (%s, %s, %s, %s, %s, %s)
+            INSERT INTO test (id, title, link, description, pubdate, location, timestamp)
+            VALUES (%s, %s, %s, %s, %s, %s, %s)
             ON CONFLICT (link) DO UPDATE SET
                 title = excluded.title,
                 description = excluded.description,
@@ -317,15 +304,15 @@ def test_postgre(df):
             RETURNING *
         '''
         insert_query_id = '''
-            INSERT INTO test (id, title, link, description, pubdate, location)
-            VALUES (%s, %s, %s, %s, %s, %s)
+            INSERT INTO test (id, title, link, description, pubdate, location, timestamp)
+            VALUES (%s, %s, %s, %s, %s, %s, %s)
             ON CONFLICT (id) DO UPDATE SET
                 title = excluded.title,
                 description = excluded.description,
                 location = excluded.location
             RETURNING *
         '''
-        values = (row['id'], row['title'], row['link'], row['description'], row['pubdate'], row['location'])
+        values = (row['id'], row['title'], row['link'], row['description'], row['pubdate'], row['location'], row['timestamp'])
         cursor.execute(insert_query_link, values)
         # Check if any row was affected by the first query
         affected_rows = cursor.rowcount
@@ -382,21 +369,6 @@ def to_postgre(df):
     # create a cursor object
     cursor = cnx.cursor()
 
-    # prepare the SQL query to create a new table
-    """create_table_query = '''
-        CREATE TABLE test (
-            id VARCHAR(8) UNIQUE,
-            title VARCHAR(1000),
-            link VARCHAR(1000) PRIMARY KEY,
-            description VARCHAR(2000),
-            pubdate TIMESTAMP,
-            location VARCHAR(1000)
-        )
-    '''
-
-    # execute the create table query
-    cursor.execute(create_table_query)"""
-
     # execute the initial count query and retrieve the result
     initial_count_query = '''
         SELECT COUNT(*) FROM master_jobs
@@ -408,8 +380,8 @@ def to_postgre(df):
     jobs_added = []
     for index, row in df.iterrows():
         insert_query_link = '''
-            INSERT INTO master_jobs (id, title, link, description, pubdate, location)
-            VALUES (%s, %s, %s, %s, %s, %s)
+            INSERT INTO master_jobs (id, title, link, description, pubdate, location, timestamp)
+            VALUES (%s, %s, %s, %s, %s, %s, %s)
             ON CONFLICT (link) DO UPDATE SET
                 title = excluded.title,
                 description = excluded.description,
@@ -417,15 +389,15 @@ def to_postgre(df):
             RETURNING *
         '''
         insert_query_id = '''
-            INSERT INTO master_jobs (id, title, link, description, pubdate, location)
-            VALUES (%s, %s, %s, %s, %s, %s)
+            INSERT INTO master_jobs (id, title, link, description, pubdate, location, timestamp)
+            VALUES (%s, %s, %s, %s, %s, %s, %s)
             ON CONFLICT (id) DO UPDATE SET
                 title = excluded.title,
                 description = excluded.description,
                 location = excluded.location
             RETURNING *
         '''
-        values = (row['id'], row['title'], row['link'], row['description'], row['pubdate'], row['location'])
+        values = (row['id'], row['title'], row['link'], row['description'], row['pubdate'], row['location'], row['timestamp'])
         cursor.execute(insert_query_link, values)
         # Check if any row was affected by the first query
         affected_rows = cursor.rowcount

@@ -31,13 +31,13 @@ def MASTER():
     api_crawlers(PROD_API, "MAIN") #1st: JSON, 2nd:POSTGRE(MAIN OR TEST)
     
     #Move onto the next one
-    rss_abdy(CUT_OFF_YDAY) #1st argument is the cut-off date
+    rss_abdy(CUT_OFF_YDAY, "MAIN") #1st argument is the cut-off date, 2nd:POSTGRE(MAIN OR TEST)
     
     #Move onto the next one
-    rss_ymd(CUT_OFF_YDAY) #1st argument is the cut-off date
+    rss_ymd(CUT_OFF_YDAY, "MAIN") #1st argument is the cut-off date, 2nd:POSTGRE(MAIN OR TEST)
     
     #Move onto the next one
-    selenium_crawlers('MAIN') #Either 'MAIN' or FREELANCE
+    selenium_crawlers('MAIN') # 'MAIN', TEST or FREELANCE
 
     #print the time
     elapsed_time = timeit.default_timer() - master_start_time
