@@ -28,7 +28,7 @@ def MASTER():
 
     #Start calling each crawler
     logging.info('CRAWLER MASTER IS STARTING!')
-    api_crawlers(PROD_API) #No argument bcos it does not need it
+    api_crawlers(PROD_API, "MAIN") #1st: JSON, 2nd:POSTGRE(MAIN OR TEST)
     
     #Move onto the next one
     rss_abdy(CUT_OFF_YDAY) #1st argument is the cut-off date
