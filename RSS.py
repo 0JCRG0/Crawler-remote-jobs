@@ -14,6 +14,7 @@ import datetime
 import timeit
 import os
 import logging
+from datetime import datetime
 from utils.handy import *
 import os
 from dotenv import load_dotenv
@@ -34,12 +35,13 @@ E.g., If cut_off = '2023-03-20' then the oldest job will be from 2023-03-21
 """
 
 #TODO: only remaining to refactor is rss_freelance
+#TODO: Could refactor rss_abdy & rss_ymd to combine them by setting the datetime at today.
 
 #EXPORT THE PATH - YOU NEED TO EXPORT YOUR OWN PATH & SAVE IT AS 'CRAWLER_ALL'
 PATH = '/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL'
 
 
-def rss_ymd(cut_off):
+def rss_ymd(cut_off, postgre):
     #Import Logging
     LoggingMasterCrawler()
     #start timer
@@ -85,6 +87,7 @@ def rss_ymd(cut_off):
         total_locations = []
         total_descriptions = []
         total_ids = []
+        total_timestamps=[]
         for soup in all_soups:
             for item in soup.find_all('item'):
                 #IDs
@@ -125,7 +128,10 @@ def rss_ymd(cut_off):
                     total_descriptions.append(description)
                 else:
                     total_descriptions.append('NaN')
-                rows = {'id': total_ids, 'title':total_titles, 'link':total_links, 'pubdate': total_pubdates, 'location': total_locations, 'description': total_descriptions}
+                #timestamps
+                timestamp = datetime.now()
+                total_timestamps.append(timestamp)
+                rows = {'id': total_ids, 'title':total_titles, 'link':total_links, 'description': total_descriptions, 'pubdate': total_pubdates, 'location': total_locations, 'timestamp': total_timestamps}
         return rows
     data = all_elements()
 
@@ -176,7 +182,10 @@ def rss_ymd(cut_off):
         logging.info('Finished RSS_YMD. Results below ⬇︎')
         
         ## PostgreSQL
-        to_postgre(df)
+        if postgre == "MAIN":
+            to_postgre(df)
+        elif postgre == "TEST":
+            test_postgre(df)
         
         #print the time
         elapsed_time = timeit.default_timer() - start_time
@@ -185,11 +194,20 @@ def rss_ymd(cut_off):
 
 
 """
+
+
+
+
 RSS_ABDY below
+
+
+
+
+
 """
 
 
-def rss_abdy(cut_off):
+def rss_abdy(cut_off, postgre):
     #Import Logging
     LoggingMasterCrawler()
     #start timer
@@ -233,6 +251,7 @@ def rss_abdy(cut_off):
         total_locations = []
         total_descriptions = []
         total_ids=[]
+        total_timestamps=[]
         for soup in all_soups:
             for item in soup.find_all('item'):
                 #IDs
@@ -273,7 +292,10 @@ def rss_abdy(cut_off):
                     total_descriptions.append(description)
                 else:
                     total_descriptions.append('NaN')
-                rows = {'id': total_ids, 'title':total_titles, 'link':total_links, 'pubdate': total_pubdates, 'location': total_locations, 'description': total_descriptions}
+                #timestamps
+                timestamp = datetime.now()
+                total_timestamps.append(timestamp)
+                rows = {'id': total_ids, 'title':total_titles, 'link':total_links, 'description': total_descriptions, 'pubdate': total_pubdates, 'location': total_locations, 'timestamp': total_timestamps}
         return rows
     data = all_elements()
 
@@ -329,7 +351,10 @@ def rss_abdy(cut_off):
         logging.info('Finished RSS_ABDY. Results below ⬇︎')
 
         ## PostgreSQL
-        to_postgre(df)
+        if postgre == "MAIN":
+            to_postgre(df)
+        elif postgre == "TEST":
+            test_postgre(df)
         
         #print the time
         elapsed_time = timeit.default_timer() - start_time
@@ -338,7 +363,16 @@ def rss_abdy(cut_off):
 
 """
 
+
+
+
+
 FREELANCER CRAWLER
+
+
+
+
+
 
 """
 
@@ -483,6 +517,6 @@ def rss_freelance(cut_off):
     pipeline(df)
 
 if __name__ == "__main__":
-    rss_ymd('2023-04-02') #cut_off -> this means that the oldest job will be the day after
-    rss_abdy('2023-03-29') #same as above
+    rss_ymd('2023-04-02', "TEST") #cut_off -> this means that the oldest job will be the day after
+    rss_abdy('2023-03-29', "TEST") #same as above
     #rss_freelance('2023-03-20')

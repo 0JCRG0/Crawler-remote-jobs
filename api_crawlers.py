@@ -8,6 +8,7 @@ import timeit
 import os
 import logging
 from datetime import date
+from datetime import datetime
 from dotenv import load_dotenv
 from utils.handy import *
 from requests.exceptions import RequestException
@@ -33,6 +34,7 @@ def api_crawlers(prod_or_test, postgre):
         total_pubdates = []
         total_locations = []
         total_ids=[]
+        total_timestamps=[]
         rows = []
 
         with open(prod_or_test) as f:
@@ -99,10 +101,13 @@ def api_crawlers(prod_or_test, postgre):
                                     total_locations.append(job[location])
                                 else: 
                                     total_locations.append("NaN")
+                                #TIMESTAMP
+                                timestamp = datetime.now()
+                                total_timestamps.append(timestamp)
                                 #Put it all together...
-                                rows = {'title': total_titles, 'link':total_links, 'description': total_descriptions, 'pubdate': total_pubdates, 'location': total_locations, 'id': total_ids}
+                                rows = {'id': total_ids, 'title': total_titles, 'link':total_links, 'description': total_descriptions, 'pubdate': total_pubdates, 'location': total_locations,'timestamp': total_timestamps}
                 except RequestException as e:
-                    print(f"Encountered a request error: {e}. Moving on to {api}")
+                    print(f"Encountered a request error: {e}. Moving to the next API...")
                     pass  # continue the execution
                 except:
                     print("Unexpected error")
@@ -141,4 +146,4 @@ def api_crawlers(prod_or_test, postgre):
     print("\n", f"Api crawlers have finished! all in: {elapsed_time:.2f} seconds", "\n") 
     
 if __name__ == "__main__":
-    api_crawlers(PROD_API, "MAIN")
+    api_crawlers(PROD_API, "TEST")

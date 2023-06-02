@@ -7,7 +7,7 @@ import re
 import pretty_errors
 import timeit
 from dateutil.parser import parse
-from datetime import date
+from datetime import date, datetime
 import json
 import logging
 import os
@@ -16,7 +16,7 @@ from utils.handy import *
 #TODO: replace path with .env
 
 #IMPORT THE PATH - YOU NEED TO EXPORT YOUR OWN PATH TO zsh/bash & SAVE IT AS 'CRAWLER_ALL'
-PATH = '/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/'
+PATH = '/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL'
 
 def selenium_crawlers(TYPE):
     #start timer
@@ -45,8 +45,14 @@ def selenium_crawlers(TYPE):
         # configure the logger
         LoggingFreelanceCrawler()
         #print("\n", f"Reading {JSON}. Jobs will be sent to PostgreSQL's freelance table", "\n")
+    elif TYPE == 'TEST':
+        JSON = PATH + '/selenium_resources/test_selenium.json'
+        POSTGRESQL = test_postgre
+        print("\n", f"Reading {JSON}. Jobs will be sent to PostgreSQL's test table", "\n")
+        # configure the logger
+        LoggingMasterCrawler()
     else:
-        print("\n", "Incorrect argument! Use either 'MAIN' or 'FREELANCE' to run this script.", "\n")
+        print("\n", "Incorrect argument! Use 'MAIN', 'TEST' or 'FREELANCE' to run this script.", "\n")
 
 
     def elements():
@@ -56,12 +62,14 @@ def selenium_crawlers(TYPE):
         total_pubdates = []
         total_locations = [] 
         total_descriptions = []
+        total_timestamps = []
         rows = {"id": total_ids,
                 "title": total_titles,
                 "link": total_links,
                 "description": total_descriptions,
                 "pubdate": total_pubdates,
-                "location": total_locations}
+                "location": total_locations,
+                "timestamp": total_timestamps}
 
         #load the json
         with open(JSON) as f:
@@ -136,6 +144,10 @@ def selenium_crawlers(TYPE):
                             job_data["description"]= description
                         else:
                             job_data["description"]= "NaN"
+                        
+                        #Timestamps
+                        timestamp = datetime.now()
+                        job_data["timestamp"] = timestamp
                             
                         # add the data for the current job to the rows list
                         total_ids.append(job_data["id"])
@@ -143,6 +155,7 @@ def selenium_crawlers(TYPE):
                         total_titles.append(job_data["title"])
                         total_pubdates.append(job_data["pubdate"])
                         total_locations.append(job_data["location"])
+                        total_timestamps.append(job_data["timestamp"])
                         total_descriptions.append(job_data["description"])
         return rows
 
@@ -172,9 +185,7 @@ def selenium_crawlers(TYPE):
         
     def pipeline(df):
 
-        # Convert str to datetime & clean titles
-        #TODO: Solve SettingWithCopyWarning
-            
+        # clean 
         for col in df.columns:
             if col != 'pubdate':
                 df.loc[:, col] = df.loc[:, col].astype(str).apply(cleansing_selenium_crawlers)
@@ -197,4 +208,4 @@ def selenium_crawlers(TYPE):
     pipeline(df)
 
 if __name__ == "__main__":
-    selenium_crawlers('MAIN') 
+    selenium_crawlers('TEST') 
