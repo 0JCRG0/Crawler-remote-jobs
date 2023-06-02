@@ -14,7 +14,15 @@ import datetime
 import timeit
 import os
 import logging
-from utils.handy import clean_link_rss, clean_other_rss, YMD_pubdate, to_postgre, adby_pubdate, test_postgre, freelance_postgre, LoggingMasterCrawler, LoggingFreelanceCrawler
+from utils.handy import *
+import os
+from dotenv import load_dotenv
+
+""" LOAD ALL THE ENV VARIABLES"""
+
+# API
+#load_dotenv('.env')
+#PATH = os.getenv('PATH', 'DEFAULT')
 
 """
 rss_abdy crawls 31 sites whereas rss_ymd only crawls 3 sites. The difference is the
@@ -25,8 +33,10 @@ cut_off = one day prior the oldest job
 E.g., If cut_off = '2023-03-20' then the oldest job will be from 2023-03-21
 """
 
+#TODO: only remaining to refactor is rss_freelance
+
 #EXPORT THE PATH - YOU NEED TO EXPORT YOUR OWN PATH & SAVE IT AS 'CRAWLER_ALL'
-PATH = '/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/'
+PATH = '/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL'
 
 
 def rss_ymd(cut_off):
@@ -74,8 +84,12 @@ def rss_ymd(cut_off):
         total_links = []
         total_locations = []
         total_descriptions = []
+        total_ids = []
         for soup in all_soups:
             for item in soup.find_all('item'):
+                #IDs
+                id = id_generator(5)
+                total_ids.append(id)
                 # Get titles & append it to the list
                 title_tag = item.find('title')
                 if title_tag is not None:
@@ -111,7 +125,7 @@ def rss_ymd(cut_off):
                     total_descriptions.append(description)
                 else:
                     total_descriptions.append('NaN')
-                rows = {'title':total_titles, 'link':total_links, 'pubdate': total_pubdates, 'location': total_locations, 'description': total_descriptions}
+                rows = {'id': total_ids, 'title':total_titles, 'link':total_links, 'pubdate': total_pubdates, 'location': total_locations, 'description': total_descriptions}
         return rows
     data = all_elements()
 
@@ -218,8 +232,12 @@ def rss_abdy(cut_off):
         total_links = []
         total_locations = []
         total_descriptions = []
+        total_ids=[]
         for soup in all_soups:
             for item in soup.find_all('item'):
+                #IDs
+                id = id_generator(5)
+                total_ids.append(id)
                 # Get titles & append it to the list
                 title_tag = item.find('title')
                 if title_tag is not None:
@@ -255,7 +273,7 @@ def rss_abdy(cut_off):
                     total_descriptions.append(description)
                 else:
                     total_descriptions.append('NaN')
-                rows = {'title':total_titles, 'link':total_links, 'pubdate': total_pubdates, 'location': total_locations, 'description': total_descriptions}
+                rows = {'id': total_ids, 'title':total_titles, 'link':total_links, 'pubdate': total_pubdates, 'location': total_locations, 'description': total_descriptions}
         return rows
     data = all_elements()
 
@@ -465,6 +483,6 @@ def rss_freelance(cut_off):
     pipeline(df)
 
 if __name__ == "__main__":
-    #rss_ymd('2023-04-02') #cut_off -> this means that the oldest job will be the day after
+    rss_ymd('2023-04-02') #cut_off -> this means that the oldest job will be the day after
     rss_abdy('2023-03-29') #same as above
     #rss_freelance('2023-03-20')

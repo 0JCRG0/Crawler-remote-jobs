@@ -11,7 +11,7 @@ from datetime import date
 import json
 import logging
 import os
-from utils.handy import cleansing_selenium_crawlers, to_postgre, test_postgre, freelance_postgre, LoggingMasterCrawler, LoggingFreelanceCrawler
+from utils.handy import *
 
 #TODO: replace path with .env
 
@@ -50,12 +50,14 @@ def selenium_crawlers(TYPE):
 
 
     def elements():
+        total_ids = []
         total_links = []
         total_titles = []
         total_pubdates = []
         total_locations = [] 
         total_descriptions = []
-        rows = {"title": total_titles,
+        rows = {"id": total_ids,
+                "title": total_titles,
                 "link": total_links,
                 "description": total_descriptions,
                 "pubdate": total_pubdates,
@@ -93,7 +95,11 @@ def selenium_crawlers(TYPE):
                     jobs = driver.find_elements(By.CSS_SELECTOR, elements_path["jobs_path"])
                     for job in jobs:
                         # create a new dictionary to store the data for the current job
-                        job_data = {}      
+                        job_data = {}
+
+                        #IDs
+                        id = id_generator(5)
+                        job_data["id"]= id
 
                         #TITLES
                         title_element = job.find_element(By.CSS_SELECTOR, elements_path["title_path"])
@@ -132,6 +138,7 @@ def selenium_crawlers(TYPE):
                             job_data["description"]= "NaN"
                             
                         # add the data for the current job to the rows list
+                        total_ids.append(job_data["id"])
                         total_links.append(job_data["link"])
                         total_titles.append(job_data["title"])
                         total_pubdates.append(job_data["pubdate"])
@@ -190,4 +197,4 @@ def selenium_crawlers(TYPE):
     pipeline(df)
 
 if __name__ == "__main__":
-    selenium_crawlers('FREELANCE') 
+    selenium_crawlers('MAIN') 
