@@ -303,12 +303,12 @@ def test_postgre(df):
     '''
     cursor.execute(initial_count_query)
     initial_count_result = cursor.fetchone()
-
+    
     """ UPSERT STRATEGY FOR DUPLICATE LINKS & IDs"""
     jobs_added = []
     for index, row in df.iterrows():
         insert_query_link = '''
-            INSERT INTO test (title, link, description, pubdate, location, id)
+            INSERT INTO test (id, title, link, description, pubdate, location)
             VALUES (%s, %s, %s, %s, %s, %s)
             ON CONFLICT (link) DO UPDATE SET
                 title = excluded.title,
@@ -317,7 +317,7 @@ def test_postgre(df):
             RETURNING *
         '''
         insert_query_id = '''
-            INSERT INTO test (title, link, description, pubdate, location, id)
+            INSERT INTO test (id, title, link, description, pubdate, location)
             VALUES (%s, %s, %s, %s, %s, %s)
             ON CONFLICT (id) DO UPDATE SET
                 title = excluded.title,
@@ -325,7 +325,7 @@ def test_postgre(df):
                 location = excluded.location
             RETURNING *
         '''
-        values = (row['title'], row['link'], row['description'], row['pubdate'], row['location'], row['id'])
+        values = (row['id'], row['title'], row['link'], row['description'], row['pubdate'], row['location'])
         cursor.execute(insert_query_link, values)
         # Check if any row was affected by the first query
         affected_rows = cursor.rowcount
@@ -383,8 +383,9 @@ def to_postgre(df):
     cursor = cnx.cursor()
 
     # prepare the SQL query to create a new table
-    create_table_query = '''
-        CREATE TABLE IF NOT EXISTS master_jobs (
+    """create_table_query = '''
+        CREATE TABLE test (
+            id VARCHAR(8) UNIQUE,
             title VARCHAR(1000),
             link VARCHAR(1000) PRIMARY KEY,
             description VARCHAR(2000),
@@ -394,7 +395,7 @@ def to_postgre(df):
     '''
 
     # execute the create table query
-    cursor.execute(create_table_query)
+    cursor.execute(create_table_query)"""
 
     # execute the initial count query and retrieve the result
     initial_count_query = '''
@@ -403,23 +404,39 @@ def to_postgre(df):
     cursor.execute(initial_count_query)
     initial_count_result = cursor.fetchone()
 
-    # insert the DataFrame into the PostgreSQL database using an upsert strategy
+    """ UPSERT STRATEGY FOR DUPLICATE LINKS & IDs"""
     jobs_added = []
     for index, row in df.iterrows():
-        insert_query = '''
-            INSERT INTO master_jobs (title, link, description, pubdate, location)
-            VALUES (%s, %s, %s, %s, %s)
+        insert_query_link = '''
+            INSERT INTO master_jobs (id, title, link, description, pubdate, location)
+            VALUES (%s, %s, %s, %s, %s, %s)
             ON CONFLICT (link) DO UPDATE SET
                 title = excluded.title,
                 description = excluded.description,
-                pubdate = excluded.pubdate,
                 location = excluded.location
             RETURNING *
         '''
-        values = (row['title'], row['link'], row['description'], row['pubdate'], row['location'])
-        cursor.execute(insert_query, values)
-        if cursor.rowcount > 0:
+        insert_query_id = '''
+            INSERT INTO master_jobs (id, title, link, description, pubdate, location)
+            VALUES (%s, %s, %s, %s, %s, %s)
+            ON CONFLICT (id) DO UPDATE SET
+                title = excluded.title,
+                description = excluded.description,
+                location = excluded.location
+            RETURNING *
+        '''
+        values = (row['id'], row['title'], row['link'], row['description'], row['pubdate'], row['location'])
+        cursor.execute(insert_query_link, values)
+        # Check if any row was affected by the first query
+        affected_rows = cursor.rowcount
+
+        # If no rows were affected, execute the second query to handle conflict with 'id'
+        if affected_rows == 0:
+            cursor.execute(insert_query_id, values)
+        elif affected_rows > 0:
             jobs_added.append(cursor.fetchone())
+
+    """ LOGGING/PRINTING RESULTS"""
 
     final_count_query = '''
         SELECT COUNT(*) FROM master_jobs
