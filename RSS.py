@@ -49,7 +49,7 @@ def rss_ymd(cut_off, postgre):
     start_time = timeit.default_timer()
 
     file = PATH + '/rss_resources/working-resources-YMD.csv'
-    
+    #file = PATH + '/rss_resources/remote-working-resources.csv'
     #print("\n", f"Reading {file}... ", "\n")
     print("\n", "RSS_YMD starting now.")
 
@@ -299,6 +299,7 @@ def rss_abdy(cut_off, postgre):
         return rows
     data = all_elements()
 
+    print("Done crawling")
     #Convert data to a pandas df for further analysis
     data_dic = dict(data)
     df = pd.DataFrame.from_dict(data_dic, orient='index')
@@ -319,6 +320,7 @@ def rss_abdy(cut_off, postgre):
 
     df.to_csv(PATH + '/OUTPUTS/test.csv', index=False)
 
+    print("pipeline started")
     def pipeline(df):
 
         #df = pd.read_csv('./OUTPUTS/yummy_soup_rss.csv')
@@ -350,9 +352,10 @@ def rss_abdy(cut_off, postgre):
         #Log it
         logging.info('Finished RSS_ABDY. Results below ⬇︎')
 
+        print("postgre")
         ## PostgreSQL
         if postgre == "MAIN":
-            to_postgre(df)
+            debug_postgre(df)
         elif postgre == "TEST":
             test_postgre(df)
         
@@ -517,6 +520,6 @@ def rss_freelance(cut_off):
     pipeline(df)
 
 if __name__ == "__main__":
-    rss_ymd('2023-04-02', "TEST") #cut_off -> this means that the oldest job will be the day after
-    rss_abdy('2023-03-29', "TEST") #same as above
+    rss_ymd('2023-04-02', "MAIN") #cut_off -> this means that the oldest job will be the day after
+    rss_abdy('2023-03-29', "MAIN") #same as above
     #rss_freelance('2023-03-20')

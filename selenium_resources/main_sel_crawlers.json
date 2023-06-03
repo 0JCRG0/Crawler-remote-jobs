@@ -4,7 +4,7 @@
             {
                 "name": "HIMALAYA'S CRAWLER",
                 "url": "https://himalayas.app/jobs?page=",
-                "pages_to_crawl": 5,
+                "pages_to_crawl": 6,
                 "start_point": 1,
                 "elements_path": [
                         {
