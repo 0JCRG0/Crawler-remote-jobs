@@ -30,6 +30,21 @@
                         "location_path": ".u-flex.u-relative"
                     }
                 ]
+            },
+            {
+                "name": "PYTHON  ORG",
+                "url": "https://www.python.org/jobs/?page=",
+                "pages_to_crawl": 1,
+                "start_point": 1,
+                "elements_path": [
+                        {
+                        "jobs_path": ".list-recent-jobs.list-row-container.menu li",
+                        "title_path": ".listing-company-name a",
+                        "link_path": ".listing-company-name a",
+                        "description_path": ".listing-job-type",
+                        "location_path": ".listing-location a"
+                    }
+                ]
             }
         ]
     }
