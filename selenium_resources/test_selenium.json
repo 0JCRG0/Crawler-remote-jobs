@@ -2,32 +2,17 @@
     {
         "urls": [
             {
-                "name": "HIMALAYA'S CRAWLER",
-                "url": "https://himalayas.app/jobs?page=",
-                "pages_to_crawl": 5,
-                "start_point": 1,
-                "elements_path": [
-                        {
-                        "jobs_path": "#card-group [name='card']",
-                        "title_path": ".flex.flex-row.items-start.justify-between.mb-2.w-full .flex.flex-row.items-center a .text-xl.font-medium.text-gray-900",
-                        "link_path": ".flex.flex-row.items-start.justify-between.mb-2.w-full .flex.flex-row.items-center a",
-                        "description_path": ".mb-6 div",
-                        "location_path": ".flex.flex-row.items-center.justify-between .flex.flex-row.items-center.flex-wrap.overflow-hidden"
-                    }
-                ]
-            },
-            {
-                "name": "REMOTESOME",
-                "url": "https://app.remotesome.com/jobs/?page=",
+                "name": "GOLANG",
+                "url": "https://www.python.org/jobs/?page=",
                 "pages_to_crawl": 1,
                 "start_point": 1,
                 "elements_path": [
-                    {
-                        "jobs_path": ".col-8\\:md article",
-                        "title_path": ".u-pl16 h4",
-                        "link_path": "a",
-                        "description_path": ".u-flex.u-pt8.u-flex--middle",
-                        "location_path": ".u-flex.u-relative"
+                        {
+                        "jobs_path": ".list-recent-jobs.list-row-container.menu li",
+                        "title_path": ".listing-company-name a",
+                        "link_path": ".listing-company-name a",
+                        "description_path": ".listing-job-type",
+                        "location_path": ".listing-location a"
                     }
                 ]
             }
