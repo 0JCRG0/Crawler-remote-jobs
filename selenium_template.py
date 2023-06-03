@@ -11,6 +11,7 @@ from datetime import date, datetime
 import json
 import logging
 import os
+from dotenv import load_dotenv
 from utils.handy import *
 
 #TODO: replace path with .env
@@ -36,7 +37,7 @@ def selenium_crawlers(TYPE):
     if TYPE == 'MAIN':
         JSON = PATH + '/selenium_resources/main_sel_crawlers.json'
         POSTGRESQL = to_postgre
-        print("\n", f"Reading {JSON}. Jobs will be sent to PostgreSQL's master_jobs table", "\n")
+        print("\n", f"Sent to PROD. Jobs will be sent to PostgreSQL's master_jobs table", "\n")
         # configure the logger
         LoggingMasterCrawler()
     elif TYPE == 'FREELANCE':
@@ -48,7 +49,7 @@ def selenium_crawlers(TYPE):
     elif TYPE == 'TEST':
         JSON = PATH + '/selenium_resources/test_selenium.json'
         POSTGRESQL = test_postgre
-        print("\n", f"Reading {JSON}. Jobs will be sent to PostgreSQL's test table", "\n")
+        print("\n", f"TESTING. Jobs will be sent to PostgreSQL's test table", "\n")
         # configure the logger
         LoggingMasterCrawler()
     else:
@@ -160,21 +161,15 @@ def selenium_crawlers(TYPE):
         return rows
 
                     
-    #Quit the driver
     data = elements()
     driver.quit()
-            
-        #The data had missing values so we have to do this to convert it into a pandas df
-    
-        #data_dic = dict(data)
-        #df = pd.DataFrame.from_dict(data_dic, orient='index')
-        #df = df.transpose()
-        #Save it in local machine
+
+    #-> DF
     df = pd.DataFrame(data)
 
     df.to_csv(PATH + "/OUTPUTS/pre-pipeline-Sel_All.csv", index=False)
 
-        # count the number of duplicate rows
+    # count the number of duplicate rows
     num_duplicates = df.duplicated().sum()
 
             # print the number of duplicate rows
@@ -184,21 +179,21 @@ def selenium_crawlers(TYPE):
     df = df.drop_duplicates()
         
     def pipeline(df):
-
-        # clean 
+        
+        """ CLEANING AVOIDING DEPRECATION WARNING """
         for col in df.columns:
             if col != 'pubdate':
-                df.loc[:, col] = df.loc[:, col].astype(str).apply(cleansing_selenium_crawlers)
+                i = df.columns.get_loc(col)
+                newvals = df.loc[:, col].astype(str).apply(cleansing_selenium_crawlers)
+                df[df.columns[i]] = newvals
             
-        #df.loc[:, df.columns != 'pubdate'] = df.loc[:, df.columns != 'pubdate'].astype(str).apply(cleansing_selenium_crawlers)
-
         #Save it in local machine
         df.to_csv(PATH + "/OUTPUTS/post-pipeline-Sel_All.csv", index=False)
 
         #Log it 
         logging.info('Finished Selenium_Crawlers. Results below ⬇︎')
-        # SEND IT TO TO PostgreSQL 
-            
+        
+        # SEND IT TO TO PostgreSQL    
         POSTGRESQL(df)
 
         #print the time
@@ -208,4 +203,4 @@ def selenium_crawlers(TYPE):
     pipeline(df)
 
 if __name__ == "__main__":
-    selenium_crawlers('TEST') 
+    selenium_crawlers('MAIN') 
