@@ -3,7 +3,7 @@
         "urls": [
             {
                 "name": "GOLANG",
-                "url": "https://www.python.org/jobs/?page=",
+                "url": "https://www.golangprojects.com/golang-remote-jobs.html?",
                 "pages_to_crawl": 1,
                 "start_point": 1,
                 "elements_path": [

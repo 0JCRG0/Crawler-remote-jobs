@@ -22,7 +22,7 @@ OUTPUT = os.getenv('OUTPUT_API', 'DEFAULT')
 #Import logging
 LoggingMasterCrawler()
 
-def api_crawlers(prod_or_test, postgre):
+def api_crawlers(prod_or_test):
 
     #Start the timer
     start_time = timeit.default_timer()
@@ -137,13 +137,13 @@ def api_crawlers(prod_or_test, postgre):
     logging.info('Finished API crawlers. Results below ⬇︎')
 
     ## PostgreSQL
-    if postgre == "MAIN":
+    if prod_or_test == PROD_API:
         to_postgre(df)
-    elif postgre == "TEST":
+    elif prod_or_test == TEST_API:
         test_postgre(df)
 
     elapsed_time = timeit.default_timer() - start_time
     print("\n", f"Api crawlers have finished! all in: {elapsed_time:.2f} seconds", "\n") 
     
 if __name__ == "__main__":
-    api_crawlers(PROD_API, "TEST")
+    api_crawlers(TEST_API)

@@ -6370,3 +6370,15 @@ Total count of jobs found by crawling: 148
 Total count of unique jobs added: 37
 Current total count of jobs in PostgreSQL: 8293
 
+2023-06-02 22:43:16,788 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-02 22:44:30,539 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-02 22:45:10,093 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-02 22:48:21,515 INFO: 
+Finished API crawlers. Results below ⬇︎
+

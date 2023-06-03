@@ -203,4 +203,4 @@ def selenium_crawlers(TYPE):
     pipeline(df)
 
 if __name__ == "__main__":
-    selenium_crawlers('MAIN') 
+    selenium_crawlers('TEST') 

@@ -28,7 +28,7 @@ FreshRemote.work,https://freshremote.work/,https://freshremote.work/feed/,Fresh 
 Functional Jobs,https://functionaljobs.com/,https://functionaljobs.com/jobs/?format=rss,Functional programming jobs
 GIIN,https://jobs.thegiin.org/,,Global Impact Investing Network
 Glassdoor,https://www.glassdoor.com/Job/jobs.htm,,No RSS feeds but you can create job alerts with an account
-Golang / Go Jobs,https://www.golangprojects.com/,https://www.golangprojects.com/rss.xml,Jobs for Goland/Go developers | DOES NOT HAVE PUBDATE
+Golang / Go Jobs,https://www.golangprojects.com/,,NOT WORTH IT - No pubdate/location -> difficult to scrape
 Golang Remote Jobs,https://golangjob.xyz/remote/jobs,https://golangjob.xyz/remote/jobs,Remote Jobs for Go/Golang Developers
 Hacker News Jobs,https://news.ycombinator.com/jobs,,No RSS feed for jobs but there is an API which would theoretically allow you to build one: https://github.com/HackerNews/API
 HasJob,https://hasjob.co/?l=anywhere,https://hasjob.co/feed,The have an Anywhere option under the location filter. Feed not filterable. Also on Twitter (@hasjob)
@@ -39,7 +39,7 @@ I ❤ remote.io,https://iloveremote.io/,https://iloveremote.io/rss/jobs/city/rem
 Idealist,https://www.idealist.org/en/?radius=160000&amp;sort=relevance&amp;type=ALL,,No RSS feed but there is an email subscription available
 Indeed,http://www.indeed.com/jobs?q=web+development&amp;l=remote,,RSS DOES NOT WORK
 Java Remote Jobs,https://javajobs.pro/remote/jobs,,
-Jobhunt.ai,https://jobhunt.ai/,https://jobhunt.ai/rss.xml,Machine learning and data science jobs with a remote section
+Jobhunt.ai,https://jobhunt.ai/,,NOT WORTH IT - No pubdate/location -> difficult to scrape
 Jobspresso,https://jobspresso.co,https://jobspresso.co/feed/?post_type=job_listing,
 JustRemote,https://justremote.co/,,No RSS feed but they do have a mailing list
 Krop,https://www.krop.com/creative-jobs/,http://www.krop.com/services/feeds/rss/latest/,
