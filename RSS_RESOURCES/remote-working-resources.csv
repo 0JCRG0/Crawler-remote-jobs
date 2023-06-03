@@ -5,7 +5,7 @@ Authentic Jobs,https://authenticjobs.com/,,RSS FEED DOES NOT WORK & NOT MANY JOB
 Behance,https://www.behance.net/joblist,,NOT WORTHY - NOT MANY JOBS
 Career Vault,https://careervault.io/,,DONE - API
 CareerBuilder,https://www.careerbuilder.com/jobs-remote-web-developer,,US ONLY
-ClojureJobboard.com,https://ClojureJobboard.com/,https://clojurejobboard.com/rss.xml,Clojure jobs only with a remote section | NO PUBDATE
+ClojureJobboard.com,https://ClojureJobboard.com/,,NOT WORTH IT
 Coroflot,https://www.coroflot.com/design-jobs/remote,http://feeds.feedburner.com/coroflot/AllJobs,Presented as Design Jobs but there are development/technical positions within this category
 Craigs List,https://craigslist.org,,NOT WORTHY - NOT MANY JOBS
 Crunchboard Job Board,https://www.crunchboard.com/,https://www.crunchboard.com/jobs.rss,
@@ -56,7 +56,7 @@ PowerToFly,https://powertofly.com/jobs/,,No RSS feed. Focused on working with co
 Privacy-First Jobs,https://privacyfirstjobs.com/jobs/remote,https://privacyfirstjobs.com/jobs/feed,
 Product Hunt Jobs,https://www.producthunt.com/jobs?remote_ok=true,,No RSS feed but there is a GraphQL endpoint that might be leveraged to create your own: https://www.producthunt.com/frontend/graphql
 Public Interest Tech,https://jobs.codeforamerica.org/search,https://jobs.codeforamerica.org/job-postings.rss,
-Python Jobs,https://www.python.org/jobs/location/telecommute/,https://www.python.org/jobs/feed/rss/,Unclear if the RSS feed is filterable to only show remote work
+Python Jobs,https://www.python.org/jobs/location/telecommute/,,SELENIUM
 React Jobs,https://www.react-jobs.com/,,No RSS feed but there is a Twitter account (@react_jobs)
 Reddit (/r/remotejobs),https://www.reddit.com/r/RemoteJobs/,,RSS DOES NOT WORK
 Reddit (/r/remotejs),https://www.reddit.com/r/remotejs/,,RSS DOES NOT WORK
