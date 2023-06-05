@@ -278,7 +278,7 @@ def personal_postgre(df):
     cursor.close()
     cnx.close()
 
-def test_postgre(df):
+def deprecated_test_postgre(df):
     # create a connection to the PostgreSQL database
     cnx = psycopg2.connect(user='postgres', password='3312', host='localhost', port='5432', database='postgres')
 
@@ -355,7 +355,7 @@ def test_postgre(df):
 
 
 
-def to_postgre(df):
+def deprecated_to_postgre(df):
     #call loggging
     LoggingMasterCrawler()
     
@@ -541,6 +541,146 @@ def freelance_postgre(df):
     # close the cursor and connection
     cursor.close()
     cnx.close()
+
+
+
+def to_postgre(df):
+    # create a connection to the PostgreSQL database
+    cnx = psycopg2.connect(user='postgres', password='3312', host='localhost', port='5432', database='postgres')
+
+    # create a cursor object
+    cursor = cnx.cursor()
+
+    # execute the initial count query and retrieve the result
+    initial_count_query = '''
+        SELECT COUNT(*) FROM main_jobs
+    '''
+    cursor.execute(initial_count_query)
+    initial_count_result = cursor.fetchone()
+    
+    """ IF THERE IS A DUPLICATE LINK IT SKIPS THAT ROW & DOES NOT INSERTS IT
+        IDs ARE ENSURED TO BE UNIQUE BCOS OF THE SERIAL ID THAT POSTGRE MANAGES AUTOMATICALLY
+    """
+    jobs_added = []
+    for index, row in df.iterrows():
+        insert_query = '''
+            INSERT INTO main_jobs (title, link, description, pubdate, location, timestamp)
+            VALUES (%s, %s, %s, %s, %s, %s)
+            ON CONFLICT (link) DO NOTHING
+            RETURNING *
+        '''
+        values = (row['title'], row['link'], row['description'], row['pubdate'], row['location'], row['timestamp'])
+        cursor.execute(insert_query, values)
+        affected_rows = cursor.rowcount
+        if affected_rows > 0:
+            jobs_added.append(cursor.fetchone())
+
+
+    """ LOGGING/PRINTING RESULTS"""
+
+    final_count_query = '''
+        SELECT COUNT(*) FROM main_jobs
+    '''
+    # execute the count query and retrieve the result
+    cursor.execute(final_count_query)
+    final_count_result = cursor.fetchone()
+
+    # calculate the number of unique jobs that were added
+    if initial_count_result is not None:
+        initial_count = initial_count_result[0]
+    else:
+        initial_count = 0
+    jobs_added_count = len(jobs_added)
+    if final_count_result is not None:
+        final_count = final_count_result[0]
+    else:
+        final_count = 0
+    unique_jobs = final_count - initial_count
+
+    # check if the result set is not empty
+    print("\n")
+    print("MAIN_JOBS INSERT RESULTS:", "\n")
+    print(f"Total count of jobs before crawling: {initial_count}")
+    print(f"Total number of jobs obtained by crawling: {jobs_added_count}")
+    print(f"Total number of unique jobs added: {unique_jobs}")
+    print(f"Current total count of jobs in PostgreSQL: {final_count}")
+
+    # commit the changes to the database
+    cnx.commit()
+
+    # close the cursor and connection
+    cursor.close()
+    cnx.close()
+
+def test_postgre(df):
+    # create a connection to the PostgreSQL database
+    cnx = psycopg2.connect(user='postgres', password='3312', host='localhost', port='5432', database='postgres')
+
+    # create a cursor object
+    cursor = cnx.cursor()
+
+    # execute the initial count query and retrieve the result
+    initial_count_query = '''
+        SELECT COUNT(*) FROM test
+    '''
+    cursor.execute(initial_count_query)
+    initial_count_result = cursor.fetchone()
+    
+    """ IF THERE IS A DUPLICATE LINK IT SKIPS THAT ROW & DOES NOT INSERTS IT
+        IDs ARE ENSURED TO BE UNIQUE BCOS OF THE SERIAL ID THAT POSTGRE MANAGES AUTOMATICALLY
+    """
+    jobs_added = []
+    for index, row in df.iterrows():
+        insert_query = '''
+            INSERT INTO test (title, link, description, pubdate, location, timestamp)
+            VALUES (%s, %s, %s, %s, %s, %s)
+            ON CONFLICT (link) DO NOTHING
+            RETURNING *
+        '''
+        values = (row['title'], row['link'], row['description'], row['pubdate'], row['location'], row['timestamp'])
+        cursor.execute(insert_query, values)
+        affected_rows = cursor.rowcount
+        if affected_rows > 0:
+            jobs_added.append(cursor.fetchone())
+
+
+    """ LOGGING/PRINTING RESULTS"""
+
+    final_count_query = '''
+        SELECT COUNT(*) FROM test
+    '''
+    # execute the count query and retrieve the result
+    cursor.execute(final_count_query)
+    final_count_result = cursor.fetchone()
+
+    # calculate the number of unique jobs that were added
+    if initial_count_result is not None:
+        initial_count = initial_count_result[0]
+    else:
+        initial_count = 0
+    jobs_added_count = len(jobs_added)
+    if final_count_result is not None:
+        final_count = final_count_result[0]
+    else:
+        final_count = 0
+    unique_jobs = final_count - initial_count
+
+    # check if the result set is not empty
+    print("\n")
+    print("TEST RESULTS:", "\n")
+    print(f"Total count of jobs before crawling: {initial_count}")
+    print(f"Total number of jobs obtained by crawling: {jobs_added_count}")
+    print(f"Total number of unique jobs added: {unique_jobs}")
+    print(f"Current total count of jobs in PostgreSQL: {final_count}")
+
+    # commit the changes to the database
+    cnx.commit()
+
+    # close the cursor and connection
+    cursor.close()
+    cnx.close()
+
+
 
 """ OTHER UTILS """
 
