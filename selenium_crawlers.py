@@ -19,7 +19,9 @@ from utils.handy import *
 #IMPORT THE PATH - YOU NEED TO EXPORT YOUR OWN PATH TO zsh/bash & SAVE IT AS 'CRAWLER_ALL'
 PATH = '/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL'
 
-def selenium_crawlers(TYPE):
+def selenium_template(pipeline):
+    print("\n", "Crawler launched on headless browser.")
+
     #start timer
     start_time = timeit.default_timer()
 
@@ -34,22 +36,22 @@ def selenium_crawlers(TYPE):
     The following is specifying which JSON to load & to which table it will be sent
     """
 
-    if TYPE == 'MAIN':
+    if pipeline == 'MAIN':
         JSON = PATH + '/selenium_resources/main_sel_crawlers.json'
         POSTGRESQL = to_postgre
-        print("\n", f"Sent to PROD. Jobs will be sent to PostgreSQL's master_jobs table", "\n")
+        print("\n", f"Pipeline is set to 'MAIN'. Jobs will be sent to PostgreSQL's main_jobs table", "\n")
         # configure the logger
         LoggingMasterCrawler()
-    elif TYPE == 'FREELANCE':
+    elif pipeline == 'FREELANCE':
         JSON = PATH + '/selenium_resources/freelance.json'
         POSTGRESQL = freelance_postgre
         # configure the logger
         LoggingFreelanceCrawler()
         #print("\n", f"Reading {JSON}. Jobs will be sent to PostgreSQL's freelance table", "\n")
-    elif TYPE == 'TEST':
+    elif pipeline == 'TEST':
         JSON = PATH + '/selenium_resources/test_selenium.json'
         POSTGRESQL = test_postgre
-        print("\n", f"TESTING. Jobs will be sent to PostgreSQL's test table", "\n")
+        print("\n", f"Pipeline is set to 'TEST'. Jobs will be sent to PostgreSQL's test table", "\n")
         # configure the logger
         LoggingMasterCrawler()
     else:
@@ -57,15 +59,13 @@ def selenium_crawlers(TYPE):
 
 
     def elements():
-        total_ids = []
         total_links = []
         total_titles = []
         total_pubdates = []
         total_locations = [] 
         total_descriptions = []
         total_timestamps = []
-        rows = {"id": total_ids,
-                "title": total_titles,
+        rows = {"title": total_titles,
                 "link": total_links,
                 "description": total_descriptions,
                 "pubdate": total_pubdates,
@@ -107,8 +107,8 @@ def selenium_crawlers(TYPE):
                         job_data = {}
 
                         #IDs
-                        id = id_generator()
-                        job_data["id"]= id
+                        #id = id_generator()
+                        #job_data["id"]= id
 
                         #TITLES
                         title_element = job.find_element(By.CSS_SELECTOR, elements_path["title_path"])
@@ -151,7 +151,6 @@ def selenium_crawlers(TYPE):
                         job_data["timestamp"] = timestamp
                             
                         # add the data for the current job to the rows list
-                        total_ids.append(job_data["id"])
                         total_links.append(job_data["link"])
                         total_titles.append(job_data["title"])
                         total_pubdates.append(job_data["pubdate"])
@@ -203,4 +202,4 @@ def selenium_crawlers(TYPE):
     pipeline(df)
 
 if __name__ == "__main__":
-    selenium_crawlers('MAIN') 
+    selenium_template('TEST') 

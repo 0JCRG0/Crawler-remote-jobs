@@ -22,7 +22,8 @@ OUTPUT = os.getenv('OUTPUT_API', 'DEFAULT')
 #Import logging
 LoggingMasterCrawler()
 
-def api_crawlers(prod_or_test):
+def api_template(pipeline):
+    print("\n", "Crawler launched on APIs.")
 
     #Start the timer
     start_time = timeit.default_timer()
@@ -37,7 +38,7 @@ def api_crawlers(prod_or_test):
         total_timestamps=[]
         rows = []
 
-        with open(prod_or_test) as f:
+        with open(pipeline) as f:
             #load the local json
             data = json.load(f)
             # Access the 'apis' list in the first dictionary of the 'data' list and assign it to the variable 'apis'
@@ -69,8 +70,8 @@ def api_crawlers(prod_or_test):
                         if jobs is not None:
                             for job in jobs:
                                 #IDs
-                                id = id_generator()
-                                total_ids.append(id)
+                                #id = id_generator()
+                                #total_ids.append(id)
                                 #Titles
                                 if elements_path["title_tag"] in job:
                                     title = elements_path["title_tag"]
@@ -102,7 +103,7 @@ def api_crawlers(prod_or_test):
                                 timestamp = datetime.now()
                                 total_timestamps.append(timestamp)
                                 #Put it all together...
-                                rows = {'id': total_ids, 'title': total_titles, 'link':total_links, 'description': total_descriptions, 'pubdate': total_pubdates, 'location': total_locations,'timestamp': total_timestamps}
+                                rows = {'title': total_titles, 'link':total_links, 'description': total_descriptions, 'pubdate': total_pubdates, 'location': total_locations,'timestamp': total_timestamps}
                 except RequestException as e:
                     print(f"Encountered a request error: {e}. Moving to the next API...")
                     pass  # continue the execution
@@ -128,19 +129,21 @@ def api_crawlers(prod_or_test):
     df.to_csv(OUTPUT, index=False)
 
     #Slice desdriptions
-    df['description'] = df['description'].str.slice(0, 2000)
+    #df['description'] = df['description'].str.slice(0, 2000)
 
     #Log
     logging.info('Finished API crawlers. Results below ⬇︎')
 
     ## PostgreSQL
-    if prod_or_test == PROD_API:
+    if pipeline == PROD_API:
+        #to_postgre(df)
         to_postgre(df)
-    elif prod_or_test == TEST_API:
+    elif pipeline == TEST_API:
+        #test_postgre(df)
         test_postgre(df)
 
     elapsed_time = timeit.default_timer() - start_time
     print("\n", f"Api crawlers have finished! all in: {elapsed_time:.2f} seconds", "\n") 
     
 if __name__ == "__main__":
-    api_crawlers(PROD_API)
+    api_template(TEST_API)

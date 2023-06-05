@@ -23,13 +23,13 @@ PATH = '/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversida
 
 #TODO: crawl coin w another crawler ffs
 
-def rss_refactor(postgre):
+def rss_template(pipeline):
 
     start_time = timeit.default_timer()
 
     JSON = '/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/rss_resources/main.json'
     #print("\n", f"Reading {file}... ", "\n")
-    print("\n", "RSS_YMD starting now.")
+    print("\n", "Crawler launched on RSS Feeds.")
 
     def soups():
         soup_list = []
@@ -57,7 +57,7 @@ def rss_refactor(postgre):
         return soup_list
     all_soups = soups()
 
-    print("\n", f"Making soup from {len(all_soups)} established connections.")
+    print("\n", f"Soup made from {len(all_soups)} established connections.")
 
 
     def all_elements():
@@ -72,8 +72,8 @@ def rss_refactor(postgre):
         for soup in all_soups:
             for item in soup.find_all('item'):
                 #IDs
-                id = id_generator()
-                total_ids.append(id)
+                #id = id_generator()
+                #total_ids.append(id)
                 # Get titles & append it to the list
                 title_tag = item.find('title')
                 if title_tag is not None:
@@ -108,7 +108,7 @@ def rss_refactor(postgre):
                 #timestamps
                 timestamp = datetime.now()
                 total_timestamps.append(timestamp)
-                rows = {'id': total_ids, 'title':total_titles, 'link':total_links, 'description': total_descriptions, 'pubdate': total_pubdates, 'location': total_locations, 'timestamp': total_timestamps}
+                rows = {'title':total_titles, 'link':total_links, 'description': total_descriptions, 'pubdate': total_pubdates, 'location': total_locations, 'timestamp': total_timestamps}
         return rows
     data = all_elements()
 
@@ -126,23 +126,27 @@ def rss_refactor(postgre):
 
     df.to_csv(PATH + '/OUTPUTS/rss_refactor.csv', index=False)
 
-    def pipeline(df):
+    def pipeline_df(df):
         df.fillna("NaN", inplace=True)
         #Slice desdriptions
-        df['description'] = df['description'].str.slice(0, 2000)
+        #df['description'] = df['description'].str.slice(0, 2000)
         #Logging
         logging.info('Finished RSS_YMD. Results below ⬇︎')
         ## PostgreSQL
-        if postgre == "MAIN":
+        if pipeline == "MAIN":
+            #to_postgre(df)
             to_postgre(df)
-        elif postgre == "TEST":
+        elif pipeline == "TEST":
             test_postgre(df)
+            #this has to be changed
         
         #print the time
         elapsed_time = timeit.default_timer() - start_time
-        print("\n", f"RSS_YMD is done! all in: {elapsed_time:.2f} seconds", "\n")
-    pipeline(df)
+        print("\n", f"rss_crawlers are done! all in: {elapsed_time:.2f} seconds", "\n")
+    pipeline_df(df)
 
-rss_refactor("MAIN")
+
+if __name__ == "__main__":
+    rss_template("TEST")
 
 
