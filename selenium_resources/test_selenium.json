@@ -2,17 +2,17 @@
     {
         "urls": [
             {
-                "name": "GOLANG",
-                "url": "https://www.golangprojects.com/golang-remote-jobs.html?",
+                "name": "dribbble.com",
+                "url": "https://dribbble.com/jobs?anywhere=true&keyword=&page=",
                 "pages_to_crawl": 1,
                 "start_point": 1,
                 "elements_path": [
                         {
-                        "jobs_path": ".list-recent-jobs.list-row-container.menu li",
-                        "title_path": ".listing-company-name a",
-                        "link_path": ".listing-company-name a",
-                        "description_path": ".listing-job-type",
-                        "location_path": ".listing-location a"
+                        "jobs_path": ".job-list-item",
+                        "title_path": ".job-details-container .job-title-company-container .job-title.job-board-job-title",
+                        "link_path": ".job-link",
+                        "location_path": ".job-additional-details-container .job-details .location-container.job-board-job-location",
+                        "description_path": ".job-details-container .job-title-company-container .job-role"
                     }
                 ]
             }

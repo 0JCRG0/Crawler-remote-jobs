@@ -45,6 +45,36 @@
                         "location_path": ".listing-location a"
                     }
                 ]
+            },
+            {
+                "name": "cryptojobslist.com",
+                "url": "https://cryptojobslist.com/remote?sort=recent&page=",
+                "pages_to_crawl": 1,
+                "start_point": 1,
+                "elements_path": [
+                        {
+                        "jobs_path": "section ul li",
+                        "title_path": ".JobPreviewInline_meta__tG6WQ.\\!flex.\\!flex-col h2",
+                        "link_path": ".JobPreviewInline_meta__tG6WQ.\\!flex.\\!flex-col h2 a",
+                        "location_path": ".JobPreviewInline_meta__tG6WQ.\\!flex.\\!flex-col span",
+                        "description_path": ".JobPreviewInline_meta__tG6WQ.\\!flex.\\!flex-col span"
+                    }
+                ]
+            },
+            {
+                "name": "dribbble.com",
+                "url": "https://dribbble.com/jobs?anywhere=true&keyword=&page=",
+                "pages_to_crawl": 1,
+                "start_point": 1,
+                "elements_path": [
+                        {
+                        "jobs_path": ".job-list-item",
+                        "title_path": ".job-details-container .job-title-company-container .job-title.job-board-job-title",
+                        "link_path": ".job-link",
+                        "location_path": ".job-additional-details-container .job-details .location-container.job-board-job-location",
+                        "description_path": ".job-details-container .job-title-company-container .job-role"
+                    }
+                ]
             }
         ]
     }

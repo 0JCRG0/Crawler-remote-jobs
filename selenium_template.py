@@ -107,7 +107,7 @@ def selenium_crawlers(TYPE):
                         job_data = {}
 
                         #IDs
-                        id = id_generator(5)
+                        id = id_generator()
                         job_data["id"]= id
 
                         #TITLES
