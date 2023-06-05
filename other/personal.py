@@ -1,4 +1,4 @@
-from other_selenium import indeed
+from other.other_selenium import indeed
 import timeit
 
 def MASTER():
