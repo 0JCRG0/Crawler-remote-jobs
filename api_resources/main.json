@@ -63,7 +63,7 @@
             },
             {
                 "name": "remoteok.api",
-                "api": "https://remoteok.com/api",
+                "api": "https://remoteok.com/api?api=1",
                 "class_json": "list",
                 "elements_path": [
                     {

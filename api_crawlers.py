@@ -38,7 +38,7 @@ def api_crawlers(prod_or_test):
         rows = []
 
         with open(prod_or_test) as f:
-            #load the json
+            #load the local json
             data = json.load(f)
             # Access the 'apis' list in the first dictionary of the 'data' list and assign it to the variable 'apis'
             apis = data[0]["apis"]
@@ -53,15 +53,12 @@ def api_crawlers(prod_or_test):
                 #Extract the class of the JSON
                 class_json = api_obj['class_json']
                 #Each site is different to a json file can give us the flexibility we need  
-                #Request the api...
+                headers = {"User-Agent": "my-app"}
                 try:
-                    response = requests.get(api)
+                    response = requests.get(api, headers=headers)
+                    #response = requests.get(api)
                     if response.status_code == 200:
                         data = json.loads(response.text)
-                        #print just to test
-                        #pretty_json = json.dumps(data, indent=4)
-                        #print(pretty_json, type(data))
-                        
                         print("\n", f"Fetching...{api}", "\n")
                         
                         """Call the function depending on the JSON's class
@@ -72,7 +69,7 @@ def api_crawlers(prod_or_test):
                         if jobs is not None:
                             for job in jobs:
                                 #IDs
-                                id = id_generator(5)
+                                id = id_generator()
                                 total_ids.append(id)
                                 #Titles
                                 if elements_path["title_tag"] in job:
@@ -92,7 +89,7 @@ def api_crawlers(prod_or_test):
                                     total_descriptions.append(job[description])
                                 else:
                                     total_descriptions.append("NaN")
-                                #MODIFYING DATES
+                                #DATES
                                 today = date.today()
                                 total_pubdates.append(today)
                                 #locations
@@ -110,7 +107,7 @@ def api_crawlers(prod_or_test):
                     print(f"Encountered a request error: {e}. Moving to the next API...")
                     pass  # continue the execution
                 except:
-                    print("Unexpected error")
+                    print(f"Encountered an unexpected error with {api}. CHECK.")
                     pass
         return rows
 
@@ -146,4 +143,4 @@ def api_crawlers(prod_or_test):
     print("\n", f"Api crawlers have finished! all in: {elapsed_time:.2f} seconds", "\n") 
     
 if __name__ == "__main__":
-    api_crawlers(TEST_API)
+    api_crawlers(PROD_API)
