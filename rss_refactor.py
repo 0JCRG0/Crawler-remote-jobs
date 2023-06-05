@@ -21,6 +21,7 @@ from utils.handy import *
 #EXPORT THE PATH - YOU NEED TO EXPORT YOUR OWN PATH & SAVE IT AS 'CRAWLER_ALL'
 PATH = '/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL'
 
+#TODO: crawl coin w another crawler ffs
 
 def rss_refactor(postgre):
 
@@ -71,7 +72,7 @@ def rss_refactor(postgre):
         for soup in all_soups:
             for item in soup.find_all('item'):
                 #IDs
-                id = id_generator(5)
+                id = id_generator()
                 total_ids.append(id)
                 # Get titles & append it to the list
                 title_tag = item.find('title')
@@ -141,6 +142,7 @@ def rss_refactor(postgre):
         elapsed_time = timeit.default_timer() - start_time
         print("\n", f"RSS_YMD is done! all in: {elapsed_time:.2f} seconds", "\n")
     pipeline(df)
+
 rss_refactor("MAIN")
 
 
