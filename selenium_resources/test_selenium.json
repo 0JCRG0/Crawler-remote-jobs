@@ -2,7 +2,7 @@
     {
         "urls": [
             {
-                "name": "dribbble.com",
+                "name": "https://dribbble.com",
                 "url": "https://dribbble.com/jobs?anywhere=true&keyword=&page=",
                 "pages_to_crawl": 1,
                 "start_point": 1,

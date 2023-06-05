@@ -177,7 +177,7 @@ def selenium_template(pipeline):
             # remove duplicate rows based on all columns
     df = df.drop_duplicates()
         
-    def pipeline(df):
+    def clean_postgre(df):
         
         """ CLEANING AVOIDING DEPRECATION WARNING """
         for col in df.columns:
@@ -199,7 +199,7 @@ def selenium_template(pipeline):
         elapsed_time = timeit.default_timer() - start_time
         print("\n")
         print(f"The selected selenium crawlers have finished! all in: {elapsed_time:.2f} seconds.", "\n")
-    pipeline(df)
+    clean_postgre(df)
 
 if __name__ == "__main__":
     selenium_template('TEST') 
