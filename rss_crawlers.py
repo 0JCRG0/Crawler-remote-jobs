@@ -16,18 +16,48 @@ import os
 import json
 import logging
 from datetime import datetime
+from dotenv import load_dotenv
 from utils.handy import *
 
-#EXPORT THE PATH - YOU NEED TO EXPORT YOUR OWN PATH & SAVE IT AS 'CRAWLER_ALL'
-PATH = '/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL'
+""" LOAD THE ENVIRONMENT VARIABLES """
 
-#TODO: crawl coin w another crawler ffs
+load_dotenv()
+
+PROD = os.environ.get('JSON_PROD_RSS')
+TEST = os.environ.get('JSON_TEST_RSS')
+SAVE_PATH = os.environ.get('SAVE_PATH_RSS')
+
 
 def rss_template(pipeline):
 
     start_time = timeit.default_timer()
 
-    JSON = '/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/rss_resources/main.json'
+    """ DETERMINING WHICH JSON TO LOAD & WHICH POSTGRE TABLE WILL BE USED """
+
+    if pipeline == 'MAIN':
+        if PROD:
+            JSON = PROD
+        POSTGRESQL = to_postgre
+        print("\n", f"Pipeline is set to 'MAIN'. Jobs will be sent to PostgreSQL's main_jobs table", "\n")
+        # configure the logger
+        LoggingMasterCrawler()
+    elif pipeline == 'FREELANCE':
+        #TODO: FIX - ADD PÁTH
+        JSON = '/selenium_resources/freelance.json'
+        POSTGRESQL = freelance_postgre
+        # configure the logger
+        LoggingFreelanceCrawler()
+        #print("\n", f"Reading {JSON}. Jobs will be sent to PostgreSQL's freelance table", "\n")
+    elif pipeline == 'TEST':
+        if TEST:
+            JSON = TEST
+        POSTGRESQL = test_postgre
+        print("\n", f"Pipeline is set to 'TEST'. Jobs will be sent to PostgreSQL's test table", "\n")
+        # configure the logger
+        LoggingMasterCrawler()
+    else:
+        print("\n", "Incorrect argument! Use 'MAIN', 'TEST' or 'FREELANCE' to run this script.", "\n")
+
     #print("\n", f"Reading {file}... ", "\n")
     print("\n", "Crawler launched on RSS Feeds.")
 
@@ -67,7 +97,6 @@ def rss_template(pipeline):
         total_links = []
         total_locations = []
         total_descriptions = []
-        total_ids = []
         total_timestamps=[]
         for soup in all_soups:
             for item in soup.find_all('item'):
@@ -117,33 +146,27 @@ def rss_template(pipeline):
     df = pd.DataFrame.from_dict(data_dic, orient='index')
     df = df.transpose()
 
-    #Cleaning columns
-    for col in df.columns:
-        if col == 'link':
-            df[col] = df[col].apply(clean_link_rss)
-        else:
-            df[col] = df[col].apply(clean_other_rss)
-
-    df.to_csv(PATH + '/OUTPUTS/rss_refactor.csv', index=False)
-
-    def pipeline_df(df):
-        df.fillna("NaN", inplace=True)
-        #Slice desdriptions
-        #df['description'] = df['description'].str.slice(0, 2000)
-        #Logging
-        logging.info('Finished RSS_YMD. Results below ⬇︎')
-        ## PostgreSQL
-        if pipeline == "MAIN":
-            #to_postgre(df)
-            to_postgre(df)
-        elif pipeline == "TEST":
-            test_postgre(df)
-            #this has to be changed
+    def clean_postgre_rss(df):
         
+        #Cleaning columns
+        for col in df.columns:
+            if col == 'link':
+                df[col] = df[col].apply(clean_link_rss)
+            else:
+                df[col] = df[col].apply(clean_other_rss)
+
+        df.fillna("NaN", inplace=True)
+        
+        df.to_csv(SAVE_PATH, index=False)
+
+        logging.info('Finished RSS CRAWLERS. Results below ⬇︎')
+        ## PostgreSQL
+        POSTGRESQL(df)
+
         #print the time
         elapsed_time = timeit.default_timer() - start_time
         print("\n", f"rss_crawlers are done! all in: {elapsed_time:.2f} seconds", "\n")
-    pipeline_df(df)
+    clean_postgre_rss(df)
 
 
 if __name__ == "__main__":

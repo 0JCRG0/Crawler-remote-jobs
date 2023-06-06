@@ -37,7 +37,7 @@ def selenium_template(pipeline):
     """
 
     if pipeline == 'MAIN':
-        JSON = PATH + '/selenium_resources/main_sel_crawlers.json'
+        JSON = PATH + '/resources/selenium_resources/main_sel_crawlers.json'
         POSTGRESQL = to_postgre
         print("\n", f"Pipeline is set to 'MAIN'. Jobs will be sent to PostgreSQL's main_jobs table", "\n")
         # configure the logger
@@ -49,7 +49,7 @@ def selenium_template(pipeline):
         LoggingFreelanceCrawler()
         #print("\n", f"Reading {JSON}. Jobs will be sent to PostgreSQL's freelance table", "\n")
     elif pipeline == 'TEST':
-        JSON = PATH + '/selenium_resources/test_selenium.json'
+        JSON = PATH + '/resources/selenium_resources/test_selenium.json'
         POSTGRESQL = test_postgre
         print("\n", f"Pipeline is set to 'TEST'. Jobs will be sent to PostgreSQL's test table", "\n")
         # configure the logger
@@ -166,7 +166,7 @@ def selenium_template(pipeline):
     #-> DF
     df = pd.DataFrame(data)
 
-    df.to_csv(PATH + "/OUTPUTS/pre-pipeline-Sel_All.csv", index=False)
+    df.to_csv(PATH + "/download/pre-pipeline-Sel_All.csv", index=False)
 
     # count the number of duplicate rows
     num_duplicates = df.duplicated().sum()
@@ -187,7 +187,7 @@ def selenium_template(pipeline):
                 df[df.columns[i]] = newvals
             
         #Save it in local machine
-        df.to_csv(PATH + "/OUTPUTS/post-pipeline-Sel_All.csv", index=False)
+        df.to_csv(PATH + "/download/post-pipeline-Sel_All.csv", index=False)
 
         #Log it 
         logging.info('Finished Selenium_Crawlers. Results below ⬇︎')
