@@ -1,3 +1,5 @@
+#!/usr/local/bin/python3
+
 import bs4
 import pandas as pd
 import re
@@ -86,6 +88,8 @@ def bs4_template(pipeline):
                 pages = url_obj['pages_to_crawl']
                 #Extract the number in which the range is going to start from
                 start_point = url_obj['start_point']
+                #strategy
+                strategy = url_obj['strategy']
                 # You need to +1 because range is exclusive
                 for i in range(start_point, pages + 1):
                     #The url from json is incomplete, we need to get the number of the page we are scrapping
@@ -100,40 +104,89 @@ def bs4_template(pipeline):
                         res.raise_for_status()
                         soup = bs4.BeautifulSoup(res.text, 'lxml')
                         #print(soup.prettify())
-                        print(f"Crawling... {url}")
-                        # establish waiting strategy
-                        # GETTING THE PARENT...
-                        jobs = soup.select(elements_path["jobs_path"])
-                        for job in jobs:
-                            
-                            # create a new dictionary to store the data for the current job
-                            job_data = {}
-
-                            title_element = job.select_one(elements_path["title_path"])
-                            job_data["title"] = title_element.text if title_element else "NaN"
-
-                            link_element = job.select_one(elements_path["link_path"])
-                            job_data["link"] = name + link_element["href"] if link_element else "NaN"
-
-                            today = date.today()
-                            job_data["pubdate"] = today
-
-                            location_element = job.select_one(elements_path["location_path"])
-                            job_data["location"] = location_element.text if location_element else "NaN"
-
-                            description_element = job.select_one(elements_path["description_path"])
-                            job_data["description"]= description_element.text if description_element else "NaN"
-
-                            timestamp = datetime.now()
-                            job_data["timestamp"] = timestamp
+                        print(f"Crawling {url} with {strategy} strategy")
+                        if strategy == "main":
+                            jobs = soup.select(elements_path["jobs_path"])
+                            for job in jobs:
                                 
-                            # add the data for the current job to the rows list
-                            total_links.append(job_data["link"])
-                            total_titles.append(job_data["title"])
-                            total_pubdates.append(job_data["pubdate"])
-                            total_locations.append(job_data["location"])
-                            total_timestamps.append(job_data["timestamp"])
-                            total_descriptions.append(job_data["description"])
+                                # create a new dictionary to store the data for the current job
+                                job_data = {}
+
+                                title_element = job.select_one(elements_path["title_path"])
+                                job_data["title"] = title_element.text if title_element else "NaN"
+
+                                link_element = job.select_one(elements_path["link_path"])
+                                job_data["link"] = name + link_element["href"] if link_element else "NaN"
+
+                                today = date.today()
+                                job_data["pubdate"] = today
+
+                                location_element = job.select_one(elements_path["location_path"])
+                                job_data["location"] = location_element.text if location_element else "NaN"
+
+                                description_element = job.select_one(elements_path["description_path"])
+                                job_data["description"]= description_element.text if description_element else "NaN"
+
+                                timestamp = datetime.now()
+                                job_data["timestamp"] = timestamp
+                                    
+                                # add the data for the current job to the rows list
+                                total_links.append(job_data["link"])
+                                total_titles.append(job_data["title"])
+                                total_pubdates.append(job_data["pubdate"])
+                                total_locations.append(job_data["location"])
+                                total_timestamps.append(job_data["timestamp"])
+                                total_descriptions.append(job_data["description"])
+                        else:
+                            # Identify the container with all the jobs
+                            container = soup.select_one(elements_path["jobs_path"])
+
+                            # TITLES
+                            title_elements = container.select(elements_path["title_path"])
+                            for i in title_elements:
+                                if i:
+                                    title = i.get_text(strip=True)
+                                    total_titles.append(title)
+                                else:
+                                    total_titles.append("NaN")
+
+                            # LINKS
+                            link_elements = container.select(elements_path["link_path"])
+                            for i in link_elements:
+                                if i:
+                                    href = i.get("href")
+                                    link = name + href
+                                    total_links.append(link)
+                                else:
+                                    total_links.append("NaN")
+
+                            # PUBDATES
+                            today = date.today()
+                            total_pubdates.extend([today] * len(link_elements))
+
+                            # LOCATIONS
+                            location_elements = container.select(elements_path["location_path"])
+                            for i in location_elements:
+                                if i:
+                                    location = i.get_text(strip=True)
+                                    total_locations.append(location)
+                                else:
+                                    total_locations.append("NaN")
+
+                            # Descriptions
+                            description_elements = container.select(elements_path["description_path"])
+                            for i in description_elements:
+                                if i:
+                                    description = i.get_text(strip=True)
+                                    total_descriptions.append(description)
+                                else:
+                                    total_descriptions.append("NaN")
+                            #Timestamps
+                            timestamp = datetime.now()
+                            total_timestamps.extend([timestamp] * len(link_elements))
+                                    
+                            # add the data
+                            rows = {'title':total_titles, 'link':total_links, 'description': total_descriptions, 'pubdate': total_pubdates, 'location': total_locations, 'timestamp': total_timestamps}
                     except HTTPError as e:
                         if e.code == 403:
                             print(f"An error occurred: {e}. Skipping URL {url}")
