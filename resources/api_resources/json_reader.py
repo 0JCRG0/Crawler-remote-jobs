@@ -3,7 +3,7 @@ import requests
 import pretty_errors
 
 #Request the api...
-url = 'https://4dayweek.io/api'
+url = 'https://remotive.com/api/remote-jobs?limit=50'
 
 #response = requests.get(url)
 headers = {"User-Agent": "my-app"}
