@@ -61,36 +61,7 @@ def rss_template(pipeline):
     #print("\n", f"Reading {file}... ", "\n")
     print("\n", "Crawler launched on RSS Feeds.")
 
-    def soups():
-        soup_list = []
-        with open(JSON) as f:
-                #load the json
-            urls = json.load(f)
-                # Access the 'apis' list in the first dictionary of the 'data' list and assign it to the variable 'apis'
-            for i in urls:
-                url = i["url"]
-                print(url)
-                try:
-                    res = requests.get(url)
-                    if res.status_code != 200:
-                        print(f"Received non-200 response ({res.status_code}) for URL {url}. Skipping...")
-                        continue
-                    res.raise_for_status()
-                    soup = bs4.BeautifulSoup(res.text, 'lxml-xml')
-                    soup_list.append(soup)
-                except HTTPError as e:
-                    if e.code == 403:
-                        print(f"An error occurred: {e}. Skipping URL {url}")
-                        rss = None
-                    else:
-                        raise
-        return soup_list
-    all_soups = soups()
-
-    print("\n", f"Soup made from {len(all_soups)} established connections.")
-
-
-    def all_elements():
+    def soups_elements():
         rows = []
         total_pubdates = []
         total_titles = []
@@ -98,48 +69,74 @@ def rss_template(pipeline):
         total_locations = []
         total_descriptions = []
         total_timestamps=[]
-        for soup in all_soups:
-            for item in soup.find_all('item'):
-                #IDs
-                #id = id_generator()
-                #total_ids.append(id)
-                # Get titles & append it to the list
-                title_tag = item.find('title')
-                if title_tag is not None:
-                    title = title_tag.get_text(strip=True)
-                    total_titles.append(title)
-                else:
-                    total_titles.append('NaN')
-                # Get links & append it to the list
-                link_tag = item.find('link')
-                if link_tag is not None:
-                    link = link_tag.get_text(strip=True)
-                    total_links.append(link)
-                else:
-                    total_links.append('NaN')
-                # Get the pubdate of different tags
-                today = date.today()
-                total_pubdates.append(today)
-                # Get the locations & append it to its list
-                location_tag = item.find('location')
-                if location_tag is not None:
-                    location = location_tag.get_text(strip=True)
-                    total_locations.append(location)
-                else:
-                    total_locations.append('NaN')
-                # Get the descriptions & append it to its list
-                description_tag = item.find('description')
-                if description_tag is not None:
-                    description = str(item.description.get_text(strip=True))
-                    total_descriptions.append(description)
-                else:
-                    total_descriptions.append('NaN')
-                #timestamps
-                timestamp = datetime.now()
-                total_timestamps.append(timestamp)
-                rows = {'title':total_titles, 'link':total_links, 'description': total_descriptions, 'pubdate': total_pubdates, 'location': total_locations, 'timestamp': total_timestamps}
+        with open(JSON) as f:
+            #load the json
+            data = json.load(f)
+            urls = data[0]["urls"]
+            for url_obj in urls:
+                url = url_obj['url']
+                loc_tag = url_obj['location_tag']
+                #ADD MORE VARIABLES IF REQUIRED
+                try:
+                    res = requests.get(url)
+                    if res.status_code != 200:
+                        print(f"Received non-200 response ({res.status_code}) for URL {url}. Skipping...")
+                        pass
+                    res.raise_for_status()
+                    print("\n", f"Connection established. Making soup from {url}...")
+                    soup = bs4.BeautifulSoup(res.text, 'lxml-xml')
+                    for item in soup.find_all('item'):
+                        
+                        title_tag = item.find('title')
+                        if title_tag is not None:
+                            title = title_tag.get_text(strip=True)
+                            total_titles.append(title)
+                        else:
+                            total_titles.append('NaN')
+                        # Get links & append it to the list
+                        
+                        link_tag = item.find('link')
+                        if link_tag is not None:
+                            link = link_tag.get_text(strip=True)
+                            total_links.append(link)
+                        else:
+                            total_links.append('NaN')
+                        
+                        # Get the pubdate of different tags
+                        today = date.today()
+                        total_pubdates.append(today)
+                        
+                        # Get the locations & append it to its list
+                        location_tag = item.find(loc_tag)
+                        if location_tag is not None:
+                            location = location_tag.get_text(strip=True)
+                            total_locations.append(location)
+                        else:
+                            total_locations.append('NaN')
+                        
+                        # Get the descriptions & append it to its list
+                        description_tag = item.find('description')
+                        if description_tag is not None:
+                            description = str(item.description.get_text(strip=True))
+                            total_descriptions.append(description)
+                        else:
+                            total_descriptions.append('NaN')
+                        
+                        #timestamps
+                        timestamp = datetime.now()
+                        total_timestamps.append(timestamp)
+                        rows = {'title':total_titles, 'link':total_links, 'description': total_descriptions, 'pubdate': total_pubdates, 'location': total_locations, 'timestamp': total_timestamps}
+                    print(f"Done with {url}. Moving on.")
+                except HTTPError as e:
+                    if e.code == 403:
+                        print(f"An error occurred: {e}. Skipping URL {url}")
+                        pass
+                    else:
+                        print(f"UNEXPECTED ERROR! Skipping URL {url}")
+                        pass
         return rows
-    data = all_elements()
+
+    data = soups_elements()
 
     #Convert data to a pandas df for further analysis
     data_dic = dict(data)
