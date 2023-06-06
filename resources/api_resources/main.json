@@ -57,7 +57,7 @@
                         "link_tag": "url",
                         "description_tag": "description",
                         "pubdate_tag": "posted",
-                        "location_tag": "location_original"
+                        "location_tag": "location_country"
                     }
                 ]
             },

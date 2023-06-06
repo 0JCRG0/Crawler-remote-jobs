@@ -45,6 +45,36 @@
                         "location_path": ".flex.flex-row.items-center.justify-between .flex.flex-row.items-center.flex-wrap.overflow-hidden"
                     }
                 ]
+            },
+            {
+                "name": "https://4dayweek.io",
+                "url": "https://4dayweek.io/remote-jobs/fully-remote/anywhere?page=",
+                "pages_to_crawl": 1,
+                "start_point": 1,
+                "elements_path": [
+                        {
+                        "jobs_path": ".row.jobs-list .job-tile-wrapper",
+                        "title_path": ".row.job-tile .job-tile-left.col-sm-9 .row.job-tile-title",
+                        "link_path": ".row.job-tile .job-tile-left.col-sm-9 .row.job-tile-title h3 .btn.btn-link.dark.btn-lg",
+                        "location_path": ".row.job-tile .job-tile-left.col-sm-9 .job-tile-tags",
+                        "description_path": ".row.job-tile .job-tile-left.col-sm-9 .job-tile-tags"
+                    }
+                ]
+            },
+            {
+                "name": "https://www.fossjobs.net",
+                "url": "https://www.fossjobs.net/jobs/?page=",
+                "pages_to_crawl": 1,
+                "start_point": 1,
+                "elements_path": [
+                        {
+                        "jobs_path": ".container .columns .column.is-9 .box.content .post",
+                        "title_path": "h2 a",
+                        "link_path": "h2 a",
+                        "location_path": ".media .media-content .content",
+                        "description_path": ".media .media-content .content"
+                    }
+                ]
             }
         ]
     }

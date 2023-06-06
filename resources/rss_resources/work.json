@@ -1,11 +1,77 @@
-[   
+[
     {
-        "url": "https://weworkremotely.com/remote-jobs.rss"
-        },
-        {
-        "url": "https://jobs.wordpress.net/feed/"
-        },
-        {
-        "url": "https://tryremotely.com/feeds/remote-jobs.rss"
-        }
+    "url": "http://feeds.feedburner.com/coroflot/AllJobs"
+    },
+    {
+    "url": "https://www.crunchboard.com/jobs.rss"
+    },
+    {
+    "url": "https://www.fossjobs.net/rss/all/"
+    },
+    {
+    "url": "https://jobs.drupal.org/filtered-jobs/%25/%25/%25/%25/%25/feed"
+    },
+    {
+    "url": "https://freshremote.work/feed/"
+    },
+    {
+    "url": "https://functionaljobs.com/jobs/?format=rss"
+    },
+    {
+    "url": "https://golangjob.xyz/remote/jobs"
+    },
+    {
+    "url": "https://hasjob.co/feed"
+    },
+    {
+    "url": "https://iloveremote.io/rss/jobs/city/remote.rss"
+    },
+    {
+    "url": "https://jobspresso.co/feed/?post_type=job_listing"
+    },
+    {
+    "url": "http://www.krop.com/services/feeds/rss/latest/"
+    },
+    {
+    "url": "https://landing.jobs/feed?remote=true"
+    },
+    {
+    "url": "https://larajobs.com/feed"
+    },
+    {
+    "url": "http://jobs.mashable.com/jobs/search/results?format=rss"
+    },
+    {
+    "url": "https://nodesk.co/remote-jobs/index.xml"
+    },
+    {
+    "url": "https://privacyfirstjobs.com/jobs/feed"
+    },
+    {
+    "url": "https://jobs.codeforamerica.org/job-postings.rss"
+    },
+    {
+    "url": "https://remote.co/feed/?post_type=job_listing"
+    },
+    {
+    "url": "https://remotive.com/remote-jobs/feed"
+    },
+    {
+    "url": "https://skoll.org/?feed=job_feed&job_types=other%2Csase%2Cskoll&search_location=remote&job_categories&search_keywords"
+    },
+    {
+    "url": "https://www.smashingmagazine.com/jobs/feed/"
+    },
+    {
+    "url": "https://vuejobs.com/feed"
+    },
+    {
+    "url": "https://weworkremotely.com/remote-jobs.rss"
+    },
+    {
+    "url": "https://jobs.wordpress.net/feed/"
+    },
+    {
+    "url": "https://tryremotely.com/feeds/remote-jobs.rss"
+    }
 ]

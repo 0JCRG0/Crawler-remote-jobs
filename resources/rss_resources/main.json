@@ -6,7 +6,7 @@
     "url": "https://www.crunchboard.com/jobs.rss"
     },
     {
-    "url": "https://dribbble.com/jobs.rss?anywhere=true&amp;location=Anywhere"
+    "url": "https://www.fossjobs.net/rss/all/"
     },
     {
     "url": "https://jobs.drupal.org/filtered-jobs/%25/%25/%25/%25/%25/feed"
@@ -64,9 +64,6 @@
     },
     {
     "url": "https://vuejobs.com/feed"
-    },
-    {
-    "url": "http://www.wphired.com/jobs/feed/"
     },
     {
     "url": "https://weworkremotely.com/remote-jobs.rss"

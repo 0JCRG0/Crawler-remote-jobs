@@ -2,17 +2,18 @@
     {
         "apis": [
             {
-                "name": "remoteok",
-                "api": "https://remoteok.com/api?api=1",
-                "class_json": "list",
+                "name": "4dayweek.io",
+                "api": "https://4dayweek.io/api",
+                "class_json": "dict",
                 "elements_path": [
                     {
-                        "dict_tag": "",
-                        "title_tag": "position",
+                        "dict_tag": "jobs",
+                        "title_tag": "title",
                         "link_tag": "url",
                         "description_tag": "description",
-                        "pubdate_tag": "date",
-                        "location_tag": "location"
+                        "pubdate_tag": "posted",
+                        "location_tag": "location_country",
+                        "location_tag_additional": "location_continent"
                     }
                 ]
             }

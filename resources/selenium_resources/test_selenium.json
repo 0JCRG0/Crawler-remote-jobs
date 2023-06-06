@@ -2,32 +2,17 @@
     {
         "urls": [
             {
-                "name": "REMOTESOME",
-                "url": "https://app.remotesome.com/jobs/?page=",
-                "pages_to_crawl": 1,
-                "start_point": 1,
-                "elements_path": [
-                    {
-                        "jobs_path": ".col-8\\:md article",
-                        "title_path": ".u-pl16 h4",
-                        "link_path": "a",
-                        "description_path": ".u-flex.u-pt8.u-flex--middle",
-                        "location_path": ".u-flex.u-relative"
-                    }
-                ]
-            },
-            {
-                "name": "cryptojobslist.com",
-                "url": "https://cryptojobslist.com/remote?sort=recent&page=",
+                "name": "https://www.fossjobs.net",
+                "url": "https://www.fossjobs.net/jobs/?page=",
                 "pages_to_crawl": 1,
                 "start_point": 1,
                 "elements_path": [
                         {
-                        "jobs_path": "section ul li",
-                        "title_path": ".JobPreviewInline_meta__tG6WQ.\\!flex.\\!flex-col h2",
-                        "link_path": ".JobPreviewInline_meta__tG6WQ.\\!flex.\\!flex-col h2 a",
-                        "location_path": ".JobPreviewInline_meta__tG6WQ.\\!flex.\\!flex-col span",
-                        "description_path": ".JobPreviewInline_meta__tG6WQ.\\!flex.\\!flex-col span"
+                        "jobs_path": ".container .columns .column.is-9 .box.content .post",
+                        "title_path": "h2 a",
+                        "link_path": "h2 a",
+                        "location_path": ".media .media-content .content",
+                        "description_path": ".media .media-content .content"
                     }
                 ]
             }
