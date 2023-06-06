@@ -21,11 +21,11 @@ def main(pipeline):
     #Start calling each crawler
     logging.info('ALL CRAWLERS DEPLOYED!')
 
-    bs4_template(pipeline) #1st argument MAIN OR TEST
-
     api_template(pipeline) #1st: PROD_API or TEST_API
     
     rss_template(pipeline) #1st argument MAIN OR TEST
+
+    bs4_template(pipeline) #1st argument MAIN OR TEST
 
     selenium_template(pipeline) # 'MAIN', TEST or FREELANCE
 

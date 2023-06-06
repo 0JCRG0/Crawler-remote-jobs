@@ -105,6 +105,7 @@ def bs4_template(pipeline):
                         # GETTING THE PARENT...
                         jobs = soup.select(elements_path["jobs_path"])
                         for job in jobs:
+                            
                             # create a new dictionary to store the data for the current job
                             job_data = {}
 
@@ -168,7 +169,7 @@ def bs4_template(pipeline):
         df.to_csv(SAVE_PATH, index=False)
 
         #Log it 
-        logging.info('Finished Selenium_Crawlers. Results below ⬇︎')
+        logging.info('Finished bs4 crawlers. Results below ⬇︎')
         
         # SEND IT TO TO PostgreSQL    
         POSTGRESQL(df)
@@ -180,4 +181,4 @@ def bs4_template(pipeline):
     clean_postgre_bs4(df)
 
 if __name__ == "__main__":
-    bs4_template('MAIN') 
+    bs4_template('TEST') 
