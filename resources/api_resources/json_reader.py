@@ -3,8 +3,7 @@ import requests
 import pretty_errors
 
 #Request the api...
-url = 'https://cryptojobslist.com/_next/data/SFAWiRBm4m9fe2VR1h4AR/en/tags/remote/all.json?sort=recent&page=1&tag=remote&location=all'
-#url = 'https://remoteok.com/api?api=1'
+url = 'https://4dayweek.io/api'
 
 #response = requests.get(url)
 headers = {"User-Agent": "my-app"}
