@@ -2,6 +2,7 @@
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.common.exceptions import NoSuchElementException
 import pandas as pd
 import re
 import pretty_errors
@@ -97,79 +98,134 @@ def selenium_template(pipeline):
                 #Extract the number in which the range is going to start from
                 start_point = url_obj['start_point']
                 # You need to +1 because range is exclusive
+                strategy = url_obj['strategy']
                 for i in range(start_point, pages + 1):
                     #The url from json is incomplete, we need to get the number of the page we are scrapping
                     ##We do that in the following line
                     url = url_prefix + str(i)
                     # get the url
-                    driver.get(url)
-                    print(f"Crawling... {url}")
-                    # establish waiting strategy
-                    driver.implicitly_wait(1)
-                    # GETTING THE PARENT...
-                    jobs = driver.find_elements(By.CSS_SELECTOR, elements_path["jobs_path"])
-                    for job in jobs:
-                        # create a new dictionary to store the data for the current job
-                        job_data = {}
+                    try:
+                        driver.get(url)
+                        print(f"Crawling {url} with {strategy} strategy")
+                        # establish waiting strategy
+                        driver.implicitly_wait(1)
+                        """ IF LINKS ARE *NOT* IN THE SAME ELEMENT AS JOBS """
+                        if strategy == "main":
+                            jobs = driver.find_elements(By.CSS_SELECTOR, elements_path["jobs_path"])
+                            for job in jobs:
+                                # create a new dictionary to store the data for the current job
+                                job_data = {}
 
-                        #IDs
-                        #id = id_generator()
-                        #job_data["id"]= id
+                                #TITLES
+                                title_element = job.find_element(By.CSS_SELECTOR, elements_path["title_path"])
+                                if title_element is not None:
+                                    title = title_element.get_attribute("innerHTML")
+                                    job_data["title"]= title
+                                else:
+                                    job_data["title"]= "NaN"
+                                    
+                                #LINKS
+                                link_element = job.find_element(By.CSS_SELECTOR, elements_path["link_path"])
+                                if link_element is not None:
+                                    href = link_element.get_attribute("href")
+                                    job_data["link"]= href
+                                else:
+                                    job_data["link"]= "NaN"
 
-                        #TITLES
-                        title_element = job.find_element(By.CSS_SELECTOR, elements_path["title_path"])
-                        if title_element is not None:
-                            title = title_element.get_attribute("innerHTML")
-                            job_data["title"]= title
+                                #PUBDATES - to simplify things & considering this snippet will be run daily datetime is the same day as the day this is running                       
+                                today = date.today()
+                                job_data["pubdate"] = today
+                                    
+                                #LOCATIONS
+                                location_element = job.find_element(By.CSS_SELECTOR, elements_path["location_path"])
+                                if location_element is not None:
+                                    location = location_element.get_attribute("innerHTML") 
+                                    job_data["location"]= location
+                                else:
+                                    job_data["location"]= "NaN"
+                                    
+                                #Descriptions
+                                description_element = job.find_element(By.CSS_SELECTOR, elements_path["description_path"])
+                                if description_element is not None:
+                                    description = description_element.get_attribute("innerHTML") 
+                                    job_data["description"]= description
+                                else:
+                                    job_data["description"]= "NaN"
+                                
+                                #Timestamps
+                                timestamp = datetime.now()
+                                job_data["timestamp"] = timestamp
+                                    
+                                # add the data for the current job to the rows list
+                                total_links.append(job_data["link"])
+                                total_titles.append(job_data["title"])
+                                total_pubdates.append(job_data["pubdate"])
+                                total_locations.append(job_data["location"])
+                                total_timestamps.append(job_data["timestamp"])
+                                total_descriptions.append(job_data["description"])
                         else:
-                            job_data["title"]= "NaN"
+                            """ IF LINKS *ARE* IN THE SAME ELEMENT AS JOBS """
                             
-                        #LINKS
-                        link_element = job.find_element(By.CSS_SELECTOR, elements_path["link_path"])
-                        if link_element is not None:
-                            href = link_element.get_attribute("href")
-                            job_data["link"]= href
-                        else:
-                            job_data["link"]= "NaN"
+                            #Identify the container with all the jobs
+                            container = driver.find_element(By.CSS_SELECTOR, elements_path["jobs_path"])
+                            
+                            #TITLES
+                            title_elements = container.find_elements(By.CSS_SELECTOR, elements_path["title_path"])
+                            for i in title_elements:
+                                if i:
+                                    title = i.get_attribute("innerHTML")
+                                    total_titles.append(title)
+                                else:
+                                    total_titles.append("NaN")
+                            
+                            #LINKS
+                            link_elements = container.find_elements(By.CSS_SELECTOR, elements_path["link_path"])
+                            for i in link_elements:
+                                if i:
+                                    href = i.get_attribute("href")
+                                    total_links.append(href)
+                                else:
+                                    total_links.append("NaN")
 
-                        #PUBDATES - to simplify things & considering this snippet will be run daily datetime is the same day as the day this is running                       
-                        today = date.today()
-                        job_data["pubdate"] = today
-                            
-                        #LOCATIONS
-                        location_element = job.find_element(By.CSS_SELECTOR, elements_path["location_path"])
-                        if location_element is not None:
-                            location = location_element.get_attribute("innerHTML") 
-                            job_data["location"]= location
-                        else:
-                            job_data["location"]= "NaN"
-                            
-                        #Descriptions
-                        description_element = job.find_element(By.CSS_SELECTOR, elements_path["description_path"])
-                        if description_element is not None:
-                            description = description_element.get_attribute("innerHTML") 
-                            job_data["description"]= description
-                        else:
-                            job_data["description"]= "NaN"
-                        
-                        #Timestamps
-                        timestamp = datetime.now()
-                        job_data["timestamp"] = timestamp
-                            
-                        # add the data for the current job to the rows list
-                        total_links.append(job_data["link"])
-                        total_titles.append(job_data["title"])
-                        total_pubdates.append(job_data["pubdate"])
-                        total_locations.append(job_data["location"])
-                        total_timestamps.append(job_data["timestamp"])
-                        total_descriptions.append(job_data["description"])
+                            # PUBDATES
+                            today = date.today()
+                            total_pubdates.extend([today] * len(link_elements))
+                                    
+                            #LOCATIONS
+                            location_elements = container.find_elements(By.CSS_SELECTOR, elements_path["location_path"])
+                            for i in location_elements:
+                                if i:
+                                    location = i.get_attribute("innerHTML") 
+                                    total_locations.append(location)
+                                else:
+                                    total_locations.append("NaN")
+                                    
+                            #Descriptions
+                            description_elements = container.find_elements(By.CSS_SELECTOR, elements_path["description_path"])
+                            for i in description_elements:
+                                if i:
+                                    description = i.get_attribute("innerHTML") 
+                                    total_descriptions.append(description)
+                                else:
+                                    total_descriptions.append("NaN")
+                                
+                            #Timestamps
+                            timestamp = datetime.now()
+                            total_timestamps.extend([timestamp] * len(link_elements))
+                                    
+                            # add the data for the current job to the rows list
+                            rows = {'title':total_titles, 'link':total_links, 'description': total_descriptions, 'pubdate': total_pubdates, 'location': total_locations, 'timestamp': total_timestamps}
+                    except Exception as e:
+                        # Handle any other exceptions
+                        print("An error occurred:", str(e))
+                        pass
         return rows
 
                     
     data = elements()
     driver.quit()
 
-    #-> DF
+
     df = pd.DataFrame(data)
 
     # count the number of duplicate rows

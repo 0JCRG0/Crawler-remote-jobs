@@ -6,6 +6,7 @@
                 "url": "https://app.remotesome.com/jobs/?page=",
                 "pages_to_crawl": 1,
                 "start_point": 1,
+                "strategy": "main",
                 "elements_path": [
                     {
                         "jobs_path": ".col-8\\:md article",
@@ -21,6 +22,7 @@
                 "url": "https://cryptojobslist.com/remote?sort=recent&page=",
                 "pages_to_crawl": 1,
                 "start_point": 1,
+                "strategy": "main",
                 "elements_path": [
                         {
                         "jobs_path": "section ul li",
