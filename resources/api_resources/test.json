@@ -2,8 +2,8 @@
     {
         "apis": [
             {
-                "name": "4dayweek.io",
-                "api": "https://4dayweek.io/api",
+                "name": "remotive.com",
+                "api": "https://remotive.com/api/remote-jobs?limit=50",
                 "class_json": "dict",
                 "elements_path": [
                     {
@@ -11,9 +11,7 @@
                         "title_tag": "title",
                         "link_tag": "url",
                         "description_tag": "description",
-                        "pubdate_tag": "posted",
-                        "location_tag": "location_country",
-                        "location_tag_additional": "location_continent"
+                        "location_tag": "candidate_required_location"
                     }
                 ]
             }

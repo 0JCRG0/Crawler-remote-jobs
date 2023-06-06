@@ -75,6 +75,20 @@
                         "location_tag": "location"
                     }
                 ]
+            },
+            {
+                "name": "remotive.com",
+                "api": "https://remotive.com/api/remote-jobs?limit=50",
+                "class_json": "dict",
+                "elements_path": [
+                    {
+                        "dict_tag": "jobs",
+                        "title_tag": "title",
+                        "link_tag": "url",
+                        "description_tag": "description",
+                        "location_tag": "candidate_required_location"
+                    }
+                ]
             }
         ]
     }
