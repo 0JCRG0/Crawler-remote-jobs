@@ -595,15 +595,23 @@ def to_postgre(df):
         final_count = final_count_result[0]
     else:
         final_count = 0
-    unique_jobs = final_count - initial_count
 
     # check if the result set is not empty
     print("\n")
-    print("MAIN_JOBS INSERT RESULTS:", "\n")
+    print("MAIN_JOBS TABLE REPORT:", "\n")
     print(f"Total count of jobs before crawling: {initial_count}")
-    print(f"Total number of jobs obtained by crawling: {jobs_added_count}")
-    print(f"Total number of unique jobs added: {unique_jobs}")
+    print(f"Total number of unique jobs added by crawling: {jobs_added_count}")
     print(f"Current total count of jobs in PostgreSQL: {final_count}")
+
+    postgre_report = "MAIN_JOBS TABLE REPORT:"\
+                    "\n"\
+                    f"Total count of jobs before crawling: {initial_count}" \
+                    "\n"\
+                    f"Total number of unique jobs added by crawling: {jobs_added_count}" \
+                    "\n"\
+                    f"Current total count of jobs in PostgreSQL: {final_count}"
+
+    logging.info(postgre_report)
 
     # commit the changes to the database
     cnx.commit()
@@ -663,14 +671,12 @@ def test_postgre(df):
         final_count = final_count_result[0]
     else:
         final_count = 0
-    unique_jobs = final_count - initial_count
 
     # check if the result set is not empty
     print("\n")
-    print("TEST RESULTS:", "\n")
+    print("TEST TABLE REPORT:", "\n")
     print(f"Total count of jobs before crawling: {initial_count}")
-    print(f"Total number of jobs obtained by crawling: {jobs_added_count}")
-    print(f"Total number of unique jobs added: {unique_jobs}")
+    print(f"Total number of unique jobs added by crawling: {jobs_added_count}")
     print(f"Current total count of jobs in PostgreSQL: {final_count}")
 
     # commit the changes to the database
