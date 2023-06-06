@@ -2,32 +2,18 @@
     {
         "urls": [
             {
-                "name": "https://4dayweek.io",
-                "url": "https://4dayweek.io/remote-jobs/fully-remote/anywhere?page=",
+                "name": "https://remote.co",
+                "url": "https://remote.co/international-remote-jobs/?page=",
                 "pages_to_crawl": 1,
                 "start_point": 1,
+                "strategy": "main",
                 "elements_path": [
                         {
-                        "jobs_path": ".row.jobs-list .job-tile-wrapper",
-                        "title_path": ".row.job-tile .job-tile-left.col-sm-9 .row.job-tile-title",
-                        "link_path": ".row.job-tile .job-tile-left.col-sm-9 .row.job-tile-title h3 .btn.btn-link.dark.btn-lg",
-                        "location_path": ".row.job-tile .job-tile-left.col-sm-9 .job-tile-tags",
-                        "description_path": ".row.job-tile .job-tile-left.col-sm-9 .job-tile-tags"
-                    }
-                ]
-            },
-            {
-                "name": "https://www.fossjobs.net",
-                "url": "https://www.fossjobs.net/jobs/?page=",
-                "pages_to_crawl": 1,
-                "start_point": 1,
-                "elements_path": [
-                        {
-                        "jobs_path": ".container .columns .column.is-9 .box.content .post",
-                        "title_path": "h2 a",
-                        "link_path": "h2 a",
-                        "location_path": ".media .media-content .content",
-                        "description_path": ".media .media-content .content"
+                        "jobs_path": ".tw-cursor-pointer",
+                        "title_path": ".card.m-0.border-left-0.border-right-0.border-top-0.border-bottom .card.border-0.p-3.job-card.bg-white .row.no-gutters.align-items-center .col.position-static .card-body.px-3.py-0.pl-md-0 .m-0 .font-weight-bold.larger",
+                        "link_path": ".card.m-0.border-left-0.border-right-0.border-top-0.border-bottom",
+                        "location_path": ".card.m-0.border-left-0.border-right-0.border-top-0.border-bottom .card.border-0.p-3.job-card.bg-white .row.no-gutters.align-items-center .col.position-static .card-body.px-3.py-0.pl-md-0 .m-0.text-secondary",
+                        "description_path": ".card.m-0.border-left-0.border-right-0.border-top-0.border-bottom .card.border-0.p-3.job-card.bg-white .row.no-gutters.align-items-center .col.position-static .card-body.px-3.py-0.pl-md-0 .m-0.text-secondary"
                     }
                 ]
             }
