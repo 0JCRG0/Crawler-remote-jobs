@@ -6,6 +6,9 @@ import logging
 from datetime import date, timedelta
 from utils.handy import LoggingFreelanceCrawler
 
+
+#TODO: FIX
+
 #SET UP LOGGING
 LoggingFreelanceCrawler()
 

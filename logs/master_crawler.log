@@ -6801,3 +6801,126 @@ Finished Selenium_Crawlers. Results below ⬇︎
 2023-06-05 14:39:11,782 INFO: 
 Finished Selenium_Crawlers. Results below ⬇︎
 
+2023-06-05 16:07:40,105 WARNING: 
+Python-dotenv could not parse statement starting at line 8
+
+2023-06-05 16:07:40,111 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-05 16:07:40,629 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-05 16:09:13,334 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-05 16:09:34,395 INFO: 
+Finished RSS_YMD. Results below ⬇︎
+
+2023-06-05 16:10:04,437 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-05 16:10:04,708 INFO: 
+ALL CRAWLERS FINISHED. ALL IN 144.60 SECONDS!
+
+2023-06-05 16:11:32,550 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-05 17:12:28,686 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-05 17:21:05,650 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-05 17:55:14,071 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-05 17:56:34,949 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-05 18:03:33,912 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-05 18:04:36,171 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-05 18:05:43,076 INFO: 
+Finished RSS_YMD. Results below ⬇︎
+
+2023-06-05 18:18:13,984 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-05 18:21:21,478 INFO: 
+Finished RSS_YMD. Results below ⬇︎
+
+2023-06-05 20:03:51,611 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-05 21:02:41,304 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-05 21:03:42,413 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-05 21:12:18,109 INFO: 
+Finished RSS CRAWLERS. Results below ⬇︎
+
+2023-06-05 21:15:16,998 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-05 21:15:18,363 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-05 21:15:18,408 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1664
+Total number of unique jobs added by crawling: 0
+Current total count of jobs in PostgreSQL: 1664
+
+2023-06-05 21:15:22,930 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-05 21:15:23,168 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1664
+Total number of unique jobs added by crawling: 17
+Current total count of jobs in PostgreSQL: 1681
+
+2023-06-05 21:15:44,276 INFO: 
+Finished RSS CRAWLERS. Results below ⬇︎
+
+2023-06-05 21:15:44,849 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1681
+Total number of unique jobs added by crawling: 70
+Current total count of jobs in PostgreSQL: 1751
+
+2023-06-05 21:16:13,810 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-05 21:16:13,998 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1751
+Total number of unique jobs added by crawling: 9
+Current total count of jobs in PostgreSQL: 1760
+
+2023-06-05 21:16:13,999 INFO: 
+ALL CRAWLERS FINISHED. ALL IN 57.00 SECONDS!
+
+2023-06-05 21:20:06,065 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-05 21:20:07,428 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-05 21:20:08,273 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-05 21:20:10,365 INFO: 
+Finished RSS CRAWLERS. Results below ⬇︎
+
+2023-06-05 21:20:17,561 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-05 21:20:17,583 INFO: 
+ALL CRAWLERS FINISHED. ALL IN 11.52 SECONDS!
+
