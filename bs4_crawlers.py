@@ -14,8 +14,13 @@ from dotenv import load_dotenv
 from utils.handy import *
 
 
-#IMPORT THE PATH - YOU NEED TO EXPORT YOUR OWN PATH TO zsh/bash & SAVE IT AS 'CRAWLER_ALL'
-PATH = '/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL'
+""" LOAD THE ENVIRONMENT VARIABLES """
+
+load_dotenv()
+
+PROD = os.environ.get('JSON_PROD_BS4')
+TEST = os.environ.get('JSON_TEST_BS4')
+SAVE_PATH = os.environ.get('SAVE_PATH_BS4')
 
 def bs4_template(pipeline):
     print("\n", "Crawler is using bs4 strategy.")
@@ -23,24 +28,25 @@ def bs4_template(pipeline):
     #start timer
     start_time = timeit.default_timer()
 
-    """
-    The following is specifying which JSON to load & to which table it will be sent
-    """
+    """ DETERMINING WHICH JSON TO LOAD & WHICH POSTGRE TABLE WILL BE USED """
 
     if pipeline == 'MAIN':
-        JSON = PATH + '/bs4_resources/main_bs4.json'
+        if PROD:
+            JSON = PROD
         POSTGRESQL = to_postgre
         print("\n", f"Pipeline is set to 'MAIN'. Jobs will be sent to PostgreSQL's main_jobs table", "\n")
         # configure the logger
         LoggingMasterCrawler()
     elif pipeline == 'FREELANCE':
-        JSON = PATH + '/selenium_resources/freelance.json'
+        #TODO: FIX - ADD PÁTH
+        JSON = '/selenium_resources/freelance.json'
         POSTGRESQL = freelance_postgre
         # configure the logger
         LoggingFreelanceCrawler()
         #print("\n", f"Reading {JSON}. Jobs will be sent to PostgreSQL's freelance table", "\n")
     elif pipeline == 'TEST':
-        JSON = PATH + '/bs4_resources/test_bs4.json'
+        if TEST:
+            JSON = TEST
         POSTGRESQL = test_postgre
         print("\n", f"Pipeline is set to 'TEST'. Jobs will be sent to PostgreSQL's test table", "\n")
         # configure the logger
@@ -140,8 +146,6 @@ def bs4_template(pipeline):
     #-> DF
     df = pd.DataFrame(data)
 
-    df.to_csv(PATH + "/OUTPUTS/bs4_dirty.csv", index=False)
-
     # count the number of duplicate rows
     num_duplicates = df.duplicated().sum()
 
@@ -151,7 +155,7 @@ def bs4_template(pipeline):
             # remove duplicate rows based on all columns
     df = df.drop_duplicates()
         
-    def clean_postgre(df):
+    def clean_postgre_bs4(df):
         
         #CLEANING AVOIDING DEPRECATION WARNING
         for col in df.columns:
@@ -161,7 +165,7 @@ def bs4_template(pipeline):
                 df[df.columns[i]] = newvals
             
         #Save it in local machine
-        df.to_csv(PATH + "/OUTPUTS/bs4_clean.csv", index=False)
+        df.to_csv(SAVE_PATH, index=False)
 
         #Log it 
         logging.info('Finished Selenium_Crawlers. Results below ⬇︎')
@@ -173,7 +177,7 @@ def bs4_template(pipeline):
         elapsed_time = timeit.default_timer() - start_time
         print("\n")
         print(f"BS4 crawlers finished! all in: {elapsed_time:.2f} seconds.", "\n")
-    clean_postgre(df)
+    clean_postgre_bs4(df)
 
 if __name__ == "__main__":
     bs4_template('MAIN') 
