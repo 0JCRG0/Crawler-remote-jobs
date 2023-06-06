@@ -13,20 +13,39 @@ from dotenv import load_dotenv
 from utils.handy import *
 from requests.exceptions import RequestException
 
-# Load the .env file & access variables
-load_dotenv('.env')
-PROD_API = os.getenv('PATH_PROD_API', 'DEFAULT')
-TEST_API = os.getenv('PATH_TEST_API', 'DEFAULT')
-OUTPUT = os.getenv('OUTPUT_API', 'DEFAULT')
+""" LOAD THE ENVIRONMENT VARIABLES """
 
-#Import logging
-LoggingMasterCrawler()
+load_dotenv()
+
+PROD = os.environ.get('JSON_PROD_API')
+TEST = os.environ.get('JSON_TEST_API')
+SAVE_PATH = os.environ.get('SAVE_PATH_API')
+
 
 def api_template(pipeline):
     print("\n", "Crawler launched on APIs.")
 
     #Start the timer
     start_time = timeit.default_timer()
+
+    """ DETERMINING WHICH JSON TO LOAD & WHICH POSTGRE TABLE WILL BE USED """
+
+    if pipeline == 'MAIN':
+        if PROD:
+            JSON = PROD
+        POSTGRESQL = to_postgre
+        print("\n", f"Pipeline is set to 'MAIN'. Jobs will be sent to PostgreSQL's main_jobs table", "\n")
+        # configure the logger
+        LoggingMasterCrawler()
+    elif pipeline == 'TEST':
+        if TEST:
+            JSON = TEST
+        POSTGRESQL = test_postgre
+        print("\n", f"Pipeline is set to 'TEST'. Jobs will be sent to PostgreSQL's test table", "\n")
+        # configure the logger
+        LoggingMasterCrawler()
+    else:
+        print("\n", "Incorrect argument! Use either 'MAIN' or 'TEST' to run this script.", "\n")
 
     def api_fetcher():
         total_titles = []
@@ -38,7 +57,7 @@ def api_template(pipeline):
         total_timestamps=[]
         rows = []
 
-        with open(pipeline) as f:
+        with open(JSON) as f:
             #load the local json
             data = json.load(f)
             # Access the 'apis' list in the first dictionary of the 'data' list and assign it to the variable 'apis'
@@ -117,33 +136,28 @@ def api_template(pipeline):
     #to df
     df = pd.DataFrame(data)
 
-    """ Clean the rows accordingly """
-    for col in df.columns:
-        if col == 'location':
-            #df[col] = df[col].astype(str).str.replace(r'{}', '', regex=True)
-            df[col] = df[col].astype(str).apply(clean_rows)
-        if col == 'description':
-            df[col] = df[col].astype(str).apply(clean_rows).apply(cleansing_selenium_crawlers)
+    def clean_postgre_api(df):
+
+        """ Clean the rows accordingly """
+        for col in df.columns:
+            if col == 'location':
+                #df[col] = df[col].astype(str).str.replace(r'{}', '', regex=True)
+                df[col] = df[col].astype(str).apply(clean_rows)
+            if col == 'description':
+                df[col] = df[col].astype(str).apply(clean_rows).apply(cleansing_selenium_crawlers)
 
 
-    df.to_csv(OUTPUT, index=False)
+        df.to_csv(SAVE_PATH, index=False)
 
-    #Slice desdriptions
-    #df['description'] = df['description'].str.slice(0, 2000)
+        #Log
+        logging.info('Finished API crawlers. Results below ⬇︎')
 
-    #Log
-    logging.info('Finished API crawlers. Results below ⬇︎')
+        ## PostgreSQL
+        POSTGRESQL(df)
 
-    ## PostgreSQL
-    if pipeline == PROD_API:
-        #to_postgre(df)
-        to_postgre(df)
-    elif pipeline == TEST_API:
-        #test_postgre(df)
-        test_postgre(df)
-
-    elapsed_time = timeit.default_timer() - start_time
-    print("\n", f"Api crawlers have finished! all in: {elapsed_time:.2f} seconds", "\n") 
+        elapsed_time = timeit.default_timer() - start_time
+        print("\n", f"Api crawlers have finished! all in: {elapsed_time:.2f} seconds", "\n") 
+    clean_postgre_api(df)
     
 if __name__ == "__main__":
-    api_template(TEST_API)
+    api_template("TEST")
