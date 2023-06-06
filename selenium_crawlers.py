@@ -14,10 +14,13 @@ import os
 from dotenv import load_dotenv
 from utils.handy import *
 
-#TODO: replace path with .env
+""" LOAD THE ENVIRONMENT VARIABLES """
 
-#IMPORT THE PATH - YOU NEED TO EXPORT YOUR OWN PATH TO zsh/bash & SAVE IT AS 'CRAWLER_ALL'
-PATH = '/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL'
+load_dotenv()
+
+PROD = os.environ.get('JSON_PROD_SEL')
+TEST = os.environ.get('JSON_TEST_SEL')
+SAVE_PATH = os.environ.get('SAVE_PATH_SEL')
 
 def selenium_template(pipeline):
     print("\n", "Crawler launched on headless browser.")
@@ -37,19 +40,22 @@ def selenium_template(pipeline):
     """
 
     if pipeline == 'MAIN':
-        JSON = PATH + '/resources/selenium_resources/main_sel_crawlers.json'
+        if PROD:
+            JSON = PROD
         POSTGRESQL = to_postgre
         print("\n", f"Pipeline is set to 'MAIN'. Jobs will be sent to PostgreSQL's main_jobs table", "\n")
         # configure the logger
         LoggingMasterCrawler()
     elif pipeline == 'FREELANCE':
-        JSON = PATH + '/selenium_resources/freelance.json'
+        #TODO: Fix path
+        JSON = '/selenium_resources/freelance.json'
         POSTGRESQL = freelance_postgre
         # configure the logger
         LoggingFreelanceCrawler()
         #print("\n", f"Reading {JSON}. Jobs will be sent to PostgreSQL's freelance table", "\n")
     elif pipeline == 'TEST':
-        JSON = PATH + '/resources/selenium_resources/test_selenium.json'
+        if TEST:
+            JSON = TEST
         POSTGRESQL = test_postgre
         print("\n", f"Pipeline is set to 'TEST'. Jobs will be sent to PostgreSQL's test table", "\n")
         # configure the logger
@@ -166,8 +172,6 @@ def selenium_template(pipeline):
     #-> DF
     df = pd.DataFrame(data)
 
-    df.to_csv(PATH + "/download/pre-pipeline-Sel_All.csv", index=False)
-
     # count the number of duplicate rows
     num_duplicates = df.duplicated().sum()
 
@@ -187,7 +191,7 @@ def selenium_template(pipeline):
                 df[df.columns[i]] = newvals
             
         #Save it in local machine
-        df.to_csv(PATH + "/download/post-pipeline-Sel_All.csv", index=False)
+        df.to_csv(SAVE_PATH, index=False)
 
         #Log it 
         logging.info('Finished Selenium_Crawlers. Results below ⬇︎')
