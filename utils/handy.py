@@ -566,7 +566,8 @@ def to_postgre(df):
         insert_query = '''
             INSERT INTO main_jobs (title, link, description, pubdate, location, timestamp)
             VALUES (%s, %s, %s, %s, %s, %s)
-            ON CONFLICT (link) DO NOTHING
+            ON CONFLICT (link) DO UPDATE SET
+                location = excluded.location
             RETURNING *
         '''
         values = (row['title'], row['link'], row['description'], row['pubdate'], row['location'], row['timestamp'])
@@ -600,14 +601,14 @@ def to_postgre(df):
     print("\n")
     print("MAIN_JOBS TABLE REPORT:", "\n")
     print(f"Total count of jobs before crawling: {initial_count}")
-    print(f"Total number of unique jobs added by crawling: {jobs_added_count}")
+    print(f"Total number of either unique jobs or jobs with updated location: {jobs_added_count}")
     print(f"Current total count of jobs in PostgreSQL: {final_count}")
 
     postgre_report = "MAIN_JOBS TABLE REPORT:"\
                     "\n"\
                     f"Total count of jobs before crawling: {initial_count}" \
                     "\n"\
-                    f"Total number of unique jobs added by crawling: {jobs_added_count}" \
+                    f"Total number of either unique jobs or jobs with updated location: {jobs_added_count}" \
                     "\n"\
                     f"Current total count of jobs in PostgreSQL: {final_count}"
 
@@ -642,7 +643,8 @@ def test_postgre(df):
         insert_query = '''
             INSERT INTO test (title, link, description, pubdate, location, timestamp)
             VALUES (%s, %s, %s, %s, %s, %s)
-            ON CONFLICT (link) DO NOTHING
+            ON CONFLICT (link) DO UPDATE SET
+                location = excluded.location
             RETURNING *
         '''
         values = (row['title'], row['link'], row['description'], row['pubdate'], row['location'], row['timestamp'])
@@ -676,7 +678,7 @@ def test_postgre(df):
     print("\n")
     print("TEST TABLE REPORT:", "\n")
     print(f"Total count of jobs before crawling: {initial_count}")
-    print(f"Total number of unique jobs added by crawling: {jobs_added_count}")
+    print(f"Total number of either unique jobs or jobs with updated location: {jobs_added_count}")
     print(f"Current total count of jobs in PostgreSQL: {final_count}")
 
     # commit the changes to the database
