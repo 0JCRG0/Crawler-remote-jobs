@@ -1,6 +1,7 @@
 {
     "recommendations": [
         "zhuangtongfa.material-theme",
-        "gruntfuggly.todo-tree"
+        "gruntfuggly.todo-tree",
+        "mechatroner.rainbow-csv"
     ]
 }

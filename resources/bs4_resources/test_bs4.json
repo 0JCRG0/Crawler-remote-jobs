@@ -2,18 +2,18 @@
     {
         "urls": [
             {
-                "name": "https://remote.co",
-                "url": "https://remote.co/international-remote-jobs/?page=",
+                "name": "https://nodesk.co",
+                "url": "https://nodesk.co/remote-jobs/remote-first/?page=",
                 "pages_to_crawl": 1,
                 "start_point": 1,
                 "strategy": "main",
                 "elements_path": [
                         {
-                        "jobs_path": ".tw-cursor-pointer",
-                        "title_path": ".card.m-0.border-left-0.border-right-0.border-top-0.border-bottom .card.border-0.p-3.job-card.bg-white .row.no-gutters.align-items-center .col.position-static .card-body.px-3.py-0.pl-md-0 .m-0 .font-weight-bold.larger",
-                        "link_path": ".card.m-0.border-left-0.border-right-0.border-top-0.border-bottom",
-                        "location_path": ".card.m-0.border-left-0.border-right-0.border-top-0.border-bottom .card.border-0.p-3.job-card.bg-white .row.no-gutters.align-items-center .col.position-static .card-body.px-3.py-0.pl-md-0 .m-0.text-secondary",
-                        "description_path": ".card.m-0.border-left-0.border-right-0.border-top-0.border-bottom .card.border-0.p-3.job-card.bg-white .row.no-gutters.align-items-center .col.position-static .card-body.px-3.py-0.pl-md-0 .m-0.text-secondary"
+                        "jobs_path": "#hits .ais-Hits .ais-Hits-list .ais-Hits-item",
+                        "title_path": "div .dtc-ns.pl3-s.pl3-ns.v-top h2",
+                        "link_path": "div .dtc-ns.pl3-s.pl3-ns.v-top h2 a",
+                        "location_path": "div .dtc-ns.pl3-s.pl3-ns.v-top .inline-flex.items-center.flex-wrap.flex-nowrap-l.mb1-l",
+                        "description_path": "div .dtc-ns.pl3-s.pl3-ns.v-top .mt2.mt3-s.mt3-l"
                     }
                 ]
             }

@@ -46,15 +46,7 @@
                 "location_tag": "location"
             },
             {
-                "url": "https://larajobs.com/feed",
-                "location_tag": "location"
-            },
-            {
                 "url": "http://jobs.mashable.com/jobs/search/results?format=rss",
-                "location_tag": "location"
-            },
-            {
-                "url": "https://nodesk.co/remote-jobs/index.xml",
                 "location_tag": "location"
             },
             {
