@@ -2,18 +2,18 @@
     {
         "urls": [
             {
-                "name": "https://jobspresso.co",
-                "url": "https://jobspresso.co/remote-work/?page=",
+                "name": "https://www.remoteimpact.io",
+                "url": "https://www.remoteimpact.io/?page=",
                 "pages_to_crawl": 1,
                 "start_point": 1,
-                "strategy": "main",
+                "strategy": "container",
                 "elements_path": [
                         {
-                        "jobs_path": ".job_listings .job_listings [id^=job_listing]",
-                        "title_path": ".job_listing-about .job_listing-position.job_listing__column .job_listing-title",
+                        "jobs_path": ".bg-gray-100.overflow-hidden.min-h-screen.flex.flex-col.relative .container.mx-auto.pt-4.mb-12.false div main",
+                        "title_path": "a div div div .lg\\:text-lg.font-bold.pr-2.line-clamp-1",
                         "link_path": "a",
-                        "location_path": ".job_listing-about .job_listing-location.job_listing__column",
-                        "description_path": ".job_listing-about .job_listing-meta.job_listing__column"
+                        "location_path": "a div div div div .text-slate-700.line-clamp-1",
+                        "description_path": "a div div div .text-lg"
                     }
                 ]
             }
