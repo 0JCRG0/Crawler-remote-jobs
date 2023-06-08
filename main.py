@@ -6,10 +6,7 @@ from api_crawlers import api_template
 from bs4_crawlers import bs4_template
 from rss_crawlers import rss_template
 from selenium_crawlers import selenium_template
-from datetime import date, timedelta
 from utils.handy import LoggingMasterCrawler
-import os
-from dotenv import load_dotenv
 
 #SET UP LOGGING
 LoggingMasterCrawler()
@@ -22,18 +19,18 @@ def main(pipeline):
     logging.info('ALL CRAWLERS DEPLOYED!')
     print("\n", "ALL CRAWLERS DEPLOYED!")
 
-    api_template(pipeline) #1st: PROD_API or TEST_API
+    api_template(pipeline)
     
-    rss_template(pipeline) #1st argument MAIN OR TEST
+    rss_template(pipeline)
 
-    bs4_template(pipeline) #1st argument MAIN OR TEST
+    bs4_template(pipeline)
 
-    selenium_template(pipeline) # 'MAIN', TEST or FREELANCE
+    selenium_template(pipeline) 
 
     #print the time
     elapsed_time = timeit.default_timer() - master_start_time
     logging.info(f'ALL CRAWLERS FINISHED. ALL IN {elapsed_time:.2f} SECONDS!')
 
 if __name__ == "__main__":
-    main("MAIN")
+    main("MAIN") #MAIN OR TEST
 
