@@ -23,7 +23,7 @@ SAVE_PATH = os.environ.get('SAVE_PATH_API')
 
 
 def api_template(pipeline):
-    print("\n", "Crawler launched on APIs.")
+    print("\n", "CRAWLER LAUNCHED ON APIs.")
 
     #Start the timer
     start_time = timeit.default_timer()
@@ -65,7 +65,6 @@ def api_template(pipeline):
             for api_obj in apis:
                 #Extract the name of the site
                 name = api_obj['name']
-                print("\n", f"CRAWLING {name}...", "\n")
                 # Extract the 'api' key from the current dictionary and assign it to the variable 'api'
                 api = api_obj['api']
                 # Extract the first dictionary from the 'elements_path' list in the current dictionary and assign it to the variable 'elements_path'
@@ -75,11 +74,11 @@ def api_template(pipeline):
                 #Each site is different to a json file can give us the flexibility we need  
                 headers = {"User-Agent": "my-app"}
                 try:
+                    print("\n", f"Requesting {name}...")
                     response = requests.get(api, headers=headers)
-                    #response = requests.get(api)
                     if response.status_code == 200:
                         data = json.loads(response.text)
-                        print("\n", f"Fetching...{api}", "\n")
+                        print(f"Successful request on {api}", "\n")
                         
                         """Call the function depending on the JSON's class
                         If the data is inside another dict then we access it """

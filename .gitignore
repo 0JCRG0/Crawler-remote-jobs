@@ -1,5 +1,6 @@
 __pycache__/
 .env
 **/*.log
-master_crawler.log
-*.csv
+**/*.csv
+.vscode/
+

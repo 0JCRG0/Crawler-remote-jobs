@@ -217,16 +217,25 @@ def selenium_template(pipeline):
                             rows = {'title':total_titles, 'link':total_links, 'description': total_descriptions, 'pubdate': total_pubdates, 'location': total_locations, 'timestamp': total_timestamps}
                     except Exception as e:
                         # Handle any other exceptions
-                        print("An error occurred:", str(e))
+                        print("ELEMENT NOT FOUND:", str(e))
                         pass
-        return rows
+                    else:
+                        print("UNEXPECTED ERROR. CHECK!")
+        return rows, strategy
 
                     
-    data = elements()
+    data, strategy = elements()
     driver.quit()
 
-
-    df = pd.DataFrame(data)
+    #Save it in local machine
+    
+    if strategy == "main":
+        df = pd.DataFrame(data)
+    else:
+        #Convert data to a pandas df for further analysis
+        data_dic = dict(data)
+        df = pd.DataFrame.from_dict(data_dic, orient='index')
+        df = df.transpose()
 
     # count the number of duplicate rows
     num_duplicates = df.duplicated().sum()

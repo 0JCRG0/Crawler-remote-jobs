@@ -157,12 +157,13 @@ def rss_template(pipeline):
         df.to_csv(SAVE_PATH, index=False)
 
         logging.info('Finished RSS CRAWLERS. Results below ⬇︎')
+
         ## PostgreSQL
         POSTGRESQL(df)
 
         #print the time
         elapsed_time = timeit.default_timer() - start_time
-        print("\n", f"rss_crawlers are done! all in: {elapsed_time:.2f} seconds", "\n")
+        print("\n", f"RSS' CRAWLERS are done! all in: {elapsed_time:.2f} seconds", "\n")
     clean_postgre_rss(df)
 
 

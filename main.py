@@ -20,6 +20,7 @@ def main(pipeline):
 
     #Start calling each crawler
     logging.info('ALL CRAWLERS DEPLOYED!')
+    print("\n", "ALL CRAWLERS DEPLOYED!")
 
     api_template(pipeline) #1st: PROD_API or TEST_API
     
@@ -34,5 +35,5 @@ def main(pipeline):
     logging.info(f'ALL CRAWLERS FINISHED. ALL IN {elapsed_time:.2f} SECONDS!')
 
 if __name__ == "__main__":
-    main("TEST")
+    main("MAIN")
 
