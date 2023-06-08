@@ -141,52 +141,53 @@ def bs4_template(pipeline):
                             # Identify the container with all the jobs
                             container = soup.select_one(elements_path["jobs_path"])
 
-                            # TITLES
-                            title_elements = container.select(elements_path["title_path"])
-                            for i in title_elements:
-                                if i:
-                                    title = i.get_text(strip=True)
-                                    total_titles.append(title)
-                                else:
-                                    total_titles.append("NaN")
+                            if container:
+                                # TITLES
+                                title_elements = container.select(elements_path["title_path"])
+                                for i in title_elements:
+                                    if i:
+                                        title = i.get_text(strip=True)
+                                        total_titles.append(title)
+                                    else:
+                                        total_titles.append("NaN")
 
-                            # LINKS
-                            link_elements = container.select(elements_path["link_path"])
-                            for i in link_elements:
-                                if i:
-                                    href = i.get("href")
-                                    link = name + href
-                                    total_links.append(link)
-                                else:
-                                    total_links.append("NaN")
+                                # LINKS
+                                link_elements = container.select(elements_path["link_path"])
+                                for i in link_elements:
+                                    if i:
+                                        href = i.get("href")
+                                        link = name + href
+                                        total_links.append(link)
+                                    else:
+                                        total_links.append("NaN")
 
-                            # PUBDATES
-                            today = date.today()
-                            total_pubdates.extend([today] * len(link_elements))
+                                # PUBDATES
+                                today = date.today()
+                                total_pubdates.extend([today] * len(link_elements))
 
-                            # LOCATIONS
-                            location_elements = container.select(elements_path["location_path"])
-                            for i in location_elements:
-                                if i:
-                                    location = i.get_text(strip=True)
-                                    total_locations.append(location)
-                                else:
-                                    total_locations.append("NaN")
+                                # LOCATIONS
+                                location_elements = container.select(elements_path["location_path"])
+                                for i in location_elements:
+                                    if i:
+                                        location = i.get_text(strip=True)
+                                        total_locations.append(location)
+                                    else:
+                                        total_locations.append("NaN")
 
-                            # Descriptions
-                            description_elements = container.select(elements_path["description_path"])
-                            for i in description_elements:
-                                if i:
-                                    description = i.get_text(strip=True)
-                                    total_descriptions.append(description)
-                                else:
-                                    total_descriptions.append("NaN")
-                            #Timestamps
-                            timestamp = datetime.now()
-                            total_timestamps.extend([timestamp] * len(link_elements))
-                                    
-                            # add the data
-                            rows = {'title':total_titles, 'link':total_links, 'description': total_descriptions, 'pubdate': total_pubdates, 'location': total_locations, 'timestamp': total_timestamps}
+                                # Descriptions
+                                description_elements = container.select(elements_path["description_path"])
+                                for i in description_elements:
+                                    if i:
+                                        description = i.get_text(strip=True)
+                                        total_descriptions.append(description)
+                                    else:
+                                        total_descriptions.append("NaN")
+                                #Timestamps
+                                timestamp = datetime.now()
+                                total_timestamps.extend([timestamp] * len(link_elements))
+                                        
+                                # add the data
+                                rows = {'title':total_titles, 'link':total_links, 'description': total_descriptions, 'pubdate': total_pubdates, 'location': total_locations, 'timestamp': total_timestamps}
                     except HTTPError as e:
                         if e.code == 403:
                             print(f"An error occurred: {e}. Skipping URL {url}")
@@ -198,7 +199,7 @@ def bs4_template(pipeline):
     data = elements()
 
     #-> DF
-    df = pd.DataFrame(data)
+    df = pd.DataFrame(data) # type: ignore
 
     # count the number of duplicate rows
     num_duplicates = df.duplicated().sum()
