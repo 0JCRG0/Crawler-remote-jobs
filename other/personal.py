@@ -1,5 +1,9 @@
-from other.other_selenium import indeed
+from indeed import indeed
 import timeit
+#import sys
+#sys.path.append('/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/utils')
+
+#from handy import *
 
 def MASTER():
     KEYWORDS_LIST = [
