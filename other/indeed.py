@@ -16,7 +16,7 @@ import sys
 
 load_dotenv()
 
-COUNTRY_CODE = os.environ.get('JSON_COUNTRY_CODE', "")
+RESOURCES = os.environ.get('JSON_COUNTRY_CODE', "")
 SAVE_PATH = os.environ.get('SAVE_PATH_INDEED', "")
 UTILS_PATH = os.environ.get('SYS_PATH_APPEND', "")
 
@@ -57,7 +57,7 @@ def indeed(pages, country, keyword):
 
         def country_url(page):
             url = ""
-            with open(COUNTRY_CODE) as f:
+            with open(RESOURCES) as f:
                     data = json.load(f)
                     # Search for a specific code in the JSON document
                     for item in data:
