@@ -32,7 +32,7 @@ def rss_template(pipeline):
 
     start_time = timeit.default_timer()
 
-    """ DETERMINING WHICH JSON TO LOAD & WHICH POSTGRE TABLE WILL BE USED """
+    """ TEST or PROD"""
 
     if pipeline == 'MAIN':
         if PROD:
