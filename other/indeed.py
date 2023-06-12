@@ -1,4 +1,5 @@
-#! python3
+#!/usr/local/bin/python3
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
@@ -16,7 +17,8 @@ import sys
 
 load_dotenv()
 
-RESOURCES = os.environ.get('JSON_COUNTRY_CODE', "")
+PROD = os.environ.get('JSON_PROD_INDEED', "")
+TEST = os.environ.get('JSON_TEST_INDEED', "")
 SAVE_PATH = os.environ.get('SAVE_PATH_INDEED', "")
 UTILS_PATH = os.environ.get('SYS_PATH_APPEND', "")
 
@@ -25,134 +27,134 @@ sys.path.append(UTILS_PATH)
 from handy import *
 
 
-
-def indeed(pages, country, keyword):
-    #welcome message
-    #start timer
+def indeed(SCHEME, KEYWORD):
     start_time = timeit.default_timer()
 
-    #Modify the options so it is headless - to disable just comment the next 2 lines and use the commented driver
     options = webdriver.FirefoxOptions()
     options.add_argument('-headless')
-        
-    # Start the session
-    #driver = webdriver.Firefox()
     driver = webdriver.Firefox(options=options)
+
+    #print("\n", f"Reading {file}... ", "\n")
+    print("\n", "Crawler launched on RSS Feeds.")
+
+    """ LOAD JSON """
+    with open(PROD) as f:
+        data = json.load(f)
+        strategies = [strategy for strategy in data[0]["strategies"] if strategy["strategy_name"] == SCHEME]
+
+    if strategies:
+        strategy = strategies[0]
+        country_code = strategy["code"]
+        special_url = strategy["special_url"]
+        url_1 = strategy["url_1"]
+        url_2 = strategy["url_2"]
+        pages_to_crawl = strategy["pages_to_crawl"]
+        elements_path = strategy["elements_path"][0]
     
-    # START CRAWLING
-    def crawling():
-        total_titles = []
-        total_links = []
-        total_pubdates = []
-        total_locations = [] 
-        total_descriptions = []
-        total_timestamps = []
-        rows = {'title': total_titles,
-                'link': total_links,
-                'description': total_descriptions,
-                'pubdate': total_pubdates,
-                'location': total_locations,
-                "timestamp": total_timestamps}
+        def crawling():
+            total_titles = []
+            total_links = []
+            total_pubdates = []
+            total_locations = [] 
+            total_descriptions = []
+            total_timestamps = []
+            rows = {'title': total_titles,
+                    'link': total_links,
+                    'description': total_descriptions,
+                    'pubdate': total_pubdates,
+                    'location': total_locations,
+                    "timestamp": total_timestamps}
+                
+            for i in range(0, pages_to_crawl * 10, 10):
+                page_print = round(i/10) + 1
+                if special_url == "yes":
+                    url = url_1 + KEYWORD + url_2 + str(i)
+                    print("\n", f"Crawler deployed on Indeed using {SCHEME} strategy. Looking for \"{KEYWORD}\". Currently crawling page number: {page_print}.")
+                else:
+                    url = strategy['url_1'] + str(i)
+                    print("\n", f"Crawler deployed on Indeed using {SCHEME} strategy. Currently crawling page number: {page_print}.")
+                    #Make the request
+                try:
+                    driver.get(url)
+                    print(url)
+                    #Set waiting strategy
+                    driver.implicitly_wait(1.5)
+                    jobs = driver.find_elements(By.CSS_SELECTOR, elements_path["jobs_path"])    
+                    for job in jobs:
+                        ##Get the attributes...
+                        job_data = {}
+                            
+                        title_raw = job.find_element(By.CSS_SELECTOR, elements_path["title_path"])
+                        job_data["title"] = title_raw.get_attribute("innerHTML") if title_raw else "NaN"
+                            
+                        #LINKS
+                        link_raw = job.find_element(By.CSS_SELECTOR, elements_path["link_path"])
+                        job_data["link"] = link_raw.get_attribute("href") if link_raw else "NaN"
 
+                        #DATES
+                        today = date.today()
+                        job_data["pubdate"] = today
+                            
+                        #LOCATION    
+                        location_raw = job.find_element(By.CSS_SELECTOR, elements_path["location_path"])
+                        job_data["location"] = location_raw.text if location_raw else "NaN"
 
-        def country_url(page):
-            url = ""
-            with open(RESOURCES) as f:
-                    data = json.load(f)
-                    # Search for a specific code in the JSON document
-                    for item in data:
-                        if item['code'] == country:  
-                            url= item['url_1'] + keyword + item["url_2"] + str(page)
-            return url
+                        #DESCRIPTIONS
+                        description_raw = job.find_element(By.CSS_SELECTOR, elements_path["description_path"])
+                        job_data["description"] = description_raw.get_attribute("innerHTML") if description_raw else "NaN"
 
-        for i in range(0, pages * 10, 10):
-            page = round(i/10)
-            print("\n", f"Crawler deployed on Indeed {country}. Looking for \"{keyword}\" jobs in page number {page}")
-            url = country_url(page)
-            #Make the request
-            try:
-                driver.get(url)
-                print(url)
-                #Set waiting strategy
-                driver.implicitly_wait(1.5)
-                jobs = driver.find_elements(By.CSS_SELECTOR, '.slider_item.css-kyg8or.eu4oa1w0')    
-                for job in jobs:
-                    ##Get the attributes...
+                        #TIMESTAMP
+                        timestamp = datetime.now()
+                        job_data["timestamp"] = timestamp
 
-                    job_data = {}
-                    
-                    title_raw = job.find_element(By.CSS_SELECTOR, '[id^="jobTitle"]')
-                    job_data["title"] = title_raw.get_attribute("innerHTML") if title_raw else "NaN"
-                    
-                    #LINKS
-                    link_raw = job.find_element(By.CSS_SELECTOR, '.jcs-JobTitle.css-jspxzf.eu4oa1w0')
-                    job_data["link"] = link_raw.get_attribute("href") if link_raw else "NaN"
-
-                    #DATES
-                    today = date.today()
-                    job_data["pubdate"] = today
-                    #LOCATION
-                    
-                    location_raw = job.find_element(By.CSS_SELECTOR, '.companyLocation')
-                    job_data["location"] = location_raw.text if location_raw else "NaN"
-
-                    #DESCRIPTIONS
-                    description_raw = job.find_element(By.CSS_SELECTOR, '.jobCardShelfContainer.big6_visualChanges .heading6.tapItem-gutter.result-footer')
-                    job_data["description"] = description_raw.get_attribute("innerHTML") if description_raw else "NaN"
-
-                    #TIMESTAMP
-                    timestamp = datetime.now()
-                    job_data["timestamp"] = timestamp
-
-                    #Put it all together...
-                    total_titles.append(job_data["title"])
-                    total_links.append(job_data["link"])
-                    total_pubdates.append(job_data["pubdate"])
-                    total_locations.append(job_data["location"])
-                    total_descriptions.append(job_data["description"])
-                    total_timestamps.append(job_data["timestamp"])
-            except NoSuchElementException as e:
+                        #Put it all together...
+                        total_titles.append(job_data["title"])
+                        total_links.append(job_data["link"])
+                        total_pubdates.append(job_data["pubdate"])
+                        total_locations.append(job_data["location"])
+                        total_descriptions.append(job_data["description"])
+                        total_timestamps.append(job_data["timestamp"])
+                except NoSuchElementException as e:
                 # Handle the specific exception
-                print("Element not found:", e)
-                pass
-            except Exception as e:
-                print("\n", f"WARNING! ELEMENTS NOT FOUND: {e}", "\n")
-                pass
-        return rows
+                    print("Element not found:", e)
+                    #TODO: It would be nice that it could send a text if it does it find it
+                    pass
+                except Exception as e:
+                    print("\n", f"WARNING! Exception: {e}", "\n")
+                    pass
+            return rows
+
+        data = crawling()
+        driver.quit()
+
+        #Convert data to a pandas df for further analysis
+        df = pd.DataFrame(data)
+
+        df.to_csv(SAVE_PATH, index=False)
+
+
+        for col in df.columns:
+            if col == 'description':
+                df[col] = df[col].apply(cleansing_selenium_crawlers)
+                #df[col] = ["{MX}".format(i) for i in df[col]]
+            elif col == 'location':
+                df[col] = df[col] + str(country_code) 
+        
+        # SEND IT TO TO PostgreSQL
+        test_postgre(df)
+
+        #stop the timer
+        elapsed_time = timeit.default_timer() - start_time
+        print("\n", f"Finished crawling Indeed. All in {elapsed_time:.5f} seconds!!!", "\n")
+    else:
+        print("\n", """INCORRECT ARGUMENT! CHOOSE "main_mx", "specific_mx" or "specific_usa" """, "\n")
+
+
     
-    data = crawling()
-    driver.quit()
-
-    #Convert data to a pandas df for further analysis
-    df = pd.DataFrame(data)
-
-    df.to_csv(SAVE_PATH, index=False)
-
-    #Do some cleaning
-    for col in df.columns:
-        if col == 'description':
-            df[col] = df[col].apply(cleansing_selenium_crawlers)
-            #df[col] = ["{MX}".format(i) for i in df[col]]
-        elif col == 'location':
-            df[col] = df[col] + " MX"
-            #TODO: ADD THE CODE_COUNTRY FROM JSON
-
-    #Save locally
-    
-
-    # SEND IT TO TO PostgreSQL
-    test_postgre(df)
-
-    #stop the timer
-    elapsed_time = timeit.default_timer() - start_time
-    print("\n", f"Crawler FINISHED finding \"{keyword}\" jobs. All in {elapsed_time:.5f} seconds!!!", "\n")
-
-
 if __name__ == "__main__":
-    indeed(1, "MX", "python") 
+    indeed("main_mx", "") 
     """
-    1st = number of pages
-    2nd = country code from json
-    3rd = keyword(s) -if more than 1 use +
+    1st = "main_mx", "specific_mx" or "specific_usa"
+    2nd = KEYWORD if specific if not empty string
     
     """
