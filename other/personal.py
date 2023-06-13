@@ -21,15 +21,14 @@ def MASTER():
         "ABOGADO",
         "Big+Data"
         ]
-    PAGES = 5
-    COUNTRY = "MX"
+    SCHEME = "specific_mx"
     
     # start master timer
     start_time = timeit.default_timer()
 
     #loop to get the jobs 
     for KEYWORD in KEYWORDS_LIST:
-        indeed(PAGES, COUNTRY, KEYWORD)
+        indeed(SCHEME, KEYWORD)
         print("\n", "MOVING ON...","\n")
     
 
