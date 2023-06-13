@@ -34,8 +34,6 @@ cut_off = one day prior the oldest job
 E.g., If cut_off = '2023-03-20' then the oldest job will be from 2023-03-21
 """
 
-#TODO: only remaining to refactor is rss_freelance
-#TODO: Could refactor rss_abdy & rss_ymd to combine them by setting the datetime at today.
 
 #EXPORT THE PATH - YOU NEED TO EXPORT YOUR OWN PATH & SAVE IT AS 'CRAWLER_ALL'
 PATH = '/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL'
