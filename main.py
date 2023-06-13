@@ -2,6 +2,8 @@
 
 import logging
 import timeit
+from other.rss_reader import read_rss
+from other.indeed import indeed
 from api_crawlers import api_template
 from bs4_crawlers import bs4_template
 from rss_crawlers import rss_template
@@ -27,10 +29,14 @@ def main(pipeline):
 
     selenium_template(pipeline) 
 
+    indeed(SCHEME="main_mx", KEYWORD="")
+
+    read_rss(pipeline)
+
     #print the time
     elapsed_time = timeit.default_timer() - master_start_time
     logging.info(f'ALL CRAWLERS FINISHED. ALL IN {elapsed_time:.2f} SECONDS!')
 
 if __name__ == "__main__":
-    main("MAIN") #MAIN OR TEST
+    main("TEST") #MAIN OR TEST
 
