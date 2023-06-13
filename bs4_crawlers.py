@@ -25,7 +25,7 @@ TEST = os.environ.get('JSON_TEST_BS4')
 SAVE_PATH = os.environ.get('SAVE_PATH_BS4')
 
 def bs4_template(pipeline):
-    print("\n", "Crawler is using bs4 strategy.")
+    print("\n", "BS4 crawlers deployed!.")
 
     #start timer
     start_time = timeit.default_timer()

@@ -135,7 +135,7 @@ def indeed(pages, country, keyword):
             #df[col] = ["{MX}".format(i) for i in df[col]]
         elif col == 'location':
             df[col] = df[col] + " MX"
-            #TODO: ADD THE CODE_COUNTRY FROM JSON
+
 
     #Save locally
     

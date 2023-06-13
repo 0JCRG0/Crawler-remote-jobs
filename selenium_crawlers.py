@@ -15,7 +15,6 @@ import os
 from dotenv import load_dotenv
 from utils.handy import *
 
-#TODO: Why "UNEXPECTED ERROR" is triggered when the data is correct?
 
 """ LOAD THE ENVIRONMENT VARIABLES """
 

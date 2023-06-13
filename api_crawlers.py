@@ -23,7 +23,7 @@ SAVE_PATH = os.environ.get('SAVE_PATH_API')
 
 
 def api_template(pipeline):
-    print("\n", "CRAWLER LAUNCHED ON APIs.")
+    print("\n", "REQUEST TO APIs HAS STARTED.")
 
     #Start the timer
     start_time = timeit.default_timer()
@@ -87,9 +87,6 @@ def api_template(pipeline):
                         #Start loop if not None
                         if jobs is not None:
                             for job in jobs:
-                                #IDs
-                                #id = id_generator()
-                                #total_ids.append(id)
                                 #Titles
                                 if elements_path["title_tag"] in job:
                                     title = elements_path["title_tag"]

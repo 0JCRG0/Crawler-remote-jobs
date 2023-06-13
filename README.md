@@ -20,4 +20,3 @@
 
 3. Finally, for the difficult but yet not impossible websites we use Selenium. Although these scripts are inherently slower, they are just incredibly powerful and versatile. (Note that this approach is only used for big websites which deserve a custom code, although if you know how I can unify these scripts I would be extremely helpful for the help/guidance)
 
-#TODO FIX PRINT STATEMENTS & LOGGINGS - MINOR FIXES.
