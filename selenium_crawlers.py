@@ -165,7 +165,8 @@ def selenium_template(pipeline):
                                 total_locations.append(job_data["location"])
                                 total_timestamps.append(job_data["timestamp"])
                                 total_descriptions.append(job_data["description"])
-                        else:
+                        
+                        elif strategy == "container":
                             """ IF LINKS *ARE* IN THE SAME ELEMENT AS JOBS """
                             
                             #Identify the container with all the jobs
@@ -214,16 +215,14 @@ def selenium_template(pipeline):
                             #Timestamps
                             timestamp = datetime.now()
                             total_timestamps.extend([timestamp] * len(link_elements))
-                                    
-                            # add the data for the current job to the rows list
                             rows = {'title':total_titles, 'link':total_links, 'description': total_descriptions, 'pubdate': total_pubdates, 'location': total_locations, 'timestamp': total_timestamps}
+
                     except Exception as e:
                         # Handle any other exceptions
                         print("ELEMENT NOT FOUND:", str(e))
-                        pass
-                    else:
-                        print("UNEXPECTED ERROR. CHECK!")
-        return rows #TODO: ANNOYING UNBOUND -- FIX
+                        logging.error("ELEMENT NOT FOUND:", str(e))
+
+        return rows 
 
                     
     data = elements()
@@ -279,4 +278,4 @@ def selenium_template(pipeline):
     clean_postgre(df)
 
 if __name__ == "__main__":
-    selenium_template('TEST') 
+    selenium_template('MAIN') 
