@@ -38,5 +38,5 @@ def main(pipeline):
     logging.info(f'ALL CRAWLERS FINISHED. ALL IN {elapsed_time:.2f} SECONDS!')
 
 if __name__ == "__main__":
-    main("TEST") #MAIN OR TEST
+    main("MAIN") #MAIN OR TEST
 

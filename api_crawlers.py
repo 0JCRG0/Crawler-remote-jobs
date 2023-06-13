@@ -124,10 +124,12 @@ def api_template(pipeline):
                                 rows = {'title': total_titles, 'link':total_links, 'description': total_descriptions, 'pubdate': total_pubdates, 'location': total_locations,'timestamp': total_timestamps}
                 except RequestException as e:
                     print(f"Encountered a request error: {e}. Moving to the next API...")
-                    pass  # continue the execution
+                    logging.error(f"Encountered a request error: {e}. Moving to the next API...")
+                    continue  # continue the execution
                 except:
                     print(f"Encountered an unexpected error with {api}. CHECK.")
-                    pass
+                    logging.error(f"Encountered an unexpected error with {api}. CHECK.")
+                    continue
         return rows
 
     data = api_fetcher()

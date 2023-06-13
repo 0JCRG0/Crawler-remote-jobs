@@ -100,8 +100,9 @@ def bs4_template(pipeline):
                         res = requests.get(url)
                         if res.status_code != 200:
                             print(f"Received non-200 response ({res.status_code}) for URL {url}. Skipping...")
+                            logging.error(f"Received non-200 response ({res.status_code}) for URL {url}. Skipping...")
                             continue
-                        res.raise_for_status()
+
                         soup = bs4.BeautifulSoup(res.text, 'lxml')
                         #print(soup.prettify())
                         print(f"Crawling {url} with {strategy} strategy")
@@ -191,10 +192,12 @@ def bs4_template(pipeline):
                     except HTTPError as e:
                         if e.code == 403:
                             print(f"An error occurred: {e}. Skipping URL {url}")
-                            pass
+                            logging.error(f"An error occurred: {e}. Skipping URL {url}")
+                            continue
                         else:
                             print(f"Unexpected error. Skipping URL {url}. CHECK!")
-                            pass
+                            logging.error(f"Unexpected error. Skipping URL {url}. CHECK!")
+                            continue
         return rows
     data = elements()
 

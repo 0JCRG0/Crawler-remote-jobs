@@ -81,9 +81,8 @@ def rss_template(pipeline):
                     res = requests.get(url)
                     if res.status_code != 200:
                         print(f"Received non-200 response ({res.status_code}) for URL {url}. Skipping...")
-                        #print(res.raise_for_status())
+                        logging.error(f"Received non-200 response ({res.status_code}) for URL {url}. Skipping...")
                         continue
-                        #TODO: LOG THE ERROR
                     print("\n", f"Connection established. Making soup from {url}...")
                     soup = bs4.BeautifulSoup(res.text, 'lxml-xml')
                     for item in soup.find_all('item'):
@@ -131,9 +130,11 @@ def rss_template(pipeline):
                 except HTTPError as e:
                     if e.code == 403:
                         print(f"An error occurred: {e}. Skipping URL {url}")
+                        logging.error(f"An error occurred: {e}. Skipping URL {url}")
                         continue
                     else:
                         print(f"UNEXPECTED ERROR! Skipping URL {url}")
+                        logging.error(f"UNEXPECTED ERROR! Skipping URL {url}")
                         continue
         return rows
 
