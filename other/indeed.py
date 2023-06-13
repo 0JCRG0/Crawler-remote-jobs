@@ -117,7 +117,7 @@ def indeed(SCHEME, KEYWORD):
                 except NoSuchElementException as e:
                 # Handle the specific exception
                     print("Element not found:", e)
-                    #TODO: It would be nice that it could send a text if it does it find it
+                    #TODO: ADD ERROR LOGs
                     pass
                 except Exception as e:
                     print("\n", f"WARNING! Exception: {e}", "\n")

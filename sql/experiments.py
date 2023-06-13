@@ -4,9 +4,6 @@ import random
 import pretty_errors
 
 
-#TODO Indexes can save the day
-
-
 def update_id_with_random_numbers(table_name):
     connection = psycopg2.connect(user='postgres', password='3312', host='localhost', port='5432', database='postgres')
     cursor = connection.cursor()
