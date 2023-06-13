@@ -10,10 +10,6 @@
                 "location_tag": "location"
             },
             {
-                "url": "https://jobs.drupal.org/filtered-jobs/%25/%25/%25/%25/%25/feed",
-                "location_tag": "location"
-            },
-            {
                 "url": "https://freshremote.work/feed/",
                 "location_tag": "location"
             },
@@ -46,7 +42,11 @@
                 "location_tag": "location"
             },
             {
-                "url": "http://jobs.mashable.com/jobs/search/results?format=rss",
+                "url": "https://larajobs.com/feed",
+                "location_tag": "location"
+            },
+            {
+                "url": "https://nodesk.co/remote-jobs/index.xml",
                 "location_tag": "location"
             },
             {
@@ -55,14 +55,6 @@
             },
             {
                 "url": "https://jobs.codeforamerica.org/job-postings.rss",
-                "location_tag": "location"
-            },
-            {
-                "url": "https://remote.co/feed/?post_type=job_listing",
-                "location_tag": "location"
-            },
-            {
-                "url": "https://remotive.com/remote-jobs/feed",
                 "location_tag": "location"
             },
             {
@@ -80,10 +72,6 @@
             {
                 "url": "https://weworkremotely.com/remote-jobs.rss",
                 "location_tag": "region"
-            },
-            {
-                "url": "https://jobs.wordpress.net/feed/",
-                "location_tag": "location"
             },
             {
                 "url": "https://tryremotely.com/feeds/remote-jobs.rss",

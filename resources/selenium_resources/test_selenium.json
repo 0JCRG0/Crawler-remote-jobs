@@ -2,6 +2,54 @@
     {
         "urls": [
             {
+                "name": "REMOTESOME",
+                "url": "https://app.remotesome.com/jobs/?page=",
+                "pages_to_crawl": 1,
+                "start_point": 1,
+                "strategy": "main",
+                "elements_path": [
+                    {
+                        "jobs_path": ".col-8\\:md article",
+                        "title_path": ".u-pl16 h4",
+                        "link_path": "a",
+                        "description_path": ".u-flex.u-pt8.u-flex--middle",
+                        "location_path": ".u-flex.u-relative"
+                    }
+                ]
+            },
+            {
+                "name": "cryptojobslist.com",
+                "url": "https://cryptojobslist.com/remote?sort=recent&page=",
+                "pages_to_crawl": 1,
+                "start_point": 1,
+                "strategy": "main",
+                "elements_path": [
+                        {
+                        "jobs_path": "section ul li",
+                        "title_path": ".JobPreviewInline_meta__tG6WQ.\\!flex.\\!flex-col h2",
+                        "link_path": ".JobPreviewInline_meta__tG6WQ.\\!flex.\\!flex-col h2 a",
+                        "location_path": ".JobPreviewInline_meta__tG6WQ.\\!flex.\\!flex-col span",
+                        "description_path": ".JobPreviewInline_meta__tG6WQ.\\!flex.\\!flex-col span"
+                    }
+                ]
+            },
+            {
+                "name": "https://nodesk.co",
+                "url": "https://nodesk.co/remote-jobs/remote-first/?page=",
+                "pages_to_crawl": 1,
+                "start_point": 1,
+                "strategy": "main",
+                "elements_path": [
+                        {
+                        "jobs_path": "#hits .ais-Hits .ais-Hits-list .ais-Hits-item",
+                        "title_path": "div .dtc-ns.pl3-s.pl3-ns.v-top h2",
+                        "link_path": "div .dtc-ns.pl3-s.pl3-ns.v-top h2 a",
+                        "location_path": "div .dtc-ns.pl3-s.pl3-ns.v-top .inline-flex.items-center.flex-wrap.flex-nowrap-l.mb1-l",
+                        "description_path": "div .dtc-ns.pl3-s.pl3-ns.v-top .mt2.mt3-s.mt3-l"
+                    }
+                ]
+            },
+            {
                 "name": "https://www.remoteimpact.io",
                 "url": "https://www.remoteimpact.io/?page=",
                 "pages_to_crawl": 1,
@@ -20,3 +68,4 @@
         ]
     }
 ]
+
