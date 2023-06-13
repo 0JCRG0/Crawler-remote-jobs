@@ -19,3 +19,5 @@
 2. If the website/job board does not have an exposed API then we can look at the Source Code and try to find its RSS feed. If this is found, we just include that url to remote-working-resources.csv and the script in ALL_RSS will do its magic with bs4. 
 
 3. Finally, for the difficult but yet not impossible websites we use Selenium. Although these scripts are inherently slower, they are just incredibly powerful and versatile. (Note that this approach is only used for big websites which deserve a custom code, although if you know how I can unify these scripts I would be extremely helpful for the help/guidance)
+
+#TODO FIX PRINT STATEMENTS & LOGGINGS - MINOR FIXES.
