@@ -15,6 +15,8 @@ import os
 from dotenv import load_dotenv
 from utils.handy import *
 
+#TODO: Why "UNEXPECTED ERROR" is triggered when the data is correct?
+
 """ LOAD THE ENVIRONMENT VARIABLES """
 
 load_dotenv()
@@ -97,8 +99,8 @@ def selenium_template(pipeline):
                 pages = url_obj['pages_to_crawl']
                 #Extract the number in which the range is going to start from
                 start_point = url_obj['start_point']
-                # You need to +1 because range is exclusive
                 strategy = url_obj['strategy']
+
                 for i in range(start_point, pages + 1):
                     #The url from json is incomplete, we need to get the number of the page we are scrapping
                     ##We do that in the following line
@@ -221,21 +223,27 @@ def selenium_template(pipeline):
                         pass
                     else:
                         print("UNEXPECTED ERROR. CHECK!")
-        return rows, strategy
+        return rows #TODO: ANNOYING UNBOUND -- FIX
 
                     
-    data, strategy = elements()
+    data = elements()
     driver.quit()
 
     #Save it in local machine
+
+    data_dic = dict(data) # type: ignore
+    df = pd.DataFrame.from_dict(data_dic, orient='index')
+    df = df.transpose()
     
+    """
     if strategy == "main":
         df = pd.DataFrame(data)
     else:
         #Convert data to a pandas df for further analysis
-        data_dic = dict(data)
+        data_dic = dict(data) # type: ignore
         df = pd.DataFrame.from_dict(data_dic, orient='index')
         df = df.transpose()
+    """
 
     # count the number of duplicate rows
     num_duplicates = df.duplicated().sum()
