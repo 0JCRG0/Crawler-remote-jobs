@@ -18,6 +18,7 @@ import logging
 from datetime import datetime
 from dotenv import load_dotenv
 from utils.handy import *
+from sql.clean_loc import clean_location_rows
 
 """ LOAD THE ENVIRONMENT VARIABLES """
 
@@ -151,6 +152,8 @@ def rss_template(pipeline):
         for col in df.columns:
             if col == 'link':
                 df[col] = df[col].apply(clean_link_rss)
+            elif col == 'location':
+                df[col] = df[col].apply(clean_location_rows)
             else:
                 df[col] = df[col].apply(clean_other_rss)
 

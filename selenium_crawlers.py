@@ -14,6 +14,7 @@ import logging
 import os
 from dotenv import load_dotenv
 from utils.handy import *
+from sql.clean_loc import clean_location_rows
 
 
 """ LOAD THE ENVIRONMENT VARIABLES """
@@ -260,6 +261,10 @@ def selenium_template(pipeline):
                 i = df.columns.get_loc(col)
                 newvals = df.loc[:, col].astype(str).apply(cleansing_selenium_crawlers)
                 df[df.columns[i]] = newvals
+            elif col == 'location':
+                i = df.columns.get_loc(col)
+                newvals = df.loc[:, col].astype(str).apply(clean_location_rows)
+                df[df.columns[i]] = newvals
             
         #Save it in local machine
         df.to_csv(SAVE_PATH, index=False)
@@ -277,4 +282,4 @@ def selenium_template(pipeline):
     clean_postgre(df)
 
 if __name__ == "__main__":
-    selenium_template('MAIN') 
+    selenium_template('TEST') 

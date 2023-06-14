@@ -11,6 +11,7 @@ from datetime import date
 from datetime import datetime
 from dotenv import load_dotenv
 from utils.handy import *
+from sql.clean_loc import clean_location_rows
 from requests.exceptions import RequestException
 
 """ LOAD THE ENVIRONMENT VARIABLES """
@@ -141,6 +142,7 @@ def api_template(pipeline):
             if col == 'location':
                 #df[col] = df[col].astype(str).str.replace(r'{}', '', regex=True)
                 df[col] = df[col].astype(str).apply(clean_rows)
+                df[col] = df[col].apply(clean_location_rows)
             if col == 'description':
                 df[col] = df[col].astype(str).apply(clean_rows).apply(cleansing_selenium_crawlers)
 

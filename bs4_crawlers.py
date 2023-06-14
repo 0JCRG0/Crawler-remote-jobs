@@ -12,6 +12,7 @@ import json
 import logging
 import requests
 import os
+from sql.clean_loc import clean_location_rows
 from dotenv import load_dotenv
 from utils.handy import *
 
@@ -217,10 +218,18 @@ def bs4_template(pipeline):
         
         #CLEANING AVOIDING DEPRECATION WARNING
         for col in df.columns:
-            if col == 'title' or col == 'description' or col == 'location':
+            if col == 'title' or col == 'description':
                 i = df.columns.get_loc(col)
                 newvals = df.loc[:, col].astype(str).apply(cleansing_selenium_crawlers)
                 df[df.columns[i]] = newvals
+            elif col == 'location':
+                i = df.columns.get_loc(col)
+                newvals = df.loc[:, col].astype(str).apply(cleansing_selenium_crawlers)
+                df[df.columns[i]] = newvals
+                i = df.columns.get_loc(col)
+                newvals = df.loc[:, col].astype(str).apply(clean_location_rows)
+                df[df.columns[i]] = newvals
+
             
         #Save it in local machine
         df.to_csv(SAVE_PATH, index=False)
