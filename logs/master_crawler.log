@@ -1,0 +1,267 @@
+2023-06-14 00:24:35,382 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-14 00:30:46,886 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-14 00:32:30,709 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-14 00:32:32,123 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 0
+Total number of either unique jobs or jobs with updated location: 718
+Current total count of jobs in PostgreSQL: 717
+
+2023-06-14 00:32:44,316 ERROR: 
+Received non-200 response (403) for URL https://tryremotely.com/feeds/remote-jobs.rss. Skipping...
+
+2023-06-14 00:32:44,423 INFO: 
+Finished RSS CRAWLERS. Results below ⬇︎
+
+2023-06-14 00:32:45,072 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 717
+Total number of either unique jobs or jobs with updated location: 206
+Current total count of jobs in PostgreSQL: 923
+
+2023-06-14 00:32:52,967 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-06-14 00:32:54,063 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 923
+Total number of either unique jobs or jobs with updated location: 332
+Current total count of jobs in PostgreSQL: 1226
+
+2023-06-14 00:33:16,360 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-14 00:33:17,616 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1226
+Total number of either unique jobs or jobs with updated location: 218
+Current total count of jobs in PostgreSQL: 1444
+
+2023-06-14 00:33:43,259 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1444
+Total number of either unique jobs or jobs with updated location: 105
+Current total count of jobs in PostgreSQL: 1549
+
+2023-06-14 00:33:43,591 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-14 00:33:43,717 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1549
+Total number of either unique jobs or jobs with updated location: 15
+Current total count of jobs in PostgreSQL: 1564
+
+2023-06-14 00:33:43,718 INFO: 
+ALL CRAWLERS FINISHED. ALL IN 176.84 SECONDS!
+
+2023-06-14 00:36:15,084 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-14 00:36:32,515 ERROR: 
+Encountered an unexpected error with https://api-career-vault-sstxk.ondigitalocean.app/v1/jobs/remote?page=1&search=&category=Software&role=&hideOnlyUS=1. CHECK.
+
+2023-06-14 00:36:35,966 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-14 00:36:36,502 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1564
+Total number of either unique jobs or jobs with updated location: 718
+Current total count of jobs in PostgreSQL: 1564
+
+2023-06-14 00:39:06,962 ERROR: 
+Received non-200 response (524) for API: https://api-career-vault-sstxk.ondigitalocean.app/v1/jobs/remote?page=1&search=&category=Software&role=&hideOnlyUS=1. Skipping...
+
+2023-06-14 00:39:10,644 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-14 00:44:03,666 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-14 00:44:07,216 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-14 00:44:07,481 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1564
+Total number of either unique jobs or jobs with updated location: 718
+Current total count of jobs in PostgreSQL: 1564
+
+2023-06-14 00:44:20,658 ERROR: 
+Received non-200 response (403) for URL https://tryremotely.com/feeds/remote-jobs.rss. Skipping...
+
+2023-06-14 00:44:20,744 INFO: 
+Finished RSS CRAWLERS. Results below ⬇︎
+
+2023-06-14 00:44:20,795 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1564
+Total number of either unique jobs or jobs with updated location: 206
+Current total count of jobs in PostgreSQL: 1564
+
+2023-06-14 00:44:28,939 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-06-14 00:44:29,039 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1564
+Total number of either unique jobs or jobs with updated location: 332
+Current total count of jobs in PostgreSQL: 1565
+
+2023-06-14 00:44:51,874 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-14 00:44:52,112 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1565
+Total number of either unique jobs or jobs with updated location: 218
+Current total count of jobs in PostgreSQL: 1565
+
+2023-06-14 00:45:16,796 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1565
+Total number of either unique jobs or jobs with updated location: 105
+Current total count of jobs in PostgreSQL: 1570
+
+2023-06-14 00:45:17,128 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-14 00:45:17,190 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1570
+Total number of either unique jobs or jobs with updated location: 15
+Current total count of jobs in PostgreSQL: 1576
+
+2023-06-14 00:45:17,191 INFO: 
+ALL CRAWLERS FINISHED. ALL IN 73.53 SECONDS!
+
+2023-06-14 00:47:58,147 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-14 00:48:01,749 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-14 00:48:03,151 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 0
+Total number of either unique jobs or jobs with updated location: 718
+Current total count of jobs in PostgreSQL: 717
+
+2023-06-14 00:48:15,401 ERROR: 
+Received non-200 response (403) for URL https://tryremotely.com/feeds/remote-jobs.rss. Skipping...
+
+2023-06-14 00:48:15,482 INFO: 
+Finished RSS CRAWLERS. Results below ⬇︎
+
+2023-06-14 00:48:16,054 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 717
+Total number of either unique jobs or jobs with updated location: 206
+Current total count of jobs in PostgreSQL: 923
+
+2023-06-14 00:48:24,102 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-06-14 00:48:25,177 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 923
+Total number of either unique jobs or jobs with updated location: 332
+Current total count of jobs in PostgreSQL: 1226
+
+2023-06-14 00:48:47,017 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-14 00:48:48,266 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1226
+Total number of either unique jobs or jobs with updated location: 218
+Current total count of jobs in PostgreSQL: 1444
+
+2023-06-14 00:49:12,405 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1444
+Total number of either unique jobs or jobs with updated location: 105
+Current total count of jobs in PostgreSQL: 1548
+
+2023-06-14 00:49:13,138 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-14 00:49:13,313 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1548
+Total number of either unique jobs or jobs with updated location: 15
+Current total count of jobs in PostgreSQL: 1563
+
+2023-06-14 00:49:13,314 INFO: 
+ALL CRAWLERS FINISHED. ALL IN 75.17 SECONDS!
+
+2023-06-14 00:56:02,222 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-14 00:56:44,287 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-14 00:56:48,186 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-14 00:56:49,821 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 0
+Total number of either unique jobs or jobs with updated location: 718
+Current total count of jobs in PostgreSQL: 717
+
+2023-06-14 00:57:02,458 ERROR: 
+Received non-200 response (403) for URL https://tryremotely.com/feeds/remote-jobs.rss. Skipping...
+
+2023-06-14 00:57:02,599 INFO: 
+Finished RSS CRAWLERS. Results below ⬇︎
+
+2023-06-14 00:57:03,361 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 717
+Total number of either unique jobs or jobs with updated location: 206
+Current total count of jobs in PostgreSQL: 923
+
+2023-06-14 00:57:12,777 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-06-14 00:57:14,290 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 923
+Total number of either unique jobs or jobs with updated location: 332
+Current total count of jobs in PostgreSQL: 1226
+
+2023-06-14 00:57:39,530 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-14 00:57:41,145 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1226
+Total number of either unique jobs or jobs with updated location: 218
+Current total count of jobs in PostgreSQL: 1444
+
+2023-06-14 00:58:07,629 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1444
+Total number of either unique jobs or jobs with updated location: 105
+Current total count of jobs in PostgreSQL: 1549
+
+2023-06-14 00:58:07,952 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-14 00:58:08,073 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1549
+Total number of either unique jobs or jobs with updated location: 15
+Current total count of jobs in PostgreSQL: 1564
+
+2023-06-14 00:58:08,074 INFO: 
+ALL CRAWLERS FINISHED. ALL IN 83.79 SECONDS!
+
