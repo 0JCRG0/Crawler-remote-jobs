@@ -72,10 +72,6 @@
             {
                 "url": "https://weworkremotely.com/remote-jobs.rss",
                 "location_tag": "region"
-            },
-            {
-                "url": "https://tryremotely.com/feeds/remote-jobs.rss",
-                "location_tag": "location"
             }
         ]
     }

@@ -121,4 +121,5 @@ def read_rss(pipeline):
     print("\n", f"RSS Reader is done! all in: {elapsed_time:.2f} seconds", "\n")
 
 
-read_rss('TEST')
+if __name__ == "__main__":
+    read_rss("MAIN")

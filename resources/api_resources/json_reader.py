@@ -3,12 +3,13 @@ import requests
 import pretty_errors
 
 #Request the api...
-url = 'https://remotive.com/api/remote-jobs?limit=50'
+url = 'https://api-career-vault-sstxk.ondigitalocean.app/v1/jobs/remote?page=1&search=&category=Software&role=&hideOnlyUS=1'
 
 #response = requests.get(url)
 headers = {"User-Agent": "my-app"}
 #headers = {"User-Agent"}
 response = requests.get(url, headers=headers)
+response.raise_for_status()
 if response.status_code == 200:
     data = json.loads(response.text)
     #data = response.json()
