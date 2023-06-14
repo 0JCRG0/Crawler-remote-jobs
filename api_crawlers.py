@@ -77,7 +77,11 @@ def api_template(pipeline):
                 try:
                     print("\n", f"Requesting {name}...")
                     response = requests.get(api, headers=headers)
-                    if response.status_code == 200:
+                    if response.status_code != 200:
+                        print(f"Received non-200 response ({response.status_code}) for API: {api}. Skipping...")
+                        logging.error(f"Received non-200 response ({response.status_code}) for API: {api}. Skipping...")
+                        continue
+                    elif response.status_code == 200:
                         data = json.loads(response.text)
                         print(f"Successful request on {api}", "\n")
                         
