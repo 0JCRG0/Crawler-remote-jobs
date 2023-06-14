@@ -261,7 +261,9 @@ def selenium_template(pipeline):
                 i = df.columns.get_loc(col)
                 newvals = df.loc[:, col].astype(str).apply(cleansing_selenium_crawlers)
                 df[df.columns[i]] = newvals
-            elif col == 'location':
+        
+        for col in df.columns:
+            if col == 'location':
                 i = df.columns.get_loc(col)
                 newvals = df.loc[:, col].astype(str).apply(clean_location_rows)
                 df[df.columns[i]] = newvals
