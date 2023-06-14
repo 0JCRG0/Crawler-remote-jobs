@@ -13,6 +13,8 @@ from dotenv import load_dotenv
 import os
 import sys
 
+#TODO: Add logging
+
 """ LOAD THE ENVIRONMENT VARIABLES """
 
 load_dotenv()
@@ -26,6 +28,8 @@ UTILS_PATH = os.environ.get('SYS_PATH_APPEND', "")
 sys.path.append(UTILS_PATH)
 from handy import *
 
+#Initiate Logging
+#LoggingMasterCrawler()
 
 def indeed(SCHEME, KEYWORD):
     start_time = timeit.default_timer()
@@ -35,7 +39,7 @@ def indeed(SCHEME, KEYWORD):
     driver = webdriver.Firefox(options=options)
 
     #print("\n", f"Reading {file}... ", "\n")
-    print("\n", "Crawler launched on RSS Feeds.")
+    print("\n", "Crawler launched on INDEED.")
 
     """ LOAD JSON """
     with open(PROD) as f:
@@ -117,11 +121,12 @@ def indeed(SCHEME, KEYWORD):
                 except NoSuchElementException as e:
                 # Handle the specific exception
                     print("Element not found:", e)
-                    #TODO: ADD ERROR LOGs
-                    pass
+                    #logging.error("Element not found:", e)
+                    continue
                 except Exception as e:
                     print("\n", f"WARNING! Exception: {e}", "\n")
-                    pass
+                    #logging.error("\n", f"WARNING! Exception: {e}", "\n")
+                    continue
             return rows
 
         data = crawling()
@@ -138,11 +143,14 @@ def indeed(SCHEME, KEYWORD):
                 df[col] = df[col].apply(cleansing_selenium_crawlers)
                 #df[col] = ["{MX}".format(i) for i in df[col]]
             elif col == 'location':
-                df[col] = df[col] + str(country_code) 
+                df[col] = df[col] + str(country_code)
         
-        # SEND IT TO TO PostgreSQL
-        test_postgre(df)
+        #logging.info('Finished Indeed. Results below ⬇︎')
 
+        # SEND IT TO TO PostgreSQL
+        to_postgre(df)
+
+        
         #stop the timer
         elapsed_time = timeit.default_timer() - start_time
         print("\n", f"Finished crawling Indeed. All in {elapsed_time:.5f} seconds!!!", "\n")
