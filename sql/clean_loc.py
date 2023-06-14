@@ -1,5 +1,4 @@
 import re
-import csv
 import pandas as pd
 import pretty_errors
 import pycountry
@@ -30,7 +29,7 @@ def clean_location_rows(rows):
     # Add spaces before uppercase letters
     rows = add_spaces(rows)
 
-    keep_words = ['remote', 'international', 'anywhere', 'worldwide', 'utc', 'apac', 'nafta', 'latam', 'asean', 'mena', 'brics', 'anz', 'gcc', 'cee', 'nordic', 'europe', 'americas', 'asia', 'africa', 'oceania', 'antarctica', 'southeast asia', 'emea', 'uk', 'usa', 'united', 'states', 'north', 'america', 'kingdom', 'korea', 'global', 'south', 'latin', 'america']
+    keep_words = ['remote', 'remoto', 'international', 'anywhere', 'worldwide', 'utc', 'apac', 'nafta', 'latam', 'asean', 'mena', 'brics', 'anz', 'gcc', 'cee', 'nordic', 'europe', 'americas', 'asia', 'africa', 'oceania', 'antarctica', 'southeast asia', 'emea', 'uk', 'usa', 'united', 'states', 'north', 'america', 'kingdom', 'korea', 'global', 'south', 'latin', 'america']
 
         # Get country codes and names
     country_codes = [country.alpha_2 for country in pycountry.countries]
