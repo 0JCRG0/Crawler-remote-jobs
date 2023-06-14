@@ -1,5 +1,9 @@
 __pycache__/
 .env
-**/*.log
 .vscode/
 
+logs/FreelanceCrawler.log
+logs/crawler.log
+logs/geckodriver.log
+logs/selenium_crawlers.log
+geckodriver.log
