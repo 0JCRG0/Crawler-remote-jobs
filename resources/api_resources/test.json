@@ -5,6 +5,8 @@
                 "name": "CareerVault",
                 "api": "https://api-career-vault-sstxk.ondigitalocean.app/v1/jobs/remote?page=1&search=&category=Software&role=&hideOnlyUS=1",
                 "class_json": "dict",
+                "follow_link": "no", 
+                "inner_link_tag": "",
                 "elements_path": [
                     {
                         "dict_tag": "data",
@@ -20,6 +22,8 @@
                 "name": "echojobs.io",
                 "api": "https://api.echojobs.io/v1/search?locations=Remote&page=1&limit=300&sort_by=newest",
                 "class_json": "dict",
+                "follow_link": "yes",
+                "inner_link_tag": ".flex.flex-col.-mt-10.px-4.sm\\:px-0.justify-between.max-w-6xl.mx-auto.min-h-screen .flex.flex-col.sm\\:flex-row .basis-3\\/4.flex.flex-col.sm\\:pr-20 ",
                 "elements_path": [
                     {
                         "dict_tag": "result",
@@ -35,29 +39,16 @@
                 "name": "www.workingnomads.com",
                 "api": "https://www.workingnomads.com/api/exposed_jobs/",
                 "class_json": "list",
+                "follow_link": "no",
+                "inner_link_tag": "",
                 "elements_path": [
                     {
                         "dict_tag": "",
                         "title_tag": "title",
                         "link_tag": "url",
-                        "description_tag": "tags",
+                        "description_tag": "description",
                         "pubdate_tag": "pub_date",
                         "location_tag": "location"
-                    }
-                ]
-            },
-            {
-                "name": "4dayweek.io",
-                "api": "https://4dayweek.io/api",
-                "class_json": "dict",
-                "elements_path": [
-                    {
-                        "dict_tag": "jobs",
-                        "title_tag": "title",
-                        "link_tag": "url",
-                        "description_tag": "description",
-                        "pubdate_tag": "posted",
-                        "location_tag": "location_country"
                     }
                 ]
             },
@@ -65,6 +56,8 @@
                 "name": "remoteok.api",
                 "api": "https://remoteok.com/api?api=1",
                 "class_json": "list",
+                "follow_link": "no",
+                "inner_link_tag": "",
                 "elements_path": [
                     {
                         "dict_tag": "",
@@ -80,6 +73,8 @@
                 "name": "remotive.com",
                 "api": "https://remotive.com/api/remote-jobs?limit=50",
                 "class_json": "dict",
+                "follow_link": "no",
+                "inner_link_tag": "",
                 "elements_path": [
                     {
                         "dict_tag": "jobs",
