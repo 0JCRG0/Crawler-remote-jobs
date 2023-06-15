@@ -1,0 +1,21 @@
+[
+    {
+        "urls": [
+            {
+                "url": "https://weworkremotely.com/remote-jobs.rss",
+                "location_tag": "region",
+                "inner_link_tag": ".perma .content .job .listing-container"
+            },
+            {
+                "url": "https://www.crunchboard.com/jobs.rss",
+                "location_tag": "location",
+                "inner_link_tag": ".perma .content .job .listing-container"
+            },
+            {
+                "url": "https://www.fossjobs.net/rss/all/",
+                "location_tag": "location",
+                "inner_link_tag": ".box.content .job-description"
+            }
+        ]
+    }
+]
