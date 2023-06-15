@@ -2,11 +2,10 @@
 
 import logging
 import timeit
-from other.rss_reader import read_rss
+from rss_reader import read_rss
 from other.indeed import indeed
 from api_crawlers import api_template
 from bs4_crawlers import bs4_template
-from rss_crawlers import rss_template
 from selenium_crawlers import selenium_template
 from utils.handy import LoggingMasterCrawler
 
