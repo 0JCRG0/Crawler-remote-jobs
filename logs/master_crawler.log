@@ -265,3 +265,261 @@ Current total count of jobs in PostgreSQL: 1564
 2023-06-14 00:58:08,074 INFO: 
 ALL CRAWLERS FINISHED. ALL IN 83.79 SECONDS!
 
+2023-06-14 12:52:06,540 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-14 12:52:12,506 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-14 12:52:12,958 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1564
+Total number of either unique jobs or jobs with updated location: 706
+Current total count of jobs in PostgreSQL: 1605
+
+2023-06-14 12:52:30,077 INFO: 
+Finished RSS CRAWLERS. Results below ⬇︎
+
+2023-06-14 12:52:30,206 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1605
+Total number of either unique jobs or jobs with updated location: 208
+Current total count of jobs in PostgreSQL: 1615
+
+2023-06-14 12:52:39,875 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-06-14 12:52:40,194 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1615
+Total number of either unique jobs or jobs with updated location: 332
+Current total count of jobs in PostgreSQL: 1654
+
+2023-06-14 12:52:59,747 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-14 12:53:00,006 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1654
+Total number of either unique jobs or jobs with updated location: 218
+Current total count of jobs in PostgreSQL: 1675
+
+2023-06-14 12:53:21,894 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1675
+Total number of either unique jobs or jobs with updated location: 105
+Current total count of jobs in PostgreSQL: 1721
+
+2023-06-14 12:53:22,290 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-14 12:53:22,405 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1721
+Total number of either unique jobs or jobs with updated location: 15
+Current total count of jobs in PostgreSQL: 1736
+
+2023-06-14 12:53:22,407 INFO: 
+ALL CRAWLERS FINISHED. ALL IN 75.87 SECONDS!
+
+2023-06-14 13:23:59,862 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-14 13:24:03,928 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-14 13:24:04,176 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1736
+Total number of either unique jobs or jobs with updated location: 707
+Current total count of jobs in PostgreSQL: 1739
+
+2023-06-14 13:24:19,072 INFO: 
+Finished RSS CRAWLERS. Results below ⬇︎
+
+2023-06-14 13:24:19,193 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1739
+Total number of either unique jobs or jobs with updated location: 208
+Current total count of jobs in PostgreSQL: 1740
+
+2023-06-14 13:24:27,664 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-06-14 13:24:27,745 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1740
+Total number of either unique jobs or jobs with updated location: 332
+Current total count of jobs in PostgreSQL: 1740
+
+2023-06-14 13:24:51,007 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-14 13:24:51,118 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1740
+Total number of either unique jobs or jobs with updated location: 218
+Current total count of jobs in PostgreSQL: 1740
+
+2023-06-14 13:25:13,358 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1740
+Total number of either unique jobs or jobs with updated location: 105
+Current total count of jobs in PostgreSQL: 1751
+
+2023-06-14 13:25:13,748 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-14 13:25:13,799 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1751
+Total number of either unique jobs or jobs with updated location: 15
+Current total count of jobs in PostgreSQL: 1754
+
+2023-06-14 13:25:13,813 INFO: 
+ALL CRAWLERS FINISHED. ALL IN 73.95 SECONDS!
+
+2023-06-14 14:02:58,387 ERROR: 
+Received non-200 response (403) for URL https://tryremotely.com/feeds/remote-jobs.rss. Skipping...
+
+2023-06-14 14:24:00,911 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-14 14:24:05,562 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-14 14:24:05,805 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1754
+Total number of either unique jobs or jobs with updated location: 707
+Current total count of jobs in PostgreSQL: 1755
+
+2023-06-14 15:10:53,559 INFO: 
+Finished RSS CRAWLERS. Results below ⬇︎
+
+2023-06-14 15:14:54,911 INFO: 
+Finished RSS CRAWLERS. Results below ⬇︎
+
+2023-06-14 17:16:12,076 INFO: 
+Finished RSS CRAWLERS. Results below ⬇︎
+
+2023-06-14 17:23:05,429 INFO: 
+Finished RSS CRAWLERS. Results below ⬇︎
+
+2023-06-14 17:26:08,917 INFO: 
+Finished RSS CRAWLERS. Results below ⬇︎
+
+2023-06-14 17:29:46,155 INFO: 
+Finished RSS CRAWLERS. Results below ⬇︎
+
+2023-06-14 17:30:49,412 INFO: 
+Finished RSS CRAWLERS. Results below ⬇︎
+
+2023-06-14 17:31:10,754 INFO: 
+Finished RSS CRAWLERS. Results below ⬇︎
+
+2023-06-14 17:33:50,203 INFO: 
+Finished RSS CRAWLERS. Results below ⬇︎
+
+2023-06-14 17:34:16,177 INFO: 
+Finished RSS CRAWLERS. Results below ⬇︎
+
+2023-06-14 17:39:29,067 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-14 17:39:29,273 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1755
+Total number of either unique jobs or jobs with updated location: 15
+Current total count of jobs in PostgreSQL: 1764
+
+2023-06-14 17:39:45,402 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-14 17:43:55,504 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-14 17:44:27,361 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-14 17:45:11,643 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-14 17:45:48,530 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-14 17:50:19,290 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-14 17:53:06,719 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-14 18:10:00,784 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-14 18:11:21,520 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-14 18:16:52,209 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-14 18:20:39,939 INFO: 
+Finished RSS CRAWLERS. Results below ⬇︎
+
+2023-06-14 18:23:48,890 INFO: 
+Finished RSS CRAWLERS. Results below ⬇︎
+
+2023-06-14 21:17:40,214 INFO: 
+Finished RSS CRAWLERS. Results below ⬇︎
+
+2023-06-14 21:19:09,192 INFO: 
+Finished RSS CRAWLERS. Results below ⬇︎
+
+2023-06-14 21:19:57,424 INFO: 
+Finished RSS CRAWLERS. Results below ⬇︎
+
+2023-06-14 21:20:35,425 INFO: 
+Finished RSS CRAWLERS. Results below ⬇︎
+
+2023-06-14 21:22:15,565 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-14 21:28:50,663 INFO: 
+Finished RSS CRAWLERS. Results below ⬇︎
+
+2023-06-14 22:49:49,812 INFO: 
+Finished RSS CRAWLERS. Results below ⬇︎
+
+2023-06-14 23:29:45,179 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-14 23:54:57,054 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-06-14 23:58:05,002 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-15 00:03:48,360 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-15 00:12:45,774 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-15 00:34:26,039 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-15 00:38:45,440 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-15 00:39:38,361 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-15 00:45:57,630 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-15 00:47:09,412 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-15 00:53:01,182 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
