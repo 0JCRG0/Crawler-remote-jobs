@@ -6,6 +6,8 @@ import re
 import pretty_errors
 from urllib.error import HTTPError
 import timeit
+from selenium import webdriver
+from selenium.webdriver.common.by import By
 from dateutil.parser import parse
 from datetime import date, datetime
 import json
@@ -30,6 +32,13 @@ def bs4_template(pipeline):
 
     #start timer
     start_time = timeit.default_timer()
+
+    #START SEL
+    options = webdriver.FirefoxOptions()
+    options.add_argument('-headless')
+                                    
+    # Start the session
+    driver = webdriver.Firefox(options=options)
 
     """ DETERMINING WHICH JSON TO LOAD & WHICH POSTGRE TABLE WILL BE USED """
 
@@ -91,6 +100,10 @@ def bs4_template(pipeline):
                 start_point = url_obj['start_point']
                 #strategy
                 strategy = url_obj['strategy']
+                #Whether to follow link
+                follow_link = url_obj['follow_link']
+                #Extract inner link if follow link
+                inner_link_tag = url_obj['inner_link_tag']
                 # You need to +1 because range is exclusive
                 for i in range(start_point, pages + 1):
                     #The url from json is incomplete, we need to get the number of the page we are scrapping
@@ -119,15 +132,52 @@ def bs4_template(pipeline):
 
                                 link_element = job.select_one(elements_path["link_path"])
                                 job_data["link"] = name + link_element["href"] if link_element else "NaN"
+                                #print(job_data["link"])
 
+                                """ Access each scraped link to get the description """
+                                if follow_link == "yes":
+                                    link_res = requests.get(job_data["link"])
+                                    if link_res.status_code == 200:
+                                        print(f"""CONNECTION ESTABLISHED ON {job_data["link"]}""", "\n")
+                                        link_soup = bs4.BeautifulSoup(link_res.text, 'html.parser')
+                                        description_tag = link_soup.select_one(inner_link_tag)
+                                        if description_tag:
+                                            job_data["description"] = description_tag.text
+                                        else:
+                                            job_data["description"] = 'NaN'
+                                    elif link_res.status_code == 403:
+                                        print(f"""CONNECTION PROHIBITED WITH BS4 ON {job_data["link"]}. STATUS CODE: "{link_res.status_code}". TRYING WITH SELENIUM""", "\n")
+                                        driver.get(job_data["link"])
+                                        description_tag = driver.find_element(By.CSS_SELECTOR, inner_link_tag)
+                                        if description_tag:
+                                            job_data["description"] = description_tag.get_attribute("innerHTML") 
+                                        else:
+                                            job_data["description"] = 'NaN'
+                                    else:
+                                        print(f"""CONNECTION FAILED ON {job_data["link"]}. STATUS CODE: "{link_res.status_code}". Getting the description from initial scraped website.""", "\n")
+                                        # Get the descriptions & append it to its list
+                                        description_element = job.select_one(elements_path["description_path"])
+                                        job_data["description"]= description_element.text if description_element else "NaN"
+                                elif follow_link == "sel":
+                                    try:
+                                        print("Using Selenium to obtain descriptions")
+                                        driver.get(job_data["link"])
+                                        description_tag = driver.find_element(By.CSS_SELECTOR, inner_link_tag)
+                                        job_data["description"] = description_tag.get_attribute("innerHTML") if description_tag else "NaN"
+                                    except Exception as e:
+                                        print(e, "Skipping...", "\n")
+                                        continue
+                                else:
+                                    # Get the descriptions & append it to its list
+                                    description_element = job.select_one(elements_path["description_path"])
+                                    job_data["description"]= description_element.text if description_element else "NaN"
+                                
+                                #PUBDATE
                                 today = date.today()
                                 job_data["pubdate"] = today
 
                                 location_element = job.select_one(elements_path["location_path"])
                                 job_data["location"] = location_element.text if location_element else "NaN"
-
-                                description_element = job.select_one(elements_path["description_path"])
-                                job_data["description"]= description_element.text if description_element else "NaN"
 
                                 timestamp = datetime.now()
                                 job_data["timestamp"] = timestamp
@@ -146,22 +196,13 @@ def bs4_template(pipeline):
                             if container:
                                 # TITLES
                                 title_elements = container.select(elements_path["title_path"])
-                                for i in title_elements:
-                                    if i:
-                                        title = i.get_text(strip=True)
-                                        total_titles.append(title)
-                                    else:
-                                        total_titles.append("NaN")
+                                new_titles = [i.get_text(strip=True) if i else "NaN" for i in title_elements]
+                                total_titles.extend(new_titles)
 
                                 # LINKS
                                 link_elements = container.select(elements_path["link_path"])
-                                for i in link_elements:
-                                    if i:
-                                        href = i.get("href")
-                                        link = name + href
-                                        total_links.append(link)
-                                    else:
-                                        total_links.append("NaN")
+                                new_links = [name + i.get("href") if i else "NaN" for i in link_elements]
+                                total_links.extend(new_links)
 
                                 # PUBDATES
                                 today = date.today()
@@ -169,21 +210,14 @@ def bs4_template(pipeline):
 
                                 # LOCATIONS
                                 location_elements = container.select(elements_path["location_path"])
-                                for i in location_elements:
-                                    if i:
-                                        location = i.get_text(strip=True)
-                                        total_locations.append(location)
-                                    else:
-                                        total_locations.append("NaN")
+                                new_locations = [i.get_text(strip=True) if i else "NaN" for i in location_elements]
+                                total_locations.extend(new_locations)
 
                                 # Descriptions
                                 description_elements = container.select(elements_path["description_path"])
-                                for i in description_elements:
-                                    if i:
-                                        description = i.get_text(strip=True)
-                                        total_descriptions.append(description)
-                                    else:
-                                        total_descriptions.append("NaN")
+                                new_descriptions = [i.get_text(strip=True) if i else "NaN" for i in description_elements]
+                                total_descriptions.extend(new_descriptions)
+
                                 #Timestamps
                                 timestamp = datetime.now()
                                 total_timestamps.extend([timestamp] * len(link_elements))
