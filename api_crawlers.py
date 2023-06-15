@@ -7,6 +7,9 @@ import pandas as pd
 import timeit
 import os
 import logging
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import bs4
 from datetime import date
 from datetime import datetime
 from dotenv import load_dotenv
@@ -29,6 +32,12 @@ def api_template(pipeline):
     #Start the timer
     start_time = timeit.default_timer()
 
+    #START SEL IF REQUIRED
+    options = webdriver.FirefoxOptions()
+    options.add_argument('-headless')
+                                                                    
+    # Start the session
+    driver = webdriver.Firefox(options=options)
     """ DETERMINING WHICH JSON TO LOAD & WHICH POSTGRE TABLE WILL BE USED """
 
     if pipeline == 'MAIN':
@@ -54,7 +63,6 @@ def api_template(pipeline):
         total_descriptions = []
         total_pubdates = []
         total_locations = []
-        total_ids=[]
         total_timestamps=[]
         rows = []
 
@@ -72,6 +80,10 @@ def api_template(pipeline):
                 elements_path = api_obj['elements_path'][0]
                 #Extract the class of the JSON
                 class_json = api_obj['class_json']
+                #Whether to follow link
+                follow_link = api_obj['follow_link']
+                #Extract inner link if follow link
+                inner_link_tag = api_obj['inner_link_tag']
                 #Each site is different to a json file can give us the flexibility we need  
                 headers = {"User-Agent": "my-app"}
                 try:
@@ -90,7 +102,7 @@ def api_template(pipeline):
                         jobs = class_json_strategy(data, elements_path, class_json)
 
                         #Start loop if not None
-                        if jobs is not None:
+                        if jobs:
                             for job in jobs:
                                 #Titles
                                 if elements_path["title_tag"] in job:
@@ -104,12 +116,48 @@ def api_template(pipeline):
                                     total_links.append(job[link])
                                 else:
                                     total_links.append("NaN")
-                                #Descriptions
-                                if elements_path["description_tag"] in job:
-                                    description = elements_path["description_tag"]
-                                    total_descriptions.append(job[description])
+                                
+                                """ IF IT NEEDS TO FOLLOW LINK OR NOT """
+                                if follow_link == "yes":
+                                    """ Access each scraped link to get the description """
+                                    link_res = requests.get(job[link])
+                                    if link_res.status_code == 200:
+                                        print(f"""CONNECTION ESTABLISHED ON {job[link]}""", "\n")
+                                        link_soup = bs4.BeautifulSoup(link_res.text, 'html.parser')
+                                        description_tag = link_soup.select_one(inner_link_tag)
+                                        if description_tag:
+                                            description = description_tag.text
+                                            total_descriptions.append(description)
+                                        else:
+                                            description = 'NaN'
+                                            total_descriptions.append(description)
+
+                                    elif link_res.status_code == 403:
+                                        print(f"""CONNECTION PROHIBITED WITH BS4 ON {job[link]}. STATUS CODE: "{link_res.status_code}". TRYING WITH SELENIUM""", "\n")
+                                        driver.get(job[link])
+                                        description_tag = driver.find_element(By.CSS_SELECTOR, inner_link_tag)
+                                        if description_tag:
+                                            description = description_tag.get_attribute("innerHTML")
+                                            total_descriptions.append(description)
+                                        else:
+                                            description = 'NaN'
+                                            total_descriptions.append(description)
+                                    else:
+                                        print(f"""CONNECTION FAILED ON {job[link]}. STATUS CODE: "{link_res.status_code}". Getting the description from API.""", "\n")
+                                        # Get the descriptions & append it to its list
+                                        if elements_path["description_tag"] in job:
+                                            description = elements_path["description_tag"]
+                                            total_descriptions.append(job[description])
+                                        else:
+                                            total_descriptions.append("NaN")
                                 else:
-                                    total_descriptions.append("NaN")
+                                    if elements_path["description_tag"] in job:
+                                        description = elements_path["description_tag"]
+                                        total_descriptions.append(job[description])
+                                    else:
+                                        total_descriptions.append("NaN")
+
+                                
                                 #DATES
                                 today = date.today()
                                 total_pubdates.append(today)
@@ -119,6 +167,7 @@ def api_template(pipeline):
                                     total_locations.append(job[location])
                                 else: 
                                     total_locations.append("NaN")
+                                
                                 #TIMESTAMP
                                 timestamp = datetime.now()
                                 total_timestamps.append(timestamp)
