@@ -523,3 +523,102 @@ Finished RSS Reader. Results below ⬇︎
 2023-06-15 00:53:01,182 INFO: 
 Finished RSS Reader. Results below ⬇︎
 
+2023-06-15 01:04:44,117 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-15 01:04:48,029 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-15 01:04:48,670 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1764
+Total number of either unique jobs or jobs with updated location: 711
+Current total count of jobs in PostgreSQL: 1813
+
+2023-06-15 01:05:05,591 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-15 01:05:09,142 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-15 01:05:09,302 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1813
+Total number of either unique jobs or jobs with updated location: 711
+Current total count of jobs in PostgreSQL: 1813
+
+2023-06-15 01:05:59,979 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-15 01:06:00,428 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1813
+Total number of either unique jobs or jobs with updated location: 108
+Current total count of jobs in PostgreSQL: 1832
+
+2023-06-15 01:06:09,589 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-06-15 01:06:09,903 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1832
+Total number of either unique jobs or jobs with updated location: 332
+Current total count of jobs in PostgreSQL: 1867
+
+2023-06-15 01:06:40,102 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-15 01:06:40,488 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1867
+Total number of either unique jobs or jobs with updated location: 218
+Current total count of jobs in PostgreSQL: 1911
+
+2023-06-15 01:07:02,230 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1911
+Total number of either unique jobs or jobs with updated location: 105
+Current total count of jobs in PostgreSQL: 1970
+
+2023-06-15 01:07:02,231 INFO: 
+ALL CRAWLERS FINISHED. ALL IN 116.63 SECONDS!
+
+2023-06-15 08:22:46,213 ERROR: 
+Encountered an unexpected error with https://api-career-vault-sstxk.ondigitalocean.app/v1/jobs/remote?page=1&search=&category=Software&role=&hideOnlyUS=1. CHECK.
+
+2023-06-15 08:34:42,568 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-15 08:39:28,038 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-15 08:42:05,447 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-15 08:46:40,126 ERROR: 
+Encountered an unexpected error with https://api.echojobs.io/v1/search?locations=Remote&page=1&limit=300&sort_by=newest. CHECK.
+
+2023-06-15 08:56:25,775 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-15 09:02:18,906 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-15 09:29:41,030 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-15 10:01:02,072 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-15 10:09:19,979 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-15 10:12:14,034 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-15 10:14:58,047 ERROR: 
+Encountered an unexpected error with https://api.echojobs.io/v1/search?locations=Remote&page=1&limit=300&sort_by=newest. CHECK.
+
+2023-06-15 10:16:52,353 INFO: 
+Finished API crawlers. Results below ⬇︎
+
