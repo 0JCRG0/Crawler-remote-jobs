@@ -22,15 +22,13 @@ def main(pipeline):
 
     api_template(pipeline)
     
-    rss_template(pipeline)
-
+    read_rss(pipeline)
+    
     bs4_template(pipeline)
 
     selenium_template(pipeline) 
 
     indeed(SCHEME="main_mx", KEYWORD="")
-
-    read_rss(pipeline)
 
     #print the time
     elapsed_time = timeit.default_timer() - master_start_time
