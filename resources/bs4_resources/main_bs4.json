@@ -7,6 +7,8 @@
                 "pages_to_crawl": 1,
                 "start_point": 1,
                 "strategy": "main",
+                "follow_link": "yes",
+                "inner_link_tag": ".flushed .container-small.job-details-page-container .main-content-container .margin-t-16.job-details-description",
                 "elements_path": [
                         {
                         "jobs_path": ".job-list-item",
@@ -23,6 +25,8 @@
                 "pages_to_crawl": 1,
                 "start_point": 1,
                 "strategy": "main",
+                "follow_link": "yes",
+                "inner_link_tag": ".content-wrapper .container .main-content.with-right-sidebar .text .job-description",
                 "elements_path": [
                         {
                         "jobs_path": ".list-recent-jobs.list-row-container.menu li",
@@ -39,6 +43,8 @@
                 "pages_to_crawl": 5,
                 "start_point": 1,
                 "strategy": "main",
+                "follow_link": "yes",
+                "inner_link_tag": ".w-full .flex.flex-col.xl\\:flex-row.justify-between.w-full .trix-content",
                 "elements_path": [
                         {
                         "jobs_path": "#card-group [name='card']",
@@ -55,6 +61,8 @@
                 "pages_to_crawl": 1,
                 "start_point": 1,
                 "strategy": "main",
+                "follow_link": "sel",
+                "inner_link_tag": ".wrapper .content-wrapper.full-width .main-container-wrapper .job-page .row.job-content-wrapper .job-listing.row .row.job-content .col-sm-8.cols.hero-left .row.job-description-text",
                 "elements_path": [
                         {
                         "jobs_path": ".row.jobs-list .job-tile-wrapper",
@@ -66,11 +74,13 @@
                 ]
             },
             {
-                "name": "https://www.fossjobs.net",
-                "url": "https://www.fossjobs.net/jobs/?page=",
+                "name": "",
+                "url": "https://www.fossjobs.net/jobs-worldwide/?page=",
                 "pages_to_crawl": 1,
                 "start_point": 1,
                 "strategy": "main",
+                "follow_link": "yes",
+                "inner_link_tag": ".container .columns .column.is-9 .box.content .job-description",
                 "elements_path": [
                         {
                         "jobs_path": ".container .columns .column.is-9 .box.content .post",
@@ -87,6 +97,8 @@
                 "pages_to_crawl": 1,
                 "start_point": 1,
                 "strategy": "other",
+                "follow_link": "yes",
+                "inner_link_tag": ".lg\\:pb-12 .py-8.lg\\:py-12 .container .order-2.lg\\:order.lg\\:col-span-5 .prose.max-w-full.mt-6.prose-lg",
                 "elements_path": [
                         {
                         "jobs_path": ".grid.gap-y-4",
@@ -103,6 +115,8 @@
                 "pages_to_crawl": 1,
                 "start_point": 1,
                 "strategy": "other",
+                "follow_link": "yes",
+                "inner_link_tag": ".container.pt-4 .row.row-with-sidebar .col .card.mb-2 .card-body.loosen .single_job_listing .job_description",
                 "elements_path": [
                         {
                         "jobs_path": ".card.bg-light.mb-3.rounded-0 .card-body .card.bg-white.m-0 .card-body.p-0",
