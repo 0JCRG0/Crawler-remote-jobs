@@ -17,6 +17,8 @@ from utils.handy import *
 from sql.clean_loc import clean_location_rows
 from requests.exceptions import RequestException
 
+#TODO: REFACTOR - MIMICKING BS4 or RSS READ
+
 """ LOAD THE ENVIRONMENT VARIABLES """
 
 load_dotenv()
