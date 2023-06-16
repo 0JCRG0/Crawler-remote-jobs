@@ -67,7 +67,7 @@ def bs4_template(pipeline):
         print("\n", "Incorrect argument! Use 'MAIN', 'TEST' or 'FREELANCE' to run this script.", "\n")
 
 
-    def elements():
+    def bs4_crawler():
         total_links = []
         total_titles = []
         total_pubdates = []
@@ -136,6 +136,7 @@ def bs4_template(pipeline):
 
                                 """ Access each scraped link to get the description """
                                 if follow_link == "yes":
+                            
                                     link_res = requests.get(job_data["link"])
                                     if link_res.status_code == 200:
                                         print(f"""CONNECTION ESTABLISHED ON {job_data["link"]}""", "\n")
@@ -204,6 +205,47 @@ def bs4_template(pipeline):
                                 new_links = [name + i.get("href") if i else "NaN" for i in link_elements]
                                 total_links.extend(new_links)
 
+                                """ Access each scraped link to get the description """
+                                if follow_link == "yes":
+                                    for link in new_links:
+                                        link_res = requests.get(link)
+                                        if link_res.status_code == 200:
+                                            print(f"""CONNECTION ESTABLISHED ON {link}""", "\n")
+                                            link_soup = bs4.BeautifulSoup(link_res.text, 'html.parser')
+                                            description_tag = link_soup.select_one(inner_link_tag)
+                                            description_inner = description_tag.text if description_tag else "NaN"
+                                            total_descriptions.append(description_inner)
+
+                                        elif link_res.status_code == 403:
+                                            print(f"""CONNECTION PROHIBITED WITH BS4 ON {link}. STATUS CODE: "{link_res.status_code}". TRYING WITH SELENIUM""", "\n")
+                                            driver.get(link)
+                                            description_tag = driver.find_element(By.CSS_SELECTOR, inner_link_tag)
+                                            description_inner = description_tag.get_attribute("innerHTML") if description_tag else "NaN"
+                                            total_descriptions.append(description_inner)
+                                        else:
+                                            print(f"""CONNECTION FAILED ON {link}. STATUS CODE: "{link_res.status_code}". Getting the description from initial scraped website.""", "\n")
+                                            # Get the descriptions & append it to its list
+                                            description_elements = container.select(elements_path["description_path"])
+                                            new_descriptions = [i.get_text(strip=True) if i else "NaN" for i in description_elements]
+                                            total_descriptions.extend(new_descriptions)
+                                elif follow_link == "sel":
+                                    print("Using Selenium to obtain descriptions")
+                                    for link in new_links:
+                                        try:
+                                            #print("Using Selenium to obtain descriptions")
+                                            driver.get(link)
+                                            description_tag = driver.find_element(By.CSS_SELECTOR, inner_link_tag)
+                                            description_inner = description_tag.get_attribute("innerHTML") if description_tag else "NaN"
+                                            total_descriptions.append(description_inner)
+                                        except Exception as e:
+                                            print(e, "Skipping...", "\n")
+                                            continue
+                                else:
+                                    # Get the descriptions & append it to its list
+                                    description_elements = container.select(elements_path["description_path"])
+                                    new_descriptions = [i.get_text(strip=True) if i else "NaN" for i in description_elements]
+                                    total_descriptions.extend(new_descriptions)
+
                                 # PUBDATES
                                 today = date.today()
                                 total_pubdates.extend([today] * len(link_elements))
@@ -212,11 +254,6 @@ def bs4_template(pipeline):
                                 location_elements = container.select(elements_path["location_path"])
                                 new_locations = [i.get_text(strip=True) if i else "NaN" for i in location_elements]
                                 total_locations.extend(new_locations)
-
-                                # Descriptions
-                                description_elements = container.select(elements_path["description_path"])
-                                new_descriptions = [i.get_text(strip=True) if i else "NaN" for i in description_elements]
-                                total_descriptions.extend(new_descriptions)
 
                                 #Timestamps
                                 timestamp = datetime.now()
@@ -234,10 +271,13 @@ def bs4_template(pipeline):
                             logging.error(f"Unexpected error. Skipping URL {url}. CHECK!")
                             continue
         return rows
-    data = elements()
+    data = bs4_crawler()
 
     #-> DF
     df = pd.DataFrame(data) # type: ignore
+    """data_dic = dict(data) # type: ignore
+    df = pd.DataFrame.from_dict(data_dic, orient='index')
+    df = df.transpose()"""
 
     # count the number of duplicate rows
     num_duplicates = df.duplicated().sum()
