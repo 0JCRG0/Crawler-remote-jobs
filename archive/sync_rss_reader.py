@@ -12,6 +12,8 @@ from datetime import date, datetime
 from dotenv import load_dotenv
 from sql.clean_loc import clean_location_rows
 from utils.handy import *
+import asyncio
+import aiohttp
 
 """ LOAD THE ENVIRONMENT VARIABLES """
 
