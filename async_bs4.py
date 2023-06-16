@@ -281,6 +281,15 @@ async def bs4_template(pipeline):
 		for result in results:
 			for key in combined_data:
 				combined_data[key].extend(result[key])
+		
+		print("Lengths of lists before creating DataFrame:")
+		print("Titles:", len(combined_data["title"]))
+		print("Links:", len(combined_data["link"]))
+		print("Descriptions:", len(combined_data["description"]))
+		print("Pubdates:", len(combined_data["pubdate"]))
+		print("Locations:", len(combined_data["location"]))
+		print("Timestamps:", len(combined_data["timestamp"]))
+
 		clean_postgre_bs4(df=pd.DataFrame(combined_data), S=SAVE_PATH, Q=POSTGRESQL)
 
 	async with aiohttp.ClientSession() as session:
