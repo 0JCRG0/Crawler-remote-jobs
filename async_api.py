@@ -139,7 +139,7 @@ async def api_template(pipeline):
 													job_data["description"] = 'NaN'
 											else:
 												print(f"""CONNECTION FAILED ON {job_data["link"]}. STATUS CODE: "{link_res.status}". Getting the description from API.""", "\n")
-												job_data["description"]= job[elements_path["description_tag"]] if elements_path["description_tag"] else "NaN"
+												job_data["description"] = job.get(elements_path["description_tag"], "NaN")
 									else:
 										job_data["description"] = job.get(elements_path["description_tag"], "NaN")
 
