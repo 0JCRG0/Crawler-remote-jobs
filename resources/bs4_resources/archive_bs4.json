@@ -8,7 +8,7 @@
                 "start_point": 1,
                 "strategy": "main",
                 "follow_link": "yes",
-                "inner_link_tag": "yes",
+                "inner_link_tag": ".flushed .container-small.job-details-page-container .main-content-container .margin-t-16.job-details-description",
                 "elements_path": [
                         {
                         "jobs_path": ".job-list-item",
