@@ -730,3 +730,12 @@ Finished bs4 crawlers. Results below ⬇︎
 2023-06-16 11:43:56,244 INFO: 
 Finished bs4 crawlers. Results below ⬇︎
 
+2023-06-16 11:55:11,425 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-06-16 12:02:25,821 ERROR: 
+An error occurred: Server disconnected. Skipping URL https://www.fossjobs.net/jobs-worldwide/?page=1
+
+2023-06-16 12:02:48,555 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
