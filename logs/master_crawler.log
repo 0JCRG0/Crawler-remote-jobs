@@ -739,3 +739,342 @@ An error occurred: Server disconnected. Skipping URL https://www.fossjobs.net/jo
 2023-06-16 12:02:48,555 INFO: 
 Finished bs4 crawlers. Results below ⬇︎
 
+2023-06-16 12:13:25,498 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-06-16 12:24:14,382 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-06-16 12:40:58,515 INFO: 
+Starting Chromium download.
+
+2023-06-16 12:41:31,628 INFO: 
+Beginning extraction
+
+2023-06-16 12:41:33,395 INFO: 
+Chromium extracted to: /Users/juanreyesgarcia/Library/Application Support/pyppeteer/local-chromium/588429
+
+2023-06-16 12:41:54,348 INFO: 
+Browser listening on: ws://127.0.0.1:60923/devtools/browser/303d970a-2165-4a36-8fcd-3b612e5744a9
+
+2023-06-16 12:41:58,097 INFO: 
+terminate chrome process...
+
+2023-06-16 12:41:58,426 INFO: 
+Browser listening on: ws://127.0.0.1:61625/devtools/browser/a108e599-ac1e-45e8-8d58-f21607747d70
+
+2023-06-16 12:42:00,510 INFO: 
+terminate chrome process...
+
+2023-06-16 12:42:00,759 INFO: 
+Browser listening on: ws://127.0.0.1:61650/devtools/browser/d5ec7c0a-5537-465f-95de-1f84aeb7f495
+
+2023-06-16 12:42:03,084 INFO: 
+terminate chrome process...
+
+2023-06-16 12:42:03,337 INFO: 
+Browser listening on: ws://127.0.0.1:61683/devtools/browser/2dd9d1d8-0b30-4632-8eed-e9faf3099647
+
+2023-06-16 12:42:05,421 INFO: 
+terminate chrome process...
+
+2023-06-16 12:42:05,677 INFO: 
+Browser listening on: ws://127.0.0.1:61708/devtools/browser/b8f9f84d-cfb9-4748-853e-dfddb8c92d42
+
+2023-06-16 12:42:07,632 INFO: 
+terminate chrome process...
+
+2023-06-16 12:42:07,891 INFO: 
+Browser listening on: ws://127.0.0.1:61733/devtools/browser/aa04a0ce-1010-4cca-8233-ac7610701fe6
+
+2023-06-16 12:42:09,907 INFO: 
+terminate chrome process...
+
+2023-06-16 12:42:10,262 INFO: 
+Browser listening on: ws://127.0.0.1:61766/devtools/browser/62b49ba7-dba3-4ac9-9c75-5eb7c0ad717f
+
+2023-06-16 12:42:12,288 INFO: 
+terminate chrome process...
+
+2023-06-16 12:42:12,547 INFO: 
+Browser listening on: ws://127.0.0.1:61792/devtools/browser/e4a26623-095d-4c4c-a3b0-5d9e79ada102
+
+2023-06-16 12:42:14,523 INFO: 
+terminate chrome process...
+
+2023-06-16 12:42:14,777 INFO: 
+Browser listening on: ws://127.0.0.1:61817/devtools/browser/bf93a5e9-8194-415e-91d4-36dd22946d52
+
+2023-06-16 12:42:16,472 INFO: 
+terminate chrome process...
+
+2023-06-16 12:42:16,737 INFO: 
+Browser listening on: ws://127.0.0.1:61841/devtools/browser/772546d7-c678-4916-8eaf-0e341157a4e6
+
+2023-06-16 12:42:19,027 INFO: 
+terminate chrome process...
+
+2023-06-16 12:42:19,285 INFO: 
+Browser listening on: ws://127.0.0.1:61874/devtools/browser/bddf3e94-6101-431b-8183-027fb740758f
+
+2023-06-16 12:42:20,868 INFO: 
+terminate chrome process...
+
+2023-06-16 12:42:21,128 INFO: 
+Browser listening on: ws://127.0.0.1:61895/devtools/browser/364f5e31-1d92-400b-a632-293d9368cdb0
+
+2023-06-16 12:42:23,166 INFO: 
+terminate chrome process...
+
+2023-06-16 12:42:23,434 INFO: 
+Browser listening on: ws://127.0.0.1:61924/devtools/browser/28e96eb0-fc92-4238-bc46-4da32ec436bf
+
+2023-06-16 12:42:25,144 INFO: 
+terminate chrome process...
+
+2023-06-16 12:42:25,399 INFO: 
+Browser listening on: ws://127.0.0.1:61949/devtools/browser/e107a6be-45c6-424c-94a1-28ea520805f8
+
+2023-06-16 12:42:27,126 INFO: 
+terminate chrome process...
+
+2023-06-16 12:42:27,385 INFO: 
+Browser listening on: ws://127.0.0.1:61974/devtools/browser/999c3514-0887-4d56-8c4d-8636b7702fb4
+
+2023-06-16 12:42:29,378 INFO: 
+terminate chrome process...
+
+2023-06-16 12:42:29,637 INFO: 
+Browser listening on: ws://127.0.0.1:61999/devtools/browser/9b326107-4bc0-4700-9733-37cdd566b622
+
+2023-06-16 12:42:31,634 INFO: 
+terminate chrome process...
+
+2023-06-16 12:42:31,889 INFO: 
+Browser listening on: ws://127.0.0.1:62025/devtools/browser/65eb0a25-876b-497f-b40b-e763bc7b4861
+
+2023-06-16 12:42:33,954 INFO: 
+terminate chrome process...
+
+2023-06-16 12:42:34,304 INFO: 
+Browser listening on: ws://127.0.0.1:62054/devtools/browser/e21c2ab6-ad17-4d20-9120-fa43fa701e16
+
+2023-06-16 12:42:36,567 INFO: 
+terminate chrome process...
+
+2023-06-16 12:42:36,826 INFO: 
+Browser listening on: ws://127.0.0.1:62084/devtools/browser/1a71f1b9-0693-42b7-bf6f-9e8c0918be46
+
+2023-06-16 12:42:38,520 INFO: 
+terminate chrome process...
+
+2023-06-16 12:42:38,775 INFO: 
+Browser listening on: ws://127.0.0.1:62109/devtools/browser/cca8e631-fce6-4a55-9dba-fb3f77f49942
+
+2023-06-16 12:42:40,871 INFO: 
+terminate chrome process...
+
+2023-06-16 12:42:41,221 INFO: 
+Browser listening on: ws://127.0.0.1:62134/devtools/browser/97a77424-13e4-4804-96b8-2f7b95546885
+
+2023-06-16 12:42:43,121 INFO: 
+terminate chrome process...
+
+2023-06-16 12:42:43,376 INFO: 
+Browser listening on: ws://127.0.0.1:62164/devtools/browser/fa52eddd-35d0-4559-9d56-03007ad96c24
+
+2023-06-16 12:42:45,689 INFO: 
+terminate chrome process...
+
+2023-06-16 12:42:45,950 INFO: 
+Browser listening on: ws://127.0.0.1:62193/devtools/browser/aea8b0f3-5f65-4acd-a279-ff0b09018649
+
+2023-06-16 12:42:48,132 INFO: 
+terminate chrome process...
+
+2023-06-16 12:42:48,400 INFO: 
+Browser listening on: ws://127.0.0.1:62222/devtools/browser/804b416d-5ce6-498c-b498-280663765875
+
+2023-06-16 12:42:50,505 INFO: 
+terminate chrome process...
+
+2023-06-16 12:42:50,870 INFO: 
+Browser listening on: ws://127.0.0.1:62251/devtools/browser/c1615f60-ebcf-4959-ad5e-586754f3513b
+
+2023-06-16 12:42:52,405 INFO: 
+terminate chrome process...
+
+2023-06-16 12:42:52,658 INFO: 
+Browser listening on: ws://127.0.0.1:62276/devtools/browser/9a3090e6-5465-4836-a994-11efb28cfbf0
+
+2023-06-16 12:42:54,350 INFO: 
+terminate chrome process...
+
+2023-06-16 12:42:54,603 INFO: 
+Browser listening on: ws://127.0.0.1:62300/devtools/browser/2d009f88-95a1-44bc-8de0-1fd294b5e887
+
+2023-06-16 12:42:56,685 INFO: 
+terminate chrome process...
+
+2023-06-16 12:42:56,946 INFO: 
+Browser listening on: ws://127.0.0.1:62325/devtools/browser/93c9a0c4-938f-49a4-8873-96691525b55d
+
+2023-06-16 12:42:58,768 INFO: 
+terminate chrome process...
+
+2023-06-16 12:42:59,033 INFO: 
+Browser listening on: ws://127.0.0.1:62350/devtools/browser/e6aa9dd1-0904-4f13-b62d-073c55262d08
+
+2023-06-16 12:43:09,498 INFO: 
+Browser listening on: ws://127.0.0.1:62466/devtools/browser/77b97ac6-5d13-474f-a5f1-82b1c8d1ec86
+
+2023-06-16 12:43:11,982 INFO: 
+terminate chrome process...
+
+2023-06-16 12:43:12,341 INFO: 
+Browser listening on: ws://127.0.0.1:62510/devtools/browser/271cad5f-73ec-4e9f-abd3-f1c1f06914bc
+
+2023-06-16 12:43:14,492 INFO: 
+terminate chrome process...
+
+2023-06-16 12:43:14,848 INFO: 
+Browser listening on: ws://127.0.0.1:62544/devtools/browser/432adcc8-2fac-4edf-a8e8-05e4a50a11d1
+
+2023-06-16 12:43:17,367 INFO: 
+terminate chrome process...
+
+2023-06-16 12:43:18,065 INFO: 
+Browser listening on: ws://127.0.0.1:62574/devtools/browser/fcae4d0c-7a74-41ea-926b-07e370073d40
+
+2023-06-16 12:43:20,203 INFO: 
+terminate chrome process...
+
+2023-06-16 12:43:20,574 INFO: 
+Browser listening on: ws://127.0.0.1:62607/devtools/browser/a4945baf-a9af-43ea-af70-e6acf4325181
+
+2023-06-16 12:43:22,654 INFO: 
+terminate chrome process...
+
+2023-06-16 12:43:23,025 INFO: 
+Browser listening on: ws://127.0.0.1:62641/devtools/browser/8d2caa2f-9f0e-4e8a-8c58-dd3caef2d13a
+
+2023-06-16 12:43:24,898 INFO: 
+terminate chrome process...
+
+2023-06-16 12:43:25,253 INFO: 
+Browser listening on: ws://127.0.0.1:62667/devtools/browser/39e04a1d-d649-4aa9-a8fd-ab62f694030d
+
+2023-06-16 12:43:27,029 INFO: 
+terminate chrome process...
+
+2023-06-16 12:43:27,376 INFO: 
+Browser listening on: ws://127.0.0.1:62693/devtools/browser/06bff2a6-b7d3-442e-b8c3-b990042dd81a
+
+2023-06-16 12:43:29,753 INFO: 
+terminate chrome process...
+
+2023-06-16 12:43:30,112 INFO: 
+Browser listening on: ws://127.0.0.1:62727/devtools/browser/ec39dd01-d0e3-4747-919f-488a0996d175
+
+2023-06-16 12:43:31,952 INFO: 
+terminate chrome process...
+
+2023-06-16 12:43:32,303 INFO: 
+Browser listening on: ws://127.0.0.1:62753/devtools/browser/b3271a79-8769-4030-a72c-4640b77680a1
+
+2023-06-16 12:43:34,165 INFO: 
+terminate chrome process...
+
+2023-06-16 12:43:34,517 INFO: 
+Browser listening on: ws://127.0.0.1:62778/devtools/browser/42baf7a3-fac2-40a7-977d-d1d7031d54cf
+
+2023-06-16 12:43:36,314 INFO: 
+terminate chrome process...
+
+2023-06-16 12:43:36,670 INFO: 
+Browser listening on: ws://127.0.0.1:62804/devtools/browser/e861be9d-1933-4379-8641-a8471fa55165
+
+2023-06-16 12:43:38,790 INFO: 
+terminate chrome process...
+
+2023-06-16 12:43:39,152 INFO: 
+Browser listening on: ws://127.0.0.1:62840/devtools/browser/fb585f19-6532-4a2a-bb7f-99f8b2c0bed0
+
+2023-06-16 12:43:40,967 INFO: 
+terminate chrome process...
+
+2023-06-16 12:43:41,322 INFO: 
+Browser listening on: ws://127.0.0.1:62866/devtools/browser/422d098d-6a14-4071-aafa-330931592631
+
+2023-06-16 12:43:43,154 INFO: 
+terminate chrome process...
+
+2023-06-16 12:43:43,509 INFO: 
+Browser listening on: ws://127.0.0.1:62893/devtools/browser/d2b5fa77-68f6-4ea3-aaa2-b08054617a4f
+
+2023-06-16 12:43:45,622 INFO: 
+terminate chrome process...
+
+2023-06-16 12:43:45,975 INFO: 
+Browser listening on: ws://127.0.0.1:62925/devtools/browser/c9691c40-bb9e-4525-953a-484401304bda
+
+2023-06-16 12:43:48,307 INFO: 
+terminate chrome process...
+
+2023-06-16 12:43:48,663 INFO: 
+Browser listening on: ws://127.0.0.1:62955/devtools/browser/d7104e92-7c4d-4a9c-ab8d-611ccf61b529
+
+2023-06-16 12:43:51,019 INFO: 
+terminate chrome process...
+
+2023-06-16 12:43:51,376 INFO: 
+Browser listening on: ws://127.0.0.1:62990/devtools/browser/7da6f9b6-4387-47ab-a529-a4fe3a22f645
+
+2023-06-16 12:52:02,382 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-16 12:53:26,436 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-16 12:53:27,522 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1970
+Total number of either unique jobs or jobs with updated location: 409
+Current total count of jobs in PostgreSQL: 2090
+
+2023-06-16 12:54:43,002 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-16 12:54:43,719 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 2090
+Total number of either unique jobs or jobs with updated location: 141
+Current total count of jobs in PostgreSQL: 2155
+
+2023-06-16 14:12:57,092 ERROR: 
+Encountered an unexpected error with https://remotive.com/api/remote-jobs?limit=50. CHECK.
+
+2023-06-16 14:12:57,530 ERROR: 
+Encountered a request error: 0, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url=URL('https://api.echojobs.io/v1/search?locations=Remote&page=1&limit=300&sort_by=newest'). Moving to the next API...
+
+2023-06-16 14:12:57,618 ERROR: 
+Encountered an unexpected error with https://www.workingnomads.com/api/exposed_jobs/. CHECK.
+
+2023-06-16 14:12:57,681 ERROR: 
+Encountered an unexpected error with https://remoteok.com/api?api=1. CHECK.
+
+2023-06-16 14:13:36,400 ERROR: 
+Encountered an unexpected error with https://api-career-vault-sstxk.ondigitalocean.app/v1/jobs/remote?page=1&search=&category=Software&role=&hideOnlyUS=1. CHECK.
+
+2023-06-16 14:25:36,374 ERROR: 
+Encountered a request error: 0, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url=URL('https://api.echojobs.io/v1/search?locations=Remote&page=1&limit=300&sort_by=newest'). Moving to the next API...
+
+2023-06-16 14:30:51,462 ERROR: 
+Encountered a request error: 0, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url=URL('https://api.echojobs.io/v1/search?locations=Remote&page=1&limit=300&sort_by=newest'). Moving to the next API...
+
+2023-06-16 14:30:51,802 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-16 14:38:11,749 INFO: 
+Finished API crawlers. Results below ⬇︎
+
