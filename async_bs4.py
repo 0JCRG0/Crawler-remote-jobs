@@ -17,7 +17,7 @@ import os
 from sql.clean_loc import clean_location_rows
 from dotenv import load_dotenv
 from utils.handy import *
-from utils.moreutils import *
+from utils.bs4_utils import *
 import asyncio
 import aiohttp
 """ LOAD THE ENVIRONMENT VARIABLES """
@@ -174,7 +174,7 @@ async def bs4_template(pipeline):
 								location_element = job.select_one(elements_path["location_path"])
 								job_data["location"] = location_element.text if location_element else "NaN"
 
-								timestamp = datetime.now()
+								timestamp = datetime.now() # type: ignore
 								job_data["timestamp"] = timestamp
 
 										# add the data for the current job to the rows list
@@ -261,7 +261,7 @@ async def bs4_template(pipeline):
 						continue
 		return rows
 
-	async def idk(session):
+	async def gather_json_loads_bs4(session):
 		with open(JSON) as f:
 			data = json.load(f)
 			urls = data[0]["urls"]
@@ -284,10 +284,10 @@ async def bs4_template(pipeline):
 		clean_postgre_bs4(df=pd.DataFrame(combined_data), S=SAVE_PATH, Q=POSTGRESQL)
 
 	async with aiohttp.ClientSession() as session:
-		await idk(session)
+		await gather_json_loads_bs4(session)
 
 	elapsed_time = asyncio.get_event_loop().time() - start_time
-	print(f"BS4 crawlers finished! all in: {elapsed_time:.2f} seconds.", "\n")
+	print(f"Async BS4 crawlers finished! all in: {elapsed_time:.2f} seconds.", "\n")
 
 async def main():
 	await bs4_template("TEST")

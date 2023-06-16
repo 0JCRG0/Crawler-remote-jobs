@@ -2,7 +2,7 @@ import asyncio
 import logging
 from sql.clean_loc import clean_location_rows
 from utils.handy import *
-from utils.moreutils import *
+
 
 
 def clean_postgre_bs4(df, S, Q):
@@ -17,7 +17,7 @@ def clean_postgre_bs4(df, S, Q):
                     # print the number of duplicate rows
     print("Number of duplicate rows:", num_duplicates)
 
-                    # remove duplicate rows based on all columns
+# remove duplicate rows based on all columns
     df = df.drop_duplicates()
             
             #CLEANING AVOIDING DEPRECATION WARNING
