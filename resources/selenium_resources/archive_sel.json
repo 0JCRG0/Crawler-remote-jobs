@@ -1,0 +1,24 @@
+[
+    {
+        "urls": [
+            {
+                "name": "REMOTESOME",
+                "url": "https://app.remotesome.com/jobs/?page=",
+                "pages_to_crawl": 1,
+                "start_point": 1,
+                "strategy": "main",
+                "follow_link": "sel",
+                "inner_link_tag": ".u-ph.u-relative .container.u-pt40.u-pt16\\:sm .row.u-flex--center .col-8\\:md.u-pb40.u-pl0\\:xs.u-pr0\\:xs.u-pt24\\:xs .u-pt24\\:sm.u-pb24\\:sm.u-pl16\\:sm.u-pr16\\:sm.u-pt40.u-pl32.u-pr32.u-pb32 .u-pb40.c-content.u-color--gray-75",
+                "elements_path": [
+                    {
+                        "jobs_path": ".col-8\\:md article",
+                        "title_path": ".u-pl16 h4",
+                        "link_path": "a",
+                        "description_path": ".u-flex.u-pt8.u-flex--middle",
+                        "location_path": ".u-flex.u-relative"
+                    }
+                ]
+            }
+        ]
+    }
+]
