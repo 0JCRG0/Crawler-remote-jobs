@@ -20,7 +20,7 @@ def add_spaces(text):
 
 def clean_location_rows(rows):
     if not isinstance(rows, str):
-        print(f"{rows} is not a string! Returning unmodified")
+        #print(f"{rows} is not a string! Returning unmodified")
         return rows
         # Keep countries, country codes, states, remote words, and timezones
     # Remove double quotes
