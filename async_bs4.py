@@ -14,7 +14,7 @@ import json
 import logging
 import requests
 import os
-from sql.clean_loc import clean_location_rows
+from utils.FollowLink import async_follow_link, async_follow_link_container
 from dotenv import load_dotenv
 from utils.handy import *
 from utils.bs4_utils import *
@@ -126,33 +126,13 @@ async def bs4_template(pipeline):
 
 								link_element = job.select_one(elements_path["link_path"])
 								job_data["link"] = name + link_element["href"] if link_element else "NaN"
-										#print(job_data["link"])
 
 								""" Access each scraped link to get the description """
+								description_default = job.select_one(elements_path["description_path"])
+								default = description_default.text if description_default else "NaN"
 								if follow_link == "yes":
-									async with session.get(job_data["link"]) as link_res:
-										if link_res.status == 200:
-											print(f"""CONNECTION ESTABLISHED ON {job_data["link"]}""", "\n")
-											link_text = await link_res.text()
-											link_soup = bs4.BeautifulSoup(link_text, 'html.parser')
-											description_tag = link_soup.select_one(inner_link_tag)
-											if description_tag:
-												job_data["description"] = description_tag.text
-											else:
-												job_data["description"] = 'NaN'
-										elif link_res.status == 403:
-											print(f"""CONNECTION PROHIBITED WITH BS4 ON {job_data["link"]}. STATUS CODE: "{link_res.status}". TRYING WITH SELENIUM""", "\n")
-											driver.get(job_data["link"])
-											description_tag = driver.find_element(By.CSS_SELECTOR, inner_link_tag)
-											if description_tag:
-												job_data["description"] = description_tag.get_attribute("innerHTML")
-											else:
-												job_data["description"] = 'NaN'
-										else:
-											print(f"""CONNECTION FAILED ON {job_data["link"]}. STATUS CODE: "{link_res.status}". Getting the description from initial scraped website.""", "\n")
-											# Get the descriptions & append it to its list
-											description_element = job.select_one(elements_path["description_path"])
-											job_data["description"]= description_element.text if description_element else "NaN"
+									job_data["description"] = ""
+									job_data["description"] = await async_follow_link(session=session, followed_link=job_data['link'], description_final=job_data["description"], inner_link_tag=inner_link_tag, default=default, driver=driver)
 								elif follow_link == "sel":
 									try:
 										print("Using Selenium to obtain descriptions")
@@ -160,12 +140,11 @@ async def bs4_template(pipeline):
 										description_tag = driver.find_element(By.CSS_SELECTOR, inner_link_tag)
 										job_data["description"] = description_tag.get_attribute("innerHTML") if description_tag else "NaN"
 									except Exception as e:
-										print(e, "Skipping...", "\n")
+										print(e, f"""Skipping...{job_data["link"]}. Strategy: {strategy}""", "\n")
 										continue
 								else:
 									# Get the descriptions & append it to its list
-									description_element = job.select_one(elements_path["description_path"])
-									job_data["description"]= description_element.text if description_element else "NaN"
+									job_data["description"]= default
 
 								#PUBDATE
 								today = date.today()
@@ -188,73 +167,59 @@ async def bs4_template(pipeline):
 							# Identify the container with all the jobs
 							container = soup.select_one(elements_path["jobs_path"])
 
-							if container:
-									# TITLES
-								title_elements = container.select(elements_path["title_path"])
-								new_titles = [i.get_text(strip=True) if i else "NaN" for i in title_elements]
-								total_titles.extend(new_titles)
+							try:
+								if container:
+										# TITLES
+									title_elements = container.select(elements_path["title_path"])
+									new_titles = [i.get_text(strip=True) if i else "NaN" for i in title_elements]
+									total_titles.extend(new_titles)
 
-									# LINKS
-								link_elements = container.select(elements_path["link_path"])
-								new_links = [name + i.get("href") if i else "NaN" for i in link_elements]
-								total_links.extend(new_links)
+										# LINKS
+									link_elements = container.select(elements_path["link_path"])
+									new_links = [name + i.get("href") if i else "NaN" for i in link_elements]
+									total_links.extend(new_links)
 
-								""" Access each scraped link to get the description """
-								if follow_link == "yes":
-									for link in new_links:
-										async with session.get(link) as link_res:
-											if link_res.status == 200:
-												print(f"""CONNECTION ESTABLISHED ON {link}""", "\n")
-												link_text = await link_res.text()
-												link_soup = bs4.BeautifulSoup(link_text, 'html.parser')
-												description_tag = link_soup.select_one(inner_link_tag)
-												description_inner = description_tag.text if description_tag else "NaN"
-												total_descriptions.append(description_inner)
-											elif link_res.status == 403:
-												print(f"""CONNECTION PROHIBITED WITH BS4 ON {link}. STATUS CODE: "{link_res.status}". TRYING WITH SELENIUM""", "\n")
+									""" Access each scraped link to get the description """
+									description_elements = container.select(elements_path["description_path"])
+									default = [i.get_text(strip=True) if i else "NaN" for i in description_elements]
+									if follow_link == "yes":
+										for link in new_links:
+											await async_follow_link_container(session, link, total_descriptions, inner_link_tag, default, driver)
+
+									elif follow_link == "sel":
+										print("Using Selenium to obtain descriptions")
+										for link in new_links:
+											try:
+												#print("Using Selenium to obtain descriptions")
 												driver.get(link)
 												description_tag = driver.find_element(By.CSS_SELECTOR, inner_link_tag)
 												description_inner = description_tag.get_attribute("innerHTML") if description_tag else "NaN"
 												total_descriptions.append(description_inner)
-											else:
-												print(f"""CONNECTION FAILED ON {link}. STATUS CODE: "{link_res.status}". Getting the description from initial scraped website.""", "\n")
-												# Get the descriptions & append it to its list
-												description_elements = container.select(elements_path["description_path"])
-												new_descriptions = [i.get_text(strip=True) if i else "NaN" for i in description_elements]
-												total_descriptions.extend(new_descriptions)
-								elif follow_link == "sel":
-									print("Using Selenium to obtain descriptions")
-									for link in new_links:
-										try:
-											#print("Using Selenium to obtain descriptions")
-											driver.get(link)
-											description_tag = driver.find_element(By.CSS_SELECTOR, inner_link_tag)
-											description_inner = description_tag.get_attribute("innerHTML") if description_tag else "NaN"
-											total_descriptions.append(description_inner)
-										except Exception as e:
-											print(e, "Skipping...", "\n")
-											continue
-								else:
-									# Get the descriptions & append it to its list
-									description_elements = container.select(elements_path["description_path"])
-									new_descriptions = [i.get_text(strip=True) if i else "NaN" for i in description_elements]
-									total_descriptions.extend(new_descriptions)
+											except Exception as e:
+												print(e, f"Skipping...{link}. Strategy: {strategy}", "\n")
+												continue
+									else:
+										total_descriptions.extend(default)
 
 									# PUBDATES
-								today = date.today()
-								total_pubdates.extend([today] * len(link_elements))
-								# LOCATIONS
-								location_elements = container.select(elements_path["location_path"])
-								new_locations = [i.get_text(strip=True) if i else "NaN" for i in location_elements]
-								total_locations.extend(new_locations)
+									today = date.today()
+									total_pubdates.extend([today] * len(link_elements))
+									
+									# LOCATIONS
+									location_elements = container.select(elements_path["location_path"])
+									new_locations = [i.get_text(strip=True) if i else "NaN" for i in location_elements]
+									total_locations.extend(new_locations)
 
-									#Timestamps
-								timestamp = datetime.now()
-								total_timestamps.extend([timestamp] * len(link_elements))
+										#Timestamps
+									timestamp = datetime.now()
+									total_timestamps.extend([timestamp] * len(link_elements))
 
-									# add the data
-								rows = {'title':total_titles, 'link':total_links, 'description': total_descriptions, 'pubdate': total_pubdates, 'location': total_locations, 'timestamp': total_timestamps}
-
+										# add the data
+									rows = {'title':total_titles, 'link':total_links, 'description': total_descriptions, 'pubdate': total_pubdates, 'location': total_locations, 'timestamp': total_timestamps}
+							except:
+								print(f"An error occurred: CONTAINER NOT FOUND.. Skipping URL {url}")
+								logging.error(f"An error occurred: CONTAINER NOT FOUND.. Skipping URL {url}")
+								continue
 					except aiohttp.ClientError as e:
 						print(f"An error occurred: {e}. Skipping URL {url}")
 						logging.error(f"An error occurred: {e}. Skipping URL {url}")
