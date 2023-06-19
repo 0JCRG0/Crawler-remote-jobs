@@ -15,8 +15,7 @@ from datetime import datetime
 from dotenv import load_dotenv
 from utils.handy import *
 from utils.api_utils import clean_postgre_api
-from sql.clean_loc import clean_location_rows
-from requests.exceptions import RequestException
+from utils.FollowLink import async_follow_link
 import asyncio
 import aiohttp
 
@@ -32,7 +31,7 @@ SAVE_PATH = os.environ.get('SAVE_PATH_API')
 
 
 async def api_template(pipeline):
-	print("\n", "REQUEST TO APIs HAS STARTED.")
+	print("\n", "ASYNC APIs HAS STARTED.")
 
 	#Start the timer
 	start_time = asyncio.get_event_loop().time()
@@ -102,7 +101,7 @@ async def api_template(pipeline):
 					if response.status != 200:
 						print(f"Received non-200 response ({response.status}) for API: {api}. Skipping...")
 						logging.error(f"Received non-200 response ({response.status}) for API: {api}. Skipping...")
-						
+						pass
 					else:
 						try:
 							response_text = await response.text()
@@ -119,27 +118,9 @@ async def api_template(pipeline):
 
 									""" IF IT NEEDS TO FOLLOW LINK OR NOT """
 									if follow_link == "yes":
-										async with session.get(job_data["link"]) as link_res:
-											if link_res.status == 200:
-												print(f"""CONNECTION ESTABLISHED ON {job_data["link"]}""", "\n")
-												link_text = await link_res.text()
-												link_soup = bs4.BeautifulSoup(link_text, 'html.parser')
-												description_tag = link_soup.select_one(inner_link_tag)
-												if description_tag:
-													job_data["description"] = description_tag.text
-												else:
-													job_data["description"] = 'NaN'
-											elif link_res.status == 403:
-												print(f"""CONNECTION PROHIBITED WITH BS4 ON {job_data["link"]}. STATUS CODE: "{link_res.status}". TRYING WITH SELENIUM""", "\n")
-												driver.get(job_data["link"])
-												description_tag = driver.find_element(By.CSS_SELECTOR, inner_link_tag)
-												if description_tag:
-													job_data["description"] = description_tag.get_attribute("innerHTML")
-												else:
-													job_data["description"] = 'NaN'
-											else:
-												print(f"""CONNECTION FAILED ON {job_data["link"]}. STATUS CODE: "{link_res.status}". Getting the description from API.""", "\n")
-												job_data["description"] = job.get(elements_path["description_tag"], "NaN")
+										default = job.get(elements_path["description_tag"], "NaN")
+										job_data["description"] = ""
+										job_data["description"] = await async_follow_link(session=session, followed_link=job_data['link'], description_final=job_data["description"], inner_link_tag=inner_link_tag, default=default, driver=driver)									
 									else:
 										job_data["description"] = job.get(elements_path["description_tag"], "NaN")
 
