@@ -1165,3 +1165,187 @@ KeyboardInterrupt
 2023-06-16 17:02:32,776 INFO: 
 Finished RSS Reader. Results below ⬇︎
 
+2023-06-16 17:20:02,712 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-16 17:55:23,442 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-06-16 18:00:49,322 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-06-16 22:33:15,076 WARNING: 
+Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x13eb09f90>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/2b1d6249-dae1-4765-8456-953febd42323/url
+
+2023-06-16 22:33:15,077 WARNING: 
+Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x13eb0ad10>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/2b1d6249-dae1-4765-8456-953febd42323/url
+
+2023-06-16 22:33:15,078 WARNING: 
+Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x13eb0ae60>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/2b1d6249-dae1-4765-8456-953febd42323/url
+
+2023-06-16 22:33:15,104 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-16 22:37:11,198 WARNING: 
+Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x13e4b6410>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/459869f8-05ee-45dc-a661-8e2f9cf7ce06/url
+
+2023-06-16 22:37:11,201 WARNING: 
+Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x13e4b42e0>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/459869f8-05ee-45dc-a661-8e2f9cf7ce06/url
+
+2023-06-16 22:37:11,201 WARNING: 
+Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x13e4b7af0>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/459869f8-05ee-45dc-a661-8e2f9cf7ce06/url
+
+2023-06-16 22:37:11,230 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-16 22:40:01,926 WARNING: 
+Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x11f263f70>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/f3a417eb-d526-401b-8e93-4ffcf9d48dc1/url
+
+2023-06-16 22:40:01,927 WARNING: 
+Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x11f262fe0>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/f3a417eb-d526-401b-8e93-4ffcf9d48dc1/url
+
+2023-06-16 22:40:01,928 WARNING: 
+Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x11f261690>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/f3a417eb-d526-401b-8e93-4ffcf9d48dc1/url
+
+2023-06-16 22:40:01,956 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-16 22:41:07,293 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-16 22:43:11,587 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-16 22:45:20,021 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-16 22:53:09,078 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-16 22:55:16,681 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-16 22:58:44,097 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-16 23:02:45,396 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-17 19:18:03,257 WARNING: 
+Connection pool is full, discarding connection: localhost. Connection pool size: 1
+
+2023-06-17 19:18:15,444 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-17 19:25:32,631 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 09:27:27,941 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 09:32:02,746 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 09:40:15,690 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 09:53:35,360 ERROR: 
+ELEMENT NOT FOUND: Message: The element with the reference 9f71f6d3-3c25-44ac-b2f7-e38d2bde2cd6 is stale; either its node document is not the active document, or it is no longer connected to the DOM
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+StaleElementReferenceError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:484:5
+element.getKnownElement@chrome://remote/content/marionette/element.sys.mjs:488:11
+deserializeJSON@chrome://remote/content/marionette/json.sys.mjs:233:33
+cloneObject@chrome://remote/content/marionette/json.sys.mjs:56:24
+deserializeJSON@chrome://remote/content/marionette/json.sys.mjs:244:16
+cloneObject@chrome://remote/content/marionette/json.sys.mjs:56:24
+deserializeJSON@chrome://remote/content/marionette/json.sys.mjs:244:16
+json.deserialize@chrome://remote/content/marionette/json.sys.mjs:248:10
+receiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:85:30
+
+
+2023-06-19 09:53:35,429 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 10:54:10,350 INFO: 
+Browser listening on: ws://127.0.0.1:50386/devtools/browser/23570fff-eeff-4a6a-97e1-4986bddf8f02
+
+2023-06-19 10:54:23,127 ERROR: 
+ELEMENT NOT FOUND: Execution context was destroyed, most likely because of a navigation.
+
+2023-06-19 10:54:23,133 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 11:05:07,661 ERROR: 
+ELEMENT NOT FOUND: Execution context was destroyed, most likely because of a navigation.
+
+2023-06-19 11:05:07,667 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 11:05:07,719 INFO: 
+terminate chrome process...
+
+2023-06-19 11:11:34,486 ERROR: 
+ELEMENT NOT FOUND: Execution context was destroyed, most likely because of a navigation.
+
+2023-06-19 11:11:34,494 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 11:11:34,534 INFO: 
+terminate chrome process...
+
+2023-06-19 11:18:23,726 ERROR: 
+ELEMENT NOT FOUND: Execution context was destroyed, most likely because of a navigation.
+
+2023-06-19 11:18:23,741 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 11:18:23,810 INFO: 
+terminate chrome process...
+
+2023-06-19 11:19:16,458 ERROR: 
+ELEMENT NOT FOUND: Execution context was destroyed, most likely because of a navigation.
+
+2023-06-19 11:19:16,472 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 11:19:16,506 INFO: 
+terminate chrome process...
+
+2023-06-19 11:24:29,857 ERROR: 
+ELEMENT NOT FOUND: Execution context was destroyed, most likely because of a navigation.
+
+2023-06-19 11:24:29,878 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 11:24:29,920 INFO: 
+terminate chrome process...
+
+2023-06-19 11:28:29,366 ERROR: 
+ELEMENT NOT FOUND: Execution context was destroyed, most likely because of a navigation.
+
+2023-06-19 11:28:29,373 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 11:28:29,403 INFO: 
+terminate chrome process...
+
+2023-06-19 11:31:07,017 ERROR: 
+ELEMENT NOT FOUND: Execution context was destroyed, most likely because of a navigation.
+
+2023-06-19 11:31:07,027 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 11:31:07,094 INFO: 
+terminate chrome process...
+
+2023-06-19 11:34:18,084 ERROR: 
+ELEMENT NOT FOUND: Execution context was destroyed, most likely because of a navigation.
+
+2023-06-19 11:34:18,092 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 11:34:18,130 INFO: 
+terminate chrome process...
+

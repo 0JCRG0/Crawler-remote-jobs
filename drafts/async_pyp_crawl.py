@@ -4,6 +4,8 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 from concurrent.futures import ThreadPoolExecutor
+import pyppeteer
+from pyppeteer import browser
 import pandas as pd
 import re
 import pretty_errors
@@ -15,7 +17,7 @@ import logging
 import os
 import asyncio
 import aiohttp
-from utils.FollowLink import async_follow_link_sel, async_follow_link_container_sel
+from utils.FollowLink import async_follow_link_pyp, async_follow_link_container_sel
 from dotenv import load_dotenv
 from utils.sel_utils import clean_postgre_sel
 from utils.handy import *
@@ -35,12 +37,15 @@ async def async_selenium_template(pipeline):
 	#start timer
 	start_time = timeit.default_timer()
 
+	browser = await pyppeteer.launch(headless=True)
+	page = await browser.newPage()
+
 	#Modify the options so it is headless - to disable just comment the next 2 lines and use the commented driver
-	options = webdriver.FirefoxOptions()
-	options.add_argument('-headless')
+	#options = webdriver.FirefoxOptions()
+	#options.add_argument('-headless')
 		
 	# Start the session
-	driver = webdriver.Firefox(options=options)
+	#driver = webdriver.Firefox(options=options)
 
 	"""
 	The following is specifying which JSON to load & to which table it will be sent
@@ -70,13 +75,11 @@ async def async_selenium_template(pipeline):
 	else:
 		print("\n", "Incorrect argument! Use 'MAIN', 'TEST' or 'FREELANCE' to run this script.", "\n")
 
-	async def fetch_sel(url, driver):
-		loop = asyncio.get_event_loop()
-		with ThreadPoolExecutor() as executor:
-			await loop.run_in_executor(executor, driver.get, url)
-		return driver.page_source
+	async def fetch_pyp(url, page):
+		await page.goto(url, waitUntil='networkidle0')
+		return await page.content()
 
-	async def async_sel_crawler(url_obj):
+	async def async_pyp_crawler(url_obj, browser):
 		total_links = []
 		total_titles = []
 		total_pubdates = []
@@ -106,40 +109,32 @@ async def async_selenium_template(pipeline):
 
 			url = url_prefix + str(i)
 			# get the url
+			page = await browser.newPage()
+			await fetch_pyp(url, page)
 			try:
-				await fetch_sel(url, driver)
 				print(f"Crawling {url} with {strategy} strategy")
 
 				""" IF LINKS ARE *NOT* IN THE SAME ELEMENT AS JOBS """
 				if strategy == "main":
-					jobs = driver.find_elements(By.CSS_SELECTOR, elements_path["jobs_path"])
+					jobs = await page.querySelectorAll(elements_path["jobs_path"])
 					for job in jobs:
 						job_data = {}
 
 						#TITLES
-						title_element = job.find_element(By.CSS_SELECTOR, elements_path["title_path"])
-						job_data["title"] = title_element.get_attribute("innerHTML") if title_element else "NaN"
+						title_element = await job.querySelector(elements_path["title_path"])
+						job_data["title"] = await page.evaluate('(element) => element ? element.innerHTML : "NaN"', title_element)
 
 						#LINKS
-						link_element = job.find_element(By.CSS_SELECTOR, elements_path["link_path"])
-						job_data["link"] = link_element.get_attribute("href") if link_element else "NaN"
+						link_element = await job.querySelector(elements_path["link_path"])
+						job_data["link"] = await page.evaluate('(element) => element ? element.href : "NaN"', link_element)
 
 						""" HOW TO FOLLOW THE SCRAPED LINKS, OR AT ALL."""
 
-						description_default = job.find_element(By.CSS_SELECTOR, elements_path["description_path"])
-						default =description_default.get_attribute("innerHTML") if description_default else "NaN"
+						description_default = await job.querySelector(elements_path["description_path"])
+						default = await page.evaluate('(element) => element ? element.innerHTML : "NaN"', description_default)
 						if follow_link == "yes":
 							job_data["description"] = ""
-							job_data["description"] = await async_follow_link_sel(followed_link=job_data["link"], description_final=job_data["description"], inner_link_tag=inner_link_tag, default=default, driver=driver)
-						elif follow_link == "sel":
-							try:
-								print("Using Selenium to obtain descriptions")
-								driver.get(job_data["link"])
-								description_tag = driver.find_element(By.CSS_SELECTOR, inner_link_tag)
-								job_data["description"] = description_tag.get_attribute("innerHTML") if description_tag else "NaN"
-							except Exception as e:
-								print(e, f"""Skipping...{job_data["link"]}. Strategy: {strategy}""", "\n")
-								continue
+							job_data["description"] = await async_follow_link_pyp(followed_link=job_data["link"], description_final=job_data["description"], inner_link_tag=inner_link_tag, default=default, page=page)
 						else:
 							# Get the descriptions & append it to its list
 							job_data["description"]= default
@@ -149,8 +144,8 @@ async def async_selenium_template(pipeline):
 						job_data["pubdate"] = today
 							
 						#LOCATIONS
-						location_element = job.find_element(By.CSS_SELECTOR, elements_path["location_path"])
-						job_data["location"]= location_element.get_attribute("innerHTML") if location_element else "NaN"
+						location_element = await job.querySelector(elements_path["location_path"])
+						job_data["location"]= await page.evaluate('(element) => element ? element.innerHTML : "NaN"', location_element)
 							
 						#Timestamps
 						timestamp = datetime.now()
@@ -166,40 +161,30 @@ async def async_selenium_template(pipeline):
 						
 				elif strategy == "container":
 					#Identify the container with all the jobs
-					container = driver.find_element(By.CSS_SELECTOR, elements_path["jobs_path"])
+					container = await page.querySelector(elements_path["jobs_path"])
 					try:
 						if container:
+							"""
+							
 							#TITLES
-							title_elements = container.find_elements(By.CSS_SELECTOR, elements_path["title_path"])
+							title_elements = await container.querySelectorAll(elements_path["title_path"])
 							new_titles = [i.get_attribute("innerHTML") if i else "NaN" for i in title_elements]
 							total_titles.extend(new_titles)
 
 							#LINKS
-							link_elements = container.find_elements(By.CSS_SELECTOR, elements_path["link_path"])
+							link_elements = await container.querySelectorAll(elements_path["link_path"])
 							new_links = [i.get_attribute("href") if i else "NaN" for i in link_elements]
 							total_links.extend(new_links)
 							
 
-							""" HOW TO FOLLOW THE SCRAPED LINKS, OR AT ALL.  """
+							# HOW TO FOLLOW THE SCRAPED LINKS, OR AT ALL.
 
-							description_elements = container.find_elements(By.CSS_SELECTOR, elements_path["description_path"])
+							description_elements = await container.querySelectorAll(elements_path["description_path"])
 							default = [i.get_attribute("innerHTML") if i else "NaN" for i in description_elements]
 							#total_descriptions.extend(description_default)
 							if follow_link == "yes":
 								for link in new_links:
-									await async_follow_link_container_sel(followed_link=link, total_descriptions=total_descriptions, inner_link_tag=inner_link_tag, default=default, driver=driver, fetch=fetch_sel)
-							elif follow_link == "sel":
-								print("Using Selenium to obtain descriptions")
-								for link in new_links:
-									try:
-										#print("Using Selenium to obtain descriptions")
-										driver.get(link)
-										description_tag = driver.find_element(By.CSS_SELECTOR, inner_link_tag)
-										description_inner = description_tag.get_attribute("innerHTML") if description_tag else "NaN"
-										total_descriptions.append(description_inner)
-									except Exception as e:
-										print(e, f"Skipping...{link}. Strategy: {strategy}", "\n")
-										pass
+									await async_follow_link_container_sel(followed_link=link, total_descriptions=total_descriptions, inner_link_tag=inner_link_tag, default=default, page=page, fetch=fetch_sel)
 							else:
 								total_descriptions.extend(default)
 							
@@ -208,7 +193,7 @@ async def async_selenium_template(pipeline):
 							total_pubdates.extend([today] * len(link_elements))
 									
 							#LOCATIONS
-							location_elements = container.find_elements(By.CSS_SELECTOR, elements_path["location_path"])
+							location_elements = await container.querySelectorAll(elements_path["location_path"])
 							new_locations = [i.get_attribute("innerHTML") if i else "NaN" for i in location_elements]
 							total_locations.extend(new_locations)
 
@@ -216,7 +201,7 @@ async def async_selenium_template(pipeline):
 							timestamp = datetime.now()
 							total_timestamps.extend([timestamp] * len(link_elements))
 
-							rows = {'title':total_titles, 'link':total_links, 'description': total_descriptions, 'pubdate': total_pubdates, 'location': total_locations, 'timestamp': total_timestamps}
+							rows = {'title':total_titles, 'link':total_links, 'description': total_descriptions, 'pubdate': total_pubdates, 'location': total_locations, 'timestamp': total_timestamps}"""
 					except:
 						print(f"An error occurred: CONTAINER NOT FOUND. Skipping URL {url}")
 						logging.error(f"An error occurred: CONTAINER NOT FOUND. Skipping URL {url}")
@@ -225,15 +210,17 @@ async def async_selenium_template(pipeline):
 				# Handle any other exceptions
 				print("ELEMENT NOT FOUND:", str(e))
 				logging.error(f"ELEMENT NOT FOUND: {str(e)}")
+			finally:
+				await page.close()
 		return rows 
 
-	#driver.quit()
+	#page.quit()
 
-	async def gather_tasks_selenium():
+	async def gather_tasks_selenium(browser, page):
 		with open(JSON) as f:
 			data = json.load(f)
 			urls = data[0]["urls"]
-			tasks = [async_sel_crawler(url_obj) for url_obj in urls]
+			tasks = [async_pyp_crawler(url_obj=url_obj, browser=browser) for url_obj in urls]
 			results = await asyncio.gather(*tasks)
 			# Combine the results
 			combined_data = {
@@ -259,7 +246,7 @@ async def async_selenium_template(pipeline):
 			return combined_data
 	
 	async def insert_postgre():
-		data = await gather_tasks_selenium()
+		data = await gather_tasks_selenium(browser, page)
 		data_dic = dict(data)
 		df = pd.DataFrame.from_dict(data_dic, orient='index')
 		df = df.transpose()
@@ -273,6 +260,7 @@ async def async_selenium_template(pipeline):
 		clean_postgre_sel(df=df, csv_path=SAVE_PATH, db=POSTGRESQL)
 
 	await insert_postgre()
+	await browser.close()
 
 	elapsed_time = asyncio.get_event_loop().time() - start_time
 	print(f"Async BS4 crawlers finished! all in: {elapsed_time:.2f} seconds.", "\n")
