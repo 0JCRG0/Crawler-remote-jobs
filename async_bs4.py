@@ -28,7 +28,7 @@ PROD = os.environ.get('JSON_PROD_BS4')
 TEST = os.environ.get('JSON_TEST_BS4')
 SAVE_PATH = os.environ.get('SAVE_PATH_BS4')
 
-async def bs4_template(pipeline):
+async def async_bs4_template(pipeline):
 	print("\n", "BS4 crawlers deployed!.")
 
 	#start timer
@@ -264,7 +264,7 @@ async def bs4_template(pipeline):
 	print(f"Async BS4 crawlers finished! all in: {elapsed_time:.2f} seconds.", "\n")
 
 async def main():
-	await bs4_template("TEST")
+	await async_bs4_template("TEST")
 
 if __name__ == "__main__":
 	asyncio.run(main())

@@ -30,7 +30,7 @@ TEST = os.environ.get('JSON_TEST_API')
 SAVE_PATH = os.environ.get('SAVE_PATH_API')
 
 
-async def api_template(pipeline):
+async def async_api_template(pipeline):
 	print("\n", "ASYNC APIs HAS STARTED.")
 
 	#Start the timer
@@ -187,7 +187,7 @@ async def api_template(pipeline):
 	elapsed_time = asyncio.get_event_loop().time() - start_time
 	print(f"Async APIs finished! all in: {elapsed_time:.2f} seconds.", "\n")
 async def main():
-	await api_template("TEST")
+	await async_api_template("TEST")
 
 if __name__ == "__main__":
 	asyncio.run(main())
