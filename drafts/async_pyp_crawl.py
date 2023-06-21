@@ -17,7 +17,7 @@ import logging
 import os
 import asyncio
 import aiohttp
-from utils.FollowLink import async_follow_link_pyp, async_follow_link_container_sel
+from utils.FollowLink import async_follow_link_container_sel
 from dotenv import load_dotenv
 from utils.sel_utils import clean_postgre_sel
 from utils.handy import *
@@ -134,7 +134,7 @@ async def async_selenium_template(pipeline):
 						default = await page.evaluate('(element) => element ? element.innerHTML : "NaN"', description_default)
 						if follow_link == "yes":
 							job_data["description"] = ""
-							job_data["description"] = await async_follow_link_pyp(followed_link=job_data["link"], description_final=job_data["description"], inner_link_tag=inner_link_tag, default=default, page=page)
+							job_data["description"] = await async_follow_link(followed_link=job_data["link"], description_final=job_data["description"], inner_link_tag=inner_link_tag, default=default, page=page)
 						else:
 							# Get the descriptions & append it to its list
 							job_data["description"]= default
