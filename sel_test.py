@@ -44,8 +44,8 @@ def sel_test():
 		
 	# Start the session
 	driver = webdriver.Firefox(options=options)
-	url = "https://cryptojobslist.com/marketing/community-manager-korea-manta-network-powered-by-p0x-labs-any"
-	
+	#url = "https://cryptojobslist.com/marketing/community-manager-korea-manta-network-powered-by-p0x-labs-any"
+	url = "https://www.remoteimpact.io/jobs/site-reliability-engineer-traffic-wikimedia-s8am19"
 	#driver.get(url)
 	driver.get(url)
 	wait = WebDriverWait(driver, 10)

@@ -3,6 +3,8 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from concurrent.futures import ThreadPoolExecutor
 import pandas as pd
 import re
@@ -15,7 +17,7 @@ import logging
 import os
 import asyncio
 import aiohttp
-from utils.FollowLink import async_follow_link_sel, async_follow_link_container_sel
+from utils.FollowLink import *
 from dotenv import load_dotenv
 from utils.sel_utils import clean_postgre_sel
 from utils.handy import *
@@ -76,7 +78,11 @@ async def async_selenium_template(pipeline):
 			await loop.run_in_executor(executor, driver.get, url)
 		return driver.page_source
 
-	async def async_sel_crawler(url_obj):
+	async def async_sel_crawler(url_obj, options):
+		#NEW DRIVER EACH ITERATION FOR SITE
+		driver = webdriver.Firefox(options=options)
+
+		#INITIALISE THE LISTS
 		total_links = []
 		total_titles = []
 		total_pubdates = []
@@ -102,6 +108,10 @@ async def async_selenium_template(pipeline):
 		follow_link = url_obj['follow_link']
 		inner_link_tag = url_obj['inner_link_tag']
 
+		""" SET THE WAITING STRATEGIES """
+		# Add these lines before the for loop
+		driver.implicitly_wait(1)
+		wait = WebDriverWait(driver, 10)
 		for i in range(start_point, pages + 1):
 
 			url = url_prefix + str(i)
@@ -112,63 +122,62 @@ async def async_selenium_template(pipeline):
 
 				""" IF LINKS ARE *NOT* IN THE SAME ELEMENT AS JOBS """
 				if strategy == "main":
-					jobs = driver.find_elements(By.CSS_SELECTOR, elements_path["jobs_path"])
-					for job in jobs:
-						job_data = {}
+					jobs = wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR,  elements_path["jobs_path"])))
+					if jobs:
+						try:
+							for job in jobs:
+								job_data = {}
 
-						#TITLES
-						title_element = job.find_element(By.CSS_SELECTOR, elements_path["title_path"])
-						job_data["title"] = title_element.get_attribute("innerHTML") if title_element else "NaN"
+								#TITLES
+								title_element = job.find_element(By.CSS_SELECTOR, elements_path["title_path"])
+								job_data["title"] = title_element.get_attribute("innerHTML") if title_element else "NaN"
 
-						#LINKS
-						link_element = job.find_element(By.CSS_SELECTOR, elements_path["link_path"])
-						job_data["link"] = link_element.get_attribute("href") if link_element else "NaN"
+								#LINKS
+								link_element = job.find_element(By.CSS_SELECTOR, elements_path["link_path"])
+								job_data["link"] = link_element.get_attribute("href") if link_element else "NaN"
 
-						""" HOW TO FOLLOW THE SCRAPED LINKS, OR AT ALL."""
+								#PUBDATES - to simplify things & considering this snippet will be run daily datetime is the same day as the day this is running                       
+								today = date.today()
+								job_data["pubdate"] = today
+									
+								#LOCATIONS
+								location_element = job.find_element(By.CSS_SELECTOR, elements_path["location_path"])
+								job_data["location"]= location_element.get_attribute("innerHTML") if location_element else "NaN"
+									
+								#Timestamps
+								timestamp = datetime.now()
+								job_data["timestamp"] = timestamp
 
-						description_default = job.find_element(By.CSS_SELECTOR, elements_path["description_path"])
-						default =description_default.get_attribute("innerHTML") if description_default else "NaN"
-						if follow_link == "yes":
-							job_data["description"] = ""
-							job_data["description"] = await async_follow_link_sel(followed_link=job_data["link"], description_final=job_data["description"], inner_link_tag=inner_link_tag, default=default, driver=driver)
-						elif follow_link == "sel":
-							try:
-								print("Using Selenium to obtain descriptions")
-								driver.get(job_data["link"])
-								description_tag = driver.find_element(By.CSS_SELECTOR, inner_link_tag)
-								job_data["description"] = description_tag.get_attribute("innerHTML") if description_tag else "NaN"
-							except Exception as e:
-								print(e, f"""Skipping...{job_data["link"]}. Strategy: {strategy}""", "\n")
-								continue
-						else:
-							# Get the descriptions & append it to its list
-							job_data["description"]= default
+								# add all except description
+								total_links.append(job_data["link"])
+								total_titles.append(job_data["title"])
+								total_pubdates.append(job_data["pubdate"])
+								total_locations.append(job_data["location"])
+								total_timestamps.append(job_data["timestamp"])
+												
+								""" HOW TO FOLLOW THE SCRAPED LINKS, OR AT ALL."""
 
-						#PUBDATES - to simplify things & considering this snippet will be run daily datetime is the same day as the day this is running                       
-						today = date.today()
-						job_data["pubdate"] = today
+								description_default = job.find_element(By.CSS_SELECTOR, elements_path["description_path"])
+								default =description_default.get_attribute("innerHTML") if description_default else "NaN"
+								job_data["description"]= default
+								total_descriptions.append(job_data["description"])
+
 							
-						#LOCATIONS
-						location_element = job.find_element(By.CSS_SELECTOR, elements_path["location_path"])
-						job_data["location"]= location_element.get_attribute("innerHTML") if location_element else "NaN"
-							
-						#Timestamps
-						timestamp = datetime.now()
-						job_data["timestamp"] = timestamp
-							
-						# add the data for the current job to the rows list
-						total_links.append(job_data["link"])
-						total_titles.append(job_data["title"])
-						total_pubdates.append(job_data["pubdate"])
-						total_locations.append(job_data["location"])
-						total_timestamps.append(job_data["timestamp"])
-						total_descriptions.append(job_data["description"])
-						
+							"""FOLLOW THE SCRAPED LINKS OUTSIDE THE FOR LOOP"""
+							if follow_link == "yes":
+								for i, link in enumerate(total_links):
+									total_descriptions[i]  = await async_follow_link_sel(followed_link=link, inner_link_tag=inner_link_tag, driver=driver, fetch_sel=fetch_sel)
+							else:
+								# Get the descriptions & append it to its list
+								total_descriptions = total_descriptions
+						except NoSuchElementException as e:
+							print(f"NoSuchElementException: {str(e)}")
+							pass
 				elif strategy == "container":
 					#Identify the container with all the jobs
 					container = driver.find_element(By.CSS_SELECTOR, elements_path["jobs_path"])
-					try:
-						if container:
+					if container:
+						try:
 							#TITLES
 							title_elements = container.find_elements(By.CSS_SELECTOR, elements_path["title_path"])
 							new_titles = [i.get_attribute("innerHTML") if i else "NaN" for i in title_elements]
@@ -178,30 +187,6 @@ async def async_selenium_template(pipeline):
 							link_elements = container.find_elements(By.CSS_SELECTOR, elements_path["link_path"])
 							new_links = [i.get_attribute("href") if i else "NaN" for i in link_elements]
 							total_links.extend(new_links)
-							
-
-							""" HOW TO FOLLOW THE SCRAPED LINKS, OR AT ALL.  """
-
-							description_elements = container.find_elements(By.CSS_SELECTOR, elements_path["description_path"])
-							default = [i.get_attribute("innerHTML") if i else "NaN" for i in description_elements]
-							#total_descriptions.extend(description_default)
-							if follow_link == "yes":
-								for link in new_links:
-									await async_follow_link_container_sel(followed_link=link, total_descriptions=total_descriptions, inner_link_tag=inner_link_tag, default=default, driver=driver, fetch=fetch_sel)
-							elif follow_link == "sel":
-								print("Using Selenium to obtain descriptions")
-								for link in new_links:
-									try:
-										#print("Using Selenium to obtain descriptions")
-										driver.get(link)
-										description_tag = driver.find_element(By.CSS_SELECTOR, inner_link_tag)
-										description_inner = description_tag.get_attribute("innerHTML") if description_tag else "NaN"
-										total_descriptions.append(description_inner)
-									except Exception as e:
-										print(e, f"Skipping...{link}. Strategy: {strategy}", "\n")
-										pass
-							else:
-								total_descriptions.extend(default)
 							
 							# PUBDATES
 							today = date.today()
@@ -216,24 +201,34 @@ async def async_selenium_template(pipeline):
 							timestamp = datetime.now()
 							total_timestamps.extend([timestamp] * len(link_elements))
 
+							""" WHETHER TO FOLLOW THE SCRAPED LINKS, OR AT ALL.  """
+
+							description_elements = container.find_elements(By.CSS_SELECTOR, elements_path["description_path"])
+							default = [i.get_attribute("innerHTML") if i else "NaN" for i in description_elements]
+							total_descriptions.extend(default)
+							if follow_link == "yes":
+								for i, link in enumerate(total_links):
+									total_descriptions[i] = follow_link_container_sel(followed_link=link, inner_link_tag=inner_link_tag, driver=driver)
+							else:
+								total_descriptions = total_descriptions
+					
 							rows = {'title':total_titles, 'link':total_links, 'description': total_descriptions, 'pubdate': total_pubdates, 'location': total_locations, 'timestamp': total_timestamps}
-					except:
-						print(f"An error occurred: CONTAINER NOT FOUND. Skipping URL {url}")
-						logging.error(f"An error occurred: CONTAINER NOT FOUND. Skipping URL {url}")
-						continue
+						except NoSuchElementException as e:
+							print(f"NoSuchElementException: {str(e)}")
+							pass
 			except Exception as e:
 				# Handle any other exceptions
-				print("ELEMENT NOT FOUND:", str(e))
-				logging.error(f"ELEMENT NOT FOUND: {str(e)}")
+				print(f"""EXCEPTION:, {str(e)}""")
+				logging.error(f"EXCEPTION: {str(e)}")
 		return rows 
 
 	#driver.quit()
 
-	async def gather_tasks_selenium():
+	async def gather_tasks_selenium(options):
 		with open(JSON) as f:
 			data = json.load(f)
 			urls = data[0]["urls"]
-			tasks = [async_sel_crawler(url_obj) for url_obj in urls]
+			tasks = [async_sel_crawler(url_obj, options) for url_obj in urls]
 			results = await asyncio.gather(*tasks)
 			# Combine the results
 			combined_data = {
@@ -259,7 +254,7 @@ async def async_selenium_template(pipeline):
 			return combined_data
 	
 	async def insert_postgre():
-		data = await gather_tasks_selenium()
+		data = await gather_tasks_selenium(options)
 		data_dic = dict(data)
 		df = pd.DataFrame.from_dict(data_dic, orient='index')
 		df = df.transpose()
