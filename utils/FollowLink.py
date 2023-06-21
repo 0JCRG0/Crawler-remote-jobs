@@ -38,6 +38,7 @@ async def async_follow_link(session, followed_link, description_final, inner_lin
                 return description_final
         elif link_res.status == 403:
             print(f"""CONNECTION PROHIBITED WITH BS4 ON {followed_link}. STATUS CODE: "{link_res.status}". TRYING WITH SELENIUM""", "\n")
+            logging.warning(f"""CONNECTION PROHIBITED WITH BS4 ON {followed_link}. STATUS CODE: "{link_res.status}". TRYING WITH SELENIUM""")
             driver.get(followed_link)
             description_tag = driver.find_element(By.CSS_SELECTOR, inner_link_tag)
             if description_tag:
@@ -47,7 +48,8 @@ async def async_follow_link(session, followed_link, description_final, inner_lin
                 description_final = 'NaN'
                 return description_final
         else:
-            print(f"""CONNECTION FAILED ON {followed_link}. STATUS CODE: "{link_res.status}". Getting the description from API.""", "\n")
+            print(f"""CONNECTION FAILED ON {followed_link}. STATUS CODE: "{link_res.status}". Getting the description from default.""", "\n")
+            logging.warning(f"""CONNECTION FAILED ON {followed_link}. STATUS CODE: "{link_res.status}". Getting the description from default.""")
             description_final = default
             return description_final
 
@@ -62,11 +64,13 @@ async def async_follow_link_container(session, followed_link, total_descriptions
             return total_descriptions.append(description_inner)
         elif link_res.status == 403:
             print(f"""CONNECTION PROHIBITED WITH BS4 ON {followed_link}. STATUS CODE: "{link_res.status}". TRYING WITH SELENIUM""", "\n")
+            logging.warning(f"""CONNECTION PROHIBITED WITH BS4 ON {followed_link}. STATUS CODE: "{link_res.status}". TRYING WITH SELENIUM""")
             driver.get(followed_link)
             description_tag = driver.find_element(By.CSS_SELECTOR, inner_link_tag)
             description_inner = description_tag.get_attribute("innerHTML") if description_tag else "NaN"
             return total_descriptions.append(description_inner)
         else:
+            logging.warning(f"""CONNECTION FAILED ON {followed_link}. STATUS CODE: "{link_res.status}". Getting the description from default.""")
             return total_descriptions.extend(default)
 
 def follow_link_sel(followed_link, inner_link_tag, driver):
@@ -82,12 +86,15 @@ def follow_link_sel(followed_link, inner_link_tag, driver):
             return description_final
         except TimeoutException:
             print("Element not found within the specified wait time.", "Setting description to default")
+            logging.error("Element not found within the specified wait time.", "Setting description to default")
             pass
         except NoSuchElementException as e:
-            print("\n", f"""ELEMENT NOT FOUND ON {followed_link}. NoSuchElementError: {str(e)}""", "Setting description to default", "\n")
+            print("\n", f"""ELEMENT NOT FOUND ON {followed_link}. NoSuchElementError: {str(e)} "Setting description to default" """, "\n")
+            logging.error(f"""ELEMENT NOT FOUND ON {followed_link}. NoSuchElementError: {str(e)} "Setting description to default" """)
             pass
     except NoSuchElementException as e:
         print("\n", f"""ELEMENT NOT FOUND ON {followed_link}. NoSuchElementError: {str(e)}""", "Setting description to default", "\n")
+        logging.error(f"""ELEMENT NOT FOUND ON {followed_link}. NoSuchElementError: {str(e)} "Setting description to default" """)
         pass
 
 def follow_link_container_sel(followed_link, inner_link_tag, driver):
@@ -101,9 +108,11 @@ def follow_link_container_sel(followed_link, inner_link_tag, driver):
             return description_inner
         except TimeoutException:
             print("Element not found within the specified wait time.", "Setting description to default")
+            logging.error("Element not found within the specified wait time.", "Setting description to default")
             pass
         except NoSuchElementException as e:
             print("\n", f"""ELEMENT NOT FOUND ON {followed_link}. NoSuchElementError: {str(e)}""", "Setting description to default", "\n")
+            logging.error(f"""ELEMENT NOT FOUND ON {followed_link}. NoSuchElementError: {str(e)} "Setting description to default" """)
             pass
     except NoSuchElementException as e:
         print("\n", f"""ELEMENT NOT FOUND ON {followed_link}. NoSuchElementError: {str(e)}""", "Setting description to default", "\n")
@@ -128,4 +137,5 @@ async def async_follow_link_sel(followed_link, inner_link_tag, driver, fetch_sel
             pass
     except NoSuchElementException as e:
         print("\n", f"""ELEMENT NOT FOUND ON {followed_link}. NoSuchElementError: {str(e)}""", "Setting description to default", "\n")
+        logging.error(f"""ELEMENT NOT FOUND ON {followed_link}. NoSuchElementError: {str(e)} "Setting description to default" """)
         pass
