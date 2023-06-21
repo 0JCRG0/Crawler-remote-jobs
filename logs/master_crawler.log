@@ -1349,3 +1349,240 @@ Finished Selenium_Crawlers. Results below ⬇︎
 2023-06-19 11:34:18,130 INFO: 
 terminate chrome process...
 
+2023-06-19 20:40:53,462 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 20:43:22,115 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 20:49:19,309 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 23:40:34,107 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 23:41:42,156 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 23:42:42,322 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 23:43:22,621 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 23:43:57,166 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 23:44:48,702 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 23:45:19,719 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 23:46:18,861 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 23:46:44,681 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 23:48:31,449 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 23:49:39,947 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 23:50:56,633 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 23:51:42,344 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 23:54:11,440 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-19 23:57:47,252 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-20 07:07:53,011 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-20 07:10:48,227 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-20 07:18:41,592 ERROR: 
+ELEMENT NOT FOUND: Message: The element with the reference ef0f4eef-9e1c-486b-9418-20744edad9bf is stale; either its node document is not the active document, or it is no longer connected to the DOM
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+StaleElementReferenceError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:484:5
+element.getKnownElement@chrome://remote/content/marionette/element.sys.mjs:488:11
+deserializeJSON@chrome://remote/content/marionette/json.sys.mjs:233:33
+cloneObject@chrome://remote/content/marionette/json.sys.mjs:56:24
+deserializeJSON@chrome://remote/content/marionette/json.sys.mjs:244:16
+cloneObject@chrome://remote/content/marionette/json.sys.mjs:56:24
+deserializeJSON@chrome://remote/content/marionette/json.sys.mjs:244:16
+json.deserialize@chrome://remote/content/marionette/json.sys.mjs:248:10
+receiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:85:30
+
+
+2023-06-20 07:18:43,418 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-20 07:20:01,462 ERROR: 
+ELEMENT NOT FOUND: Message: The element with the reference 5c095c2a-f31d-426e-8b7b-1897e5eeccb1 is stale; either its node document is not the active document, or it is no longer connected to the DOM
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+StaleElementReferenceError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:484:5
+element.getKnownElement@chrome://remote/content/marionette/element.sys.mjs:488:11
+deserializeJSON@chrome://remote/content/marionette/json.sys.mjs:233:33
+cloneObject@chrome://remote/content/marionette/json.sys.mjs:56:24
+deserializeJSON@chrome://remote/content/marionette/json.sys.mjs:244:16
+cloneObject@chrome://remote/content/marionette/json.sys.mjs:56:24
+deserializeJSON@chrome://remote/content/marionette/json.sys.mjs:244:16
+json.deserialize@chrome://remote/content/marionette/json.sys.mjs:248:10
+receiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:85:30
+
+
+2023-06-20 07:20:03,563 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-20 07:22:21,551 ERROR: 
+ELEMENT NOT FOUND: Message: The element with the reference 5a3daaf0-c190-4da4-8ead-a2a3928b1dc0 is stale; either its node document is not the active document, or it is no longer connected to the DOM
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+StaleElementReferenceError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:484:5
+element.getKnownElement@chrome://remote/content/marionette/element.sys.mjs:488:11
+deserializeJSON@chrome://remote/content/marionette/json.sys.mjs:233:33
+cloneObject@chrome://remote/content/marionette/json.sys.mjs:56:24
+deserializeJSON@chrome://remote/content/marionette/json.sys.mjs:244:16
+cloneObject@chrome://remote/content/marionette/json.sys.mjs:56:24
+deserializeJSON@chrome://remote/content/marionette/json.sys.mjs:244:16
+json.deserialize@chrome://remote/content/marionette/json.sys.mjs:248:10
+receiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:85:30
+
+
+2023-06-20 07:22:23,781 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-20 07:26:28,934 ERROR: 
+ELEMENT NOT FOUND: Message: The element with the reference b7460faf-a7f6-4214-a416-76cc9803ce3b is stale; either its node document is not the active document, or it is no longer connected to the DOM
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+StaleElementReferenceError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:484:5
+element.getKnownElement@chrome://remote/content/marionette/element.sys.mjs:488:11
+deserializeJSON@chrome://remote/content/marionette/json.sys.mjs:233:33
+cloneObject@chrome://remote/content/marionette/json.sys.mjs:56:24
+deserializeJSON@chrome://remote/content/marionette/json.sys.mjs:244:16
+cloneObject@chrome://remote/content/marionette/json.sys.mjs:56:24
+deserializeJSON@chrome://remote/content/marionette/json.sys.mjs:244:16
+json.deserialize@chrome://remote/content/marionette/json.sys.mjs:248:10
+receiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:85:30
+
+
+2023-06-20 07:26:30,510 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-20 08:13:34,498 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-20 19:58:48,208 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-20 20:32:11,144 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-20 20:35:46,868 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-20 20:37:21,253 WARNING: 
+Connection pool is full, discarding connection: localhost. Connection pool size: 1
+
+2023-06-20 20:37:23,370 WARNING: 
+Connection pool is full, discarding connection: localhost. Connection pool size: 1
+
+2023-06-20 20:37:24,107 WARNING: 
+Connection pool is full, discarding connection: localhost. Connection pool size: 1
+
+2023-06-20 20:37:34,733 ERROR: 
+EXCEPTION: Message: 
+
+
+2023-06-20 20:37:45,397 ERROR: 
+EXCEPTION: Message: 
+
+
+2023-06-20 20:37:45,835 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-20 20:38:55,060 WARNING: 
+Connection pool is full, discarding connection: localhost. Connection pool size: 1
+
+2023-06-20 20:38:56,998 WARNING: 
+Connection pool is full, discarding connection: localhost. Connection pool size: 1
+
+2023-06-20 20:38:57,729 WARNING: 
+Connection pool is full, discarding connection: localhost. Connection pool size: 1
+
+2023-06-20 20:39:08,326 ERROR: 
+EXCEPTION: Message: 
+
+
+2023-06-20 20:39:18,943 ERROR: 
+EXCEPTION: Message: 
+
+
+2023-06-20 20:39:19,326 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-20 20:40:13,242 WARNING: 
+Connection pool is full, discarding connection: localhost. Connection pool size: 1
+
+2023-06-20 20:40:15,178 WARNING: 
+Connection pool is full, discarding connection: localhost. Connection pool size: 1
+
+2023-06-20 20:40:25,772 ERROR: 
+EXCEPTION: Message: 
+
+
+2023-06-20 20:40:51,098 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-20 20:48:20,597 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-20 22:30:21,010 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-20 22:42:13,303 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-20 22:43:40,704 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-20 22:44:01,942 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-20 22:44:27,262 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-06-20 22:46:17,219 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-20 22:49:07,173 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-20 22:49:59,621 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-06-20 22:50:17,777 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-20 22:51:07,747 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-20 22:51:24,614 INFO: 
+Finished API crawlers. Results below ⬇︎
+

@@ -2,38 +2,41 @@
 
 import logging
 import timeit
-from rss_reader import read_rss
+import asyncio
+from async_rss import async_rss_template
 from other.indeed import indeed
-from api_crawlers import api_template
-from bs4_crawlers import bs4_template
-from selenium_crawlers import selenium_template
+from async_api import async_api_template
+from async_bs4 import async_bs4_template
+from async_sel import async_selenium_template
 from utils.handy import LoggingMasterCrawler
 
 #SET UP LOGGING
 LoggingMasterCrawler()
 
-def main(pipeline):
-    # start master timer
-    master_start_time = timeit.default_timer()
+async def async_main(pipeline):
+	# start master timer
+	master_start_time = timeit.default_timer()
 
-    #Start calling each crawler
-    logging.info('ALL CRAWLERS DEPLOYED!')
-    print("\n", "ALL CRAWLERS DEPLOYED!")
+	#Start calling each crawler
+	logging.info('ALL CRAWLERS DEPLOYED!')
+	print("\n", "ALL CRAWLERS DEPLOYED!")
 
-    api_template(pipeline)
-    
-    read_rss(pipeline)
-    
-    bs4_template(pipeline)
+	# Schedule tasks to run concurrently using asyncio.gather()
+	await asyncio.gather(
+		async_api_template(pipeline),
+		async_rss_template(pipeline),
+		async_bs4_template(pipeline),
+		async_selenium_template(pipeline)
+	)
 
-    selenium_template(pipeline) 
+	#indeed(SCHEME="main_mx", KEYWORD="")
 
-    indeed(SCHEME="main_mx", KEYWORD="")
+	#print the time
+	elapsed_time = asyncio.get_event_loop().time() - master_start_time
+	print(f"Async BS4 crawlers finished! all in: {elapsed_time:.2f} seconds.", "\n")
 
-    #print the time
-    elapsed_time = timeit.default_timer() - master_start_time
-    logging.info(f'ALL CRAWLERS FINISHED. ALL IN {elapsed_time:.2f} SECONDS!')
+async def main():
+	await async_main("TEST")
 
 if __name__ == "__main__":
-    main("MAIN") #MAIN OR TEST
-
+	asyncio.run(main())
