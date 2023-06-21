@@ -32,8 +32,6 @@ TEST = os.environ.get('JSON_TEST_SEL')
 SAVE_PATH = os.environ.get('SAVE_PATH_SEL')
 
 async def async_selenium_template(pipeline):
-	print("\n", "Crawler launched on headless browser.")
-
 	#start timer
 	start_time = timeit.default_timer()
 
@@ -71,6 +69,10 @@ async def async_selenium_template(pipeline):
 		LoggingMasterCrawler()
 	else:
 		print("\n", "Incorrect argument! Use 'MAIN', 'TEST' or 'FREELANCE' to run this script.", "\n")
+		logging.error("Incorrect argument! Use 'MAIN', 'TEST' or 'FREELANCE' to run this script.")
+	
+	print("\n", "Async Sel has started")
+	logging.info("Async Sel crawler deployed!")
 
 	async def fetch_sel(url, driver):
 		loop = asyncio.get_event_loop()
@@ -172,6 +174,7 @@ async def async_selenium_template(pipeline):
 								total_descriptions = total_descriptions
 						except NoSuchElementException as e:
 							print(f"NoSuchElementException: {str(e)}")
+							logging.error(f"NoSuchElementException: {str(e)}")
 							pass
 				elif strategy == "container":
 					#Identify the container with all the jobs
@@ -215,10 +218,11 @@ async def async_selenium_template(pipeline):
 							rows = {'title':total_titles, 'link':total_links, 'description': total_descriptions, 'pubdate': total_pubdates, 'location': total_locations, 'timestamp': total_timestamps}
 						except NoSuchElementException as e:
 							print(f"NoSuchElementException: {str(e)}")
+							logging.error(f"NoSuchElementException: {str(e)}")
 							pass
 			except Exception as e:
 				# Handle any other exceptions
-				print(f"""EXCEPTION:, {str(e)}""")
+				print(f"""EXCEPTION: {str(e)}""")
 				logging.error(f"EXCEPTION: {str(e)}")
 		return rows 
 
@@ -271,7 +275,8 @@ async def async_selenium_template(pipeline):
 
 	elapsed_time = asyncio.get_event_loop().time() - start_time
 	print(f"Async BS4 crawlers finished! all in: {elapsed_time:.2f} seconds.", "\n")
-
+	logging.error(f"Async BS4 crawlers finished! all in: {elapsed_time:.2f} seconds.")
+	
 async def main():
 	await async_selenium_template("TEST")
 

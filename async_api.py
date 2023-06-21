@@ -31,8 +31,6 @@ SAVE_PATH = os.environ.get('SAVE_PATH_API')
 
 
 async def async_api_template(pipeline):
-	print("\n", "ASYNC APIs HAS STARTED.")
-
 	#Start the timer
 	start_time = asyncio.get_event_loop().time()
 
@@ -60,12 +58,16 @@ async def async_api_template(pipeline):
 		LoggingMasterCrawler()
 	else:
 		print("\n", "Incorrect argument! Use either 'MAIN' or 'TEST' to run this script.", "\n")
+		logging.error("Incorrect argument! Use either 'MAIN' or 'TEST' to run this script.")
 
 	"""async def fetch(url, session):
 		async with session.get(url) as response:
 			return await response.text()"""
+	print("\n", "ASYNC APIs HAS STARTED.")
+	logging.info("Async API crawler deployed!.")
 
 	async def async_api_fetcher(session, api_obj):
+
 		total_titles = []
 		total_links = []
 		total_descriptions = []
@@ -100,7 +102,7 @@ async def async_api_template(pipeline):
 				async with session.get(api, headers=headers) as response:
 					if response.status != 200:
 						print(f"Received non-200 response ({response.status}) for API: {api}. Skipping...")
-						logging.error(f"Received non-200 response ({response.status}) for API: {api}. Skipping...")
+						logging.warning(f"Received non-200 response ({response.status}) for API: {api}. Skipping...")
 						pass
 					else:
 						try:
@@ -186,6 +188,7 @@ async def async_api_template(pipeline):
 	
 	elapsed_time = asyncio.get_event_loop().time() - start_time
 	print(f"Async APIs finished! all in: {elapsed_time:.2f} seconds.", "\n")
+	logging.info(f"Async APIs finished! all in: {elapsed_time:.2f} seconds.")
 async def main():
 	await async_api_template("TEST")
 

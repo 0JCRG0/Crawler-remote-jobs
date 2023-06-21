@@ -58,6 +58,7 @@ async def async_rss_template(pipeline):
 
 	#print("\n", f"Reading {file}... ", "\n")
 	print("\n", "Crawler launched on RSS Feeds.")
+	logging.info("Async RSS crawler deployed!")
 
 	async def async_rss_reader(session, url_obj):
 		total_pubdates = []
@@ -122,6 +123,7 @@ async def async_rss_template(pipeline):
 							total_descriptions.append(job_data["description"])
 					else:
 						print(f"""PARSING FAILED ON {url}. Response: {response}. SKIPPING...""", "\n")
+						logging.error(f"""PARSING FAILED ON {url}. Response: {response}. SKIPPING...""")
 						pass
 		except aiohttp.ClientError as e:
 			print(f"An error occurred: {e}. Skipping URL {url}")
@@ -165,6 +167,7 @@ async def async_rss_template(pipeline):
 
 	elapsed_time = asyncio.get_event_loop().time() - start_time
 	print(f"Async RSS readers finished! all in: {elapsed_time:.2f} seconds.", "\n")
+	logging.info(f"Async RSS readers finished! all in: {elapsed_time:.2f} seconds.")
 
 async def main():
 	await async_rss_template("TEST")

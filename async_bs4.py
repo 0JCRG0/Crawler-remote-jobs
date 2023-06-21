@@ -29,7 +29,6 @@ TEST = os.environ.get('JSON_TEST_BS4')
 SAVE_PATH = os.environ.get('SAVE_PATH_BS4')
 
 async def async_bs4_template(pipeline):
-	print("\n", "BS4 crawlers deployed!.")
 
 	#start timer
 	start_time = asyncio.get_event_loop().time()
@@ -66,13 +65,17 @@ async def async_bs4_template(pipeline):
 		LoggingMasterCrawler()
 	else:
 		print("\n", "Incorrect argument! Use 'MAIN', 'TEST' or 'FREELANCE' to run this script.", "\n")
+		logging.error("Incorrect argument! Use either 'MAIN' or 'TEST' to run this script.")
 
+	print("\n", "BS4 crawlers deployed!.")
+	logging.info("Async BS4 crawler deployed!.")
 
 	async def fetch(url, session):
 		async with session.get(url) as response:
 			return await response.text()
 
 	async def async_bs4_crawler(session, url_obj):
+
 		total_links = []
 		total_titles = []
 		total_pubdates = []
@@ -141,6 +144,7 @@ async def async_bs4_template(pipeline):
 										job_data["description"] = description_tag.get_attribute("innerHTML") if description_tag else "NaN"
 									except Exception as e:
 										print(e, f"""Skipping...{job_data["link"]}. Strategy: {strategy}""", "\n")
+										logging.error(f"""Skipping...{job_data["link"]}. Strategy: {strategy}""")
 										continue
 								else:
 									# Get the descriptions & append it to its list
@@ -262,6 +266,7 @@ async def async_bs4_template(pipeline):
 
 	elapsed_time = asyncio.get_event_loop().time() - start_time
 	print(f"Async BS4 crawlers finished! all in: {elapsed_time:.2f} seconds.", "\n")
+	logging.info(f"Async BS4 crawlers finished! all in: {elapsed_time:.2f} seconds.")
 
 async def main():
 	await async_bs4_template("TEST")
