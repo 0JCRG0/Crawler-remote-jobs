@@ -2,12 +2,14 @@
     {
         "strategies": [
             {
-                "strategy_name": "main_mx",
+                "strategy_name": "MX",
                 "special_url": "no",
                 "code": " MX",
                 "url_1": "https://mx.indeed.com/jobs?q=&l=remoto&rbl=Desde+casa&jlid=24899cbf30589459&sort=date&start=",
                 "url_2": "",
-                "pages_to_crawl": 7,
+                "pages_to_crawl": 3,
+                "follow_link": "yes",
+                "inner_link_tag": "#viewJobSSRRoot #jobDescriptionText",
                 "elements_path": [
                         {
                         "jobs_path": ".slider_item.css-kyg8or.eu4oa1w0",
