@@ -36,7 +36,7 @@ async def async_main(pipeline):
 	#print the time
 	elapsed_time = asyncio.get_event_loop().time() - master_start_time
 	min_elapsed_time = elapsed_time / 60
-	print(f"ALL ASYNC CRALERS FINISHED IN: {min_elapsed_time:.2f} seconds.", "\n")
+	print(f"ALL ASYNC CRALERS FINISHED IN: {min_elapsed_time:.2f} minutes.", "\n")
 	logging.info(f"ALL ASYNC CRALERS FINISHED IN: {min_elapsed_time:.2f} minutes.")
 
 async def main():

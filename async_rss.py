@@ -170,7 +170,7 @@ async def async_rss_template(pipeline):
 	logging.info(f"Async RSS readers finished! all in: {elapsed_time:.2f} seconds.")
 
 async def main():
-	await async_rss_template("TEST")
+	await async_rss_template("MAIN")
 
 if __name__ == "__main__":
 	asyncio.run(main())

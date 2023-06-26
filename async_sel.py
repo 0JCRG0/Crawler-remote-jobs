@@ -39,8 +39,6 @@ async def async_selenium_template(pipeline):
 	options = webdriver.FirefoxOptions()
 	options.add_argument('-headless')
 		
-	# Start the session
-	driver = webdriver.Firefox(options=options)
 
 	"""
 	The following is specifying which JSON to load & to which table it will be sent
@@ -222,8 +220,8 @@ async def async_selenium_template(pipeline):
 							pass
 			except Exception as e:
 				# Handle any other exceptions
-				print(f"""EXCEPTION: {str(e)}""")
-				logging.error(f"EXCEPTION: {str(e)}")
+				print(f"""EXCEPTION on {str(url)}: {str(e)}""")
+				logging.error(f"""EXCEPTION on {str(url)}. {str(e)}""")
 		return rows 
 
 	#driver.quit()
@@ -275,7 +273,7 @@ async def async_selenium_template(pipeline):
 
 	elapsed_time = asyncio.get_event_loop().time() - start_time
 	print(f"Async BS4 crawlers finished! all in: {elapsed_time:.2f} seconds.", "\n")
-	logging.error(f"Async BS4 crawlers finished! all in: {elapsed_time:.2f} seconds.")
+	logging.info(f"Async Sel finished! all in: {elapsed_time:.2f} seconds.")
 	
 async def main():
 	await async_selenium_template("TEST")

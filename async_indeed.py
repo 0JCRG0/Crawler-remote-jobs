@@ -184,7 +184,7 @@ async def async_indeed_template(SCHEME, KEYWORD, pipeline):
 				pass
 			except Exception as e:
 				print("\n", f"INDEED. Exception: {e}", "\n")
-				logging.error(f"INDEED. Exception: {str(e)}")
+				logging.error(f"INDEED. Exception on {str(url)}. {str(e)}")
 				pass
 		return rows
 	async def gather_tasks_indeed(options):
