@@ -274,3 +274,1122 @@ ALL ASYNC CRALERS FINISHED IN: 8.07 seconds.
 2023-06-21 14:27:45,649 INFO: 
 ALL CRAWLERS DEPLOYED!
 
+2023-06-22 09:27:13,356 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-22 09:27:17,655 INFO: 
+Async API crawler deployed!.
+
+2023-06-22 09:27:20,155 INFO: 
+Async RSS crawler deployed!
+
+2023-06-22 09:27:22,598 INFO: 
+Async BS4 crawler deployed!.
+
+2023-06-22 09:27:25,114 INFO: 
+Async Sel crawler deployed!
+
+2023-06-22 09:27:36,997 INFO: 
+Async INDEED crawler deployed!.
+
+2023-06-22 09:28:19,804 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-22 09:28:20,361 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1145
+Total number of unique jobs: 57
+Current total count of jobs in PostgreSQL: 1202
+
+2023-06-22 09:28:20,366 INFO: 
+Async RSS readers finished! all in: 62.69 seconds.
+
+2023-06-22 09:28:52,322 ERROR: 
+INDEED. Exception: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-22 09:29:05,327 ERROR: 
+INDEED. Exception: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-22 09:29:05,448 INFO: 
+Finished Indeed. Results below ⬇︎
+
+2023-06-22 09:29:05,770 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1202
+Total number of unique jobs: 42
+Current total count of jobs in PostgreSQL: 1244
+
+2023-06-22 09:29:05,771 INFO: 
+Finished async Indeed. All in 100.64354 seconds!!!
+
+2023-06-22 09:29:25,759 ERROR: 
+EXCEPTION: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-22 09:29:25,872 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-22 09:29:26,135 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1244
+Total number of unique jobs: 41
+Current total count of jobs in PostgreSQL: 1285
+
+2023-06-22 09:29:26,136 ERROR: 
+Async BS4 crawlers finished! all in: 123.52 seconds.
+
+2023-06-22 09:29:29,152 WARNING: 
+Received non-200 response (524) for API: https://api-career-vault-sstxk.ondigitalocean.app/v1/jobs/remote?page=1&search=&category=Software&role=&hideOnlyUS=1. Skipping...
+
+2023-06-22 09:29:53,109 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-22 09:29:53,663 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1285
+Total number of unique jobs: 88
+Current total count of jobs in PostgreSQL: 1373
+
+2023-06-22 09:29:53,664 INFO: 
+Async APIs finished! all in: 160.32 seconds.
+
+2023-06-22 09:30:19,829 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-06-22 09:30:20,523 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1373
+Total number of unique jobs: 117
+Current total count of jobs in PostgreSQL: 1490
+
+2023-06-22 09:30:20,526 INFO: 
+Async BS4 crawlers finished! all in: 180.36 seconds.
+
+2023-06-22 09:30:20,535 INFO: 
+ALL ASYNC CRALERS FINISHED IN: 3.12 minutes.
+
+2023-06-22 10:57:13,494 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-22 10:57:17,847 INFO: 
+Async API crawler deployed!.
+
+2023-06-22 10:57:20,432 INFO: 
+Async RSS crawler deployed!
+
+2023-06-22 10:57:23,038 INFO: 
+Async BS4 crawler deployed!.
+
+2023-06-22 10:57:25,806 INFO: 
+Async Sel crawler deployed!
+
+2023-06-22 10:57:37,975 INFO: 
+Async INDEED crawler deployed!.
+
+2023-06-22 10:58:29,077 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-22 10:58:29,350 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1490
+Total number of unique jobs: 9
+Current total count of jobs in PostgreSQL: 1499
+
+2023-06-22 10:58:29,352 INFO: 
+Async RSS readers finished! all in: 71.56 seconds.
+
+2023-06-22 10:58:46,477 ERROR: 
+EXCEPTION: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-22 10:58:46,668 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-22 10:58:46,800 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1499
+Total number of unique jobs: 3
+Current total count of jobs in PostgreSQL: 1502
+
+2023-06-22 10:58:46,802 ERROR: 
+Async BS4 crawlers finished! all in: 83.82 seconds.
+
+2023-06-22 10:59:07,148 ERROR: 
+INDEED. Exception: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-22 10:59:12,593 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-06-22 10:59:12,820 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1502
+Total number of unique jobs: 25
+Current total count of jobs in PostgreSQL: 1527
+
+2023-06-22 10:59:12,820 INFO: 
+Async BS4 crawlers finished! all in: 112.44 seconds.
+
+2023-06-22 10:59:26,883 ERROR: 
+INDEED. Exception: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-22 10:59:29,658 WARNING: 
+Received non-200 response (524) for API: https://api-career-vault-sstxk.ondigitalocean.app/v1/jobs/remote?page=1&search=&category=Software&role=&hideOnlyUS=1. Skipping...
+
+2023-06-22 10:59:48,270 ERROR: 
+INDEED. Exception: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-22 11:00:09,502 ERROR: 
+INDEED. Exception: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-22 11:00:09,567 INFO: 
+Finished Indeed. Results below ⬇︎
+
+2023-06-22 11:00:09,928 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1527
+Total number of unique jobs: 22
+Current total count of jobs in PostgreSQL: 1549
+
+2023-06-22 11:00:09,930 INFO: 
+Finished async Indeed. All in 164.17263 seconds!!!
+
+2023-06-22 11:00:21,272 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-22 11:00:21,361 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1549
+Total number of unique jobs: 3
+Current total count of jobs in PostgreSQL: 1552
+
+2023-06-22 11:00:21,362 INFO: 
+Async APIs finished! all in: 187.93 seconds.
+
+2023-06-22 11:00:21,377 INFO: 
+ALL ASYNC CRALERS FINISHED IN: 3.13 minutes.
+
+2023-06-22 12:27:13,718 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-22 12:27:19,099 INFO: 
+Async API crawler deployed!.
+
+2023-06-22 12:27:21,744 INFO: 
+Async RSS crawler deployed!
+
+2023-06-22 12:27:24,297 INFO: 
+Async BS4 crawler deployed!.
+
+2023-06-22 12:27:26,892 INFO: 
+Async Sel crawler deployed!
+
+2023-06-22 12:27:43,168 INFO: 
+Async INDEED crawler deployed!.
+
+2023-06-22 12:28:42,321 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-22 12:28:42,616 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1552
+Total number of unique jobs: 5
+Current total count of jobs in PostgreSQL: 1557
+
+2023-06-22 12:28:42,618 INFO: 
+Async RSS readers finished! all in: 83.52 seconds.
+
+2023-06-22 12:28:47,593 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-06-22 12:28:47,826 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1557
+Total number of unique jobs: 20
+Current total count of jobs in PostgreSQL: 1577
+
+2023-06-22 12:28:47,827 INFO: 
+Async BS4 crawlers finished! all in: 86.08 seconds.
+
+2023-06-22 12:29:10,177 ERROR: 
+INDEED. Exception: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-22 12:29:37,079 ERROR: 
+INDEED. Exception: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-22 12:29:37,170 WARNING: 
+Received non-200 response (524) for API: https://api-career-vault-sstxk.ondigitalocean.app/v1/jobs/remote?page=1&search=&category=Software&role=&hideOnlyUS=1. Skipping...
+
+2023-06-22 12:30:10,413 ERROR: 
+INDEED. Exception: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-22 12:30:10,649 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-22 12:30:10,938 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1577
+Total number of unique jobs: 10
+Current total count of jobs in PostgreSQL: 1587
+
+2023-06-22 12:30:10,939 INFO: 
+Async APIs finished! all in: 177.22 seconds.
+
+2023-06-22 12:30:19,401 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-22 12:30:19,592 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1587
+Total number of unique jobs: 10
+Current total count of jobs in PostgreSQL: 1597
+
+2023-06-22 12:30:19,593 ERROR: 
+Async BS4 crawlers finished! all in: 175.30 seconds.
+
+2023-06-22 12:30:36,479 ERROR: 
+INDEED. Exception: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-22 12:30:36,530 INFO: 
+Finished Indeed. Results below ⬇︎
+
+2023-06-22 12:30:36,801 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1597
+Total number of unique jobs: 18
+Current total count of jobs in PostgreSQL: 1615
+
+2023-06-22 12:30:36,802 INFO: 
+Finished async Indeed. All in 189.91257 seconds!!!
+
+2023-06-22 12:30:36,803 INFO: 
+ALL ASYNC CRALERS FINISHED IN: 3.38 minutes.
+
+2023-06-22 12:52:06,819 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-22 12:52:11,129 INFO: 
+Async API crawler deployed!.
+
+2023-06-22 12:52:14,531 INFO: 
+Async RSS crawler deployed!
+
+2023-06-22 12:52:17,146 INFO: 
+Async BS4 crawler deployed!.
+
+2023-06-22 12:52:20,462 INFO: 
+Async Sel crawler deployed!
+
+2023-06-22 12:52:37,036 INFO: 
+Async INDEED crawler deployed!.
+
+2023-06-22 12:54:29,573 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-22 12:54:30,541 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1615
+Total number of unique jobs: 3
+Current total count of jobs in PostgreSQL: 1618
+
+2023-06-22 12:54:30,555 INFO: 
+Async RSS readers finished! all in: 139.42 seconds.
+
+2023-06-22 12:54:31,918 WARNING: 
+Received non-200 response (524) for API: https://api-career-vault-sstxk.ondigitalocean.app/v1/jobs/remote?page=1&search=&category=Software&role=&hideOnlyUS=1. Skipping...
+
+2023-06-22 12:54:34,402 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-06-22 12:54:34,666 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1618
+Total number of unique jobs: 12
+Current total count of jobs in PostgreSQL: 1630
+
+2023-06-22 12:54:34,679 INFO: 
+Async BS4 crawlers finished! all in: 140.15 seconds.
+
+2023-06-22 12:55:36,401 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-22 12:55:36,713 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1630
+Total number of unique jobs: 1
+Current total count of jobs in PostgreSQL: 1631
+
+2023-06-22 12:55:36,716 INFO: 
+Async APIs finished! all in: 209.90 seconds.
+
+2023-06-22 12:55:58,693 ERROR: 
+INDEED. Exception: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-22 12:56:18,574 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-22 12:56:18,784 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1631
+Total number of unique jobs: 2
+Current total count of jobs in PostgreSQL: 1633
+
+2023-06-22 12:56:18,786 ERROR: 
+Async BS4 crawlers finished! all in: 241.64 seconds.
+
+2023-06-22 12:56:31,016 ERROR: 
+INDEED. Exception: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-22 12:56:53,921 ERROR: 
+INDEED. Exception: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-22 12:56:54,188 INFO: 
+Finished Indeed. Results below ⬇︎
+
+2023-06-22 12:56:54,452 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1633
+Total number of unique jobs: 3
+Current total count of jobs in PostgreSQL: 1636
+
+2023-06-22 12:56:54,454 INFO: 
+Finished async Indeed. All in 273.99741 seconds!!!
+
+2023-06-22 12:56:54,455 INFO: 
+ALL ASYNC CRALERS FINISHED IN: 4.79 minutes.
+
+2023-06-22 13:57:13,921 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-22 13:57:18,612 INFO: 
+Async API crawler deployed!.
+
+2023-06-22 13:57:21,334 INFO: 
+Async RSS crawler deployed!
+
+2023-06-22 13:57:24,557 INFO: 
+Async BS4 crawler deployed!.
+
+2023-06-22 13:57:27,873 INFO: 
+Async Sel crawler deployed!
+
+2023-06-22 13:57:43,532 INFO: 
+Async INDEED crawler deployed!.
+
+2023-06-22 14:00:07,096 WARNING: 
+Received non-200 response (524) for API: https://api-career-vault-sstxk.ondigitalocean.app/v1/jobs/remote?page=1&search=&category=Software&role=&hideOnlyUS=1. Skipping...
+
+2023-06-22 14:00:07,180 ERROR: 
+An error occurred: CONTAINER NOT FOUND.. Skipping URL https://remote.co/international-remote-jobs/?page=1
+
+2023-06-22 14:00:07,183 ERROR: 
+An error occurred: Server disconnected. Skipping URL https://www.fossjobs.net/jobs-worldwide/?page=1
+
+2023-06-22 14:00:07,256 ERROR: 
+An error occurred: Server disconnected. Skipping URL https://weworkremotely.com/remote-jobs.rss
+
+2023-06-22 14:00:39,063 ERROR: 
+EXCEPTION: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-22 14:00:55,755 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-22 14:00:56,506 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1636
+Total number of unique jobs: 16
+Current total count of jobs in PostgreSQL: 1652
+
+2023-06-22 14:00:56,525 INFO: 
+Async RSS readers finished! all in: 217.91 seconds.
+
+2023-06-22 14:19:48,842 INFO: 
+Async BS4 crawler deployed!.
+
+2023-06-22 14:19:54,798 INFO: 
+BS4: LISTS HAVE THE SAME LENGHT. SENDING TO POSTGRE
+
+2023-06-22 14:19:54,844 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-06-22 14:19:55,011 INFO: 
+TEST TABLE REPORT:
+Total count of jobs before crawling: 30
+Total number of unique jobs: 50
+Current total count of jobs in PostgreSQL: 80
+
+2023-06-22 14:19:55,013 INFO: 
+Async BS4 crawlers finished! all in: 10.77 seconds.
+
+2023-06-22 19:23:52,974 INFO: 
+Async BS4 crawler deployed!.
+
+2023-06-22 19:25:18,414 INFO: 
+BS4: LISTS HAVE THE SAME LENGHT. SENDING TO POSTGRE
+
+2023-06-22 19:25:18,530 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-06-22 19:25:19,079 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1652
+Total number of unique jobs: 69
+Current total count of jobs in PostgreSQL: 1721
+
+2023-06-22 19:25:19,081 INFO: 
+Async BS4 crawlers finished! all in: 90.30 seconds.
+
+2023-06-22 22:52:42,865 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-22 22:52:47,043 INFO: 
+Async API crawler deployed!.
+
+2023-06-22 22:52:49,448 INFO: 
+Async RSS crawler deployed!
+
+2023-06-22 22:52:51,813 INFO: 
+Async BS4 crawler deployed!.
+
+2023-06-22 22:52:54,359 INFO: 
+Async Sel crawler deployed!
+
+2023-06-22 22:53:05,907 INFO: 
+Async INDEED crawler deployed!.
+
+2023-06-22 22:53:39,378 ERROR: 
+EXCEPTION: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-22 22:53:51,944 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-22 22:53:52,519 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1721
+Total number of unique jobs: 53
+Current total count of jobs in PostgreSQL: 1774
+
+2023-06-22 22:53:52,521 INFO: 
+Async RSS readers finished! all in: 65.48 seconds.
+
+2023-06-22 22:53:53,359 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-22 22:53:53,680 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1774
+Total number of unique jobs: 20
+Current total count of jobs in PostgreSQL: 1794
+
+2023-06-22 22:53:53,681 ERROR: 
+Async BS4 crawlers finished! all in: 61.87 seconds.
+
+2023-06-22 22:54:17,177 ERROR: 
+INDEED. Exception: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-22 22:54:37,535 ERROR: 
+INDEED. Exception: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-22 22:54:58,686 ERROR: 
+INDEED. Exception: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-22 22:55:19,090 ERROR: 
+INDEED. Exception: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-22 22:55:19,123 INFO: 
+Finished Indeed. Results below ⬇︎
+
+2023-06-22 22:55:19,503 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1794
+Total number of unique jobs: 45
+Current total count of jobs in PostgreSQL: 1839
+
+2023-06-22 22:55:19,505 INFO: 
+Finished async Indeed. All in 145.14442 seconds!!!
+
+2023-06-22 22:55:33,995 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-22 22:55:34,311 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1839
+Total number of unique jobs: 34
+Current total count of jobs in PostgreSQL: 1873
+
+2023-06-22 22:55:34,312 INFO: 
+Async APIs finished! all in: 171.45 seconds.
+
+2023-06-22 22:55:44,551 INFO: 
+BS4: LISTS HAVE THE SAME LENGHT. SENDING TO POSTGRE
+
+2023-06-22 22:55:44,669 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-06-22 22:55:45,018 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1873
+Total number of unique jobs: 42
+Current total count of jobs in PostgreSQL: 1915
+
+2023-06-22 22:55:45,019 INFO: 
+Async BS4 crawlers finished! all in: 175.57 seconds.
+
+2023-06-22 22:55:45,022 INFO: 
+ALL ASYNC CRALERS FINISHED IN: 3.04 minutes.
+
+2023-06-23 08:14:37,962 INFO: 
+Async RSS crawler deployed!
+
+2023-06-23 08:14:55,906 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-23 08:14:56,036 INFO: 
+TEST TABLE REPORT:
+Total count of jobs before crawling: 80
+Total number of unique jobs: 140
+Current total count of jobs in PostgreSQL: 220
+
+2023-06-23 08:14:56,038 INFO: 
+Async RSS readers finished! all in: 21.90 seconds.
+
+2023-06-23 08:15:16,198 INFO: 
+Async RSS crawler deployed!
+
+2023-06-23 08:15:33,712 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-23 08:15:34,160 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1915
+Total number of unique jobs: 54
+Current total count of jobs in PostgreSQL: 1969
+
+2023-06-23 08:15:34,161 INFO: 
+Async RSS readers finished! all in: 20.26 seconds.
+
+2023-06-23 12:52:04,640 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-23 12:52:09,249 INFO: 
+Async API crawler deployed!.
+
+2023-06-23 12:52:11,578 INFO: 
+Async RSS crawler deployed!
+
+2023-06-23 12:52:14,094 INFO: 
+Async BS4 crawler deployed!.
+
+2023-06-23 12:52:16,660 INFO: 
+Async Sel crawler deployed!
+
+2023-06-23 12:52:27,513 INFO: 
+Async INDEED crawler deployed!.
+
+2023-06-23 12:53:03,340 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-23 12:53:03,649 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1969
+Total number of unique jobs: 14
+Current total count of jobs in PostgreSQL: 1983
+
+2023-06-23 12:53:03,651 INFO: 
+Async RSS readers finished! all in: 54.40 seconds.
+
+2023-06-23 12:53:34,481 ERROR: 
+INDEED. Exception: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-23 12:53:50,944 ERROR: 
+INDEED. Exception: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-23 12:54:07,737 ERROR: 
+INDEED. Exception: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-23 12:54:29,396 ERROR: 
+INDEED. Exception: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-23 12:54:29,499 INFO: 
+Finished Indeed. Results below ⬇︎
+
+2023-06-23 12:54:29,895 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 1983
+Total number of unique jobs: 36
+Current total count of jobs in PostgreSQL: 2019
+
+2023-06-23 12:54:29,897 INFO: 
+Finished async Indeed. All in 133.23847 seconds!!!
+
+2023-06-23 12:54:42,739 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-23 12:54:42,926 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 2019
+Total number of unique jobs: 19
+Current total count of jobs in PostgreSQL: 2038
+
+2023-06-23 12:54:42,927 ERROR: 
+Async BS4 crawlers finished! all in: 148.83 seconds.
+
+2023-06-23 12:54:44,856 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-23 12:54:45,373 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 2038
+Total number of unique jobs: 55
+Current total count of jobs in PostgreSQL: 2093
+
+2023-06-23 12:54:45,374 INFO: 
+Async APIs finished! all in: 160.74 seconds.
+
+2023-06-23 13:01:34,470 INFO: 
+BS4: LISTS HAVE THE SAME LENGHT. SENDING TO POSTGRE
+
+2023-06-23 13:01:34,651 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-06-23 13:01:35,732 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 2093
+Total number of unique jobs: 110
+Current total count of jobs in PostgreSQL: 2203
+
+2023-06-23 13:01:35,733 INFO: 
+Async BS4 crawlers finished! all in: 281.18 seconds.
+
+2023-06-23 13:01:35,759 INFO: 
+ALL ASYNC CRALERS FINISHED IN: 4.80 minutes.
+
+2023-06-24 12:52:05,335 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-24 12:52:10,330 INFO: 
+Async API crawler deployed!.
+
+2023-06-24 12:52:12,753 INFO: 
+Async RSS crawler deployed!
+
+2023-06-24 12:52:15,203 INFO: 
+Async BS4 crawler deployed!.
+
+2023-06-24 12:52:17,714 INFO: 
+Async Sel crawler deployed!
+
+2023-06-24 12:52:29,235 INFO: 
+Async INDEED crawler deployed!.
+
+2023-06-24 12:53:43,553 ERROR: 
+INDEED. Exception: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-24 12:53:58,378 ERROR: 
+INDEED. Exception: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-24 12:54:13,968 ERROR: 
+INDEED. Exception: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-24 12:54:20,345 WARNING: 
+Received non-200 response (524) for API: https://api-career-vault-sstxk.ondigitalocean.app/v1/jobs/remote?page=1&search=&category=Software&role=&hideOnlyUS=1. Skipping...
+
+2023-06-24 12:54:21,142 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-24 12:54:23,111 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 2203
+Total number of unique jobs: 180
+Current total count of jobs in PostgreSQL: 2383
+
+2023-06-24 12:54:23,123 INFO: 
+Async RSS readers finished! all in: 132.79 seconds.
+
+2023-06-24 12:54:36,427 ERROR: 
+INDEED. Exception: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-24 12:54:36,525 INFO: 
+Finished Indeed. Results below ⬇︎
+
+2023-06-24 12:54:37,128 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 2383
+Total number of unique jobs: 60
+Current total count of jobs in PostgreSQL: 2443
+
+2023-06-24 12:54:37,129 INFO: 
+Finished async Indeed. All in 139.41825 seconds!!!
+
+2023-06-24 12:54:50,617 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-24 12:54:50,823 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 2443
+Total number of unique jobs: 12
+Current total count of jobs in PostgreSQL: 2455
+
+2023-06-24 12:54:50,823 ERROR: 
+Async BS4 crawlers finished! all in: 155.63 seconds.
+
+2023-06-24 12:54:51,957 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-24 12:54:52,492 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 2455
+Total number of unique jobs: 48
+Current total count of jobs in PostgreSQL: 2503
+
+2023-06-24 12:54:52,494 INFO: 
+Async APIs finished! all in: 167.16 seconds.
+
+2023-06-24 12:55:05,882 INFO: 
+BS4: LISTS HAVE THE SAME LENGHT. SENDING TO POSTGRE
+
+2023-06-24 12:55:05,999 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-06-24 12:55:07,062 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 2503
+Total number of unique jobs: 111
+Current total count of jobs in PostgreSQL: 2614
+
+2023-06-24 12:55:07,064 INFO: 
+Async BS4 crawlers finished! all in: 174.32 seconds.
+
+2023-06-24 12:55:07,072 INFO: 
+ALL ASYNC CRALERS FINISHED IN: 3.03 minutes.
+
+2023-06-25 12:52:04,074 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-25 13:07:17,875 INFO: 
+Async API crawler deployed!.
+
+2023-06-25 13:23:37,232 INFO: 
+Async RSS crawler deployed!
+
+2023-06-25 13:23:39,986 INFO: 
+Async BS4 crawler deployed!.
+
+2023-06-25 13:39:36,722 INFO: 
+Async Sel crawler deployed!
+
+2023-06-25 14:14:34,166 INFO: 
+Async INDEED crawler deployed!.
+
+2023-06-25 15:00:01,109 ERROR: 
+Encountered a request error: [Errno 60] Operation timed out. Moving to the next API...
+
+2023-06-25 15:00:01,111 ERROR: 
+An error occurred: [Errno 60] Operation timed out. Skipping URL https://www.python.org/jobs/?page=1
+
+2023-06-25 15:00:01,111 ERROR: 
+An error occurred: [Errno 60] Operation timed out. Skipping URL https://tryremotely.com/feeds/remote-jobs.rss
+
+2023-06-25 15:32:34,638 ERROR: 
+An error occurred: [Errno 60] Operation timed out. Skipping URL https://www.fossjobs.net/jobs-worldwide/?page=1
+
+2023-06-26 11:39:52,550 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-26 11:39:58,926 INFO: 
+Async API crawler deployed!.
+
+2023-06-26 11:40:01,233 INFO: 
+Async RSS crawler deployed!
+
+2023-06-26 11:40:03,599 INFO: 
+Async BS4 crawler deployed!.
+
+2023-06-26 11:40:06,025 INFO: 
+Async Sel crawler deployed!
+
+2023-06-26 11:40:17,319 INFO: 
+Async INDEED crawler deployed!.
+
+2023-06-26 11:41:37,167 ERROR: 
+INDEED. Exception: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-26 11:41:58,276 ERROR: 
+INDEED. Exception: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-26 11:42:19,202 ERROR: 
+INDEED. Exception: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-26 11:42:24,354 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-26 11:42:24,895 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 2614
+Total number of unique jobs: 35
+Current total count of jobs in PostgreSQL: 2649
+
+2023-06-26 11:42:24,897 INFO: 
+Async APIs finished! all in: 152.35 seconds.
+
+2023-06-26 11:42:42,502 ERROR: 
+INDEED. Exception: Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-26 11:42:42,538 INFO: 
+Finished Indeed. Results below ⬇︎
+
+2023-06-26 11:42:43,045 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 2649
+Total number of unique jobs: 41
+Current total count of jobs in PostgreSQL: 2690
+
+2023-06-26 11:42:43,046 INFO: 
+Finished async Indeed. All in 157.02262 seconds!!!
+
+2023-06-26 11:42:48,325 INFO: 
+BS4: LISTS HAVE THE SAME LENGHT. SENDING TO POSTGRE
+
+2023-06-26 11:42:48,445 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-06-26 11:42:49,627 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 2690
+Total number of unique jobs: 114
+Current total count of jobs in PostgreSQL: 2804
+
+2023-06-26 11:42:49,630 INFO: 
+Async BS4 crawlers finished! all in: 168.40 seconds.
+
+2023-06-26 11:44:04,624 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-26 11:44:10,289 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 2804
+Total number of unique jobs: 509
+Current total count of jobs in PostgreSQL: 3313
+
+2023-06-26 11:44:10,292 INFO: 
+Async RSS readers finished! all in: 251.37 seconds.
+
+2023-06-26 11:47:30,442 ERROR: 
+EXCEPTION: Message: TimedPromise timed out after 300000 ms
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+TimeoutError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:492:5
+bail@chrome://remote/content/marionette/sync.sys.mjs:211:19
+
+
+2023-06-26 11:47:30,566 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-26 11:47:30,867 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 3313
+Total number of unique jobs: 14
+Current total count of jobs in PostgreSQL: 3327
+
+2023-06-26 11:47:30,868 ERROR: 
+Async BS4 crawlers finished! all in: 447.28 seconds.
+
+2023-06-26 11:47:30,872 INFO: 
+ALL ASYNC CRALERS FINISHED IN: 7.64 minutes.
+
