@@ -252,15 +252,27 @@ async def async_bs4_template(pipeline):
 				combined_data[key].extend(result[key])
 		
 		print("Lengths of lists before creating DataFrame:")
-		print("Titles:", len(combined_data["title"]))
-		print("Links:", len(combined_data["link"]))
-		print("Descriptions:", len(combined_data["description"]))
-		print("Pubdates:", len(combined_data["pubdate"]))
-		print("Locations:", len(combined_data["location"]))
-		print("Timestamps:", len(combined_data["timestamp"]))
+		title_len = len(combined_data["title"])
+		link_len = len(combined_data["link"])
+		description_len = len(combined_data["description"])
+		pubdate_len = len(combined_data["pubdate"])
+		location_len = len(combined_data["location"])
+		timestamp_len = len(combined_data["timestamp"])
 
-		clean_postgre_bs4(df=pd.DataFrame(combined_data), S=SAVE_PATH, Q=POSTGRESQL)
+		print("Titles:", title_len)
+		print("Links:", link_len)
+		print("Descriptions:", description_len)
+		print("Pubdates:", pubdate_len)
+		print("Locations:", location_len)
+		print("Timestamps:", timestamp_len)
 
+		if title_len == link_len == description_len == pubdate_len == location_len == timestamp_len:
+			logging.info("BS4: LISTS HAVE THE SAME LENGHT. SENDING TO POSTGRE")
+			clean_postgre_bs4(df=pd.DataFrame(combined_data), S=SAVE_PATH, Q=POSTGRESQL)
+		else:
+			logging.error("ERROR ON ASYNC BS4. LISTS DO NOT HAVE SAME LENGHT. FIX!")
+			pass
+	
 	async with aiohttp.ClientSession() as session:
 		await gather_json_loads_bs4(session)
 
@@ -269,7 +281,7 @@ async def async_bs4_template(pipeline):
 	logging.info(f"Async BS4 crawlers finished! all in: {elapsed_time:.2f} seconds.")
 
 async def main():
-	await async_bs4_template("TEST")
+	await async_bs4_template("MAIN")
 
 if __name__ == "__main__":
 	asyncio.run(main())

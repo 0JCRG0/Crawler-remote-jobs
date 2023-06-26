@@ -116,6 +116,7 @@ def follow_link_container_sel(followed_link, inner_link_tag, driver):
             pass
     except NoSuchElementException as e:
         print("\n", f"""ELEMENT NOT FOUND ON {followed_link}. NoSuchElementError: {str(e)}""", "Setting description to default", "\n")
+        logging.error(f"""ELEMENT NOT FOUND ON {followed_link}. NoSuchElementError: {str(e)} "Setting description to default" """)
         pass
 
 async def async_follow_link_sel(followed_link, inner_link_tag, driver, fetch_sel):
@@ -131,9 +132,11 @@ async def async_follow_link_sel(followed_link, inner_link_tag, driver, fetch_sel
             return description_final
         except TimeoutException:
             print("Element not found within the specified wait time.", "Setting description to default")
+            logging.error("""Element not found within the specified wait time. Setting description to default""")
             pass
         except NoSuchElementException as e:
             print("\n", f"""ELEMENT NOT FOUND ON {followed_link}. NoSuchElementError: {str(e)}""", "Setting description to default", "\n")
+            logging.error(f"""ELEMENT NOT FOUND ON {followed_link}. NoSuchElementError: {str(e)} "Setting description to default" """)
             pass
     except NoSuchElementException as e:
         print("\n", f"""ELEMENT NOT FOUND ON {followed_link}. NoSuchElementError: {str(e)}""", "Setting description to default", "\n")
