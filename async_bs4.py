@@ -22,6 +22,8 @@ import asyncio
 import aiohttp
 """ LOAD THE ENVIRONMENT VARIABLES """
 
+#TODO: Move Himalayas to API
+
 load_dotenv()
 
 PROD = os.environ.get('JSON_PROD_BS4')
@@ -32,13 +34,6 @@ async def async_bs4_template(pipeline):
 
 	#start timer
 	start_time = asyncio.get_event_loop().time()
-
-	#START SEL
-	options = webdriver.FirefoxOptions()
-	options.add_argument('-headless')
-
-	# Start the session
-	driver = webdriver.Firefox(options=options)
 
 	""" DETERMINING WHICH JSON TO LOAD & WHICH POSTGRE TABLE WILL BE USED """
 
@@ -135,17 +130,7 @@ async def async_bs4_template(pipeline):
 								default = description_default.text if description_default else "NaN"
 								if follow_link == "yes":
 									job_data["description"] = ""
-									job_data["description"] = await async_follow_link(session=session, followed_link=job_data['link'], description_final=job_data["description"], inner_link_tag=inner_link_tag, default=default, driver=driver)
-								elif follow_link == "sel":
-									try:
-										print("Using Selenium to obtain descriptions")
-										driver.get(job_data["link"])
-										description_tag = driver.find_element(By.CSS_SELECTOR, inner_link_tag)
-										job_data["description"] = description_tag.get_attribute("innerHTML") if description_tag else "NaN"
-									except Exception as e:
-										print(e, f"""Skipping...{job_data["link"]}. Strategy: {strategy}""", "\n")
-										logging.error(f"""Skipping...{job_data["link"]}. Strategy: {strategy}""")
-										continue
+									job_data["description"] = await async_follow_link(session=session, followed_link=job_data['link'], description_final=job_data["description"], inner_link_tag=inner_link_tag, default=default)
 								else:
 									# Get the descriptions & append it to its list
 									job_data["description"]= default
@@ -188,20 +173,8 @@ async def async_bs4_template(pipeline):
 									default = [i.get_text(strip=True) if i else "NaN" for i in description_elements]
 									if follow_link == "yes":
 										for link in new_links:
-											await async_follow_link_container(session, link, total_descriptions, inner_link_tag, default, driver)
+											await async_follow_link_container(session, link, total_descriptions, inner_link_tag, default)
 
-									elif follow_link == "sel":
-										print("Using Selenium to obtain descriptions")
-										for link in new_links:
-											try:
-												#print("Using Selenium to obtain descriptions")
-												driver.get(link)
-												description_tag = driver.find_element(By.CSS_SELECTOR, inner_link_tag)
-												description_inner = description_tag.get_attribute("innerHTML") if description_tag else "NaN"
-												total_descriptions.append(description_inner)
-											except Exception as e:
-												print(e, f"Skipping...{link}. Strategy: {strategy}", "\n")
-												continue
 									else:
 										total_descriptions.extend(default)
 
@@ -281,7 +254,7 @@ async def async_bs4_template(pipeline):
 	logging.info(f"Async BS4 crawlers finished! all in: {elapsed_time:.2f} seconds.")
 
 async def main():
-	await async_bs4_template("MAIN")
+	await async_bs4_template("TEST")
 
 if __name__ == "__main__":
 	asyncio.run(main())
