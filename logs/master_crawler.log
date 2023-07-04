@@ -1393,3 +1393,1124 @@ Async BS4 crawlers finished! all in: 447.28 seconds.
 2023-06-26 11:47:30,872 INFO: 
 ALL ASYNC CRALERS FINISHED IN: 7.64 minutes.
 
+2023-06-26 12:52:05,610 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-26 12:52:10,087 INFO: 
+Async API crawler deployed!.
+
+2023-06-26 12:52:12,918 INFO: 
+Async RSS crawler deployed!
+
+2023-06-26 12:52:15,648 INFO: 
+Async BS4 crawler deployed!.
+
+2023-06-26 12:52:15,651 INFO: 
+Async Sel crawler deployed!
+
+2023-06-26 12:52:29,926 INFO: 
+Async INDEED crawler deployed!.
+
+2023-06-26 12:53:24,463 ERROR: 
+EXCEPTION on https://cryptojobslist.com/remote?sort=recent&page=1. Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-26 12:53:29,326 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-26 12:53:29,666 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 3327
+Total number of unique jobs: 10
+Current total count of jobs in PostgreSQL: 3337
+
+2023-06-26 12:53:29,666 INFO: 
+Async Sel finished! all in: 74.02 seconds.
+
+2023-06-26 12:53:48,757 INFO: 
+BS4: LISTS HAVE THE SAME LENGHT. SENDING TO POSTGRE
+
+2023-06-26 12:53:48,916 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-06-26 12:53:49,157 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 3337
+Total number of unique jobs: 9
+Current total count of jobs in PostgreSQL: 3346
+
+2023-06-26 12:53:49,158 INFO: 
+Async BS4 crawlers finished! all in: 96.24 seconds.
+
+2023-06-26 12:54:01,898 ERROR: 
+INDEED. Exception on https://mx.indeed.com/jobs?q=&l=remoto&rbl=Desde+casa&jlid=24899cbf30589459&sort=date&start=10. Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-26 12:54:18,855 ERROR: 
+INDEED. Exception on https://mx.indeed.com/jobs?q=&l=remoto&rbl=Desde+casa&jlid=24899cbf30589459&sort=date&start=20. Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-26 12:54:44,658 ERROR: 
+INDEED. Exception on https://mx.indeed.com/jobs?q=&l=remoto&rbl=Desde+casa&jlid=24899cbf30589459&sort=date&start=30. Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-26 12:55:13,076 ERROR: 
+INDEED. Exception on https://mx.indeed.com/jobs?q=&l=remoto&rbl=Desde+casa&jlid=24899cbf30589459&sort=date&start=40. Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-26 12:55:13,110 INFO: 
+Finished Indeed. Results below ⬇︎
+
+2023-06-26 12:55:13,338 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 3346
+Total number of unique jobs: 10
+Current total count of jobs in PostgreSQL: 3356
+
+2023-06-26 12:55:13,339 INFO: 
+Finished async Indeed. All in 177.69139 seconds!!!
+
+2023-06-26 12:55:14,436 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-26 12:55:14,659 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 3356
+Total number of unique jobs: 5
+Current total count of jobs in PostgreSQL: 3361
+
+2023-06-26 12:55:14,661 INFO: 
+Async APIs finished! all in: 189.05 seconds.
+
+2023-06-26 12:56:42,476 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-26 12:56:42,693 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 3361
+Total number of unique jobs: 3
+Current total count of jobs in PostgreSQL: 3364
+
+2023-06-26 12:56:42,695 INFO: 
+Async RSS readers finished! all in: 272.61 seconds.
+
+2023-06-26 12:56:42,713 INFO: 
+ALL ASYNC CRALERS FINISHED IN: 4.62 minutes.
+
+2023-06-27 12:52:06,950 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-27 12:52:12,018 INFO: 
+Async API crawler deployed!.
+
+2023-06-27 12:52:14,509 INFO: 
+Async RSS crawler deployed!
+
+2023-06-27 12:52:17,044 INFO: 
+Async BS4 crawler deployed!.
+
+2023-06-27 12:52:17,073 INFO: 
+Async Sel crawler deployed!
+
+2023-06-27 12:52:31,389 INFO: 
+Async INDEED crawler deployed!.
+
+2023-06-27 12:53:16,241 ERROR: 
+An error occurred: Cannot connect to host himalayas.apphttps:443 ssl:default [nodename nor servname provided, or not known]. Skipping URL https://himalayas.app/jobs?page=1
+
+2023-06-27 12:53:40,041 ERROR: 
+An error occurred: Cannot connect to host himalayas.apphttps:443 ssl:default [nodename nor servname provided, or not known]. Skipping URL https://himalayas.app/jobs?page=2
+
+2023-06-27 12:53:52,991 ERROR: 
+An error occurred: Cannot connect to host himalayas.apphttps:443 ssl:default [nodename nor servname provided, or not known]. Skipping URL https://himalayas.app/jobs?page=3
+
+2023-06-27 12:53:55,903 ERROR: 
+An error occurred: Cannot connect to host himalayas.apphttps:443 ssl:default [nodename nor servname provided, or not known]. Skipping URL https://himalayas.app/jobs?page=4
+
+2023-06-27 12:54:12,995 ERROR: 
+INDEED. Exception on https://mx.indeed.com/jobs?q=&l=remoto&rbl=Desde+casa&jlid=24899cbf30589459&sort=date&start=10. Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-27 12:54:23,569 ERROR: 
+An error occurred: Cannot connect to host himalayas.apphttps:443 ssl:default [nodename nor servname provided, or not known]. Skipping URL https://himalayas.app/jobs?page=5
+
+2023-06-27 12:54:23,572 INFO: 
+BS4: LISTS HAVE THE SAME LENGHT. SENDING TO POSTGRE
+
+2023-06-27 12:54:23,762 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-06-27 12:54:25,194 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 3364
+Total number of unique jobs: 80
+Current total count of jobs in PostgreSQL: 3444
+
+2023-06-27 12:54:25,202 INFO: 
+Async BS4 crawlers finished! all in: 130.68 seconds.
+
+2023-06-27 12:54:50,220 ERROR: 
+INDEED. Exception on https://mx.indeed.com/jobs?q=&l=remoto&rbl=Desde+casa&jlid=24899cbf30589459&sort=date&start=20. Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-27 12:54:54,412 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-27 12:54:55,497 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 3444
+Total number of unique jobs: 65
+Current total count of jobs in PostgreSQL: 3509
+
+2023-06-27 12:54:55,501 INFO: 
+Async APIs finished! all in: 168.56 seconds.
+
+2023-06-27 12:55:16,048 ERROR: 
+INDEED. Exception on https://mx.indeed.com/jobs?q=&l=remoto&rbl=Desde+casa&jlid=24899cbf30589459&sort=date&start=30. Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-27 12:55:20,114 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-27 12:55:20,413 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 3509
+Total number of unique jobs: 17
+Current total count of jobs in PostgreSQL: 3526
+
+2023-06-27 12:55:20,414 INFO: 
+Async Sel finished! all in: 183.35 seconds.
+
+2023-06-27 12:55:39,103 ERROR: 
+INDEED. Exception on https://mx.indeed.com/jobs?q=&l=remoto&rbl=Desde+casa&jlid=24899cbf30589459&sort=date&start=40. Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-27 12:55:39,144 INFO: 
+Finished Indeed. Results below ⬇︎
+
+2023-06-27 12:55:40,505 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 3526
+Total number of unique jobs: 72
+Current total count of jobs in PostgreSQL: 3598
+
+2023-06-27 12:55:40,509 INFO: 
+Finished async Indeed. All in 203.44494 seconds!!!
+
+2023-06-27 12:57:22,463 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-27 12:57:24,815 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 3598
+Total number of unique jobs: 148
+Current total count of jobs in PostgreSQL: 3746
+
+2023-06-27 12:57:24,827 INFO: 
+Async RSS readers finished! all in: 312.77 seconds.
+
+2023-06-27 12:57:24,858 INFO: 
+ALL ASYNC CRALERS FINISHED IN: 5.30 minutes.
+
+2023-06-28 12:52:06,940 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-28 12:52:12,438 INFO: 
+Async API crawler deployed!.
+
+2023-06-28 12:52:15,051 INFO: 
+Async RSS crawler deployed!
+
+2023-06-28 12:52:17,916 INFO: 
+Async BS4 crawler deployed!.
+
+2023-06-28 12:52:17,917 INFO: 
+Async Sel crawler deployed!
+
+2023-06-28 12:52:32,508 INFO: 
+Async INDEED crawler deployed!.
+
+2023-06-28 12:53:09,898 ERROR: 
+An error occurred: Cannot connect to host himalayas.apphttps:443 ssl:default [nodename nor servname provided, or not known]. Skipping URL https://himalayas.app/jobs?page=1
+
+2023-06-28 12:53:31,347 ERROR: 
+An error occurred: Cannot connect to host himalayas.apphttps:443 ssl:default [nodename nor servname provided, or not known]. Skipping URL https://himalayas.app/jobs?page=2
+
+2023-06-28 12:53:36,754 ERROR: 
+An error occurred: Cannot connect to host himalayas.apphttps:443 ssl:default [nodename nor servname provided, or not known]. Skipping URL https://himalayas.app/jobs?page=3
+
+2023-06-28 12:53:59,609 ERROR: 
+INDEED. Exception on https://mx.indeed.com/jobs?q=&l=remoto&rbl=Desde+casa&jlid=24899cbf30589459&sort=date&start=10. Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-28 12:54:17,513 ERROR: 
+INDEED. Exception on https://mx.indeed.com/jobs?q=&l=remoto&rbl=Desde+casa&jlid=24899cbf30589459&sort=date&start=20. Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-28 12:54:24,730 WARNING: 
+Received non-200 response (524) for API: https://api-career-vault-sstxk.ondigitalocean.app/v1/jobs/remote?page=1&search=&category=Software&role=&hideOnlyUS=1. Skipping...
+
+2023-06-28 12:54:33,751 ERROR: 
+An error occurred: Cannot connect to host himalayas.apphttps:443 ssl:default [nodename nor servname provided, or not known]. Skipping URL https://himalayas.app/jobs?page=5
+
+2023-06-28 12:54:33,753 INFO: 
+BS4: LISTS HAVE THE SAME LENGHT. SENDING TO POSTGRE
+
+2023-06-28 12:54:33,888 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-06-28 12:54:35,513 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 3746
+Total number of unique jobs: 87
+Current total count of jobs in PostgreSQL: 3833
+
+2023-06-28 12:54:35,520 INFO: 
+Async BS4 crawlers finished! all in: 140.47 seconds.
+
+2023-06-28 12:54:48,412 ERROR: 
+INDEED. Exception on https://mx.indeed.com/jobs?q=&l=remoto&rbl=Desde+casa&jlid=24899cbf30589459&sort=date&start=30. Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-28 12:54:53,934 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-06-28 12:54:55,325 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 3833
+Total number of unique jobs: 85
+Current total count of jobs in PostgreSQL: 3918
+
+2023-06-28 12:54:55,328 INFO: 
+Async APIs finished! all in: 168.39 seconds.
+
+2023-06-28 12:55:16,671 ERROR: 
+INDEED. Exception on https://mx.indeed.com/jobs?q=&l=remoto&rbl=Desde+casa&jlid=24899cbf30589459&sort=date&start=40. Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-06-28 12:55:16,766 INFO: 
+Finished Indeed. Results below ⬇︎
+
+2023-06-28 12:55:17,763 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 3918
+Total number of unique jobs: 57
+Current total count of jobs in PostgreSQL: 3975
+
+2023-06-28 12:55:17,764 INFO: 
+Finished async Indeed. All in 179.85269 seconds!!!
+
+2023-06-28 12:55:25,675 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-06-28 12:55:26,010 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 3975
+Total number of unique jobs: 17
+Current total count of jobs in PostgreSQL: 3992
+
+2023-06-28 12:55:26,011 INFO: 
+Async Sel finished! all in: 188.10 seconds.
+
+2023-06-28 12:56:58,228 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-06-28 12:57:08,882 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 3992
+Total number of unique jobs: 460
+Current total count of jobs in PostgreSQL: 4452
+
+2023-06-28 12:57:08,893 INFO: 
+Async RSS readers finished! all in: 296.46 seconds.
+
+2023-06-28 12:57:08,931 INFO: 
+ALL ASYNC CRALERS FINISHED IN: 5.03 minutes.
+
+2023-06-29 12:52:06,682 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-06-29 12:52:10,974 INFO: 
+Async API crawler deployed!.
+
+2023-06-29 12:52:14,155 INFO: 
+Async RSS crawler deployed!
+
+2023-06-29 12:52:16,751 INFO: 
+Async BS4 crawler deployed!.
+
+2023-06-29 12:52:16,753 INFO: 
+Async Sel crawler deployed!
+
+2023-06-29 12:52:28,447 INFO: 
+Async INDEED crawler deployed!.
+
+2023-06-29 12:52:56,095 ERROR: 
+unhandled exception during asyncio.run() shutdown
+task: <Task finished name='Task-18' coro=<async_bs4_template.<locals>.async_bs4_crawler() done, defined at /Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/async_bs4.py:77> exception=BrokenPipeError(32, 'Broken pipe')>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/asyncio/base_events.py", line 646, in run_until_complete
+    return future.result()
+  File "/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/main.py", line 43, in main
+    await async_main("MAIN")
+  File "/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/main.py", line 26, in async_main
+    await asyncio.gather(
+  File "/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/async_bs4.py", line 277, in async_bs4_template
+    await gather_json_loads_bs4(session)
+  File "/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/async_bs4.py", line 239, in gather_json_loads_bs4
+    results = await asyncio.gather(*tasks)
+  File "/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/async_bs4.py", line 138, in async_bs4_crawler
+    job_data["description"] = await async_follow_link(session=session, followed_link=job_data['link'], description_final=job_data["description"], inner_link_tag=inner_link_tag, default=default, driver=driver)
+  File "/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/utils/FollowLink.py", line 29, in async_follow_link
+    print(f"""CONNECTION ESTABLISHED ON {followed_link}""", "\n")
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/colorama/ansitowin32.py", line 47, in write
+    self.__convertor.write(text)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/colorama/ansitowin32.py", line 177, in write
+    self.write_and_convert(text)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/colorama/ansitowin32.py", line 205, in write_and_convert
+    self.write_plain_text(text, cursor, len(text))
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/colorama/ansitowin32.py", line 211, in write_plain_text
+    self.wrapped.flush()
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/async_bs4.py", line 191, in async_bs4_crawler
+    await async_follow_link_container(session, link, total_descriptions, inner_link_tag, default, driver)
+  File "/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/utils/FollowLink.py", line 57, in async_follow_link_container
+    async with session.get(followed_link) as link_res:
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client.py", line 1141, in __aenter__
+    self._resp = await self._coro
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client.py", line 560, in _request
+    await resp.start(conn)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client_reqrep.py", line 899, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/streams.py", line 616, in read
+    await self._waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/async_bs4.py", line 224, in async_bs4_crawler
+    print(f"An error occurred: CONTAINER NOT FOUND.. Skipping URL {url}")
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/colorama/ansitowin32.py", line 47, in write
+    self.__convertor.write(text)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/colorama/ansitowin32.py", line 177, in write
+    self.write_and_convert(text)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/colorama/ansitowin32.py", line 205, in write_and_convert
+    self.write_plain_text(text, cursor, len(text))
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/colorama/ansitowin32.py", line 211, in write_plain_text
+    self.wrapped.flush()
+BrokenPipeError: [Errno 32] Broken pipe
+2023-07-01 12:52:04,976 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-07-01 12:52:12,160 INFO: 
+Async API crawler deployed!.
+
+2023-07-01 13:07:33,327 INFO: 
+Async RSS crawler deployed!
+
+2023-07-01 13:23:30,666 INFO: 
+Async BS4 crawler deployed!.
+
+2023-07-01 13:23:30,674 INFO: 
+Async Sel crawler deployed!
+
+2023-07-01 14:43:38,916 INFO: 
+Async INDEED crawler deployed!.
+
+2023-07-01 14:43:59,530 ERROR: 
+EXCEPTION on https://app.remotesome.com/jobs/?page=1. Message: 
+
+
+2023-07-01 14:44:21,881 ERROR: 
+An error occurred: Cannot connect to host himalayas.apphttps:443 ssl:default [nodename nor servname provided, or not known]. Skipping URL https://himalayas.app/jobs?page=1
+
+2023-07-01 14:45:40,203 ERROR: 
+An error occurred: [Errno 54] Connection reset by peer. Skipping URL https://dribbble.com/jobs?anywhere=true&keyword=&page=1
+
+2023-07-01 20:12:58,753 ERROR: 
+EXCEPTION on https://cryptojobslist.com/remote?sort=recent&page=1. Message: TimedPromise timed out after 300000 ms
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+TimeoutError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:492:5
+bail@chrome://remote/content/marionette/sync.sys.mjs:211:19
+
+
+2023-07-01 20:12:58,963 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-07-01 20:13:00,394 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 4452
+Total number of unique jobs: 64
+Current total count of jobs in PostgreSQL: 4516
+
+2023-07-01 20:13:00,396 INFO: 
+Async Sel finished! all in: 337.87 seconds.
+
+2023-07-02 09:56:55,484 INFO: 
+Async INDEED crawler deployed!.
+
+2023-07-02 09:57:20,785 WARNING: 
+Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x127c26fe0>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/7bf143b1-1dde-4f2d-be4c-02b80a83fb25/url
+
+2023-07-02 09:57:20,786 WARNING: 
+Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x127c27df0>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/7bf143b1-1dde-4f2d-be4c-02b80a83fb25/url
+
+2023-07-02 09:57:20,787 WARNING: 
+Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x127c27f10>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/7bf143b1-1dde-4f2d-be4c-02b80a83fb25/url
+
+2023-07-02 09:57:20,787 ERROR: 
+INDEED. Exception on https://mx.indeed.com/jobs?q=&l=remoto&rbl=Desde+casa&jlid=24899cbf30589459&sort=date&start=10. HTTPConnectionPool(host='localhost', port=57566): Max retries exceeded with url: /session/7bf143b1-1dde-4f2d-be4c-02b80a83fb25/url (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x127c880a0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+2023-07-02 09:57:20,788 WARNING: 
+Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x127c27d90>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/7bf143b1-1dde-4f2d-be4c-02b80a83fb25
+
+2023-07-02 09:57:20,788 WARNING: 
+Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x127c882e0>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/7bf143b1-1dde-4f2d-be4c-02b80a83fb25
+
+2023-07-02 09:57:20,789 WARNING: 
+Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x127c88400>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/7bf143b1-1dde-4f2d-be4c-02b80a83fb25
+
+2023-07-02 09:57:20,790 WARNING: 
+Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x127c88a30>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/7bf143b1-1dde-4f2d-be4c-02b80a83fb25/url
+
+2023-07-02 09:57:20,791 WARNING: 
+Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x127c88160>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/7bf143b1-1dde-4f2d-be4c-02b80a83fb25/url
+
+2023-07-02 09:57:20,791 WARNING: 
+Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x127c27d00>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/7bf143b1-1dde-4f2d-be4c-02b80a83fb25/url
+
+2023-07-02 09:57:20,791 ERROR: 
+INDEED. Exception on https://mx.indeed.com/jobs?q=&l=remoto&rbl=Desde+casa&jlid=24899cbf30589459&sort=date&start=20. HTTPConnectionPool(host='localhost', port=57566): Max retries exceeded with url: /session/7bf143b1-1dde-4f2d-be4c-02b80a83fb25/url (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x127c27dc0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+2023-07-02 09:57:20,792 WARNING: 
+Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x127c27f10>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/7bf143b1-1dde-4f2d-be4c-02b80a83fb25
+
+2023-07-02 09:57:20,792 WARNING: 
+Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x127c27c70>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/7bf143b1-1dde-4f2d-be4c-02b80a83fb25
+
+2023-07-02 09:57:20,792 WARNING: 
+Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x127c27be0>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/7bf143b1-1dde-4f2d-be4c-02b80a83fb25
+
+2023-07-02 09:57:20,801 INFO: 
+Finished Indeed. Results below ⬇︎
+
+2023-07-02 09:57:20,942 INFO: 
+TEST TABLE REPORT:
+Total count of jobs before crawling: 0
+Total number of unique jobs: 15
+Current total count of jobs in PostgreSQL: 15
+
+2023-07-02 09:57:20,942 INFO: 
+Finished async Indeed. All in 25.45896 seconds!!!
+
+2023-07-02 09:58:26,860 INFO: 
+Async INDEED crawler deployed!.
+
+2023-07-02 09:59:25,609 ERROR: 
+INDEED. Exception on https://mx.indeed.com/jobs?q=&l=remoto&rbl=Desde+casa&jlid=24899cbf30589459&sort=date&start=10. Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-07-02 09:59:46,382 ERROR: 
+INDEED. Exception on https://mx.indeed.com/jobs?q=&l=remoto&rbl=Desde+casa&jlid=24899cbf30589459&sort=date&start=20. Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-07-02 09:59:46,415 INFO: 
+Finished Indeed. Results below ⬇︎
+
+2023-07-02 09:59:46,470 INFO: 
+TEST TABLE REPORT:
+Total count of jobs before crawling: 0
+Total number of unique jobs: 41
+Current total count of jobs in PostgreSQL: 41
+
+2023-07-02 09:59:46,472 INFO: 
+Finished async Indeed. All in 79.61510 seconds!!!
+
+2023-07-02 10:02:32,292 INFO: 
+Async INDEED crawler deployed!.
+
+2023-07-02 10:03:29,482 ERROR: 
+INDEED. Exception on https://mx.indeed.com/jobs?q=&l=remoto&rbl=Desde+casa&jlid=24899cbf30589459&sort=date&start=10. Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-07-02 10:03:47,203 ERROR: 
+INDEED. Exception on https://mx.indeed.com/jobs?q=&l=remoto&rbl=Desde+casa&jlid=24899cbf30589459&sort=date&start=20. Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-07-02 10:03:47,682 INFO: 
+Finished Indeed. Results below ⬇︎
+
+2023-07-02 10:03:47,740 INFO: 
+TEST TABLE REPORT:
+Total count of jobs before crawling: 0
+Total number of unique jobs: 42
+Current total count of jobs in PostgreSQL: 42
+
+2023-07-02 10:03:47,741 INFO: 
+Finished async Indeed. All in 75.45165 seconds!!!
+
+2023-07-02 10:09:05,811 INFO: 
+Async Sel crawler deployed!
+
+2023-07-02 10:10:52,537 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-07-02 10:10:52,677 INFO: 
+TEST TABLE REPORT:
+Total count of jobs before crawling: 0
+Total number of unique jobs: 151
+Current total count of jobs in PostgreSQL: 151
+
+2023-07-02 10:10:52,678 INFO: 
+Async Sel finished! all in: 106.81 seconds.
+
+2023-07-02 10:17:35,794 INFO: 
+Async BS4 crawler deployed!.
+
+2023-07-02 10:17:42,883 INFO: 
+BS4: LISTS HAVE THE SAME LENGHT. SENDING TO POSTGRE
+
+2023-07-02 10:17:42,911 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-07-02 10:17:42,970 INFO: 
+TEST TABLE REPORT:
+Total count of jobs before crawling: 0
+Total number of unique jobs: 50
+Current total count of jobs in PostgreSQL: 50
+
+2023-07-02 10:17:42,971 INFO: 
+Async BS4 crawlers finished! all in: 10.09 seconds.
+
+2023-07-02 10:18:15,850 INFO: 
+Async BS4 crawler deployed!.
+
+2023-07-02 10:18:31,950 ERROR: 
+An error occurred: Cannot connect to host himalayas.apphttps:443 ssl:default [nodename nor servname provided, or not known]. Skipping URL https://himalayas.app/jobs?page=1
+
+2023-07-02 10:18:48,881 ERROR: 
+An error occurred: Cannot connect to host himalayas.apphttps:443 ssl:default [nodename nor servname provided, or not known]. Skipping URL https://himalayas.app/jobs?page=2
+
+2023-07-02 10:18:59,645 ERROR: 
+An error occurred: Cannot connect to host himalayas.apphttps:443 ssl:default [nodename nor servname provided, or not known]. Skipping URL https://himalayas.app/jobs?page=3
+
+2023-07-02 10:19:06,798 ERROR: 
+An error occurred: Cannot connect to host himalayas.apphttps:443 ssl:default [nodename nor servname provided, or not known]. Skipping URL https://himalayas.app/jobs?page=4
+
+2023-07-02 10:19:13,141 ERROR: 
+An error occurred: Cannot connect to host himalayas.apphttps:443 ssl:default [nodename nor servname provided, or not known]. Skipping URL https://himalayas.app/jobs?page=5
+
+2023-07-02 10:19:13,141 INFO: 
+BS4: LISTS HAVE THE SAME LENGHT. SENDING TO POSTGRE
+
+2023-07-02 10:19:13,234 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-07-02 10:19:13,351 INFO: 
+TEST TABLE REPORT:
+Total count of jobs before crawling: 0
+Total number of unique jobs: 256
+Current total count of jobs in PostgreSQL: 256
+
+2023-07-02 10:19:13,353 INFO: 
+Async BS4 crawlers finished! all in: 59.72 seconds.
+
+2023-07-02 12:52:02,067 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-07-02 12:52:05,684 INFO: 
+Async API crawler deployed!.
+
+2023-07-02 12:52:07,964 INFO: 
+Async RSS crawler deployed!
+
+2023-07-02 12:52:08,076 INFO: 
+Async Sel crawler deployed!
+
+2023-07-02 12:52:51,218 INFO: 
+Async INDEED crawler deployed!.
+
+2023-07-02 13:02:39,610 INFO: 
+Async BS4 crawler deployed!.
+
+2023-07-02 13:02:50,570 ERROR: 
+An error occurred: Cannot connect to host himalayas.apphttps:443 ssl:default [nodename nor servname provided, or not known]. Skipping URL https://himalayas.app/jobs?page=1
+
+2023-07-02 13:02:52,802 ERROR: 
+An error occurred: Cannot connect to host himalayas.apphttps:443 ssl:default [nodename nor servname provided, or not known]. Skipping URL https://himalayas.app/jobs?page=2
+
+2023-07-02 13:03:08,085 ERROR: 
+An error occurred: Cannot connect to host himalayas.apphttps:443 ssl:default [nodename nor servname provided, or not known]. Skipping URL https://himalayas.app/jobs?page=4
+
+2023-07-02 13:03:27,232 INFO: 
+BS4: LISTS HAVE THE SAME LENGHT. SENDING TO POSTGRE
+
+2023-07-02 13:03:27,339 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-07-02 13:03:27,494 INFO: 
+TEST TABLE REPORT:
+Total count of jobs before crawling: 0
+Total number of unique jobs: 271
+Current total count of jobs in PostgreSQL: 271
+
+2023-07-02 13:03:27,495 INFO: 
+Async BS4 crawlers finished! all in: 47.89 seconds.
+
+2023-07-02 14:59:59,680 INFO: 
+Async BS4 crawler deployed!.
+
+2023-07-02 15:00:00,107 INFO: 
+CONNECTION ESTABLISHED ON https://www.python.org/jobs/7303/
+
+2023-07-02 15:00:00,215 INFO: 
+CONNECTION ESTABLISHED ON https://www.python.org/jobs/7302/
+
+2023-07-02 15:00:00,372 INFO: 
+CONNECTION ESTABLISHED ON https://www.python.org/jobs/7301/
+
+2023-07-02 15:00:00,523 INFO: 
+CONNECTION ESTABLISHED ON https://www.python.org/jobs/7295/
+
+2023-07-02 15:00:00,631 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11268/java-developer-for-prav-app-beta-release-at-prav-app-project/
+
+2023-07-02 15:00:00,639 INFO: 
+CONNECTION ESTABLISHED ON https://www.python.org/jobs/7294/
+
+2023-07-02 15:00:00,746 INFO: 
+CONNECTION ESTABLISHED ON https://www.python.org/jobs/7293/
+
+2023-07-02 15:00:00,837 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11264/elasticsearch-consultant-at-the-organized-crime-and-corruption-reporting-project-occrp/
+
+2023-07-02 15:00:00,850 INFO: 
+CONNECTION ESTABLISHED ON https://www.python.org/jobs/7291/
+
+2023-07-02 15:00:00,971 INFO: 
+CONNECTION ESTABLISHED ON https://www.python.org/jobs/7290/
+
+2023-07-02 15:00:01,047 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11261/cybercrime-journalist-at-the-organized-crime-and-corruption-reporting-project-occrp/
+
+2023-07-02 15:00:01,260 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11260/cloud-systems-engineer-kubernetes-at-opennebula-systems/
+
+2023-07-02 15:00:01,295 INFO: 
+CONNECTION ESTABLISHED ON https://www.python.org/jobs/7289/
+
+2023-07-02 15:00:01,396 INFO: 
+CONNECTION ESTABLISHED ON https://www.python.org/jobs/7288/
+
+2023-07-02 15:00:01,467 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11259/technical-support-engineer-at-xwiki-sas/
+
+2023-07-02 15:00:01,472 INFO: 
+CONNECTION ESTABLISHED ON https://himalayas.app/companies/truelogic/jobs/senior-data-engineer-health-care-id-1334
+
+2023-07-02 15:00:01,509 INFO: 
+CONNECTION ESTABLISHED ON https://www.python.org/jobs/7287/
+
+2023-07-02 15:00:01,653 INFO: 
+CONNECTION ESTABLISHED ON https://www.python.org/jobs/7286/
+
+2023-07-02 15:00:01,675 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11257/site-reliability-engineer-traffic-at-wikimedia-foundation/
+
+2023-07-02 15:00:01,684 INFO: 
+CONNECTION ESTABLISHED ON https://dribbble.com/jobs/214970-Product-Designer?source=index
+
+2023-07-02 15:00:01,751 INFO: 
+CONNECTION ESTABLISHED ON https://www.python.org/jobs/7285/
+
+2023-07-02 15:00:01,879 INFO: 
+CONNECTION ESTABLISHED ON https://www.python.org/jobs/7284/
+
+2023-07-02 15:00:01,882 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11252/senior-site-reliability-engineer-at-wikimedia-foundation/
+
+2023-07-02 15:00:02,004 INFO: 
+CONNECTION ESTABLISHED ON https://www.python.org/jobs/7283/
+
+2023-07-02 15:00:02,098 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11250/executive-director-%e2%80%94-gnome-foundation-at-gnome-foundation/
+
+2023-07-02 15:00:02,105 INFO: 
+CONNECTION ESTABLISHED ON https://www.python.org/jobs/7249/
+
+2023-07-02 15:00:02,208 INFO: 
+CONNECTION ESTABLISHED ON https://www.python.org/jobs/7248/
+
+2023-07-02 15:00:02,257 INFO: 
+CONNECTION ESTABLISHED ON https://dribbble.com/jobs/219194-Graphic-Designer-Baseball-Merchandise?source=index
+
+2023-07-02 15:00:02,315 INFO: 
+CONNECTION ESTABLISHED ON https://www.python.org/jobs/7247/
+
+2023-07-02 15:00:02,327 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11249/manager-analytics-movement-insights-at-wikimedia-foundation/
+
+2023-07-02 15:00:02,387 INFO: 
+CONNECTION ESTABLISHED ON https://himalayas.app/companies/natural-agency/jobs/bubble-io-weweb-xano-no-code-developer
+
+2023-07-02 15:00:02,450 INFO: 
+CONNECTION ESTABLISHED ON https://www.python.org/jobs/7246/
+
+2023-07-02 15:00:02,537 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11248/senior-site-reliability-engineer-wikimedia-enterprise-at-wikimedia-foundation/
+
+2023-07-02 15:00:02,545 INFO: 
+CONNECTION ESTABLISHED ON https://www.python.org/jobs/7245/
+
+2023-07-02 15:00:02,675 INFO: 
+CONNECTION ESTABLISHED ON https://www.python.org/jobs/7243/
+
+2023-07-02 15:00:02,743 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11246/patternshop-project-maintenance-at-alves-r/
+
+2023-07-02 15:00:02,789 INFO: 
+CONNECTION ESTABLISHED ON https://www.python.org/jobs/7242/
+
+2023-07-02 15:00:02,839 INFO: 
+CONNECTION ESTABLISHED ON https://dribbble.com/jobs/218699-Founding-Product-Designer-who-can-code?source=index
+
+2023-07-02 15:00:02,897 INFO: 
+CONNECTION ESTABLISHED ON https://www.python.org/jobs/7238/
+
+2023-07-02 15:00:02,951 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11245/fundraising-analyst-contract-at-wikimedia-foundation/
+
+2023-07-02 15:00:03,003 INFO: 
+CONNECTION ESTABLISHED ON https://www.python.org/jobs/7237/
+
+2023-07-02 15:00:03,122 INFO: 
+CONNECTION ESTABLISHED ON https://www.python.org/jobs/7236/
+
+2023-07-02 15:00:03,165 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11241/digital-experience-senior-specialist-at-wikimedia-foundation/
+
+2023-07-02 15:00:03,379 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11234/ooni-project-manager-at-open-observatory-of-network-interference-ooni/
+
+2023-07-02 15:00:03,386 INFO: 
+CONNECTION ESTABLISHED ON https://himalayas.app/companies/coinbase/jobs/staff-security-engineer-protocol-security-3790210160
+
+2023-07-02 15:00:03,399 INFO: 
+CONNECTION ESTABLISHED ON https://dribbble.com/jobs/206918-Senior-Product-Designer?source=index
+
+2023-07-02 15:00:03,589 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11232/senior-site-reliability-engineer-database-at-wikimedia-foundation/
+
+2023-07-02 15:00:03,718 INFO: 
+CONNECTION ESTABLISHED ON https://dribbble.com/jobs/219128-Senior-Designer?source=index
+
+2023-07-02 15:00:03,799 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11230/senior-site-reliability-engineer-data-engineering-at-wikimedia-foundation/
+
+2023-07-02 15:00:04,014 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11228/senior-data-engineering-manager-at-wikimedia-foundation/
+
+2023-07-02 15:00:04,233 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11227/managing-director-at-matrixorg-foundation/
+
+2023-07-02 15:00:04,279 INFO: 
+CONNECTION ESTABLISHED ON https://dribbble.com/jobs/150455-Senior-Product-Designer?source=index
+
+2023-07-02 15:00:04,405 INFO: 
+CONNECTION ESTABLISHED ON https://himalayas.app/companies/icertis/jobs/director-enterprise-sales-remote-2010068015
+
+2023-07-02 15:00:04,465 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11226/managing-director-at-matrixorg-foundation/
+
+2023-07-02 15:00:04,687 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11225/senior-c-developer-with-gtk-experience-at-inkscape/
+
+2023-07-02 15:00:04,853 INFO: 
+CONNECTION ESTABLISHED ON https://dribbble.com/jobs/219095-Administration-support?source=index
+
+2023-07-02 15:00:04,900 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11222/open-source-program-office-at-cloud-software-group/
+
+2023-07-02 15:00:05,141 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11221/senior-full-stack-developer-at-baserow/
+
+2023-07-02 15:00:05,219 INFO: 
+CONNECTION ESTABLISHED ON https://himalayas.app/companies/coinbase/jobs/software-engineer-india-remote
+
+2023-07-02 15:00:05,354 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11220/devops-engineer-at-baserow/
+
+2023-07-02 15:00:05,491 INFO: 
+CONNECTION ESTABLISHED ON https://dribbble.com/jobs/218666-Logo-Design-hotels-site?source=index
+
+2023-07-02 15:00:05,595 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11218/product-designer-contract-at-the-tor-project/
+
+2023-07-02 15:00:05,823 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11213/software-engineer-reactnest-at-twentycom/
+
+2023-07-02 15:00:06,032 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11212/innovation-engagement-specialist-eastern-and-southern-africa-hub-remote-at-humanitarian-openstreetmaps-team-hot/
+
+2023-07-02 15:00:06,055 INFO: 
+CONNECTION ESTABLISHED ON https://dribbble.com/jobs/219062-Senior-UX-UI-Designer-For-Mobile-App?source=index
+
+2023-07-02 15:00:06,245 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11211/python-developer-for-docs-as-code-automotive-at-useblocks-gmbh-dominika-lothary/
+
+2023-07-02 15:00:06,447 INFO: 
+CONNECTION ESTABLISHED ON https://himalayas.app/companies/360dialog/jobs/account-manager-india-remote
+
+2023-07-02 15:00:06,517 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11210/senior-developer-advocate-north-america-at-prisma/
+
+2023-07-02 15:00:06,643 INFO: 
+CONNECTION ESTABLISHED ON https://dribbble.com/jobs/212000-Senior-Product-Designer?source=index
+
+2023-07-02 15:00:06,793 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11208/project-manager-at-openrefine/
+
+2023-07-02 15:00:06,969 INFO: 
+CONNECTION ESTABLISHED ON https://dribbble.com/jobs/201638-Head-of-Digital-Design-UX?source=index
+
+2023-07-02 15:00:07,009 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11207/senior-infrastructure-engineer-at-prisma/
+
+2023-07-02 15:00:07,222 INFO: 
+CONNECTION ESTABLISHED ON https://www.fossjobs.net/job/11194/gacc-program-assistant-at-the-organized-crime-and-corruption-reporting-project-occrp/
+
+2023-07-02 15:00:07,261 INFO: 
+CONNECTION ESTABLISHED ON https://himalayas.app/companies/canva/jobs/seo-outreach-specialist-turkish-uk-based
+
+2023-07-02 15:00:07,320 INFO: 
+CONNECTION ESTABLISHED ON https://dribbble.com/jobs/201605-Web-Designer?source=index
+
+2023-07-02 15:00:07,424 ERROR: 
+An error occurred: CONTAINER NOT FOUND.. Skipping URL https://vuejobs.com/jobs/?page=1
+
+2023-07-04 15:19:26,116 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-07-04 15:19:30,765 INFO: 
+Async API crawler deployed!.
+
+2023-07-04 15:19:33,082 INFO: 
+Async RSS crawler deployed!
+
+2023-07-04 15:19:33,084 INFO: 
+Async BS4 crawler deployed!.
+
+2023-07-04 15:19:33,085 INFO: 
+Async Sel crawler deployed!
+
+2023-07-04 15:19:44,893 INFO: 
+Async INDEED crawler deployed!.
+
+2023-07-04 15:26:25,282 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-07-04 15:26:25,285 INFO: 
+Async API crawler deployed!.
+
+2023-07-04 15:26:25,286 INFO: 
+Async RSS crawler deployed!
+
+2023-07-04 15:26:25,286 INFO: 
+Async BS4 crawler deployed!.
+
+2023-07-04 15:26:25,287 INFO: 
+Async Sel crawler deployed!
+
+2023-07-04 15:26:38,187 INFO: 
+Async INDEED crawler deployed!.
+
+2023-07-04 15:27:10,023 ERROR: 
+An error occurred: Cannot connect to host himalayas.apphttps:443 ssl:default [nodename nor servname provided, or not known]. Skipping URL https://himalayas.app/jobs?page=1
+
+2023-07-04 15:27:28,914 ERROR: 
+An error occurred: Cannot connect to host himalayas.apphttps:443 ssl:default [nodename nor servname provided, or not known]. Skipping URL https://himalayas.app/jobs?page=2
+
+2023-07-04 15:27:38,417 ERROR: 
+An error occurred: Cannot connect to host himalayas.apphttps:443 ssl:default [nodename nor servname provided, or not known]. Skipping URL https://himalayas.app/jobs?page=3
+
+2023-07-04 15:27:54,206 ERROR: 
+INDEED. Exception on https://mx.indeed.com/jobs?q=&l=remoto&rbl=Desde+casa&jlid=24899cbf30589459&sort=date&start=10. Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-07-04 15:28:07,576 ERROR: 
+INDEED. Exception on https://mx.indeed.com/jobs?q=&l=remoto&rbl=Desde+casa&jlid=24899cbf30589459&sort=date&start=20. Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-07-04 15:28:08,082 INFO: 
+Finished Indeed. Results below ⬇︎
+
+2023-07-04 15:28:08,199 INFO: 
+TEST TABLE REPORT:
+Total count of jobs before crawling: 271
+Total number of unique jobs: 45
+Current total count of jobs in PostgreSQL: 316
+
+2023-07-04 15:28:08,200 INFO: 
+Finished async Indeed. All in 102.91520 seconds!!!
+
+2023-07-04 15:28:39,251 ERROR: 
+An error occurred: Cannot connect to host himalayas.apphttps:443 ssl:default [nodename nor servname provided, or not known]. Skipping URL https://himalayas.app/jobs?page=5
+
+2023-07-04 15:28:39,251 INFO: 
+BS4: LISTS HAVE THE SAME LENGHT. SENDING TO POSTGRE
+
+2023-07-04 15:28:39,395 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-07-04 15:28:39,515 INFO: 
+TEST TABLE REPORT:
+Total count of jobs before crawling: 316
+Total number of unique jobs: 84
+Current total count of jobs in PostgreSQL: 400
+
+2023-07-04 15:28:39,516 INFO: 
+Async BS4 crawlers finished! all in: 134.23 seconds.
+
+2023-07-04 15:28:49,545 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-07-04 15:28:49,679 INFO: 
+TEST TABLE REPORT:
+Total count of jobs before crawling: 400
+Total number of unique jobs: 418
+Current total count of jobs in PostgreSQL: 818
+
+2023-07-04 15:28:49,681 INFO: 
+Async APIs finished! all in: 144.40 seconds.
+
+2023-07-04 15:29:11,048 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-07-04 15:29:11,138 INFO: 
+TEST TABLE REPORT:
+Total count of jobs before crawling: 818
+Total number of unique jobs: 152
+Current total count of jobs in PostgreSQL: 970
+
+2023-07-04 15:29:11,139 INFO: 
+Async Sel finished! all in: 165.86 seconds.
+
+2023-07-04 15:30:24,300 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-07-04 15:30:24,485 INFO: 
+TEST TABLE REPORT:
+Total count of jobs before crawling: 970
+Total number of unique jobs: 597
+Current total count of jobs in PostgreSQL: 1567
+
+2023-07-04 15:30:24,488 INFO: 
+Async RSS readers finished! all in: 239.21 seconds.
+
+2023-07-04 15:30:24,489 INFO: 
+ALL ASYNC CRALERS FINISHED IN: 3.99 minutes.
+

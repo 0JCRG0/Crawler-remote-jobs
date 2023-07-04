@@ -40,7 +40,7 @@ async def async_main(pipeline):
 	logging.info(f"ALL ASYNC CRALERS FINISHED IN: {min_elapsed_time:.2f} minutes.")
 
 async def main():
-	await async_main("MAIN")
+	await async_main("TEST")
 
 if __name__ == "__main__":
 	asyncio.run(main())
