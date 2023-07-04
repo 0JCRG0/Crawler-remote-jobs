@@ -7,8 +7,6 @@ import pandas as pd
 import timeit
 import os
 import logging
-from selenium import webdriver
-from selenium.webdriver.common.by import By
 import bs4
 from datetime import date
 from datetime import datetime
@@ -34,12 +32,6 @@ async def async_api_template(pipeline):
 	#Start the timer
 	start_time = asyncio.get_event_loop().time()
 
-	#START SEL IF REQUIRED
-	options = webdriver.FirefoxOptions()
-	options.add_argument('-headless')
-																	
-	# Start the session
-	driver = webdriver.Firefox(options=options)
 	""" DETERMINING WHICH JSON TO LOAD & WHICH POSTGRE TABLE WILL BE USED """
 
 	if pipeline == 'MAIN':
@@ -122,7 +114,7 @@ async def async_api_template(pipeline):
 									if follow_link == "yes":
 										default = job.get(elements_path["description_tag"], "NaN")
 										job_data["description"] = ""
-										job_data["description"] = await async_follow_link(session=session, followed_link=job_data['link'], description_final=job_data["description"], inner_link_tag=inner_link_tag, default=default, driver=driver)									
+										job_data["description"] = await async_follow_link(session=session, followed_link=job_data['link'], description_final=job_data["description"], inner_link_tag=inner_link_tag, default=default)									
 									else:
 										job_data["description"] = job.get(elements_path["description_tag"], "NaN")
 
