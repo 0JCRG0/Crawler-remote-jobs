@@ -10,9 +10,10 @@ import asyncio
 from asyncio import TimeoutError
 from concurrent.futures import ThreadPoolExecutor
 import logging
+#from handy import LoggingMasterCrawler
 import os
 
-
+#LoggingMasterCrawler()
 
 async def fetch_sel(url, driver):
     loop = asyncio.get_event_loop()
@@ -22,7 +23,7 @@ async def fetch_sel(url, driver):
 
 #TODO: FIX REFACTOR -- THERE WAS A KEYERROR WITH DESCRIPTION
 
-async def async_follow_link(session, followed_link, description_final, inner_link_tag, default, driver):
+async def async_follow_link(session, followed_link, description_final, inner_link_tag, default):
 
     async with session.get(followed_link) as link_res:
         if link_res.status == 200:
@@ -39,6 +40,11 @@ async def async_follow_link(session, followed_link, description_final, inner_lin
         elif link_res.status == 403:
             print(f"""CONNECTION PROHIBITED WITH BS4 ON {followed_link}. STATUS CODE: "{link_res.status}". TRYING WITH SELENIUM""", "\n")
             logging.warning(f"""CONNECTION PROHIBITED WITH BS4 ON {followed_link}. STATUS CODE: "{link_res.status}". TRYING WITH SELENIUM""")
+            #START SEL
+            options = webdriver.FirefoxOptions()
+            options.add_argument('-headless')
+            # Start the session
+            driver = webdriver.Firefox(options=options)
             driver.get(followed_link)
             description_tag = driver.find_element(By.CSS_SELECTOR, inner_link_tag)
             if description_tag:
@@ -53,7 +59,7 @@ async def async_follow_link(session, followed_link, description_final, inner_lin
             description_final = default
             return description_final
 
-async def async_follow_link_container(session, followed_link, total_descriptions: list, inner_link_tag, default, driver):
+async def async_follow_link_container(session, followed_link, total_descriptions: list, inner_link_tag, default):
     async with session.get(followed_link) as link_res:
         if link_res.status == 200:
             print(f"""CONNECTION ESTABLISHED ON {followed_link}""", "\n")
@@ -65,6 +71,11 @@ async def async_follow_link_container(session, followed_link, total_descriptions
         elif link_res.status == 403:
             print(f"""CONNECTION PROHIBITED WITH BS4 ON {followed_link}. STATUS CODE: "{link_res.status}". TRYING WITH SELENIUM""", "\n")
             logging.warning(f"""CONNECTION PROHIBITED WITH BS4 ON {followed_link}. STATUS CODE: "{link_res.status}". TRYING WITH SELENIUM""")
+            #START SEL
+            options = webdriver.FirefoxOptions()
+            options.add_argument('-headless')
+            # Start the session
+            driver = webdriver.Firefox(options=options)
             driver.get(followed_link)
             description_tag = driver.find_element(By.CSS_SELECTOR, inner_link_tag)
             description_inner = description_tag.get_attribute("innerHTML") if description_tag else "NaN"
