@@ -222,6 +222,8 @@ async def async_selenium_template(pipeline):
 				# Handle any other exceptions
 				print(f"""EXCEPTION on {str(url)}: {str(e)}""")
 				logging.error(f"""EXCEPTION on {str(url)}. {str(e)}""")
+		
+		driver.quit()
 		return rows 
 
 	#driver.quit()

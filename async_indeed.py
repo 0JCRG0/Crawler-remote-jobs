@@ -186,6 +186,8 @@ async def async_indeed_template(SCHEME, KEYWORD, pipeline):
 				print("\n", f"INDEED. Exception: {e}", "\n")
 				logging.error(f"INDEED. Exception on {str(url)}. {str(e)}")
 				pass
+		
+		driver.quit()
 		return rows
 	async def gather_tasks_indeed(options):
 		with open(JSON) as f:
