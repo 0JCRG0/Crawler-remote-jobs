@@ -1,10 +1,10 @@
-#! python3
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
-import pandas as pd
+import pandas as pd #type: ignore
 import re
-import pretty_errors
+import pretty_errors #type: ignore
 import json
 import timeit
 from datetime import date, datetime
@@ -22,7 +22,7 @@ UTILS_PATH = os.environ.get('SYS_PATH_APPEND', "")
 
 """ APPEND UTILS' PATH """
 sys.path.append(UTILS_PATH)
-from handy import *
+from handy import * #type: ignore
 
 
 
