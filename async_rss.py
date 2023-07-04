@@ -3,8 +3,6 @@ import timeit
 import os
 import json
 import pretty_errors
-from selenium import webdriver
-from selenium.webdriver.common.by import By
 import sys
 import bs4
 import requests
@@ -29,13 +27,6 @@ SAVE_PATH = os.environ.get('SAVE_PATH_RSS_READER')
 
 async def async_rss_template(pipeline):
 	start_time = asyncio.get_event_loop().time()
-
-	#START SEL
-	options = webdriver.FirefoxOptions()
-	options.add_argument('-headless')
-									
-	# Start the session
-	driver = webdriver.Firefox(options=options)
 	
 	""" TEST or PROD"""
 
@@ -100,7 +91,7 @@ async def async_rss_template(pipeline):
 							default = entry.description if 'description' in entry else "NaN"
 							if follow_link == 'yes':
 								job_data["description"] = ""
-								job_data["description"] = await async_follow_link(session=session, followed_link=job_data['link'], description_final=job_data["description"], inner_link_tag=inner_link_tag, default=default, driver=driver)
+								job_data["description"] = await async_follow_link(session=session, followed_link=job_data['link'], description_final=job_data["description"], inner_link_tag=inner_link_tag, default=default)
 							else:
 								job_data["description"] = default
 							
