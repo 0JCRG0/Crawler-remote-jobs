@@ -2514,3 +2514,260 @@ Async RSS readers finished! all in: 239.21 seconds.
 2023-07-04 15:30:24,489 INFO: 
 ALL ASYNC CRALERS FINISHED IN: 3.99 minutes.
 
+2023-07-05 12:52:04,558 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-07-05 12:52:04,560 INFO: 
+Async API crawler deployed!.
+
+2023-07-05 12:52:04,561 INFO: 
+Async RSS crawler deployed!
+
+2023-07-05 12:52:04,562 INFO: 
+Async BS4 crawler deployed!.
+
+2023-07-05 12:52:04,562 INFO: 
+Async Sel crawler deployed!
+
+2023-07-05 13:24:27,770 INFO: 
+Async INDEED crawler deployed!.
+
+2023-07-05 14:24:04,345 ERROR: 
+EXCEPTION on https://app.remotesome.com/jobs/?page=1. Message: 
+
+
+2023-07-05 14:28:54,347 ERROR: 
+unhandled exception during asyncio.run() shutdown
+task: <Task finished name='Task-18' coro=<async_bs4_template.<locals>.async_bs4_crawler() done, defined at /Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/async_bs4.py:72> exception=BrokenPipeError(32, 'Broken pipe')>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/asyncio/base_events.py", line 646, in run_until_complete
+    return future.result()
+  File "/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/main.py", line 43, in main
+    await async_main("TEST")
+  File "/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/main.py", line 26, in async_main
+    await asyncio.gather(
+  File "/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/async_rss.py", line 157, in async_rss_template
+    await gather_json_loads_rss(session)
+  File "/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/async_rss.py", line 131, in gather_json_loads_rss
+    results = await asyncio.gather(*tasks)
+  File "/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/async_rss.py", line 94, in async_rss_reader
+    job_data["description"] = await async_follow_link(session=session, followed_link=job_data['link'], description_final=job_data["description"], inner_link_tag=inner_link_tag, default=default)
+  File "/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/utils/FollowLink.py", line 30, in async_follow_link
+    print(f"""CONNECTION ESTABLISHED ON {followed_link}""", "\n")
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/colorama/ansitowin32.py", line 47, in write
+    self.__convertor.write(text)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/colorama/ansitowin32.py", line 177, in write
+    self.write_and_convert(text)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/colorama/ansitowin32.py", line 205, in write_and_convert
+    self.write_plain_text(text, cursor, len(text))
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/colorama/ansitowin32.py", line 211, in write_plain_text
+    self.wrapped.flush()
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/async_bs4.py", line 176, in async_bs4_crawler
+    await async_follow_link_container(session, link, total_descriptions, inner_link_tag, default)
+  File "/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/utils/FollowLink.py", line 63, in async_follow_link_container
+    async with session.get(followed_link) as link_res:
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client.py", line 1141, in __aenter__
+    self._resp = await self._coro
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client.py", line 560, in _request
+    await resp.start(conn)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/client_reqrep.py", line 899, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/aiohttp/streams.py", line 616, in read
+    await self._waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/async_bs4.py", line 197, in async_bs4_crawler
+    print(f"An error occurred: CONTAINER NOT FOUND.. Skipping URL {url}")
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/colorama/ansitowin32.py", line 47, in write
+    self.__convertor.write(text)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/colorama/ansitowin32.py", line 177, in write
+    self.write_and_convert(text)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/colorama/ansitowin32.py", line 205, in write_and_convert
+    self.write_plain_text(text, cursor, len(text))
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/colorama/ansitowin32.py", line 211, in write_plain_text
+    self.wrapped.flush()
+BrokenPipeError: [Errno 32] Broken pipe
+2023-07-06 09:23:39,514 INFO: 
+Async RSS crawler deployed!
+
+2023-07-06 09:30:33,940 INFO: 
+Async API crawler deployed!.
+
+2023-07-06 09:31:46,385 INFO: 
+Async API crawler deployed!.
+
+2023-07-06 09:31:47,624 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-07-06 09:31:47,774 INFO: 
+TEST TABLE REPORT:
+Total count of jobs before crawling: 0
+Total number of unique jobs: 168
+Current total count of jobs in PostgreSQL: 168
+
+2023-07-06 09:31:47,776 INFO: 
+Async APIs finished! all in: 1.39 seconds.
+
+2023-07-06 09:33:47,774 INFO: 
+Async API crawler deployed!.
+
+2023-07-06 09:33:48,710 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-07-06 09:33:48,786 INFO: 
+TEST TABLE REPORT:
+Total count of jobs before crawling: 168
+Total number of unique jobs: 0
+Current total count of jobs in PostgreSQL: 168
+
+2023-07-06 09:33:48,786 INFO: 
+Async APIs finished! all in: 1.01 seconds.
+
+2023-07-06 09:52:16,238 INFO: 
+ALL CRAWLERS DEPLOYED!
+
+2023-07-06 09:52:16,242 INFO: 
+Async API crawler deployed!.
+
+2023-07-06 09:52:16,243 INFO: 
+Async RSS crawler deployed!
+
+2023-07-06 09:52:16,243 INFO: 
+Async BS4 crawler deployed!.
+
+2023-07-06 09:52:16,243 INFO: 
+Async Sel crawler deployed!
+
+2023-07-06 09:52:30,313 INFO: 
+Async INDEED crawler deployed!.
+
+2023-07-06 09:53:13,353 ERROR: 
+An error occurred: Cannot connect to host himalayas.apphttps:443 ssl:default [nodename nor servname provided, or not known]. Skipping URL https://himalayas.app/jobs?page=1
+
+2023-07-06 09:53:28,119 ERROR: 
+An error occurred: Cannot connect to host himalayas.apphttps:443 ssl:default [nodename nor servname provided, or not known]. Skipping URL https://himalayas.app/jobs?page=2
+
+2023-07-06 09:54:34,083 ERROR: 
+INDEED. Exception on https://mx.indeed.com/jobs?q=&l=remoto&rbl=Desde+casa&jlid=24899cbf30589459&sort=date&start=10. Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-07-06 09:54:54,673 ERROR: 
+INDEED. Exception on https://mx.indeed.com/jobs?q=&l=remoto&rbl=Desde+casa&jlid=24899cbf30589459&sort=date&start=20. Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-07-06 09:54:54,869 ERROR: 
+An error occurred: Cannot connect to host himalayas.apphttps:443 ssl:default [nodename nor servname provided, or not known]. Skipping URL https://himalayas.app/jobs?page=5
+
+2023-07-06 09:54:54,871 INFO: 
+BS4: LISTS HAVE THE SAME LENGHT. SENDING TO POSTGRE
+
+2023-07-06 09:54:55,036 INFO: 
+Finished bs4 crawlers. Results below ⬇︎
+
+2023-07-06 09:54:58,587 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 4516
+Total number of unique jobs: 122
+Current total count of jobs in PostgreSQL: 4638
+
+2023-07-06 09:54:58,594 INFO: 
+Async BS4 crawlers finished! all in: 162.35 seconds.
+
+2023-07-06 09:55:17,838 ERROR: 
+INDEED. Exception on https://mx.indeed.com/jobs?q=&l=remoto&rbl=Desde+casa&jlid=24899cbf30589459&sort=date&start=30. Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-07-06 09:55:53,598 ERROR: 
+INDEED. Exception on https://mx.indeed.com/jobs?q=&l=remoto&rbl=Desde+casa&jlid=24899cbf30589459&sort=date&start=40. Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-07-06 09:55:54,333 INFO: 
+Finished Indeed. Results below ⬇︎
+
+2023-07-06 09:55:56,201 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 4638
+Total number of unique jobs: 70
+Current total count of jobs in PostgreSQL: 4708
+
+2023-07-06 09:55:56,204 INFO: 
+Finished async Indeed. All in 219.96352 seconds!!!
+
+2023-07-06 09:56:14,962 ERROR: 
+EXCEPTION on https://cryptojobslist.com/remote?sort=recent&page=1. Message: 
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:182:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:394:5
+element.find/</<@chrome://remote/content/marionette/element.sys.mjs:134:16
+
+
+2023-07-06 09:56:15,620 INFO: 
+Finished Selenium_Crawlers. Results below ⬇︎
+
+2023-07-06 09:56:17,374 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 4708
+Total number of unique jobs: 70
+Current total count of jobs in PostgreSQL: 4778
+
+2023-07-06 09:56:17,375 INFO: 
+Async Sel finished! all in: 241.14 seconds.
+
+2023-07-06 09:56:18,631 INFO: 
+Finished API crawlers. Results below ⬇︎
+
+2023-07-06 09:56:26,161 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 4778
+Total number of unique jobs: 304
+Current total count of jobs in PostgreSQL: 5082
+
+2023-07-06 09:56:26,164 INFO: 
+Async APIs finished! all in: 249.93 seconds.
+
+2023-07-06 09:57:51,936 INFO: 
+Finished RSS Reader. Results below ⬇︎
+
+2023-07-06 09:58:01,952 INFO: 
+MAIN_JOBS TABLE REPORT:
+Total count of jobs before crawling: 5082
+Total number of unique jobs: 465
+Current total count of jobs in PostgreSQL: 5547
+
+2023-07-06 09:58:01,961 INFO: 
+Async RSS readers finished! all in: 345.72 seconds.
+
+2023-07-06 09:58:01,965 INFO: 
+ALL ASYNC CRALERS FINISHED IN: 5.76 minutes.
+
