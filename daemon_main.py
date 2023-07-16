@@ -8,6 +8,8 @@ from utils.handy import LoggingMasterCrawler
 
 LoggingMasterCrawler()
 
+#TODO: ADD EXPONENTIAL BACKDROP, SUCH AS THE TRY, EXCEPT BLOCK FROM GPT FUNCTION
+
 async def schedule_job():
     while True:
         await async_main(pipeline="MAIN")

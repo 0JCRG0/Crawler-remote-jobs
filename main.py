@@ -28,7 +28,8 @@ async def async_main(pipeline):
 		async_rss_template(pipeline),
 		async_bs4_template(pipeline),
 		async_selenium_template(pipeline),
-		async_indeed_template("MX", "", pipeline)
+		async_indeed_template("MX", "", pipeline),
+		return_exceptions=True
 	)
 
 	#indeed(SCHEME="main_mx", KEYWORD="")

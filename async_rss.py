@@ -1,3 +1,5 @@
+#!/usr/local/bin/python3
+
 import feedparser
 import timeit
 import os
@@ -15,8 +17,6 @@ import asyncio
 import aiohttp
 
 """ LOAD THE ENVIRONMENT VARIABLES """
-
-#TODO: ADD CLEANING FUNCTION TO DESC
 
 load_dotenv()
 

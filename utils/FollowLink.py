@@ -21,8 +21,6 @@ async def fetch_sel(url, driver):
         await loop.run_in_executor(executor, driver.get, url)
     return driver.page_source
 
-#TODO: FIX REFACTOR -- THERE WAS A KEYERROR WITH DESCRIPTION
-
 async def async_follow_link(session, followed_link, description_final, inner_link_tag, default):
 
     async with session.get(followed_link) as link_res:

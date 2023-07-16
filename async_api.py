@@ -17,7 +17,6 @@ from utils.FollowLink import async_follow_link
 import asyncio
 import aiohttp
 
-#TODO: REFACTOR - MIMICKING BS4 or RSS READ
 
 """ LOAD THE ENVIRONMENT VARIABLES """
 

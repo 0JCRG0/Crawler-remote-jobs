@@ -20,8 +20,6 @@ import os
 import sys
 from utils.handy import *
 
-#TODO: PROD or TEST = JSON
-
 """ LOAD THE ENVIRONMENT VARIABLES """
 
 load_dotenv()
