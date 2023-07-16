@@ -3,6 +3,7 @@
 import logging
 import timeit
 import asyncio
+import traceback
 from async_rss import async_rss_template
 from other.indeed import indeed
 from async_api import async_api_template
@@ -23,7 +24,7 @@ async def async_main(pipeline):
 	print("\n", "ALL CRAWLERS DEPLOYED!")
 
 	# Schedule tasks to run concurrently using asyncio.gather()
-	await asyncio.gather(
+	results = await asyncio.gather(
 		async_api_template(pipeline),
 		async_rss_template(pipeline),
 		async_bs4_template(pipeline),
@@ -32,7 +33,11 @@ async def async_main(pipeline):
 		return_exceptions=True
 	)
 
-	#indeed(SCHEME="main_mx", KEYWORD="")
+	for result in results:
+		if isinstance(result, Exception):
+			# handle exception
+			logging.error(f"{type(result).__name__} in {result}\n{traceback.format_exc()}")
+			continue
 
 	#print the time
 	elapsed_time = asyncio.get_event_loop().time() - master_start_time
@@ -41,7 +46,7 @@ async def async_main(pipeline):
 	logging.info(f"ALL ASYNC CRALERS FINISHED IN: {min_elapsed_time:.2f} minutes.")
 
 async def main():
-	await async_main("TEST")
+	await async_main("MAIN")
 
 if __name__ == "__main__":
 	asyncio.run(main())
