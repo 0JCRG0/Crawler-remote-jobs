@@ -8,3 +8,4 @@ logs/geckodriver.log
 logs/selenium_crawlers.log
 geckodriver.log
 .pytest_cache/
+*.out
