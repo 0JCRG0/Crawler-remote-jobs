@@ -12,6 +12,7 @@ from concurrent.futures import ThreadPoolExecutor
 import logging
 #from handy import LoggingMasterCrawler
 import os
+from traceback import format_exc
 
 #LoggingMasterCrawler()
 
@@ -141,13 +142,13 @@ async def async_follow_link_sel(followed_link, inner_link_tag, driver, fetch_sel
             return description_final
         except (TimeoutException, NoSuchElementException) as e:
             print(f"ELEMENT NOT FOUND ON {followed_link}. {type(e).__name__}: {str(e)} Setting description to default\n")
-            logging.error(f"ELEMENT NOT FOUND ON {followed_link}. {type(e).__name__}: {str(e)} Setting description to default")
+            logging.error(f"Element either not found or TimeoutException while following this link: {followed_link}. {type(e).__name__}. Traceback: {format_exc()}.\n Setting description to default", exc_info=True)
             return default
         except Exception as e:
-            print(f"Unexpected error on {followed_link}. Exception: {str(e)} Setting description to default\n")
-            logging.error(f"Unexpected error on {followed_link}. Exception: {str(e)} Setting description to default")
+            print(f"Unexpected error while following this link: {followed_link}. Exception: {str(e)} Setting description to default\n")
+            logging.error(f"Unexpected error while following this link: {followed_link}. Exception: {str(e)}. Traceback: {format_exc()}.\n Setting description to default", exc_info=True)
             return default
     except Exception as e:
-        print(f"Unexpected error on {followed_link}. Exception: {str(e)} Setting description to default\n")
-        logging.error(f"Unexpected error on {followed_link}. Exception: {str(e)} Setting description to default")
+        print(f"Unexpected error before following this link: {followed_link}. Exception: {str(e)} Setting description to default\n")
+        logging.error(f"Unexpected error while following this link: {followed_link}. Exception: {str(e)}. Traceback: {format_exc()}.\n Setting description to default", exc_info=True)
         return default

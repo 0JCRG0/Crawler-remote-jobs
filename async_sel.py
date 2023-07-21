@@ -6,9 +6,12 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from concurrent.futures import ThreadPoolExecutor
+from os import path
+from selenium.webdriver.chrome.service import Service
 import pandas as pd
 import re
 import pretty_errors
+from traceback import format_exc
 import timeit
 from dateutil.parser import parse
 from datetime import date, datetime
@@ -36,9 +39,10 @@ async def async_selenium_template(pipeline):
 	start_time = timeit.default_timer()
 
 	#Modify the options so it is headless - to disable just comment the next 2 lines and use the commented driver
-	options = webdriver.FirefoxOptions()
-	options.add_argument('-headless')
-		
+	options = webdriver.ChromeOptions()
+	options.add_argument('--headless=new')
+	#service = Service(executable_path='/Users/juanreyesgarcia/chromedriver', log_path=path.devnull)
+	#service.start()
 
 	"""
 	The following is specifying which JSON to load & to which table it will be sent
@@ -51,13 +55,6 @@ async def async_selenium_template(pipeline):
 		print("\n", f"Pipeline is set to 'MAIN'. Jobs will be sent to PostgreSQL's main_jobs table", "\n")
 		# configure the logger
 		LoggingMasterCrawler()
-	elif pipeline == 'FREELANCE':
-		#TODO: Fix path
-		JSON = '/selenium_resources/freelance.json'
-		POSTGRESQL = freelance_postgre
-		# configure the logger
-		LoggingFreelanceCrawler()
-		#print("\n", f"Reading {JSON}. Jobs will be sent to PostgreSQL's freelance table", "\n")
 	elif pipeline == 'TEST':
 		if TEST:
 			JSON = TEST
@@ -80,7 +77,8 @@ async def async_selenium_template(pipeline):
 
 	async def async_sel_crawler(url_obj, options):
 		#NEW DRIVER EACH ITERATION FOR SITE
-		driver = webdriver.Firefox(options=options)
+		driver = webdriver.Chrome(options=options)
+		#driver = webdriver.Chrome(options=options, service=service)
 
 		#INITIALISE THE LISTS
 		total_links = []
@@ -125,6 +123,7 @@ async def async_selenium_template(pipeline):
 					jobs = wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR,  elements_path["jobs_path"])))
 					if jobs:
 						try:
+							default_descriptions = []
 							for job in jobs:
 								job_data = {}
 
@@ -160,19 +159,24 @@ async def async_selenium_template(pipeline):
 								description_default = job.find_element(By.CSS_SELECTOR, elements_path["description_path"])
 								default =description_default.get_attribute("innerHTML") if description_default else "NaN"
 								job_data["description"]= default
-								total_descriptions.append(job_data["description"])
-
+								#Placeholder for default descriptions
+								default_descriptions.append(default)
 							
 							"""FOLLOW THE SCRAPED LINKS OUTSIDE THE FOR LOOP"""
 							if follow_link == "yes":
 								for i, link in enumerate(total_links):
-									total_descriptions[i]  = await async_follow_link_sel(followed_link=link, inner_link_tag=inner_link_tag, driver=driver, fetch_sel=fetch_sel)
+									description = await async_follow_link_sel(followed_link=link, inner_link_tag=inner_link_tag, driver=driver, fetch_sel=fetch_sel, default=default_descriptions[i])
+									total_descriptions.append(description)
 							else:
-								# Get the descriptions & append it to its list
-								total_descriptions = total_descriptions
+								# Get the default descriptions
+								total_descriptions = default_descriptions
 						except NoSuchElementException as e:
 							print(f"NoSuchElementException: {str(e)}")
-							logging.error(f"NoSuchElementException: {str(e)}")
+							logging.error(f"NoSuchElementException: while getting elements in {url}.  Traceback: {format_exc()}.\n", exc_info=True)
+							pass
+						except Exception as e:
+							print(f"Exception while getting elements in {url}: {str(e)}. Traceback: {format_exc()}")
+							logging.error(f"Unexpected Exception while getting elements in {url}: {str(e)}. Traceback: {format_exc()}.\n", exc_info=True)
 							pass
 				elif strategy == "container":
 					#Identify the container with all the jobs
@@ -205,28 +209,40 @@ async def async_selenium_template(pipeline):
 							""" WHETHER TO FOLLOW THE SCRAPED LINKS, OR AT ALL.  """
 
 							description_elements = container.find_elements(By.CSS_SELECTOR, elements_path["description_path"])
-							default = [i.get_attribute("innerHTML") if i else "NaN" for i in description_elements]
-							total_descriptions.extend(default)
+							default_descriptions = [i.get_attribute("innerHTML") if i else "NaN" for i in description_elements]
+							
 							if follow_link == "yes":
 								for i, link in enumerate(total_links):
-									total_descriptions[i] = follow_link_container_sel(followed_link=link, inner_link_tag=inner_link_tag, driver=driver)
+									description = await async_follow_link_sel(followed_link=link, inner_link_tag=inner_link_tag, driver=driver, fetch_sel=fetch_sel, default=default_descriptions[i])
+									total_descriptions.append(description)
 							else:
-								total_descriptions = total_descriptions
+								total_descriptions = default_descriptions
 					
 							rows = {'title':total_titles, 'link':total_links, 'description': total_descriptions, 'pubdate': total_pubdates, 'location': total_locations, 'timestamp': total_timestamps}
 						except NoSuchElementException as e:
 							print(f"NoSuchElementException: {str(e)}")
-							logging.error(f"NoSuchElementException: {str(e)}")
+							logging.error(f"NoSuchElementException: while getting elements in {url}.  Traceback: {format_exc()}.\n", exc_info=True)
 							pass
+						except Exception as e:
+							print(f"Exception while getting elements in {url}: {str(e)}. Traceback: {format_exc()}")
+							logging.error(f"Unexpected Exception while getting elements in {url}: {str(e)}. Traceback: {format_exc()}.\n", exc_info=True)
+							pass
+			except NoSuchElementException as e:
+			# Handle the specific exception
+				print(f"Element not found before getting the elements in {url}")
+				logging.error(f"Element not found before getting the elements in {url} Traceback: {format_exc()}.\n", exc_info=True)
+				pass
+			except TimeoutException as e:
+				print(f"TimeoutException before getting the elements in {url}. Traceback: {format_exc()}.\n")
+				logging.error(f"TimeoutException before getting the elements in {url}. Traceback: {format_exc()}.\n", exc_info=True)
+				pass
 			except Exception as e:
-				# Handle any other exceptions
-				print(f"""EXCEPTION on {str(url)}: {str(e)}""")
-				logging.error(f"""EXCEPTION on {str(url)}. {str(e)}""")
-		
+				print(f"Unexpected Exception before getting the elements in {url}. {str(e)}. Traceback: {format_exc()}")
+				logging.error(f"Unexpected Exception before getting the elements in {url}: {str(e)}. Traceback: {format_exc()}.\n", exc_info=True)
+				pass
 		driver.quit()
+		#service.stop()
 		return rows 
-
-	#driver.quit()
 
 	async def gather_tasks_selenium(options):
 		with open(JSON) as f:

@@ -124,7 +124,7 @@ async def async_indeed_template(SCHEME, KEYWORD, pipeline):
 					try:
 						default_descriptions = []
 						for job in jobs:
-							operation = f"getting elements from job opening: {job}"
+							operation = f"getting elements from job openings in: {url}"
 							##Get the attributes...
 							job_data = {}
 								
