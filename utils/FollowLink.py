@@ -15,11 +15,11 @@ import os
 
 #LoggingMasterCrawler()
 
-async def fetch_sel(url, driver):
+"""async def fetch_sel(url, driver):
     loop = asyncio.get_event_loop()
     with ThreadPoolExecutor() as executor:
         await loop.run_in_executor(executor, driver.get, url)
-    return driver.page_source
+    return driver.page_source"""
 
 async def async_follow_link(session, followed_link, description_final, inner_link_tag, default):
 
@@ -128,7 +128,7 @@ def follow_link_container_sel(followed_link, inner_link_tag, driver):
         logging.error(f"""ELEMENT NOT FOUND ON {followed_link}. NoSuchElementError: {str(e)} "Setting description to default" """)
         pass
 
-async def async_follow_link_sel(followed_link, inner_link_tag, driver, fetch_sel):
+async def async_follow_link_sel(followed_link, inner_link_tag, driver, fetch_sel, default):
     try:
         await fetch_sel(followed_link, driver)  # Replace driver.get with await fetch_sel
         print(f"""CONNECTION ESTABLISHED ON {followed_link}""", "\n")
@@ -139,15 +139,15 @@ async def async_follow_link_sel(followed_link, inner_link_tag, driver, fetch_sel
             description_tag = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, inner_link_tag)))
             description_final = description_tag.get_attribute("innerHTML") if description_tag else "NaN"
             return description_final
-        except TimeoutException:
-            print("Element not found within the specified wait time.", "Setting description to default")
-            logging.error("""Element not found within the specified wait time. Setting description to default""")
-            pass
-        except NoSuchElementException as e:
-            print("\n", f"""ELEMENT NOT FOUND ON {followed_link}. NoSuchElementError: {str(e)}""", "Setting description to default", "\n")
-            logging.error(f"""ELEMENT NOT FOUND ON {followed_link}. NoSuchElementError: {str(e)} "Setting description to default" """)
-            pass
-    except NoSuchElementException as e:
-        print("\n", f"""ELEMENT NOT FOUND ON {followed_link}. NoSuchElementError: {str(e)}""", "Setting description to default", "\n")
-        logging.error(f"""ELEMENT NOT FOUND ON {followed_link}. NoSuchElementError: {str(e)} "Setting description to default" """)
-        pass
+        except (TimeoutException, NoSuchElementException) as e:
+            print(f"ELEMENT NOT FOUND ON {followed_link}. {type(e).__name__}: {str(e)} Setting description to default\n")
+            logging.error(f"ELEMENT NOT FOUND ON {followed_link}. {type(e).__name__}: {str(e)} Setting description to default")
+            return default
+        except Exception as e:
+            print(f"Unexpected error on {followed_link}. Exception: {str(e)} Setting description to default\n")
+            logging.error(f"Unexpected error on {followed_link}. Exception: {str(e)} Setting description to default")
+            return default
+    except Exception as e:
+        print(f"Unexpected error on {followed_link}. Exception: {str(e)} Setting description to default\n")
+        logging.error(f"Unexpected error on {followed_link}. Exception: {str(e)} Setting description to default")
+        return default

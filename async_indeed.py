@@ -2,9 +2,11 @@
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from os import path
+from selenium.webdriver.chrome.service import Service
 from concurrent.futures import ThreadPoolExecutor
 import pandas as pd
 import re
@@ -18,6 +20,7 @@ from datetime import date, datetime
 from dotenv import load_dotenv
 import os
 import sys
+from traceback import format_exc
 from utils.handy import *
 
 """ LOAD THE ENVIRONMENT VARIABLES """
@@ -27,21 +30,16 @@ load_dotenv()
 PROD = os.environ.get('JSON_PROD_INDEED', "")
 TEST = os.environ.get('JSON_TEST_INDEED', "")
 SAVE_PATH = os.environ.get('SAVE_PATH_INDEED', "")
-#UTILS_PATH = os.environ.get('SYS_PATH_APPEND', "")
 
-""" APPEND UTILS' PATH """
-#sys.path.append(UTILS_PATH)
-#from handy import *
-
-#Initiate Logging
-#LoggingMasterCrawler()
 
 async def async_indeed_template(SCHEME, KEYWORD, pipeline):
 	start_time = timeit.default_timer()
-
-	options = webdriver.FirefoxOptions()
-	options.add_argument('-headless')
-	#driver = webdriver.Firefox(options=options)
+	#Setting up options for the WebDriver
+	options = webdriver.ChromeOptions()
+	options.add_argument('--headless=new')
+	service = Service(executable_path='/Users/juanreyesgarcia/chromedriver', log_path=path.devnull)
+	#Fucking start it ffs
+	service.start()
 
 	""" DETERMINING WHICH JSON TO LOAD & WHICH POSTGRE TABLE WILL BE USED """
 
@@ -52,13 +50,6 @@ async def async_indeed_template(SCHEME, KEYWORD, pipeline):
 		print("\n", f"Pipeline is set to 'MAIN'. Jobs will be sent to PostgreSQL's main_jobs table", "\n")
 		# configure the logger
 		LoggingMasterCrawler()
-	elif pipeline == 'FREELANCE':
-		#TODO: FIX - ADD PÁTH
-		JSON = '/selenium_resources/freelance.json'
-		POSTGRESQL = freelance_postgre
-		# configure the logger
-		LoggingFreelanceCrawler()
-		#print("\n", f"Reading {JSON}. Jobs will be sent to PostgreSQL's freelance table", "\n")
 	elif pipeline == 'TEST':
 		if TEST:
 			JSON = TEST
@@ -82,8 +73,9 @@ async def async_indeed_template(SCHEME, KEYWORD, pipeline):
 		logging.info("Async INDEED crawler deployed!.")
 
 		#NEW DRIVER EACH ITERATION FOR SITE
-		driver = webdriver.Firefox(options=options)
-		
+		#driver = webdriver.Chrome(options=options, service=service)
+		driver = webdriver.Chrome(options=options)
+
 		total_titles = []
 		total_links = []
 		total_pubdates = []
@@ -113,11 +105,14 @@ async def async_indeed_template(SCHEME, KEYWORD, pipeline):
 
 		for i in range(0, pages_to_crawl * 10, 10):
 			page_print = round(i/10) + 1
+			logging.info(f"Current indeed page: {page_print}")
 			if special_url == "yes":
 				url = url_1 + KEYWORD + url_2 + str(i)
+				operation = f"requesting {url}"
 				print("\n", f"Crawler deployed on Indeed using {SCHEME} strategy. Looking for \"{KEYWORD}\". Currently crawling page number: {page_print}.")
 			else:
 				url = strategy['url_1'] + str(i)
+				operation = f"requesting {url}"
 				print("\n", f"Crawler deployed on Indeed using {SCHEME} strategy. Currently crawling page number: {page_print}.", "\n")
 				#Make the request
 			try:
@@ -127,7 +122,9 @@ async def async_indeed_template(SCHEME, KEYWORD, pipeline):
 				jobs = wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, elements_path["jobs_path"])))    
 				if jobs:
 					try:
+						default_descriptions = []
 						for job in jobs:
+							operation = f"getting elements from job opening: {job}"
 							##Get the attributes...
 							job_data = {}
 								
@@ -155,38 +152,44 @@ async def async_indeed_template(SCHEME, KEYWORD, pipeline):
 							total_links.append(job_data["link"])
 							total_pubdates.append(job_data["pubdate"])
 							total_locations.append(job_data["location"])
-							#total_descriptions.append(job_data["description"])
 							total_timestamps.append(job_data["timestamp"])
 
-							""" HOW TO FOLLOW THE SCRAPED LINKS """
 							description_raw = job.find_element(By.CSS_SELECTOR, elements_path["description_path"])
 							default = description_raw.get_attribute("innerHTML") if description_raw else "NaN"
 							job_data["description"] = default
-							total_descriptions.append(job_data["description"])
-						
+							#This is a placeholder for default descriptions
+							default_descriptions.append(default)
+													
 						"""FOLLOW THE SCRAPED LINKS OUTSIDE THE FOR LOOP"""
 						if follow_link == "yes":
 							for i, link in enumerate(total_links):
-								total_descriptions[i]  = await async_follow_link_sel(followed_link=link, inner_link_tag=inner_link_tag, driver=driver, fetch_sel=fetch_indeed)
+								description = await async_follow_link_sel(followed_link=link, inner_link_tag=inner_link_tag, driver=driver, fetch_sel=fetch_indeed, default=default_descriptions[i])
+								total_descriptions.append(description)
 						else:
-							# Get the descriptions & append it to its list
-							total_descriptions = total_descriptions
+							# Get the default descriptions
+							total_descriptions = default_descriptions
 					except NoSuchElementException as e:
 						print(f"NoSuchElementException: {str(e)}")
-						logging.error(f"NoSuchElementException: {str(e)}")
+						logging.error(f"NoSuchElementException: while {operation}: {str(e)}", exc_info=True)
 						pass
 			except NoSuchElementException as e:
 			# Handle the specific exception
-				print("Element not found:", e)
-				logging.error(f"Element not found: {str(e)}")
+				print(f"Element not found during {operation}", e)
+				logging.error(f"Element not found during {operation}: {str(e)}", exc_info=True)
+				pass
+			except TimeoutException as e:
+				print(f"Timeout {operation}. {str(url)}. {str(e)}. Traceback: {format_exc()}.\n")
+				logging.error(f"TimeoutException {operation}. Traceback: {format_exc()}.\n", exc_info=True)
 				pass
 			except Exception as e:
-				print("\n", f"INDEED. Exception: {e}", "\n")
-				logging.error(f"INDEED. Exception on {str(url)}. {str(e)}")
+				print(f"Exception {operation}. {str(e)}. Traceback: {format_exc()}")
+				logging.error(f"Unexpected Exception {operation}: {str(e)}. Traceback: {format_exc()}.\n", exc_info=True)
 				pass
 		
 		driver.quit()
+		service.stop()
 		return rows
+	
 	async def gather_tasks_indeed(options):
 		with open(JSON) as f:
 			data = json.load(f)
