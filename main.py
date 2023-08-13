@@ -5,7 +5,6 @@ import timeit
 import asyncio
 import traceback
 from async_rss import async_rss_template
-from other.indeed import indeed
 from async_api import async_api_template
 from async_bs4 import async_bs4_template
 from async_sel import async_selenium_template
@@ -60,10 +59,16 @@ async def async_main(pipeline):
 	print(f"ALL ASYNC CRALERS FINISHED IN: {min_elapsed_time:.2f} minutes.", "\n")
 	logging.info(f"ALL ASYNC CRALERS FINISHED IN: {min_elapsed_time:.2f} minutes.")
 
+"""
+	INFINITE LOOP:
+
 async def main():
     while True:
         await async_main("MAIN")
         await asyncio.sleep(4 * 60 * 60)  # Sleep for 4 hours
+"""
+async def main():
+	await async_main("MAIN")
 
 if __name__ == "__main__":
     asyncio.run(main())
