@@ -1,4 +1,4 @@
-,location
+Unnamed: 0,location
 0,Remote US NC FL NY PA Jersey NJ
 1,Europe
 2,Nicaragua
@@ -36,7 +36,7 @@
 34,FL Remote US
 35,Washington Remote
 36,NY Remote North America
-37,Remoto in Guanajuato MX
+37,Remoto MX
 38,PK Pakistan QA
 39,DZ AO BJ Africa ZA Global
 40,Remote Pakistan
@@ -100,7 +100,7 @@
 98,Belgium
 99,EMEA UK
 100,Paris France Remote
-101,Desde casa MX
+101,MX
 102,CA CA CA CA CA US WA Remote OR
 103,Anywhere India
 104,LV Latvia
@@ -331,7 +331,7 @@
 329,USA UK Canada
 330,Remote Andorra Spain
 331,Remote Southern
-332,"Remoto in Morelia, Mich. MX"
+332,Remoto MX
 333,Remote GA CA FL OR UT US TX IL MI CA MD TX
 334,NC USA
 335,Taiwan
@@ -446,7 +446,7 @@
 444,Jersey
 445,AI AG AW North America
 446,Northern America
-447, MX
+447,MX
 448,LATAM UK European
 449,Remote Brazil LATAM
 450,Remote Remote Remote
@@ -724,7 +724,7 @@
 722,Netherlands
 723,Remote Israel
 724,
-725,Trabajo remoto híbrido MX
+725,remoto MX
 726,Remote Madrid Spain Spain
 727,Remote Berlin
 728,UK
@@ -746,7 +746,7 @@
 744,EE Estonia
 745,Malawi
 746,UTC+0 UTC+2
-747,Remoto in Desde casa MX
+747,Remoto MX
 748,Romania Europe Remote
 749,WA
 750,Remote USA

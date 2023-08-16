@@ -1,0 +1,860 @@
+Unnamed: 0,location
+0,Remote US NC FL NY PA JE NJ
+1,Europe
+2,NI
+3,Remote PL
+4,TX USA
+5,Remote TW
+6,CA NJ OR Remote US
+7,Europe LATAM CA UK
+8,PH QA
+9,Remote South KR
+10,WA Remote
+11,GI
+12,US Remote AZ
+13,US Remote WA
+14,AL AD AI North America South
+15,Madrid ES DE IE IT NL Remote US UK FR
+16,UTC-8 UTC+3
+17,HU
+18,Remote Lisbon PT
+19,Remote DE
+20,Prague CZ
+21,Africa Remote
+22,VE
+23,GB United Kingdom
+24,AU Remote
+25,IL Remote
+26,Remote WA CA US
+27,AF AL DZ EMEA
+28,United States Europe
+29,TX CO Remote US
+30,LATAM Europe UK CA DE FR European
+31,MX AR Remote
+32,Remote NL
+33,IN
+34,FL Remote US
+35,Washington Remote
+36,NY Remote North America
+37,Remoto MX
+38,PK QA
+39,DZ AO BJ Africa ZA Global
+40,Remote PK
+41,Remote US North America Europe
+42,IE
+43,PY
+44,SG
+45,Remote AU
+46,RS
+47,PT
+48,Remote IN US
+49,Remote Europe
+50,MT
+51,CO
+52,Remote anywhere
+53,AF AL DZ EMEA AE
+54,Washington
+55,NY FL CA MA Remote US
+56,CZ
+57,Europe UK DE FR European
+58,DK FI IS
+59,NO
+60,Kyiv UA Remote
+61,IE Dublin Remote
+62,Europe Asia
+63,US United States Remote
+64,CN
+65,IL
+66,DE UK Remote
+67,Remote- US CA
+68,HU Remote
+69,IN Remote
+70,MX Remote
+71,Paris London
+72,Remote Warsaw PL
+73,CY
+74,AL AD AI Europe Americas
+75,Remote ES
+76,LATAM Europe Remote US North America
+77,US Remote IN
+78,IN AI
+79,DZ AO BJ Africa ZA IT
+80,UTC-5
+81,CO NY CA Remote
+82,PH HR
+83,Remote TX US
+84,US TX CA WA Remote VA NC PA MI FL MD NY AZ GA MA IL UT MO OR
+85,JP Tokyo Remote
+86,US Remote OR
+87,HR International
+88,Americas
+89,Remote MX
+90,CO Remote
+91,GB United Kingdom QA
+92,US United States CX
+93,International Remote
+94,Remote IL
+95,BR
+96,LT
+97,TN
+98,BE
+99,EMEA UK
+100,Paris FR Remote
+101,MX
+102,CA US WA Remote OR
+103,Anywhere IN
+104,LV
+105,LU
+106,UT Remote
+107,CA Remote US
+108,VA
+109,Remote AR
+110,DZ AO BJ Africa ZA
+111,CO AR MX Remote
+112,United Kingdom Remote
+113,IT
+114,CL
+115,United States Remote OK
+116,Remote Ankara TR
+117,TH Bangkok Remote
+118,PA JE NJ Remote US NY FL NC MA
+119,TX FL AZ WA CA OR GA MA MO Remote US MD NY VA NC ID IL OH MI NE
+120,UY
+121,US
+122,ES Remote
+123,FR DE
+124,Madrid ES FR NL UK IT Remote US DE IE
+125,US United States BI
+126,Remote NC
+127,LATAM EMEA UK
+128,CA IT
+129,Remote Paris FR
+130,Remote Worldwide London UK
+131,PH
+132,Latinamerica America
+133,NA
+134,GB United Kingdom Global
+135,Remote United States
+136,UTC+0 UTC+4
+137,DE GB
+138,Remote Anywhere
+139,DE PL NL ES
+140,NA
+141,Remote IT
+142,United States Kingdom
+143,IN Remote US
+144,BR Remote
+145,Ottawa CA Remote
+146,EMEA Remote
+147,Remote JP
+148,US Remote TX
+149,KR South
+150,SI
+151,EG
+152,UY
+153,GB United Kingdom AI
+154,International
+155,FR Remote
+156,CL
+157,Remote North America NY
+158,LATAM CA
+159,AF AL DZ EMEA North America
+160,CO MX
+161,Latam Remote
+162,Remote OR US
+163,Remote IL GA CO
+164,Global
+165,US North America LATAM Europe Remote
+166,NG
+167,US United States QA
+168,MX
+169,Budapest HU Remote
+170,CO Remote US TX
+171,MO
+172,WA US Remote
+173,LATAM Remote US
+174,Washington United States
+175,MI OR TX IL FL CA GA US UT Remote MD
+176,Southern Europe Remote
+177,DE UK FR IT NL US IE ES Amsterdam Remote
+178,Lisbon PT Remote
+179,London
+180,South Asia Remote
+181,ML
+182,Remote CA TX
+183,UTC-8 UTC+2
+184,Remote
+185,Victoria Remote
+186,Remote HU
+187,Nairobi KE
+188,NO
+189,CA US
+190,PK
+191,Asia
+192,United Kingdom Europe
+193,South NJ
+194,AU Remote
+195,BR
+196,PL QA
+197,TW
+198,GT
+199,MA QA
+200,South Africa IN
+201,DZ AO BJ Africa US ZA
+202,BO
+203,UTC+0 UTC+6
+204,Remote US CA
+205,ET
+206,HR International
+207,PA
+208,GA Remote
+209,Americas DE
+210,Remote Washington
+211,CA WA OR Remote US
+212,GA
+213,Remote UT
+214,PA
+215,TX CA Remote NC OR MA IL CO NY WA GA US FL AZ
+216,Dublin IE Remote
+217,North America
+218,AU SG
+219,BG Remote
+220,MX Remote
+221,remote
+222,PL Remote
+223,IS LI NO
+224,Worldwide Remote
+225,Remote Usa
+226,FI
+227,AR BO BR HR
+228,IL
+229,Remote Americas
+230,BE
+231,Moldova
+232,Remote MA
+233,CR
+234,PK Remote
+235,Remote US EMEA
+236,Warsaw PL Remote
+237,CA United States
+238,Lisbon PT
+239,SG Remote
+240,PL
+241,PT ES
+242,PH IT
+243,Remote London UK
+244,US CA Remote EMEA
+245,Remote WA US
+246,South America
+247,Remote MA UT CA NY
+248,ID
+249,SV
+250,Remote-Seoul South KR
+251,AU
+252,Remote SG
+253,Europe Remote UA
+254,WA Remote US
+255,Remote CM
+256,BM
+257,Amsterdam NL
+258,JM
+259,Ottawa Remote
+260,IT Remote
+261,SK International
+262,FR DE NL CH
+263,UTC+1 UTC+0 UTC+2 UTC-1
+264,MX Remote
+265,LATAM
+266,remote DE
+267,American Global International
+268,FI
+269,UK DE PT
+270,UK- Remote
+271,LATAM EMEA UK CA
+272,Remote Northeast
+273,Remote US CA IE
+274,Remote-Phnom KH
+275,USA CA
+276,CA US
+277,NY US Remote IL
+278,DK DE ES GB
+279,CA TX Remote
+280,Remote WA
+281,AU MX
+282,CA USA
+283,Remote Global Anywhere
+284,WA CO TX Remote states
+285,US Remote NY
+286,IE Remote Dublin
+287,Berlin remote
+288,WA CO TX Remote
+289,London UK
+290,North South America
+291,NC Remote
+292,Americas EMEA
+293,United States
+294,Bangkok TH
+295,Remote IL NY TX CA US
+296,Remote PH
+297,WA VA JE NJ TX MD MI WI NC KS US IN NV FL PA CA Remote MO GA AR MN KY OH UT TN OR NE AZ LA MA IL ID IA
+298,CA US Remote WA
+299,OR
+300,MX Remote
+301,Remote North America
+302,Remote EMEA IE PL PT
+303,Worldwide
+304,PY
+305,GB United Kingdom HR
+306,OM
+307,IL Remote US
+308,Nairobi
+309,Amsterdam Remote
+310,DZ AO BJ Africa
+311,Remote Berlin DE
+312,Paris FR Remote
+313,Remote CA
+314,CA US Remote
+315,AF AL DZ EMEA
+316,US United States IT
+317,CA US ML
+318,Remote FI
+319,USA Latin America
+320,IE
+321,USA SE
+322,NL Remote
+323,Riga LV Remote
+324,IN ML
+325,UTC+1
+326,SE
+327,AR BO BR
+328,CA US
+329,USA UK CA
+330,Remote AD ES
+331,Remote Southern
+332,Remoto MX
+333,Remote GA CA FL OR UT US TX IL MI MD
+334,NC USA
+335,TW
+336,UK Remote
+337,ID QA
+338,CO
+339,Remote Kyiv UA
+340,EMEARemote
+341,GA USA
+342,Europe USA
+343,AZ
+344,CA WA UT NY US Remote
+345,CA US IT
+346,CA Global
+347,Remote UKCroatia
+348,AR Remote
+349,QA International
+350,Remote IN
+351,IT
+352,OM
+353,Remote EMEA Riga LV
+354,UK FR IT Remote NL US DE IE ES Amsterdam
+355,VA remote
+356,Remote PL EMEA
+357,AL AD AT Europe Southern
+358,Remote CA
+359,Victoria AU
+360,Anywhere Remote
+361,MA Remote
+362,Remote IE
+363,Remote CA USA
+364,IL
+365,FL MA IL TX JE NJ MD MI NC PA OR Remote US UT CA VA
+366,AR
+367,CA US AI
+368,NY Remote
+369,IN
+370,MA Remote US
+371,AU US
+372,NJ
+373,APAC
+374,TX UK London Remote
+375,Remote CA WA OR US
+376,EMEA APAC
+377,Remote EMEA
+378,LATAM AR Remote
+379,Anywhere USA
+380,CA US Global
+381,GE United States
+382,GA US Remote
+383,FI Remote
+384,LATAM Europe
+385,PA
+386,CA
+387,UTC+0
+388,Remote Worldwide
+389,SC
+390,CH
+391,AZ Remote
+392,FR BR PL IT IN
+393,Africa
+394,HU
+395,PH AI
+396,AI AG AW North America
+397,PR
+398,US United States AE
+399,Remote South Africa ES
+400,NY MA FL JE NJ Remote US NC
+401,UTC-4 UTC+0
+402,SA Worldwide Remote
+403,RO Remote
+404,South America Remote
+405,MY
+406,Remote EMEA US CA
+407,Remote MA US NY CA
+408,Dublin Remote
+409,AF AL DZ EMEA Remote
+410,Remote GA
+411,EG
+412,Accra GH
+413,TX NC OH VA OR WI UT CA NE PA Remote NJ US MD MA MN WA LA GA IL TN FL KS
+414,Remote BR
+415,Remote London
+416,UA European
+417,Remote CO USA
+418,WA NY UT US Remote
+419,US United States PR
+420,LT
+421,BG
+422,AU HR
+423,CA Remote
+424,HR
+425,USA UK
+426,PT Remote
+427,AL AD AM Europe
+428,GE
+429,United States Remote
+430,SK QA
+431,DE Remote
+432,Remote PE
+433,US Remote IL
+434,PL
+435,DE Remote
+436,JP
+437,TX IL US Remote
+438,IQ International
+439,NP
+440,Seoul
+441,TX MN NY WA Remote NC GA FL CA OR US
+442,MA United States
+443,GR
+444,JE
+445,AI AG AW North America
+446,Northern America
+447,MX
+448,LATAM UK European
+449,Remote BR LATAM
+450,Remote
+451,SK
+452,NY Remote CA US OR
+453,United
+454,Amsterdam NL Remote
+455,Remote CA CO CT FL GA IL IN ME MA MD MI NJ NY OR PA RI TX VA WA WI
+456,BD
+457,LATAM PH
+458,CA NY Remote US
+459,Remote US North America LATAM Europe
+460,TN CA remote
+461,KR
+462,VN
+463,SE
+464,Remote CA US OR NY
+465,KH
+466,NY
+467,EE RU GB
+468,UTC+8
+469,QA
+470,Remote North America South
+471,EE PL PT ES
+472,Remote US
+473,TX US Remote
+474,Remote North America LATAM
+475,PL RS
+476,LATAM EMEA USA CA
+477,Remote CA WA
+478,London UK Remote
+479,Asia Remote
+480,Remote-Auckland
+481,Anywhere
+482,Remote FR
+483,Berlin DE Remote
+484,IN US Remote
+485,AL
+486,IN IT
+487,Remote United States USA
+488,Berlin DE US ES UK FR IT Remote IE NL
+489,UA
+490,Remote EMEA PL
+491,Remote CA NY WA US
+492,LV
+493,PH Manila Remote
+494,Remote Uk
+495,IT Remote
+496,Berlin remote DE
+497,IN UZ
+498,DZ
+499,United States CO
+500,Remote WA CA
+501,SK
+502,CA QA
+503,KE
+504,MY
+505,AL AD AT Europe
+506,DK QA
+507,Americas Remote
+508,AM
+509,DE NL
+510,Remote CA EMEA US
+511,IN PK
+512,UTC-8 UTC+6
+513,TH
+514,UK FR IT NL IE ES Madrid Remote US DE
+515,CO IT
+516,US United States AR
+517,Amsterdam North NL
+518,Remote IN
+519,SG HR
+520,FR
+521,UA
+522,AR Remote
+523,CN
+524,KE
+525,Europe Latin America CA UK UA
+526,Remote Paris FR
+527,UK Remote London
+528,IE Remote
+529,CA GB
+530,GA
+531,Remote CA US
+532,Remote US CA NJ OR
+533,Remote Worldwide
+534,AU
+535,RS
+536,CA Remote US
+537,NL
+538,Remote US ES IT Berlin DE IL IE UK FR NL
+539,IE Remote Europe UK
+540,CA Remote EMEA US
+541,Remote Global
+542,Remote North
+543,US United States AI
+544,CG
+545,MX QA
+546,Remote Seoul South KR
+547,ID USA
+548,IE FR US DE Madrid ES Remote UK IT NL
+549,GE
+550,IN GB
+551,US CA Remote
+552,Berlin DE Remote
+553,Remote Worldwide
+554,Remote US NY
+555,MA CA US MD FL Remote GA IL
+556,REMOTE LATAM
+557,US MI CA Remote
+558,DZ AO BJ Africa Southern
+559,DE US
+560,TH
+561,US United States
+562,Remote TR
+563,AR IT
+564,AR BO BR South America
+565,TX Remote
+566,CA GB US
+567,BR Remote LATAM
+568,MX
+569,Europe UK
+570,Remote US IE CA
+571,Europe UK European
+572,NZ
+573,Europe UK Latin America CA UA
+574,Berlin
+575,United Kingdom
+576,IN
+577,RO
+578,DE
+579,CA
+580,Remote BG
+581,MX Global
+582,UTC+1
+583,TX CA Remote
+584,CA NC Remote
+585,LATAM Remote
+586,DE Global BD
+587,TL Timor-Leste
+588,AL AD AT Europe IL
+589,GI
+590,PK
+591,GR
+592,HN
+593,AR
+594,PT QA
+595,LATAM USA
+596,AE United
+597,South Africa
+598,PE
+599,CA Remote US
+600,CO
+601,KZ
+602,Remote IN PK
+603,JP
+604,CH
+605,US United States Global
+606,ES QA
+607,JM
+608,UT Remote US
+609,Remote US CA
+610,Remote US TX CO
+611,EC
+612,Remote RO
+613,NE Remote
+614,Remote Latam
+615,Europe South America
+616,Remote NY
+617,UA Remote
+618,OH NV CA WA TX WI FL AZ UT Remote NC IA MS TN MD IL IN AR VA ID MA NE KY OR JE NJ KS LA US PA GA MI MN MO
+619,AU QA
+620,Lisbon Remote
+621,PE
+622,ES
+623,ES Remote
+624,NY Remote WA
+625,Europe CA LATAM UK UA
+626,Anywhere ES
+627,CA WA FL US Remote
+628,AF AL DZ EMEA Americas
+629,EC
+630,NY US Remote London UK
+631,TR Remote
+632,Remote Europe Latin America CA United States MX
+633,BZ CR SV America
+634,Remote IE FR IT IL US DE ES UK NL
+635,Europe Asia
+636,US Remote Americas
+637,US Remote
+638,CA US HR
+639,IN US Remote
+640,Remote NY US
+641,Berlin DE ES
+642,US Remote IL NY TX CA
+643,MD
+644,TN
+645,Paris Remote
+646,Remote Apac
+647,MA US Remote
+648,CA AI
+649,NY USA
+650,MA
+651,IT
+652,CA
+653,UTC+0 UTC+3
+654,IL RO GB
+655,Amsterdam NL
+656,BR AR IE Amsterdam South America Europe
+657,Remote HR International
+658,MX
+659,Remote Europe US CA
+660,IN Remote EMEA
+661,London UK Remote
+662,CZ
+663,London United Kingdom Remote
+664,SI
+665,Taipei
+666,RO QA
+667,IN Remote
+668,GA Remote US
+669,AF AM AZ Asia
+670,Remote US North America
+671,US CA Remote
+672,AL AD AT Europe QA
+673,Remote AR LATAM
+674,London Remote
+675,UG
+676,CF African
+677,Europe United Kingdom
+678,TW CN
+679,TR
+680,Remote Dublin IE
+681,BR South Africa CO AR CL EC PA
+682,US Remote CA
+683,Madrid ES Remote
+684,Remote Berlin DE Budapest HU
+685,United States IN CO PH
+686,NY Remote US
+687,CA US AE
+688,Remoto MX
+689,US OR Remote GA TX FL CA VA
+690,FR
+691,Remote UK
+692,UK IE
+693,US United States ML
+694,LATAM Europe UK CA
+695,AU NZ
+696,USA European
+697,PT ML
+698,IS
+699,LT Remote
+700,Remote AZ
+701,London UKRemote
+702,LK
+703,AL AD AT Europe
+704,IN Remote
+705,Remote Emea
+706,SA
+707,PH
+708,RI International
+709,UK UTC-5
+710,IT International
+711,CA IL RO GB
+712,United Remote
+713,Berlin Remote
+714,TR
+715,USA JE USARemote
+716,MA OR Remote
+717,US CA Remote MI
+718,Remote LATAM
+719,TX Remote US
+720,BY
+721,SG
+722,NL
+723,Remote IL
+724,
+725,remoto MX
+726,Remote Madrid ES
+727,Remote Berlin
+728,UK
+729,NC FL MA JE NJ PA Remote US NY
+730,Remote US IL
+731,Remote Europe Amsterdam NL
+732,Remote MA PA FL JE NJ US NC NY GA
+733,United States CA
+734,London UK Remote
+735,UK DE
+736,London United Kingdom
+737,US Remote NE
+738,Tokyo JP
+739,ES
+740,BG
+741,DO
+742,Northern America LATAM Europe
+743,BR PT
+744,EE
+745,MW
+746,UTC+0 UTC+2
+747,Remoto MX
+748,RO Europe Remote
+749,WA
+750,Remote USA
+751,CA IN Remote
+752,Berlin DE
+753,Remote-Latin America
+754,CY
+755,AI AG AR LATAM
+756,Remote-Taipei TW
+757,AZ Remote US
+758,UKLondon UK
+759,PT MT
+760,GA CO Remote IL
+761,Remote HU Europe
+762,CA MA TX MI WA Remote PA GA US OR
+763,UTC-5 UTC-6
+764,London Remote Uk
+765,BR QA
+766,North Africa Remote
+767,Remote MX
+768,European
+769,CA PR SG ES
+770,North America Remote
+771,IL Remote
+772,CR Global
+773,Remote PT
+774,SE GB US
+775,USA
+776,AI International
+777,USA UK CA AU IE
+778,AI AG AR Americas
+779,Remote US GA
+780,Ottawa
+781,IN QA
+782,CA NL GB
+783,Remote CO
+784,MY Remote
+785,US UK Remote NY
+786,Remote Anywhere Latam
+787,CA US Remote
+788,DE
+789,SG Global
+790,South KR
+791,Remote SI
+792,JE NJ KS OH TX IA KY UT ID AR MD OR CA WA NV VA US IN Remote MO WI TN MA MI NC GA IL
+793,Remote MX
+794,AS AU CX Oceania
+795,MY HR
+796,United States
+797,CA US Remote
+798,Warsaw PL Remote
+799,HK
+800,US United States
+801,AZ CA OR Remote MI TX UT WI GA US
+802,AU Remote
+803,DE IE GB
+804,IL US Remote
+805,Bucharest RO
+806,EE
+807,VN
+808,Remote London UKSofia BG
+809,CA NC JE NJ Remote TX UT PA MA IL MI NY AZ OR GA US MD IN
+810,AI
+811,DK
+812,US United States HR
+813,Remote-Bangkok TH
+814,Remote United Kingdom
+815,DK
+816,AF AL DZ EMEA Global
+817,NY US Remote
+818,AR MX BR PL TR LT CO
+819,IE GB
+820,Remote London UK
+821,VA Remote MI AZ CA UT OR US IL FL
+822,US IL Remote
+823,PT
+824,NL ES Madrid UK DE IE FR IT Remote US
+825,AR AM
+826,CA NY WA US Remote
+827,UK Remote EMEA
+828,Remote International
+829,Remote
+830,TX
+831,Latin America
+832,AS AU BD APAC
+833,Prague
+834,HN
+835,EE LT PL ES
+836,Remote US TX
+837,CA US Remote
+838,AR AM CL
+839,Global Remote
+840,RO
+841,EE PL
+842,ID
+843,Europe Remote
+844,AT
+845,Warsaw remote PL
+846,CA CO NY Remote US
+847,Globally remote
+848,QA IT International
+849,Amsterdam NL Remote UK
+850,Remote MA US NY Dublin IE
+851,NE
+852,CA Remote
+853,EMEA
+854,JO
+855,Prague Europe Remote
+856,Remote ES IT FI SE IE
+857,CO Remote
+858,Remote UA
