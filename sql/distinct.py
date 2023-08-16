@@ -1,39 +1,33 @@
 import csv
 import psycopg2
+import pandas as pd
 
-# Connect to the PostgreSQL database
-conn = psycopg2.connect(user='postgres', password='3312', host='localhost', port='5432', database='postgres')
-    
+def all_location_postgre() -> pd.DataFrame :
+    # Connect to the PostgreSQL database
+    conn = psycopg2.connect(user='postgres', password='3312', host='localhost', port='5432', database='postgres')
+        
+    # Create a cursor object
+    cur = conn.cursor()
 
-# Create a cursor object to execute SQL queries
-cursor = conn.cursor()
+    # Fetch new data from the table where id is greater than max_id
+    #cur.execute("SELECT DISTINCT location FROM main_jobs")
+    cur.execute("SELECT DISTINCT location FROM main_jobs")
 
-# Execute the query
-query = """
-SELECT DISTINCT location
-FROM main_jobs
-"""
+    data = cur.fetchall()
 
-cursor.execute(query)
+    # Create a DataFrame with fetched data and set column names
+    df = pd.DataFrame(data, columns=["location"])
 
-# Fetch all rows from the result set
-rows = cursor.fetchall()
+    # Close the database connection
+    cur.close()
+    conn.close()
 
-# Define the path and filename for the CSV file
+    return df
 
+df = all_location_postgre()
 
-csv_filename = "/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/download/sql_distinct.csv"
+df.to_csv("/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/download/sql_distinct.csv")
 
-# Write the data to the CSV file
-with open(csv_filename, mode='w', newline='') as file:
-    writer = csv.writer(file)
-    writer.writerow([desc[0] for desc in cursor.description])  # Write the column headers
-    writer.writerows(rows)  # Write the data rows
-
-# Close the cursor and database connection
-cursor.close()
-conn.close()
-
-print(f"Data exported to {csv_filename}")
+print(f"Data exported to {df}")
 
 
