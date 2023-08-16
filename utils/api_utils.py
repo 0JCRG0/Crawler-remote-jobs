@@ -1,6 +1,6 @@
 import asyncio
 import logging
-from sql.clean_loc import clean_location_rows
+from sql.clean_loc import clean_location_rows, convert_names_to_codes
 from utils.handy import *
 
 def clean_postgre_api(df, csv_path, db):
@@ -11,6 +11,7 @@ def clean_postgre_api(df, csv_path, db):
             #df[col] = df[col].astype(str).str.replace(r'{}', '', regex=True)
             df[col] = df[col].astype(str).apply(clean_rows)
             df[col] = df[col].apply(clean_location_rows)
+            df[col] = df[col].apply(convert_names_to_codes)
         if col == 'description':
             df[col] = df[col].astype(str).apply(clean_rows).apply(cleansing_selenium_crawlers)
 
