@@ -1,6 +1,6 @@
 import asyncio
 import logging
-from sql.clean_loc import clean_location_rows
+from sql.clean_loc import clean_location_rows, convert_names_to_codes
 from utils.handy import *
 
 
@@ -32,6 +32,9 @@ def clean_postgre_bs4(df, S, Q):
 			df[df.columns[i]] = newvals
 			i = df.columns.get_loc(col)
 			newvals = df.loc[:, col].astype(str).apply(clean_location_rows)
+			df[df.columns[i]] = newvals
+			i = df.columns.get_loc(col)
+			newvals = df.loc[:, col].astype(str).apply(convert_names_to_codes)
 			df[df.columns[i]] = newvals
 
 		
