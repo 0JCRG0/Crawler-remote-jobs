@@ -28,24 +28,20 @@ SAVE_PATH = os.environ.get('SAVE_PATH_RSS_READER')
 async def async_rss_template(pipeline):
 	start_time = asyncio.get_event_loop().time()
 	
-	""" TEST or PROD"""
+	LoggingMasterCrawler()
 
-	if pipeline == 'MAIN':
-		if PROD:
-			JSON = PROD
-		POSTGRESQL = to_postgre
-		print("\n", f"Pipeline is set to 'MAIN'. Jobs will be sent to PostgreSQL's main_jobs table", "\n")
-		# configure the logger
-		LoggingMasterCrawler()
-	elif pipeline == 'TEST':
-		if TEST:
-			JSON = TEST
-		POSTGRESQL = test_postgre
-		print("\n", f"Pipeline is set to 'TEST'. Jobs will be sent to PostgreSQL's test table", "\n")
-		# configure the logger
-		LoggingMasterCrawler()
-	else:
-		print("\n", "Incorrect argument! Use 'MAIN' or 'TEST' to run this script.", "\n")
+	#DETERMINING WHICH JSON TO LOAD & WHICH POSTGRE TABLE WILL BE USED
+
+	JSON = None
+	POSTGRESQL = None
+
+	if PROD and TEST:
+		JSON, POSTGRESQL = test_or_prod(pipeline, PROD, TEST, to_postgre, test_postgre)
+
+	# Check that JSON and POSTGRESQL have been assigned valid values
+	if JSON is None or POSTGRESQL is None:
+		logging.error("Error: JSON and POSTGRESQL must be assigned valid values.")
+		return
 
 	#print("\n", f"Reading {file}... ", "\n")
 	print("\n", "Crawler launched on RSS Feeds.")
