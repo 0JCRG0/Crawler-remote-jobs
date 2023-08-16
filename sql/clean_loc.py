@@ -3,6 +3,7 @@ import pandas as pd
 import pretty_errors
 import pycountry
 from geonamescache import GeonamesCache
+import json
 
     # Create an instance of the GeonamesCache class
 gc = GeonamesCache()
@@ -52,9 +53,44 @@ def clean_location_rows(rows):
     cleaned_text = ' '.join(cleaned_words)
     return cleaned_text
 
+
 df['location'] = df['location'].apply(clean_location_rows)
 
 df.to_csv('/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/download/sql_distinct.csv', index=False)
+
+
+SAVE_PATH = "/Users/juanreyesgarcia/Library/CloudStorage/OneDrive-FundacionUniversidaddelasAmericasPuebla/DEVELOPER/PROJECTS/CRAWLER_ALL/data"
+
+def convert_names_to_codes(row):
+    if isinstance(row, str):  # Check if row is a string
+
+        # Country name transformed to their respective codes & clean
+        with open(SAVE_PATH + '/continent_countries_with_capitals.json', 'r') as f:
+            data = json.load(f)
+
+        # Create dictionaries for country names and subdivision names
+        country_dict = {}
+        for continent in data.values():
+            for country in continent['Countries']:
+                country_dict[country['country_name']] = country['country_code']
+
+        # Split the string into a list of names
+        names = row.split()
+
+        # Replace each name with its code
+        codes = [country_dict.get(name, name) for name in names]
+
+        # Remove duplicates and join the codes back into a string
+        return ' '.join(pd.unique(codes))
+    else:
+        return row
+
+
+# Apply the function to the 'location' column
+#df['location'] = df['location'].apply(convert_names_to_codes)
+
+#df.to_csv(SAVE_PATH + '/location_distinct.csv', index=False)
+
 
 
     #print(df['location'])
