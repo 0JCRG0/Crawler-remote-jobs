@@ -37,30 +37,20 @@ async def async_bs4_template(pipeline):
 
 	""" DETERMINING WHICH JSON TO LOAD & WHICH POSTGRE TABLE WILL BE USED """
 
-	if pipeline == 'MAIN':
-		if PROD:
-			JSON = PROD
-		POSTGRESQL = to_postgre
-		print("\n", f"Pipeline is set to 'MAIN'. Jobs will be sent to PostgreSQL's main_jobs table", "\n")
-		# configure the logger
-		LoggingMasterCrawler()
-	elif pipeline == 'FREELANCE':
-		#TODO: FIX - ADD PÁTH
-		JSON = '/selenium_resources/freelance.json'
-		POSTGRESQL = freelance_postgre
-		# configure the logger
-		LoggingFreelanceCrawler()
-		#print("\n", f"Reading {JSON}. Jobs will be sent to PostgreSQL's freelance table", "\n")
-	elif pipeline == 'TEST':
-		if TEST:
-			JSON = TEST
-		POSTGRESQL = test_postgre
-		print("\n", f"Pipeline is set to 'TEST'. Jobs will be sent to PostgreSQL's test table", "\n")
-		# configure the logger
-		LoggingMasterCrawler()
-	else:
-		print("\n", "Incorrect argument! Use 'MAIN', 'TEST' or 'FREELANCE' to run this script.", "\n")
-		logging.error("Incorrect argument! Use either 'MAIN' or 'TEST' to run this script.")
+	LoggingMasterCrawler()
+
+	#DETERMINING WHICH JSON TO LOAD & WHICH POSTGRE TABLE WILL BE USED
+
+	JSON = None
+	POSTGRESQL = None
+
+	if PROD and TEST:
+		JSON, POSTGRESQL = test_or_prod(pipeline, PROD, TEST, to_postgre, test_postgre)
+
+	# Check that JSON and POSTGRESQL have been assigned valid values
+	if JSON is None or POSTGRESQL is None:
+		logging.error("Error: JSON and POSTGRESQL must be assigned valid values.")
+		return
 
 	print("\n", "BS4 crawlers deployed!.")
 	logging.info("Async BS4 crawler deployed!.")
