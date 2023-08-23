@@ -105,7 +105,7 @@ async def async_api_template(pipeline):
 									if follow_link == "yes":
 										default = job.get(elements_path["description_tag"], "NaN")
 										job_data["description"] = ""
-										job_data["description"] = await async_follow_link(session=session, followed_link=job_data['link'], description_final=job_data["description"], inner_link_tag=inner_link_tag, default=default)									
+										job_data["description"] = await async_follow_link(session=session, followed_link=job_data['link'], description_final=job_data["description"], inner_link_tag=inner_link_tag, default=default)									 # type: ignore
 									else:
 										job_data["description"] = job.get(elements_path["description_tag"], "NaN")
 
