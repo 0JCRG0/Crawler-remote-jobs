@@ -87,7 +87,7 @@ async def async_rss_template(pipeline):
 							default = entry.description if 'description' in entry else "NaN"
 							if follow_link == 'yes':
 								job_data["description"] = ""
-								job_data["description"] = await async_follow_link(session=session, followed_link=job_data['link'], description_final=job_data["description"], inner_link_tag=inner_link_tag, default=default)
+								job_data["description"] = await async_follow_link(session=session, followed_link=job_data['link'], description_final=job_data["description"], inner_link_tag=inner_link_tag, default=default) # type: ignore
 							else:
 								job_data["description"] = default
 							
