@@ -41,8 +41,8 @@ async def async_selenium_template(pipeline):
 	#Modify the options so it is headless - to disable just comment the next 2 lines and use the commented driver
 	options = webdriver.ChromeOptions()
 	options.add_argument('--headless=new')
-	#service = Service(executable_path='/Users/juanreyesgarcia/chromedriver', log_path=path.devnull)
-	#service.start()
+	service = Service(executable_path='/Users/juanreyesgarcia/chromedriver', log_path=path.devnull)
+	service.start()
 
 	LoggingMasterCrawler()
 
@@ -70,8 +70,8 @@ async def async_selenium_template(pipeline):
 
 	async def async_sel_crawler(url_obj, options):
 		#NEW DRIVER EACH ITERATION FOR SITE
-		driver = webdriver.Chrome(options=options)
-		#driver = webdriver.Chrome(options=options, service=service)
+		#driver = webdriver.Chrome(options=options)
+		driver = webdriver.Chrome(options=options, service=service)
 
 		#INITIALISE THE LISTS
 		total_links = []
@@ -108,7 +108,7 @@ async def async_selenium_template(pipeline):
 			url = url_prefix + str(i)
 			# get the url
 			try:
-				await fetch_sel(url, driver)
+				await fetch_sel(url, driver) # type: ignore
 				print(f"Crawling {url} with {strategy} strategy")
 
 				""" IF LINKS ARE *NOT* IN THE SAME ELEMENT AS JOBS """
@@ -267,7 +267,7 @@ async def async_selenium_template(pipeline):
 			return combined_data
 	
 	async def insert_postgre():
-		data = await gather_tasks_selenium(options)
+		data = await gather_tasks_selenium(options) # type: ignore
 		data_dic = dict(data)
 		df = pd.DataFrame.from_dict(data_dic, orient='index')
 		df = df.transpose()
