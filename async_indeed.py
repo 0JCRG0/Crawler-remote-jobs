@@ -70,8 +70,8 @@ async def async_indeed_template(SCHEME, KEYWORD, pipeline):
 		logging.info("Async INDEED crawler deployed!.")
 
 		#NEW DRIVER EACH ITERATION FOR SITE
-		#driver = webdriver.Chrome(options=options, service=service)
-		driver = webdriver.Chrome(options=options)
+		driver = webdriver.Chrome(options=options, service=service)
+		#driver = webdriver.Chrome(options=options)
 
 		total_titles = []
 		total_links = []
@@ -113,7 +113,7 @@ async def async_indeed_template(SCHEME, KEYWORD, pipeline):
 				print("\n", f"Crawler deployed on Indeed using {SCHEME} strategy. Currently crawling page number: {page_print}.", "\n")
 				#Make the request
 			try:
-				await fetch_indeed(url, driver)
+				await fetch_indeed(url, driver) # type: ignore
 				print(f"Crawling {url}...")
 
 				jobs = wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, elements_path["jobs_path"])))    
