@@ -99,7 +99,7 @@ async def async_bs4_template(pipeline):
 					url = url_prefix + str(i)
 
 					try:
-						html = await fetch(url, session)
+						html = await fetch(url, session) # type: ignore
 						soup = bs4.BeautifulSoup(html, 'lxml')
 						print(f"Crawling {url} with {strategy} strategy")
 						if strategy == "main":
@@ -120,7 +120,7 @@ async def async_bs4_template(pipeline):
 								default = description_default.text if description_default else "NaN"
 								if follow_link == "yes":
 									job_data["description"] = ""
-									job_data["description"] = await async_follow_link(session=session, followed_link=job_data['link'], description_final=job_data["description"], inner_link_tag=inner_link_tag, default=default)
+									job_data["description"] = await async_follow_link(session=session, followed_link=job_data['link'], description_final=job_data["description"], inner_link_tag=inner_link_tag, default=default) # type: ignore
 								else:
 									# Get the descriptions & append it to its list
 									job_data["description"]= default
