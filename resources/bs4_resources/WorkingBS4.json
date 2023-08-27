@@ -38,24 +38,6 @@
                 ]
             },
             {
-                "name": "https://himalayas.app",
-                "url": "https://himalayas.app/jobs?page=",
-                "pages_to_crawl": 5,
-                "start_point": 1,
-                "strategy": "main",
-                "follow_link": "yes",
-                "inner_link_tag": ".w-full .flex.flex-col.xl\\:flex-row.justify-between.w-full .trix-content",
-                "elements_path": [
-                        {
-                        "jobs_path": "#card-group [name='card']",
-                        "title_path": ".flex.flex-row.items-start.justify-between.mb-2.w-full .flex.flex-row.items-center a .text-xl.font-medium.text-gray-900",
-                        "link_path": ".flex.flex-row.items-start.justify-between.mb-2.w-full .flex.flex-row.items-center a",
-                        "description_path": ".mb-6 div",
-                        "location_path": ".flex.flex-row.items-center.justify-between .flex.flex-row.items-center.flex-wrap.overflow-hidden"
-                    }
-                ]
-            },
-            {
                 "name": "",
                 "url": "https://www.fossjobs.net/jobs-worldwide/?page=",
                 "pages_to_crawl": 1,
