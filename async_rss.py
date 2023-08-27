@@ -23,7 +23,15 @@ load_dotenv()
 PROD = os.environ.get('JSON_PROD_RSS_READER')
 TEST = os.environ.get('JSON_TEST_RSS_READER')
 SAVE_PATH = os.environ.get('SAVE_PATH_RSS_READER')
+user = os.environ.get('user')
+password = os.environ.get('password')
+host = os.environ.get('host')
+port = os.environ.get('port')
+database = os.environ.get('database')
 
+# Create a connection to the database & cursor
+conn = psycopg2.connect(database=database, user=user, password=password, host=host, port=port)
+cur = conn.cursor()
 
 async def async_rss_template(pipeline):
 	start_time = asyncio.get_event_loop().time()
@@ -84,30 +92,34 @@ async def async_rss_template(pipeline):
 
 							job_data["link"] = entry.link if 'link' in entry else "NaN"
 							
-							default = entry.description if 'description' in entry else "NaN"
-							if follow_link == 'yes':
-								job_data["description"] = ""
-								job_data["description"] = await async_follow_link(session=session, followed_link=job_data['link'], description_final=job_data["description"], inner_link_tag=inner_link_tag, default=default) # type: ignore
+							if await link_exists_in_db(link=job_data["link"], cur=cur):
+								#logging.info(f"""Link {job_data["link"]} already found in the db. Skipping... """)
+								continue
 							else:
-								job_data["description"] = default
-							
-							today = date.today()
-							job_data["pubdate"] = today
+								default = entry.description if 'description' in entry else "NaN"
+								if follow_link == 'yes':
+									job_data["description"] = ""
+									job_data["description"] = await async_follow_link(session=session, followed_link=job_data['link'], description_final=job_data["description"], inner_link_tag=inner_link_tag, default=default) # type: ignore
+								else:
+									job_data["description"] = default
+								
+								today = date.today()
+								job_data["pubdate"] = today
 
-							job_data["location"] = getattr(entry, loc_tag) if hasattr(entry, loc_tag) else "NaN"
+								job_data["location"] = getattr(entry, loc_tag) if hasattr(entry, loc_tag) else "NaN"
 
-							#job_data["description"]= entry.description if 'description' in entry else "NaN"
+								#job_data["description"]= entry.description if 'description' in entry else "NaN"
 
-							timestamp = datetime.now()
-							job_data["timestamp"] = timestamp
-							
-							# add the data for the current job to the rows list
-							total_links.append(job_data["link"])
-							total_titles.append(job_data["title"])
-							total_pubdates.append(job_data["pubdate"])
-							total_locations.append(job_data["location"])
-							total_timestamps.append(job_data["timestamp"])
-							total_descriptions.append(job_data["description"])
+								timestamp = datetime.now()
+								job_data["timestamp"] = timestamp
+								
+								# add the data for the current job to the rows list
+								total_links.append(job_data["link"])
+								total_titles.append(job_data["title"])
+								total_pubdates.append(job_data["pubdate"])
+								total_locations.append(job_data["location"])
+								total_timestamps.append(job_data["timestamp"])
+								total_descriptions.append(job_data["description"])
 					else:
 						print(f"""PARSING FAILED ON {url}. Response: {response}. SKIPPING...""", "\n")
 						logging.error(f"""PARSING FAILED ON {url}. Response: {response}. SKIPPING...""")
@@ -139,15 +151,34 @@ async def async_rss_template(pipeline):
 			for key in combined_data:
 				combined_data[key].extend(result[key])
 		
-		print("Lengths of lists before creating DataFrame:")
-		print("Titles:", len(combined_data["title"]))
-		print("Links:", len(combined_data["link"]))
-		print("Descriptions:", len(combined_data["description"]))
-		print("Pubdates:", len(combined_data["pubdate"]))
-		print("Locations:", len(combined_data["location"]))
-		print("Timestamps:", len(combined_data["timestamp"]))
+		title_len = len(combined_data["title"])
+		link_len = len(combined_data["link"])
+		description_len = len(combined_data["description"])
+		pubdate_len = len(combined_data["pubdate"])
+		location_len = len(combined_data["location"])
+		timestamp_len = len(combined_data["timestamp"])
 
-		clean_postgre_rss(df=pd.DataFrame(combined_data), csv_path=SAVE_PATH, db=POSTGRESQL)
+		lengths_info = """
+			Titles: {}
+			Links: {}
+			Descriptions: {}
+			Pubdates: {}
+			Locations: {}
+			Timestamps: {}
+			""".format(
+				title_len,
+				link_len,
+				description_len,
+				pubdate_len,
+				location_len,
+				timestamp_len
+			)
+		if title_len == link_len == description_len == pubdate_len == location_len == timestamp_len:
+			logging.info("async_rss: LISTS HAVE THE SAME LENGHT. SENDING TO POSTGRE")
+			clean_postgre_rss(df=pd.DataFrame(combined_data), csv_path=SAVE_PATH, db=POSTGRESQL)
+		else:
+			logging.error(f"ERROR ON async_rss. LISTS DO NOT HAVE SAME LENGHT. FIX: \n {lengths_info}")
+			pass
 
 	async with aiohttp.ClientSession() as session:
 		await gather_json_loads_rss(session)
