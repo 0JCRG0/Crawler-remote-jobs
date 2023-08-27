@@ -1,9 +1,23 @@
 import re 
 import psycopg2
+from psycopg2 import sql
 import logging
 import pandas as pd
 import json
 import pandas as pd
+import os
+from dotenv import load_dotenv
+
+
+""" LOAD THE ENVIRONMENT VARIABLES """
+
+load_dotenv()
+
+user = os.environ.get('user')
+password = os.environ.get('password')
+host = os.environ.get('host')
+port = os.environ.get('port')
+database = os.environ.get('database')
 
 
 """ LOAD THE ENVIRONMENT VARIABLES """
@@ -448,6 +462,26 @@ def test_postgre(df):
 	cursor.close()
 	cnx.close()
 
+async def link_exists_in_db(link, cur):
+	# Create a connection to the database
+	#conn = psycopg2.connect(database=database, user=user, password=password, host=host, port=port)
+
+	# Create a cursor object
+	#cur = conn.cursor()
+
+	# Query the database to check if the link already exists
+	#query = sql.SQL("SELECT EXISTS(SELECT 1 FROM main_jobs WHERE link=%s)")
+	query = sql.SQL("SELECT EXISTS(SELECT 1 FROM test WHERE link=%s)")
+	cur.execute(query, (link,))
+
+	# Fetch the result
+	result = cur.fetchone()[0] # type: ignore
+
+	# Close the cursor and connection
+	#cur.close()
+	#conn.close()
+
+	return result
 
 
 """ OTHER UTILS """
@@ -526,16 +560,16 @@ def postgre_data(table_name:str = "main_jobs"):
 	return ids, titles, locations, descriptions
 
 def test_or_prod(pipeline: str, json_prod: str, json_test:str, postgre_prod, postgre_test):
-    if pipeline and json_prod and json_test and postgre_prod and postgre_test:
-        if pipeline == 'MAIN':
-            print("\n", f"Pipeline is set to 'MAIN'. Jobs will be sent to PostgreSQL's main_jobs table", "\n")
-            return json_prod or "", postgre_prod or ""
-        elif pipeline == 'TEST':
-            print("\n", f"Pipeline is set to 'TEST'. Jobs will be sent to PostgreSQL's test table", "\n")
-            return json_test or "", postgre_test or ""
-        else:
-            print("\n", "Incorrect argument! Use either 'MAIN' or 'TEST' to run this script.", "\n")
-            logging.error("Incorrect argument! Use either 'MAIN' or 'TEST' to run this script.")
-            return None, None
-    else:
-        return None, None
+	if pipeline and json_prod and json_test and postgre_prod and postgre_test:
+		if pipeline == 'MAIN':
+			print("\n", f"Pipeline is set to 'MAIN'. Jobs will be sent to PostgreSQL's main_jobs table", "\n")
+			return json_prod or "", postgre_prod or ""
+		elif pipeline == 'TEST':
+			print("\n", f"Pipeline is set to 'TEST'. Jobs will be sent to PostgreSQL's test table", "\n")
+			return json_test or "", postgre_test or ""
+		else:
+			print("\n", "Incorrect argument! Use either 'MAIN' or 'TEST' to run this script.", "\n")
+			logging.error("Incorrect argument! Use either 'MAIN' or 'TEST' to run this script.")
+			return None, None
+	else:
+		return None, None
