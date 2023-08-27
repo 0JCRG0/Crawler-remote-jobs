@@ -25,7 +25,15 @@ load_dotenv()
 PROD = os.environ.get('JSON_PROD_API')
 TEST = os.environ.get('JSON_TEST_API')
 SAVE_PATH = os.environ.get('SAVE_PATH_API')
+user = os.environ.get('user')
+password = os.environ.get('password')
+host = os.environ.get('host')
+port = os.environ.get('port')
+database = os.environ.get('database')
 
+# Create a connection to the database & cursor
+conn = psycopg2.connect(database=database, user=user, password=password, host=host, port=port)
+cur = conn.cursor()
 
 async def async_api_template(pipeline):
 	#Start the timer
@@ -76,7 +84,6 @@ async def async_api_template(pipeline):
 		follow_link = api_obj['follow_link']
 		#Extract inner link if follow link
 		inner_link_tag = api_obj['inner_link_tag']
-		#Each site is different to a json file can give us the flexibility we need  
 		headers = {"User-Agent": "my-app"}
 		
 		async with aiohttp.ClientSession() as session:
@@ -100,33 +107,38 @@ async def async_api_template(pipeline):
 									job_data["title"] = job.get(elements_path["title_tag"], "NaN")
 
 									job_data["link"] = job.get(elements_path["link_tag"], "NaN")
-
-									""" IF IT NEEDS TO FOLLOW LINK OR NOT """
-									if follow_link == "yes":
-										default = job.get(elements_path["description_tag"], "NaN")
-										job_data["description"] = ""
-										job_data["description"] = await async_follow_link(session=session, followed_link=job_data['link'], description_final=job_data["description"], inner_link_tag=inner_link_tag, default=default)									 # type: ignore
+									
+									""" WHETHER THE LINK IS IN THE DB """
+									if await link_exists_in_db(link=job_data["link"], cur=cur):
+										#logging.info(f"""Link {job_data["link"]} already found in the db. Skipping... """)
+										continue
 									else:
-										job_data["description"] = job.get(elements_path["description_tag"], "NaN")
+										""" WHETHER TO FOLLOW LINK """
+										if follow_link == "yes":
+											default = job.get(elements_path["description_tag"], "NaN")
+											job_data["description"] = ""
+											job_data["description"] = await async_follow_link(session=session, followed_link=job_data['link'], description_final=job_data["description"], inner_link_tag=inner_link_tag, default=default)									 # type: ignore
+										else:
+											job_data["description"] = job.get(elements_path["description_tag"], "NaN")
 
-									#DATES
-									today = date.today()
-									job_data["pubdate"] = today
-									
-									#locations
-									job_data["location"] = job.get(elements_path["location_tag"], "NaN")
-									
-									#TIMESTAMP
-									timestamp = datetime.now()
-									job_data["timestamp"] = timestamp
+										#DATES
+										today = date.today()
+										job_data["pubdate"] = today
+										
+										#locations
+										job_data["location"] = job.get(elements_path["location_tag"], "NaN")
+										
+										#TIMESTAMP
+										timestamp = datetime.now()
+										job_data["timestamp"] = timestamp
 
-									#Put it all together...
-									total_links.append(job_data["link"])
-									total_titles.append(job_data["title"])
-									total_pubdates.append(job_data["pubdate"])
-									total_locations.append(job_data["location"])
-									total_timestamps.append(job_data["timestamp"])
-									total_descriptions.append(job_data["description"])
+										#Put it all together...
+										total_links.append(job_data["link"])
+										total_titles.append(job_data["title"])
+										total_pubdates.append(job_data["pubdate"])
+										total_locations.append(job_data["location"])
+										total_timestamps.append(job_data["timestamp"])
+										total_descriptions.append(job_data["description"])
 						except json.JSONDecodeError:
 							print(f"Failed to decode JSON for API: {api}. Skipping...")
 							logging.error(f"Failed to decode JSON for API: {api}. Skipping...")
@@ -157,14 +169,35 @@ async def async_api_template(pipeline):
 			for key in combined_data:
 				combined_data[key].extend(result[key])
 		
-		print("Lengths of lists before creating DataFrame:")
-		print("Titles:", len(combined_data["title"]))
-		print("Links:", len(combined_data["link"]))
-		print("Descriptions:", len(combined_data["description"]))
-		print("Pubdates:", len(combined_data["pubdate"]))
-		print("Locations:", len(combined_data["location"]))
-		print("Timestamps:", len(combined_data["timestamp"]))
-		clean_postgre_api(df = pd.DataFrame(combined_data), csv_path=SAVE_PATH, db=POSTGRESQL)
+		title_len = len(combined_data["title"])
+		link_len = len(combined_data["link"])
+		description_len = len(combined_data["description"])
+		pubdate_len = len(combined_data["pubdate"])
+		location_len = len(combined_data["location"])
+		timestamp_len = len(combined_data["timestamp"])
+
+		lengths_info = """
+			Titles: {}
+			Links: {}
+			Descriptions: {}
+			Pubdates: {}
+			Locations: {}
+			Timestamps: {}
+			""".format(
+				title_len,
+				link_len,
+				description_len,
+				pubdate_len,
+				location_len,
+				timestamp_len
+			)
+
+		if title_len == link_len == description_len == pubdate_len == location_len == timestamp_len:
+			logging.info("Async_API: LISTS HAVE THE SAME LENGHT. SENDING TO POSTGRE")
+			clean_postgre_api(df = pd.DataFrame(combined_data), csv_path=SAVE_PATH, db=POSTGRESQL)
+		else:
+			logging.error(f"ERROR ON Async_API. LISTS DO NOT HAVE SAME LENGHT. FIX: \n {lengths_info}")
+			pass
 
 	async with aiohttp.ClientSession() as session:
 		await gather_json_loads_api(session)
