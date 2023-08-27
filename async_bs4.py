@@ -29,6 +29,15 @@ load_dotenv()
 PROD = os.environ.get('JSON_PROD_BS4')
 TEST = os.environ.get('JSON_TEST_BS4')
 SAVE_PATH = os.environ.get('SAVE_PATH_BS4')
+user = os.environ.get('user')
+password = os.environ.get('password')
+host = os.environ.get('host')
+port = os.environ.get('port')
+database = os.environ.get('database')
+
+# Create a connection to the database & cursor
+conn = psycopg2.connect(database=database, user=user, password=password, host=host, port=port)
+cur = conn.cursor()
 
 async def async_bs4_template(pipeline):
 
@@ -47,12 +56,10 @@ async def async_bs4_template(pipeline):
 	if PROD and TEST:
 		JSON, POSTGRESQL = test_or_prod(pipeline, PROD, TEST, to_postgre, test_postgre)
 
-	# Check that JSON and POSTGRESQL have been assigned valid values
 	if JSON is None or POSTGRESQL is None:
 		logging.error("Error: JSON and POSTGRESQL must be assigned valid values.")
 		return
 
-	print("\n", "BS4 crawlers deployed!.")
 	logging.info("Async BS4 crawler deployed!.")
 
 	async def fetch(url, session):
@@ -106,7 +113,7 @@ async def async_bs4_template(pipeline):
 							jobs = soup.select(elements_path["jobs_path"])
 							for job in jobs:
 
-									# create a new dictionary to store the data for the current job
+								# create a new dictionary to store the data for the current job
 								job_data = {}
 
 								title_element = job.select_one(elements_path["title_path"])
@@ -115,74 +122,75 @@ async def async_bs4_template(pipeline):
 								link_element = job.select_one(elements_path["link_path"])
 								job_data["link"] = name + link_element["href"] if link_element else "NaN"
 
-								""" Access each scraped link to get the description """
-								description_default = job.select_one(elements_path["description_path"])
-								default = description_default.text if description_default else "NaN"
-								if follow_link == "yes":
-									job_data["description"] = ""
-									job_data["description"] = await async_follow_link(session=session, followed_link=job_data['link'], description_final=job_data["description"], inner_link_tag=inner_link_tag, default=default) # type: ignore
+								""" WHETHER THE LINK IS IN THE DB """
+								if await link_exists_in_db(link=job_data["link"], cur=cur):
+									#logging.info(f"""Link {job_data["link"]} already found in the db. Skipping... """)
+									continue
 								else:
-									# Get the descriptions & append it to its list
-									job_data["description"]= default
+									""" WHETHER TO FOLLOW LINK """
+									description_default = job.select_one(elements_path["description_path"])
+									default = description_default.text if description_default else "NaN"
+									if follow_link == "yes":
+										job_data["description"] = ""
+										job_data["description"] = await async_follow_link(session=session, followed_link=job_data['link'], description_final=job_data["description"], inner_link_tag=inner_link_tag, default=default) # type: ignore
+									else:
+										# Get the descriptions & append it to its list
+										job_data["description"]= default
 
-								#PUBDATE
-								today = date.today()
-								job_data["pubdate"] = today
+									#PUBDATE
+									today = date.today()
+									job_data["pubdate"] = today
 
-								location_element = job.select_one(elements_path["location_path"])
-								job_data["location"] = location_element.text if location_element else "NaN"
+									location_element = job.select_one(elements_path["location_path"])
+									job_data["location"] = location_element.text if location_element else "NaN"
 
-								timestamp = datetime.now() # type: ignore
-								job_data["timestamp"] = timestamp
+									timestamp = datetime.now() # type: ignore
+									job_data["timestamp"] = timestamp
 
-										# add the data for the current job to the rows list
-								total_links.append(job_data["link"])
-								total_titles.append(job_data["title"])
-								total_pubdates.append(job_data["pubdate"])
-								total_locations.append(job_data["location"])
-								total_timestamps.append(job_data["timestamp"])
-								total_descriptions.append(job_data["description"])
+											# add the data for the current job to the rows list
+									total_links.append(job_data["link"])
+									total_titles.append(job_data["title"])
+									total_pubdates.append(job_data["pubdate"])
+									total_locations.append(job_data["location"])
+									total_timestamps.append(job_data["timestamp"])
+									total_descriptions.append(job_data["description"])
 						else:
 							# Identify the container with all the jobs
 							container = soup.select_one(elements_path["jobs_path"])
 
 							try:
 								if container:
-										# TITLES
-									title_elements = container.select(elements_path["title_path"])
-									new_titles = [i.get_text(strip=True) if i else "NaN" for i in title_elements]
-									total_titles.extend(new_titles)
+									# Identify the elements for each job
+									job_elements = list(zip(
+										container.select(elements_path["title_path"]),
+										container.select(elements_path["link_path"]),
+										container.select(elements_path["description_path"]),
+										container.select(elements_path["location_path"]),
+									))
 
-										# LINKS
-									link_elements = container.select(elements_path["link_path"])
-									new_links = [name + i.get("href") if i else "NaN" for i in link_elements]
-									total_links.extend(new_links)
+									for title_element, link_element, description_element, location_element in job_elements:
+										# Process the elements for the current job
+										title = title_element.get_text(strip=True) if title_element else "NaN"
+										link = name + link_element.get("href") if link_element else "NaN"
+										description_default = description_element.get_text(strip=True) if description_element else "NaN"
+										location = location_element.get_text(strip=True) if location_element else "NaN"
 
-									""" Access each scraped link to get the description """
-									description_elements = container.select(elements_path["description_path"])
-									default = [i.get_text(strip=True) if i else "NaN" for i in description_elements]
-									if follow_link == "yes":
-										for link in new_links:
-											await async_follow_link_container(session, link, total_descriptions, inner_link_tag, default)
+										# Check if the link exists in the database
+										if await link_exists_in_db(link=link, cur=cur):
+											continue
 
-									else:
-										total_descriptions.extend(default)
+										# Follow the link if specified
+										description = ''
+										if follow_link == "yes":
+											description = await async_follow_link(session, link, description, inner_link_tag, description_default)
 
-									# PUBDATES
-									today = date.today()
-									total_pubdates.extend([today] * len(link_elements))
-									
-									# LOCATIONS
-									location_elements = container.select(elements_path["location_path"])
-									new_locations = [i.get_text(strip=True) if i else "NaN" for i in location_elements]
-									total_locations.extend(new_locations)
-
-										#Timestamps
-									timestamp = datetime.now()
-									total_timestamps.extend([timestamp] * len(link_elements))
-
-										# add the data
-									rows = {'title':total_titles, 'link':total_links, 'description': total_descriptions, 'pubdate': total_pubdates, 'location': total_locations, 'timestamp': total_timestamps}
+										# Add the data for the current job to the lists
+										total_titles.append(title)
+										total_links.append(link)
+										total_descriptions.append(description)
+										total_locations.append(location)
+										total_pubdates.append(date.today())
+										total_timestamps.append(datetime.now())
 							except:
 								print(f"An error occurred: CONTAINER NOT FOUND.. Skipping URL {url}")
 								logging.error(f"An error occurred: CONTAINER NOT FOUND.. Skipping URL {url}")
@@ -214,7 +222,6 @@ async def async_bs4_template(pipeline):
 			for key in combined_data:
 				combined_data[key].extend(result[key])
 		
-		print("Lengths of lists before creating DataFrame:")
 		title_len = len(combined_data["title"])
 		link_len = len(combined_data["link"])
 		description_len = len(combined_data["description"])
@@ -222,18 +229,27 @@ async def async_bs4_template(pipeline):
 		location_len = len(combined_data["location"])
 		timestamp_len = len(combined_data["timestamp"])
 
-		print("Titles:", title_len)
-		print("Links:", link_len)
-		print("Descriptions:", description_len)
-		print("Pubdates:", pubdate_len)
-		print("Locations:", location_len)
-		print("Timestamps:", timestamp_len)
+		lengths_info = """
+			Titles: {}
+			Links: {}
+			Descriptions: {}
+			Pubdates: {}
+			Locations: {}
+			Timestamps: {}
+			""".format(
+				title_len,
+				link_len,
+				description_len,
+				pubdate_len,
+				location_len,
+				timestamp_len
+			)
 
 		if title_len == link_len == description_len == pubdate_len == location_len == timestamp_len:
 			logging.info("BS4: LISTS HAVE THE SAME LENGHT. SENDING TO POSTGRE")
 			clean_postgre_bs4(df=pd.DataFrame(combined_data), S=SAVE_PATH, Q=POSTGRESQL)
 		else:
-			logging.error("ERROR ON ASYNC BS4. LISTS DO NOT HAVE SAME LENGHT. FIX!")
+			logging.error(f"ERROR ON ASYNC BS4. LISTS DO NOT HAVE SAME LENGHT. FIX {lengths_info}")
 			pass
 	
 	async with aiohttp.ClientSession() as session:
