@@ -2,10 +2,12 @@
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException 
+from selenium.common.exceptions import TimeoutException as TimeoutExceptionWebDriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from concurrent.futures import ThreadPoolExecutor
+import traceback
 from os import path
 from selenium.webdriver.chrome.service import Service
 import pandas as pd
@@ -41,8 +43,8 @@ async def async_selenium_template(pipeline):
 	#Modify the options so it is headless - to disable just comment the next 2 lines and use the commented driver
 	options = webdriver.ChromeOptions()
 	options.add_argument('--headless=new')
-	service = Service(executable_path='/Users/juanreyesgarcia/chromedriver', log_path=path.devnull)
-	service.start()
+	#service = Service(executable_path='/Users/juanreyesgarcia/chromedriver', log_path=path.devnull)
+	#service.start()
 
 	LoggingMasterCrawler()
 
@@ -70,8 +72,8 @@ async def async_selenium_template(pipeline):
 
 	async def async_sel_crawler(url_obj, options):
 		#NEW DRIVER EACH ITERATION FOR SITE
-		#driver = webdriver.Chrome(options=options)
-		driver = webdriver.Chrome(options=options, service=service)
+		driver = webdriver.Chrome(options=options)
+		#driver = webdriver.Chrome(options=options, service=service)
 
 		#INITIALISE THE LISTS
 		total_links = []
@@ -163,14 +165,11 @@ async def async_selenium_template(pipeline):
 							else:
 								# Get the default descriptions
 								total_descriptions = default_descriptions
-						except NoSuchElementException as e:
-							print(f"NoSuchElementException: {str(e)}")
-							logging.error(f"NoSuchElementException: while getting elements in {url}.  Traceback: {format_exc()}.\n", exc_info=True)
-							pass
-						except Exception as e:
-							print(f"Exception while getting elements in {url}: {str(e)}. Traceback: {format_exc()}")
-							logging.error(f"Unexpected Exception while getting elements in {url}: {str(e)}. Traceback: {format_exc()}.\n", exc_info=True)
-							pass
+						except (NoSuchElementException, TimeoutException, Exception) as e:
+							error_message = f"{type(e).__name__} **while** getting the elements in {url}. {traceback.format_exc()}"
+							print(error_message)
+							logging.error(f"{error_message}\n")
+							continue
 				elif strategy == "container":
 					#Identify the container with all the jobs
 					container = driver.find_element(By.CSS_SELECTOR, elements_path["jobs_path"])
@@ -212,27 +211,16 @@ async def async_selenium_template(pipeline):
 								total_descriptions = default_descriptions
 					
 							rows = {'title':total_titles, 'link':total_links, 'description': total_descriptions, 'pubdate': total_pubdates, 'location': total_locations, 'timestamp': total_timestamps}
-						except NoSuchElementException as e:
-							print(f"NoSuchElementException: {str(e)}")
-							logging.error(f"NoSuchElementException: while getting elements in {url}.  Traceback: {format_exc()}.\n", exc_info=True)
-							pass
-						except Exception as e:
-							print(f"Exception while getting elements in {url}: {str(e)}. Traceback: {format_exc()}")
-							logging.error(f"Unexpected Exception while getting elements in {url}: {str(e)}. Traceback: {format_exc()}.\n", exc_info=True)
-							pass
-			except NoSuchElementException as e:
-			# Handle the specific exception
-				print(f"Element not found before getting the elements in {url}")
-				logging.error(f"Element not found before getting the elements in {url} Traceback: {format_exc()}.\n", exc_info=True)
-				pass
-			except TimeoutException as e:
-				print(f"TimeoutException before getting the elements in {url}. Traceback: {format_exc()}.\n")
-				logging.error(f"TimeoutException before getting the elements in {url}. Traceback: {format_exc()}.\n", exc_info=True)
-				pass
-			except Exception as e:
-				print(f"Unexpected Exception before getting the elements in {url}. {str(e)}. Traceback: {format_exc()}")
-				logging.error(f"Unexpected Exception before getting the elements in {url}: {str(e)}. Traceback: {format_exc()}.\n", exc_info=True)
-				pass
+						except (NoSuchElementException, TimeoutException, Exception) as e:
+							error_message = f"{type(e).__name__} **while** getting the elements in {url}. {traceback.format_exc()}"
+							print(error_message)
+							logging.error(f"{error_message}\n")
+							continue
+			except (NoSuchElementException, TimeoutException, Exception) as e:
+				error_message = f"{type(e).__name__} **before** getting the elements in {url}. {traceback.format_exc()}"
+				print(error_message)
+				logging.error(f"{error_message}\n")
+				continue
 		driver.quit()
 		#service.stop()
 		return rows 
