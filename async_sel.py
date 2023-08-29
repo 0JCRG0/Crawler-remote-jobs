@@ -35,6 +35,15 @@ load_dotenv()
 PROD = os.environ.get('JSON_PROD_SEL')
 TEST = os.environ.get('JSON_TEST_SEL')
 SAVE_PATH = os.environ.get('SAVE_PATH_SEL')
+user = os.environ.get('user')
+password = os.environ.get('password')
+host = os.environ.get('host')
+port = os.environ.get('port')
+database = os.environ.get('database')
+
+# Create a connection to the database & cursor
+conn = psycopg2.connect(database=database, user=user, password=password, host=host, port=port)
+cur = conn.cursor()
 
 async def async_selenium_template(pipeline):
 	#start timer
@@ -115,7 +124,8 @@ async def async_selenium_template(pipeline):
 
 				""" IF LINKS ARE *NOT* IN THE SAME ELEMENT AS JOBS """
 				if strategy == "main":
-					jobs = wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR,  elements_path["jobs_path"])))
+					#jobs = wait.until(EC.visibility_of_all_elements_located((By.CSS_SELECTOR,  elements_path["jobs_path"])))
+					jobs = driver.find_elements(By.CSS_SELECTOR,  elements_path["jobs_path"])
 					if jobs:
 						try:
 							default_descriptions = []
@@ -130,6 +140,11 @@ async def async_selenium_template(pipeline):
 								link_element = job.find_element(By.CSS_SELECTOR, elements_path["link_path"])
 								job_data["link"] = link_element.get_attribute("href") if link_element else "NaN"
 
+								""" WHETHER THE LINK IS IN THE DB """
+								if await link_exists_in_db(link=job_data["link"], cur=cur):
+									#logging.info(f"""Link {job_data["link"]} already found in the db. Skipping... """)
+									continue
+								
 								#PUBDATES - to simplify things & considering this snippet will be run daily datetime is the same day as the day this is running                       
 								today = date.today()
 								job_data["pubdate"] = today
@@ -172,45 +187,48 @@ async def async_selenium_template(pipeline):
 							continue
 				elif strategy == "container":
 					#Identify the container with all the jobs
-					container = driver.find_element(By.CSS_SELECTOR, elements_path["jobs_path"])
+					container = driver.find_element(By.CSS_SELECTOR,elements_path["jobs_path"])
+					default_descriptions_container = []
+					#container = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, elements_path["jobs_path"])))
 					if container:
 						try:
-							#TITLES
-							title_elements = container.find_elements(By.CSS_SELECTOR, elements_path["title_path"])
-							new_titles = [i.get_attribute("innerHTML") if i else "NaN" for i in title_elements]
-							total_titles.extend(new_titles)
-
-							#LINKS
-							link_elements = container.find_elements(By.CSS_SELECTOR, elements_path["link_path"])
-							new_links = [i.get_attribute("href") if i else "NaN" for i in link_elements]
-							total_links.extend(new_links)
+							# Identify the elements for each job
+							job_elements = list(zip(
+								container.find_elements(By.CSS_SELECTOR, elements_path["title_path"]),
+								container.find_elements(By.CSS_SELECTOR, elements_path["link_path"]),
+								container.find_elements(By.CSS_SELECTOR, elements_path["description_path"]),
+								container.find_elements(By.CSS_SELECTOR, elements_path["location_path"]),
+							))
 							
-							# PUBDATES
-							today = date.today()
-							total_pubdates.extend([today] * len(link_elements))
-									
-							#LOCATIONS
-							location_elements = container.find_elements(By.CSS_SELECTOR, elements_path["location_path"])
-							new_locations = [i.get_attribute("innerHTML") if i else "NaN" for i in location_elements]
-							total_locations.extend(new_locations)
+							for title_element, link_element, description_element, location_element in job_elements:
+								title = title_element.get_attribute("innerHTML") if title_element else "NaN"
+								link = link_element.get_attribute("href") if link_element else "NaN"
+								default_description = description_element.get_attribute("innerHTML") if description_element else "NaN"
+								location = location_element.get_attribute("innerHTML") if location_element else "NaN"
 
-							#Timestamps
-							timestamp = datetime.now()
-							total_timestamps.extend([timestamp] * len(link_elements))
+								""" WHETHER THE LINK IS IN THE DB """
+								if await link_exists_in_db(link=link, cur=cur):
+									continue
 
-							""" WHETHER TO FOLLOW THE SCRAPED LINKS, OR AT ALL.  """
+								# Add the data for the current job to the lists
+								total_titles.append(title)
+								total_links.append(link)
+								total_locations.append(location)
+								total_pubdates.append(date.today())
+								total_timestamps.append(datetime.now())
+
+								""" HOW TO FOLLOW THE SCRAPED LINKS, OR AT ALL."""
 
 							description_elements = container.find_elements(By.CSS_SELECTOR, elements_path["description_path"])
-							default_descriptions = [i.get_attribute("innerHTML") if i else "NaN" for i in description_elements]
+							default_descriptions_container = [i.get_attribute("innerHTML") if i else "NaN" for i in description_elements]
 							
 							if follow_link == "yes":
 								for i, link in enumerate(total_links):
-									description = await async_follow_link_sel(followed_link=link, inner_link_tag=inner_link_tag, driver=driver, fetch_sel=fetch_sel, default=default_descriptions[i])
+									description = await async_follow_link_sel(followed_link=link, inner_link_tag=inner_link_tag, driver=driver, fetch_sel=fetch_sel, default=default_descriptions_container[i])
 									total_descriptions.append(description)
 							else:
-								total_descriptions = default_descriptions
-					
-							rows = {'title':total_titles, 'link':total_links, 'description': total_descriptions, 'pubdate': total_pubdates, 'location': total_locations, 'timestamp': total_timestamps}
+								total_descriptions = default_descriptions_container
+
 						except (NoSuchElementException, TimeoutException, Exception) as e:
 							error_message = f"{type(e).__name__} **while** getting the elements in {url}. {traceback.format_exc()}"
 							print(error_message)
