@@ -463,23 +463,12 @@ def test_postgre(df):
 	cnx.close()
 
 async def link_exists_in_db(link, cur):
-	# Create a connection to the database
-	#conn = psycopg2.connect(database=database, user=user, password=password, host=host, port=port)
 
-	# Create a cursor object
-	#cur = conn.cursor()
-
-	# Query the database to check if the link already exists
-	#query = sql.SQL("SELECT EXISTS(SELECT 1 FROM main_jobs WHERE link=%s)")
 	query = sql.SQL("SELECT EXISTS(SELECT 1 FROM test WHERE link=%s)")
 	cur.execute(query, (link,))
 
 	# Fetch the result
 	result = cur.fetchone()[0] # type: ignore
-
-	# Close the cursor and connection
-	#cur.close()
-	#conn.close()
 
 	return result
 
