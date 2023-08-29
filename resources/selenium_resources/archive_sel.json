@@ -43,8 +43,8 @@
                 "pages_to_crawl": 1,
                 "start_point": 1,
                 "strategy": "container",
-                "follow_link": "no",
-                "inner_link_tag": ".text-slate-800.col-span-4.py-6",
+                "follow_link": "yes",
+                "inner_link_tag": "body",
                 "elements_path": [
                         {
                         "jobs_path": ".bg-gray-100.overflow-hidden.min-h-screen.flex.flex-col.relative .container.mx-auto.pt-4.mb-12.false div main",
