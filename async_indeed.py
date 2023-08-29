@@ -37,9 +37,10 @@ async def async_indeed_template(SCHEME, KEYWORD, pipeline):
 	#Setting up options for the WebDriver
 	options = webdriver.ChromeOptions()
 	options.add_argument('--headless=new')
-	service = Service(executable_path='/Users/juanreyesgarcia/chromedriver', log_path=path.devnull)
+	#service = Service(executable_path='/Users/juanreyesgarcia/chromedriver')
+	#service = Service()
 	#Fucking start it ffs
-	service.start()
+	#service.start()
 
 	""" DETERMINING WHICH JSON TO LOAD & WHICH POSTGRE TABLE WILL BE USED """
 
@@ -70,8 +71,8 @@ async def async_indeed_template(SCHEME, KEYWORD, pipeline):
 		logging.info("Async INDEED crawler deployed!.")
 
 		#NEW DRIVER EACH ITERATION FOR SITE
-		driver = webdriver.Chrome(options=options, service=service)
-		#driver = webdriver.Chrome(options=options)
+		#driver = webdriver.Chrome(options=options, service=service)
+		driver = webdriver.Chrome(options=options)
 
 		total_titles = []
 		total_links = []
@@ -184,7 +185,7 @@ async def async_indeed_template(SCHEME, KEYWORD, pipeline):
 				pass
 		
 		driver.quit()
-		service.stop()
+		#service.stop()
 		return rows
 	
 	async def gather_tasks_indeed(options):
