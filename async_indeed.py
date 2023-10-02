@@ -30,7 +30,15 @@ load_dotenv()
 PROD = os.environ.get('JSON_PROD_INDEED', "")
 TEST = os.environ.get('JSON_TEST_INDEED', "")
 SAVE_PATH = os.environ.get('SAVE_PATH_INDEED', "")
+user = os.environ.get('user')
+password = os.environ.get('password')
+host = os.environ.get('host')
+port = os.environ.get('port')
+database = os.environ.get('database')
 
+# Create a connection to the database & cursor
+conn = psycopg2.connect(database=database, user=user, password=password, host=host, port=port)
+cur = conn.cursor()
 
 async def async_indeed_template(SCHEME, KEYWORD, pipeline):
 	start_time = timeit.default_timer()
@@ -103,7 +111,6 @@ async def async_indeed_template(SCHEME, KEYWORD, pipeline):
 
 		for i in range(0, pages_to_crawl * 10, 10):
 			page_print = round(i/10) + 1
-			logging.info(f"Current indeed page: {page_print}")
 			if special_url == "yes":
 				url = url_1 + KEYWORD + url_2 + str(i)
 				operation = f"requesting {url}"
@@ -116,13 +123,13 @@ async def async_indeed_template(SCHEME, KEYWORD, pipeline):
 			try:
 				await fetch_indeed(url, driver) # type: ignore
 				print(f"Crawling {url}...")
-
-				jobs = wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, elements_path["jobs_path"])))    
+				jobs = driver.find_elements(By.CSS_SELECTOR, elements_path["jobs_path"])
+				#jobs = wait.until(EC.visibility_of_all_elements_located((By.CSS_SELECTOR, elements_path["jobs_path"])))    
 				if jobs:
 					try:
 						default_descriptions = []
 						for job in jobs:
-							operation = f"getting elements from job openings in: {url}"
+							operation = f"getting elements from indeed in this link:"
 							##Get the attributes...
 							job_data = {}
 								
@@ -132,6 +139,10 @@ async def async_indeed_template(SCHEME, KEYWORD, pipeline):
 							#LINKS
 							link_raw = job.find_element(By.CSS_SELECTOR, elements_path["link_path"])
 							job_data["link"] = link_raw.get_attribute("href") if link_raw else "NaN"
+
+							""" WHETHER THE LINK IS IN THE DB """
+							if await link_exists_in_db(link=job_data["link"], cur=cur):
+								continue
 
 							#DATES
 							today = date.today()
@@ -161,29 +172,25 @@ async def async_indeed_template(SCHEME, KEYWORD, pipeline):
 						"""FOLLOW THE SCRAPED LINKS OUTSIDE THE FOR LOOP"""
 						if follow_link == "yes":
 							for i, link in enumerate(total_links):
-								description = await async_follow_link_sel(followed_link=link, inner_link_tag=inner_link_tag, driver=driver, fetch_sel=fetch_indeed, default=default_descriptions[i])
-								total_descriptions.append(description)
+								if i < len(default_descriptions):
+										description = await async_follow_link_sel(followed_link=link, inner_link_tag=inner_link_tag, driver=driver, fetch_sel=fetch_indeed, default=default_descriptions[i])
+										total_descriptions.append(description)
+								else:
+									logging.warning(f"IndexError avoided. Index: {i} is bigger than the lenght of default descriptions: {len(default_descriptions)}")
+									continue
 						else:
 							# Get the default descriptions
 							total_descriptions = default_descriptions
-					except NoSuchElementException as e:
-						print(f"NoSuchElementException: {str(e)}")
-						logging.error(f"NoSuchElementException: while {operation}: {str(e)}", exc_info=True)
-						pass
-			except NoSuchElementException as e:
-			# Handle the specific exception
-				print(f"Element not found during {operation}", e)
-				logging.error(f"Element not found during {operation}: {str(e)}", exc_info=True)
-				pass
-			except TimeoutException as e:
-				print(f"Timeout {operation}. {str(url)}. {str(e)}. Traceback: {format_exc()}.\n")
-				logging.error(f"TimeoutException {operation}. Traceback: {format_exc()}.\n", exc_info=True)
-				pass
-			except Exception as e:
-				print(f"Exception {operation}. {str(e)}. Traceback: {format_exc()}")
-				logging.error(f"Unexpected Exception {operation}: {str(e)}. Traceback: {format_exc()}.\n", exc_info=True)
-				pass
-		
+					except (NoSuchElementException, TimeoutException, Exception) as e:
+						error_message = f"{type(e).__name__} **while** {operation} {url}. {traceback.format_exc()}"
+						print(error_message)
+						logging.error(f"{error_message}\n")
+						continue
+			except (NoSuchElementException, TimeoutException, Exception) as e:
+				error_message = f"{type(e).__name__} **before** getting the elements in {url}. {traceback.format_exc()}"
+				print(error_message)
+				logging.error(f"{error_message}\n")
+				continue
 		driver.quit()
 		#service.stop()
 		return rows
