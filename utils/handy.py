@@ -2,9 +2,9 @@ import re
 import psycopg2
 from psycopg2 import sql
 import logging
-import pandas as pd
 import json
 import pandas as pd
+import numpy as np
 import os
 from dotenv import load_dotenv
 
