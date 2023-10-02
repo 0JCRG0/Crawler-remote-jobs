@@ -11,7 +11,7 @@ def all_location_postgre() -> pd.DataFrame :
 
     # Fetch new data from the table where id is greater than max_id
     #cur.execute("SELECT DISTINCT location FROM main_jobs")
-    cur.execute("SELECT DISTINCT location FROM main_jobs")
+    cur.execute("SELECT DISTINCT location FROM test")
 
     data = cur.fetchall()
 
