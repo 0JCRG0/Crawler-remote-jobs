@@ -56,19 +56,11 @@ async def async_main(pipeline):
 	#print the time
 	elapsed_time = asyncio.get_event_loop().time() - master_start_time
 	min_elapsed_time = elapsed_time / 60
-	print(f"ALL ASYNC CRALERS FINISHED IN: {min_elapsed_time:.2f} minutes.", "\n")
-	logging.info(f"ALL ASYNC CRALERS FINISHED IN: {min_elapsed_time:.2f} minutes.")
-
-"""
-	INFINITE LOOP:
+	print(f"ALL ASYNC CRAWLERS FINISHED IN: {min_elapsed_time:.2f} minutes.", "\n")
+	logging.info(f"ALL ASYNC CRAWLERS FINISHED IN: {min_elapsed_time:.2f} minutes.")
 
 async def main():
-    while True:
-        await async_main("MAIN")
-        await asyncio.sleep(4 * 60 * 60)  # Sleep for 4 hours
-"""
-async def main():
-	await async_main("MAIN")
+	await async_main("TEST")
 
 if __name__ == "__main__":
     asyncio.run(main())
